@@ -1468,3 +1468,27 @@ a.player-btn { text-decoration: none; }
 }
 @media (max-width: 899.98px) { .profile-copy .page-lede { clear: both; } }
 @media (min-width: 768px) and (max-width: 1023.98px) { .hero-line { max-width: 24ch; } }
+
+/* ---------- Round 5: hero spacing + one clean left edge ---------- */
+/* All hero lines share one left edge (no stagger), on every screen */
+.sticker-title .line--2 { margin-left: 0; }
+@media (min-width: 768px) {
+  /* no badge in the hero: the top bar already says LET'S PLAY!, and the badge crowded the photo */
+  .sticker-title .line--2::after { content: none; }
+  .sticker-title { font-size: clamp(2.4rem, .9rem + 2.7vw, 3.6rem); }
+}
+@media (min-width: 1024px) {
+  /* slide the photo right as far as it goes while the player stays fully in frame,
+     so the Aliens and Fish box and the player sit away from the headline */
+  .hero-stage { container-type: size; }
+  .hero-scene img { object-position: min(0px, calc(100cqw - .79 * max(100cqw, 264.32cqh) - 16px)) 50%; }
+}
+/* Tablet: stack like mobile (photo, then words on a clean background) instead of text over the photo */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .hero-stage { height: auto; display: flex; flex-direction: column; }
+  .hero-stage::before { content: none; }
+  .hero-scene { position: relative; inset: auto; aspect-ratio: 16 / 10; }
+  .hero-scene img { object-position: 76% 50%; animation: none; transform: none; }
+  .hero-copy { position: relative; inset: auto; display: block; padding-top: 32px; padding-bottom: 8px; }
+  .sticker-title { font-size: clamp(2.6rem, 1.2rem + 3.4vw, 3.6rem); }
+}
