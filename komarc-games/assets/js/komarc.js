@@ -96,23 +96,38 @@
     });
   }
 
-  // YouTube: swap the thumbnail for the player on click, one video at a time
-  let playing = null;
-  document.querySelectorAll('[data-yt]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
-      e.preventDefault();
-      const box = link.parentElement;
-      if (playing) playing.box.replaceChildren(playing.link);
-      const frame = document.createElement('iframe');
-      frame.src = `https://www.youtube-nocookie.com/embed/${link.dataset.yt}?autoplay=1&rel=0&playsinline=1`;
-      frame.title = link.dataset.ytTitle;
-      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      frame.allowFullscreen = true;
-      box.replaceChildren(frame);
-      playing = { box, link };
+  // YouTube: open the video large in a dialog; the YouTube script only loads on click
+  const player = document.querySelector('[data-player]');
+  if (player && player.showModal) {
+    const frameBox = player.querySelector('[data-player-frame]');
+    const fsBtn = player.querySelector('[data-player-fs]');
+    document.querySelectorAll('[data-yt]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        player.classList.toggle('is-vertical', !!link.closest('.yt--short'));
+        player.querySelector('[data-player-title]').textContent = link.dataset.ytTitle;
+        const id = link.dataset.yt;
+        const origin = location.protocol === 'https:' ? `&origin=${encodeURIComponent(location.origin)}` : '';
+        player.querySelector('[data-player-yt]').href = `https://www.youtube.com/watch?v=${id}`;
+        const frame = document.createElement('iframe');
+        // YouTube rejects embeds without a referrer (error 153), so send the page origin explicitly
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1&fs=1${origin}`;
+        frame.title = link.dataset.ytTitle;
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+        frame.allowFullscreen = true;
+        frameBox.replaceChildren(frame);
+        player.showModal();
+      });
     });
-  });
+    player.querySelector('[data-player-close]').addEventListener('click', () => player.close());
+    player.addEventListener('click', (e) => { if (e.target === player) player.close(); });
+    player.addEventListener('close', () => frameBox.replaceChildren());
+    const goFull = frameBox.requestFullscreen || frameBox.webkitRequestFullscreen;
+    if (goFull) fsBtn.addEventListener('click', () => goFull.call(frameBox));
+    else fsBtn.hidden = true;
+  }
 
   // Flip cards: tap or keyboard shows the second photo (hover does it on desktop)
   document.querySelectorAll('.flip').forEach((btn) => {
