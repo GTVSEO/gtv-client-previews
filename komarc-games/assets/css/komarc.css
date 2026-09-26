@@ -1421,9 +1421,13 @@ a.player-btn { text-decoration: none; }
   }
   .hero-copy {
     position: absolute; inset: 0; z-index: 2;
-    display: flex; flex-direction: column; justify-content: center;
-    padding-top: calc(var(--logo-hang) + 16px); padding-bottom: 16px;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding-top: calc(var(--logo-hang) + clamp(44px, 8vh, 88px)); padding-bottom: 16px;
   }
+  /* keep the headline inside the empty wall on the left, clear of the player and the Aliens and Fish box */
+  .sticker-title { font-size: clamp(2.5rem, 1rem + 3.2vw, 4rem); }
+  .hero-line { margin-top: 24px; }
+  .hero .cta-row { margin-top: 30px; }
 }
 
 /* Product tiles: stats sit in the label band, never on the product photo */
@@ -1463,3 +1467,4 @@ a.player-btn { text-decoration: none; }
   .profile-copy .page-title { font-size: clamp(2.2rem, 1.6rem + 3vw, 3rem); }
 }
 @media (max-width: 899.98px) { .profile-copy .page-lede { clear: both; } }
+@media (min-width: 768px) and (max-width: 1023.98px) { .hero-line { max-width: 24ch; } }
