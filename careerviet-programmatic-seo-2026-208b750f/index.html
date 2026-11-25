@@ -402,6 +402,53 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
   .tab-panel { display: block !important; page-break-after: always; }
   .sheet-scroll { max-height: none; overflow: visible; }
 }
+.dec-select {
+  font: 600 12.2px/1.3 var(--font);
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid #CBD5E1;
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+  margin-bottom: 6px;
+}
+.dec-note {
+  font: 400 12.2px/1.4 var(--font);
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid #E2E8F0;
+  width: 100%;
+  resize: vertical;
+  min-height: 44px;
+}
+.gsc-check-list { display: grid; gap: 8px; margin-top: 8px; }
+.gsc-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #F8FAFC;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13.2px;
+  cursor: pointer;
+}
+.gsc-check-item input[type="checkbox"] { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--blue); flex-shrink: 0; }
+.gsc-check-item.done { background: #ECFDF5; border-color: #A7F3D0; }
+.jump-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  background: #FFFBEB;
+  border: 1px solid #FCD34D;
+  font-size: 13px;
+  color: #78350F;
+}
 </style>
 </head>
 <body>
@@ -426,11 +473,12 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
 <nav class="tab-nav" aria-label="Điều hướng báo cáo">
   <div class="tab-nav-wrap">
     <div class="tab-row" role="tablist" aria-label="Nhóm Kỹ thuật và Audit">
-      <span class="tab-group-lbl">Kỹ thuật &amp; Audit</span>
-      <button class="tab-btn active" role="tab" data-tab="overview">1. Tổng quan, CoR &amp; Rà soát T11 <span class="tab-badge p0">2 MB Gate</span></button>
-      <button class="tab-btn" role="tab" data-tab="tech-explain">2. Giải trình Tech (2 MB · /api · RFC 9309)</button>
-      <button class="tab-btn" role="tab" data-tab="feasibility-schema">3. Khả thi 3 Làn · Recall · H2/H3 · 6 JSON-LD</button>
-      <button class="tab-btn" role="tab" data-tab="job-detail-ugc">4. Job Detail Pages &amp; UGC <span class="tab-badge p0">27 Live</span></button>
+      <span class="tab-group-lbl">Họp Team &amp; Audit</span>
+      <button class="tab-btn active" role="tab" data-tab="team-rec">0. Họp Team &amp; Final Rec <span class="tab-badge p0">6 Chốt</span></button>
+      <button class="tab-btn" role="tab" data-tab="overview">1. Tổng quan &amp; CoR <span class="tab-badge">2 MB</span></button>
+      <button class="tab-btn" role="tab" data-tab="tech-explain">2. Giải trình Tech (2 MB · /api · RFC)</button>
+      <button class="tab-btn" role="tab" data-tab="feasibility-schema">3. Khả thi · Recall · H2/H3 · JSON-LD</button>
+      <button class="tab-btn" role="tab" data-tab="job-detail-ugc">4. Job Detail &amp; UGC <span class="tab-badge">27 Live</span></button>
     </div>
     <div class="tab-row" role="tablist" aria-label="Nhóm Template và Outline AM">
       <span class="tab-group-lbl">Template &amp; AM v2.1</span>
@@ -445,38 +493,222 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
 
 <main class="wrap">
 
-  <!-- ==================== TAB 1: OVERVIEW, CoR & TEAM AUDIT REVIEW ==================== -->
-  <section id="tab-overview" class="tab-panel active">
+  <!-- ==================== TAB 0: TEAM DISCUSSION NOTES & FINAL RECOMMENDATION ==================== -->
+  <section id="tab-team-rec" class="tab-panel active">
     <div class="card" style="border:2px solid #D97706;background:#FFFBEB">
       <div class="card-head">
-        <h2 style="color:#92400E">GHI CHÚ HỌP TEAM (BẢN V3 ĐÃ CROSS-REVIEW) — 6 ĐIỂM CHỜ THẢO LUẬN &amp; CHỐT</h2>
-        <span class="pill pill-p1">Draft thảo luận · Chưa gửi Dev CRV</span>
+        <div>
+          <h2 style="color:#92400E">NOTE THẢO LUẬN TEAM &amp; FINAL RECOMMENDATION (SAU CROSS-REVIEW 26/11/2026)</h2>
+          <p class="lede" style="color:#78350F;margin:4px 0 0">Hợp nhất đo sống 25–26/11 + Wayback Machine + Phản biện chéo 23 claim &amp; 7 câu stress-test + Xác minh chuỗi Breadcrumb <code>308 → 200 Soft-404</code>. Anh và team tick trực tiếp quyết định ngay dưới đây rồi bấm <strong>Chép biên bản chốt</strong>.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" id="copy-meeting-md">Chép biên bản chốt (Markdown)</button>
+          <button type="button" class="btn" id="reset-meeting-btn">Đặt lại</button>
+        </div>
       </div>
-      <p class="lede" style="color:#78350F">Bản v3 này đã cập nhật toàn bộ phản biện chéo 23 claim + 7 câu stress-test (Wayback Machine, Chrome network, Runbook TR-01..05) và xác minh chuỗi Breadcrumb <code>308 → 200 Soft-404</code>. Mọi hạng mục hành động dưới đây cần team rà cùng nhau và chốt <strong>6 quyết định mở</strong> trước khi gửi Dev &amp; điều chỉnh Sprint 24/11:</p>
       <div class="grid-2">
         <div class="callout" style="background:#FFFFFF;border-color:#FCD34D">
-          <h3>6 Quyết định cần chốt trong buổi họp team</h3>
-          <ol style="margin:6px 0 0;padding-left:18px;font-size:13.2px;display:grid;gap:5px">
-            <li><strong>PR #1 chỉ làm B1 (B1a bỏ vector + B1b tách namespace i18n):</strong> Tách B2 (<code>robots.txt</code>) và B3 (<code>&lt;h1&gt;</code>) ra khỏi PR #1 để hotfix qua nhanh; nghiệm thu bằng byte offset (link job cuối &lt; 1,5 MB).</li>
-            <li><strong>Mô hình Company 3 loại A/B/C:</strong> Loại A (1 <code>emp_id</code>) → canonical <code>-p</code>, 301 <code>-k</code> về <code>-p</code>; Loại B (tập đoàn đa ID) → giữ <code>-k</code> + whitelist <code>emp_id</code>; Loại C (&lt;50% tin chính chủ) → bỏ template Company.</li>
-            <li><strong>Vòng đời Tin hết hạn 2 pha:</strong> Pha 1 giữ <code>200 + noindex + validThrough</code> quá khứ trong <code>X</code> ngày (cần hỏi CRV chu kỳ gia hạn ID &amp; đối chiếu spec ticket #8) → Pha 2 trả <code>410 Gone</code> (ngoại lệ có backlink/click 301 về <code>-p</code>).</li>
-            <li><strong>Khoanh dừng ngay URL sai đích trong Sprint 24/11:</strong> Tối thiểu dừng <strong>13 URL</strong> (<code>4</code> URL <code>-sort</code> + <code>9</code> brand <code>-k</code> Loại C, 5 URL ở Tuần 1) hay khoanh rộng <strong>97/192 URL</strong> <code>-k/-kl/-sort</code>?</li>
-            <li><strong>Data Gate &amp; Pilot Content:</strong> Chốt bảng ngưỡng dùng chung + JSON <code>gates</code> + chạy pilot 10–20 trang đo trùng lặp trước khi scale 60 URL/tuần.</li>
-            <li><strong>Mở lại ticket backlog #1, #4 &amp; chạy 4 phép kiểm GSC:</strong> Xác minh bản HTML Google lưu, Crawl Stats, đường click quanh Nov/Dec Core Update, lý do <code>-lq</code> mất 96% + xin deploy log CRV 15/09–25/11.</li>
-          </ol>
+          <h3>4 Thực tế Dữ liệu Bắt buộc Thống nhất (Chống lệch narrative với CRV)</h3>
+          <ul style="margin:6px 0 0;padding-left:18px;font-size:13px;display:grid;gap:6px">
+            <li><strong>Lỗi &gt;2 MB là sự cố mới tháng 11, không giải thích T8–T10:</strong> Wayback chứng minh trang ngành <code>c2</code> nặng 1,50 MB (12/03) → 1,78 MB (05/10) → 2,00 MB (02/11) → 2,05–2,12 MB (12/11, chưa có vector) → 4,17 MB (26/11). Mảng <code>job_*_embed</code> mới lọt vào khoảng <strong>13–25/11/2026</strong>. Dùng mốc an toàn <code>2.000.000 B</code>.</li>
+            <li><strong>Tách KPI Pageview hợp đồng khỏi đợt giảm click JL T11:</strong> Hợp đồng cam kết tăng trưởng Organic Pageview (60%) + Apply (40%), không cam kết ranking. Giai đoạn T5→T10: mục tiêu tháng tăng <strong>+77%</strong>, tổng pageview giảm nhẹ -2,4%, riêng <strong>Job Listing tăng +26,5%</strong>, phần giảm tập trung ở <strong>Non-JL (-13,1%)</strong>.</li>
+            <li><strong>Đợt rớt click JL kỳ 30 ngày 23/10–21/11 KHÔNG do AIO:</strong> Click -29,8%, impression -36,9%, <strong>CTR tăng 6,15% → 6,85%</strong>. Nhóm mang dấu hiệu AIO (vị trí &amp; imp giữ, CTR giảm ≥10%) chỉ có <strong>55 URL (1,0% mức giảm ròng)</strong> — bỏ hoàn toàn claim "AIO tăng 5×". Kỳ đo trùng <strong>November Core Update (10–24/11)</strong> và ngay trước <strong>December Core Update (báo 24/11)</strong>; <code>-k</code> chiếm 46% tổng giảm và <code>-lq</code> mất 96%.</li>
+            <li><strong>Tin hết hạn KHÔNG vi phạm guideline JobPosting:</strong> 9/9 mẫu cũ (2013–2026) trả <code>200 + follow, noindex</code> và 8/9 có <code>validThrough</code> quá khứ — hợp lệ theo Google. Lý do xử lý là <strong>chi phí crawl</strong> (1,54–1,57 MB × ~17,39M URL bị loại).</li>
+          </ul>
         </div>
         <div class="callout" style="background:#FFFFFF;border-color:#BFDBFE">
-          <h3>6 Điểm Đính chính Quan trọng từ Phản biện Chéo (đã sửa vào v3)</h3>
-          <ul style="margin:6px 0 0;padding-left:18px;font-size:13.2px;display:grid;gap:5px">
-            <li><strong>Mốc lỗi 2 MB:</strong> Wayback chứng minh trang ngành vượt 2 MB đầu T11 và <code>job_*_embed</code> mới vào HTML khoảng <strong>13–25/11/2026</strong> — không gán lỗi này cho T8–T10.</li>
-            <li><strong>Tách KPI hợp đồng vs đợt rớt JL T11:</strong> Đợt giảm click 30 ngày 23/10–21/11 (click -29,8%, imp -36,9%, CTR tăng 6,15%→6,85%) trùng <strong>November Core Update (10–24/11)</strong>; dấu hiệu AIO chỉ 1,0% → đã gỡ claim "AIO tăng 5×".</li>
-            <li><strong>Tin hết hạn không vi phạm guideline:</strong> 9/9 tin cũ có <code>noindex</code> + <code>validThrough</code> quá khứ là hợp lệ; chuyển sang 410 chỉ vì <strong>chi phí crawl</strong> (~1,55 MB × 17,39M excluded).</li>
-            <li><strong>B2 có 3 endpoint <code>/api/</code> cùng origin:</strong> Ngoài <code>/api/keyword-display</code> còn <code>/api/get-localized-url</code> và <code>/api/auth/jobseekers/check</code> → phải test staging trước khi bật.</li>
-            <li><strong>Bỏ làm mới <code>CollectionPage + ItemList</code>:</strong> Google không hỗ trợ rich result cho Job Carousel; dồn Dev vá <code>JobPosting</code> tin đang mở và <code>BreadcrumbList</code> 308 → Soft-404.</li>
-            <li><strong>Recall <code>-k</code> không lấy <code>exclude_title</code> làm đòn chính:</strong> Đổi cách đếm <code>n_exact</code> cho <code>&lt;title&gt;/&lt;h1&gt;</code> và tách tin mở rộng vector xuống khối "Việc làm liên quan".</li>
+          <h3>Xác minh Kỹ thuật Bổ sung (Đo sống 26/11 lúc 02:56)</h3>
+          <ul style="margin:6px 0 0;padding-left:18px;font-size:13px;display:grid;gap:6px">
+            <li><strong>Chuỗi Breadcrumb <code>/tim-viec-lam/*</code>:</strong> Xác minh <code>curl -L</code>: <code>/tim-viec-lam/ho-chi-minh-l8-vi.html</code> trả <code>308</code> → <code>/vi/tim-viec-lam/...</code> → trả <strong><code>200 OK</code> (cache tới 30 ngày <code>s-maxage=2592000</code>) nhưng body 1,26 MB là trang Soft-404 (<code>h1: []</code>, báo lỗi 404)</strong>.</li>
+            <li><strong>Header <code>GET c2l8</code> thật:</strong> <code>Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate</code> (trước đây đọc nhầm từ HEAD là <code>none</code>).</li>
+            <li><strong>B2 có 3 endpoint <code>/api/</code> cùng origin (chưa đăng nhập):</strong> <code>/api/keyword-display</code>, <code>/api/get-localized-url</code> và <code>/api/auth/jobseekers/check</code> → phải tách khỏi PR #1 và test staging trước.</li>
+            <li><strong>Đính chính nguồn đề xuất team T11:</strong> Đổi <code>&lt;h2&gt;→&lt;h3&gt;</code> mức cao và chip động ATF <em>không phải đề xuất của team</em>; rủi ro thực từ Doc team chỉ nằm ở <strong>canonical <code>-p → -k</code> đại trà</strong> và <strong>dùng GSC Removals</strong>.</li>
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>0.1. Bảng 6 Quyết định Cần Chốt trong Buổi Họp Team (Tick &amp; Ghi chú trực tiếp)</h2>
+        <span class="pill pill-p0">Lưu tự động trên trình duyệt</span>
+      </div>
+      <div class="tbl-wrap">
+        <table class="data-tbl" id="decisions-tbl">
+          <thead>
+            <tr>
+              <th style="width:42px">#</th>
+              <th style="width:185px">Điểm cần chốt</th>
+              <th>Phương án Đề xuất (Recommended)</th>
+              <th style="width:240px">Điều cần xác nhận / Lưu ý CRV</th>
+              <th style="width:230px">Quyết định &amp; Ghi chú họp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-dec="d1">
+              <td><strong>1</strong></td>
+              <td><strong>PR #1 chỉ làm B1</strong><br><span class="pill pill-p0" style="margin-top:4px">Khẩn cấp</span></td>
+              <td>PR #1 = <strong>B1a</strong> (bỏ <code>job_*_embed</code> ở tầng data fetch, trong ngày) + <strong>B1b</strong> (gỡ namespace route khác khỏi root i18n provider, 1–1,5 ngày; an toàn hơn <code>pick()</code> 3 nhánh). <strong>DoD:</strong> 0 chuỗi embed + link job cuối <strong>&lt; byte 1.500.000</strong> + CI gate. Tách B2 (<code>robots.txt</code>) &amp; B3 (<code>&lt;h1&gt;</code>) ra; chạy song song B7 DevOps (HTTP/2 + Brotli).</td>
+              <td>Dev CRV grep repo xác nhận chunk tải động không dùng <code>*_embed</code>; test staging đủ 3 endpoint <code>/api/</code> trước khi bật B2.</td>
+              <td>
+                <select class="dec-select" data-key="d1_status"><option>Chờ chốt</option><option>Duyệt theo đề xuất</option><option>Điều chỉnh phương án</option><option>Cần hỏi thêm CRV</option></select>
+                <textarea class="dec-note" data-key="d1_note" placeholder="Ghi chú owner / deadline..."></textarea>
+              </td>
+            </tr>
+            <tr data-dec="d2">
+              <td><strong>2</strong></td>
+              <td><strong>Company 3 loại A / B / C</strong><br><span class="pill pill-p1" style="margin-top:4px">Kiến trúc URL</span></td>
+              <td><strong>Loại A</strong> (1 <code>emp_id</code>: Masan, Vietravel, Intertek, Concentrix, Sabeco) → canonical <code>-p</code>, 301 <code>-k</code> về <code>-p</code>.<br><strong>Loại B</strong> (đa <code>emp_id</code>: Vingroup, Vietcombank, BIDV, FPT, Pepsi, Đại Dũng, Vinmec, Hoa Sen) → giữ <code>-k</code> đang có click + chuyển sang <strong>whitelist <code>emp_id</code></strong>.<br><strong>Loại C</strong> (&lt;50% tin chính chủ) → <strong>bỏ template Company</strong>. <em>(Hoãn <code>-g</code> sang Phase 2.)</em></td>
+              <td>Team phân loại đủ 48 URL Company của sprint; thống nhất bỏ đề xuất ép mọi <code>-p → -k</code> và bỏ hẳn GSC Removals.</td>
+              <td>
+                <select class="dec-select" data-key="d2_status"><option>Chờ chốt</option><option>Duyệt theo đề xuất</option><option>Điều chỉnh phương án</option><option>Cần hỏi thêm CRV</option></select>
+                <textarea class="dec-note" data-key="d2_note" placeholder="Ghi chú phân loại Company..."></textarea>
+              </td>
+            </tr>
+            <tr data-dec="d3">
+              <td><strong>3</strong></td>
+              <td><strong>Vòng đời Tin hết hạn 2 pha</strong><br><span class="pill pill-inter" style="margin-top:4px">Chi phí Crawl</span></td>
+              <td><strong>Pha 1 (<code>X</code> ngày):</strong> giữ <code>200 + noindex + validThrough</code> quá khứ + khối việc tương tự cho user.<br><strong>Pha 2 (sau <code>X</code> ngày):</strong> trả <strong><code>410 Gone</code></strong> (quét cả tồn kho 2013–2025 để rút khỏi crawl queue).<br><strong>Ngoại lệ:</strong> URL có backlink hoặc click thì <code>301</code> về trang <code>-p</code> của DN.</td>
+              <td>Hỏi CRV <strong>tin gia hạn có giữ nguyên ID không</strong> (chọn <code>X</code> &gt; chu kỳ gia hạn) + đọc lại spec <strong>ticket #8 ("Rule Jobs expired")</strong>.</td>
+              <td>
+                <select class="dec-select" data-key="d3_status"><option>Chờ chốt</option><option>Duyệt theo đề xuất</option><option>Điều chỉnh phương án</option><option>Cần hỏi thêm CRV</option></select>
+                <textarea class="dec-note" data-key="d3_note" placeholder="Ghi chú mốc X ngày &amp; ticket #8..."></textarea>
+              </td>
+            </tr>
+            <tr data-dec="d4">
+              <td><strong>4</strong></td>
+              <td><strong>Khoanh dừng Sprint 24/11</strong><br><span class="pill pill-p0" style="margin-top:4px">Chặn lãng phí</span></td>
+              <td><strong>Mức tối thiểu — Dừng ngay 13 URL sai đích:</strong> <code>4</code> URL <code>-sort</code> (canonical về URL gốc) + <code>9</code> brand <code>-k</code> Loại C (<strong>5 URL ngay Tuần 1:</strong> <code>vinfast-k</code>, <code>unilever-k</code>, <code>shopee-k</code>, <code>siemens-k</code>, <code>grab-k</code>; 4 URL còn lại: <code>nam-a-bank-k</code>, <code>aeon-k</code>, <code>panasonic-k</code>, <code>truong-quoc-te-k</code>).<br><strong>Mức rộng:</strong> rà lại cả <strong>97/192 URL</strong> <code>-k/-kl/-sort</code> trước Tuần 2–3.</td>
+              <td>Chọn phương án dừng <strong>13 URL tối thiểu</strong> ngay lập tức hay tạm dừng toàn bộ cụm <strong>97 URL</strong>?</td>
+              <td>
+                <select class="dec-select" data-key="d4_status"><option>Chờ chốt</option><option>Dừng 13 URL tối thiểu</option><option>Khoanh rộng 97 URL</option><option>Phương án khác</option></select>
+                <textarea class="dec-note" data-key="d4_note" placeholder="Ghi chú danh sách URL dừng..."></textarea>
+              </td>
+            </tr>
+            <tr data-dec="d5">
+              <td><strong>5</strong></td>
+              <td><strong>Data Gate &amp; Pilot Content</strong><br><span class="pill pill-owner" style="margin-top:4px">0 ngày Dev</span></td>
+              <td>Gom ngưỡng gate về 1 bảng duy nhất; xuất JSON cho từng URL có khối <code>gates</code> (<code>n_total</code>, <code>n_clean</code>, <code>n_salary_public</code>, <code>n_companies</code>, <code>n_jd_sampled</code>, <code>n_districts</code>) + script QA fail nếu HTML in khối tắt. <strong>Pilot 10–20 trang</strong> → đo trùng lặp (EmbeddingGemma + token riêng ≥30–40%) trước khi chạy 60 URL/tuần.</td>
+              <td>Chốt người chạy script trích JSON từ JD; bổ sung <code>O6b</code>, <code>O9</code>, <code>O14</code> và bỏ dải word-count cứng theo Tier để khớp SOP <code>tier-1-outline-am.md</code>.</td>
+              <td>
+                <select class="dec-select" data-key="d5_status"><option>Chờ chốt</option><option>Duyệt theo đề xuất</option><option>Điều chỉnh phương án</option><option>Cần thêm tài nguyên</option></select>
+                <textarea class="dec-note" data-key="d5_note" placeholder="Ghi chú owner pilot &amp; QA script..."></textarea>
+              </td>
+            </tr>
+            <tr data-dec="d6">
+              <td><strong>6</strong></td>
+              <td><strong>Backlog #1/#4 &amp; Quyền Preview</strong><br><span class="pill pill-p1" style="margin-top:4px">Governance</span></td>
+              <td>Mở lại <strong>ticket #1, #4</strong> trong backlog tracking (<code>robots.txt</code> ghi Done 07/07 nhưng chưa áp cho Googlebot từ 02/03). Bỏ làm mới <code>CollectionPage + ItemList</code>; PR #2 ưu tiên <code>JobPosting</code> tin sống + <code>BreadcrumbList</code> 308 → Soft-404 (đồng thuận vụ ticket #24). Chốt giữ hay gỡ/private link preview sau khi họp xong.</td>
+              <td>Giao owner có quyền <strong>GSC CareerViet</strong> chạy đủ 4 phép kiểm GSC + xin CRV deploy log 15/09–25/11.</td>
+              <td>
+                <select class="dec-select" data-key="d6_status"><option>Chờ chốt</option><option>Duyệt theo đề xuất</option><option>Điều chỉnh phương án</option><option>Cần kiểm GSC trước</option></select>
+                <textarea class="dec-note" data-key="d6_note" placeholder="Ghi chú owner GSC &amp; repo preview..."></textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>0.2. Final Recommendation — Trụ 1: Lộ trình Kỹ thuật gửi Dev CRV (Map Ticket Backlog)</h2>
+        <span class="pill pill-inter">Tách PR để hotfix 2 MB không bị kẹt vòng duyệt cũ</span>
+      </div>
+      <div class="tbl-wrap">
+        <table class="data-tbl">
+          <thead>
+            <tr><th style="width:175px">Đợt triển khai</th><th>Hạng mục &amp; Map Backlog</th><th>Lý do chọn / Lưu ý kỹ thuật</th><th style="width:270px">Tiêu chí Nghiệm thu (DoD)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PR #1 (Khẩn cấp)</strong><br><span class="pill pill-p0">Chỉ B1 · 2 bước</span></td>
+              <td><strong>B1a (trong ngày):</strong> Bỏ <code>job_title_embed</code>, <code>job_tag_embed</code> ở tầng data fetch.<br><strong>B1b (1–1,5 ngày):</strong> Gỡ namespace của route khác khỏi root i18n provider (<code>919 KB</code>), nạp lại tại layout của route đó.</td>
+              <td>Tách khỏi B2/B3 để lên live ngay. Chỉ làm B1a mới đưa <code>c2l8</code> về ~2,06 MB (còn cắt 6–14 link cuối), nên bắt buộc nối tiếp B1b.</td>
+              <td>Đo <strong>byte offset</strong> trên 8 template: <code>0</code> chuỗi <code>job_*_embed</code>; link job cuối nằm <strong>trước byte 1.500.000</strong>; gắn size check vào CI.</td>
+            </tr>
+            <tr>
+              <td><strong>DevOps Song song</strong><br><span class="pill pill-p1">B7 · 0 đụng App</span></td>
+              <td>Bật <strong><code>HTTP/2</code></strong> + <strong><code>Brotli (br)</code></strong> trên OpenResty.</td>
+              <td>Toàn site đang chạy <code>HTTP/1.1</code> + <code>gzip</code> với 23–42 CSS và 50–52 JS mỗi trang.</td>
+              <td><code>curl -I --http2 -H "Accept-Encoding: br"</code> trả <code>HTTP/2</code> + <code>content-encoding: br</code>.</td>
+            </tr>
+            <tr>
+              <td><strong>Config Độc lập</strong><br><span class="pill pill-p1">B2 · Ticket #1, #4</span></td>
+              <td>Vá <code>robots.txt</code> RFC 9309: xóa 10 khối <code>Allow: /</code> thừa đầu file; giữ 6 scraper bots <code>Disallow: /</code>; mở đúng endpoint <code>/api/</code> cần render + gắn <code>X-Robots-Tag: noindex, nofollow</code>.</td>
+              <td>Googlebot bỏ qua nhóm <code>*</code> từ 02/03. Không gộp PR #1 vì phải kiểm ảnh hưởng của <code>/api/get-localized-url</code> và <code>/api/auth/jobseekers/check</code> + đối chiếu Crawl Stats.</td>
+              <td>Staging render 100% không lỗi console/navigation; Googlebot Robots Tester pass; 0 Blocked Resources trong URL Inspection.</td>
+            </tr>
+            <tr>
+              <td><strong>PR #2 (Index &amp; JobPosting)</strong><br><span class="pill pill-inter">#19, #22, #10, #6, #24, #23</span></td>
+              <td><strong>1. <code>JobPosting</code> tin mở (ưu tiên #1 của PR #2):</strong> fix <code>employmentType</code> hết lồng ngoặc kép, bỏ <code>baseSalary</code> chữ/<code>LTT</code>/<code>LCT</code>.<br><strong>2. <code>BreadcrumbList</code> (#24, #23):</strong> sửa <code>/tim-viec-lam/*</code> (308 → 200 Soft-404) về <code>/viec-lam/*</code>.<br><strong>3. Index Pollution &amp; Canonical (B5 · #10, #6):</strong> <code>noindex, follow</code> toàn bộ <code>/viec-lam-tuong-tu/*</code>, bỏ <code>-sort*</code> khỏi <code>hreflang</code>/link, khóa <code>canonical_slug</code> theo <code>emp_id</code>, cổng <code>0 tin → noindex/404</code>.<br><strong>4. Onpage (B3 · #19, #22 &amp; B4):</strong> fix <code>&lt;h1&gt;</code>, typo, tắt auto-linker trong <code>.seo-content</code>.</td>
+              <td>Sửa trực tiếp lỗi đang hỏng điều kiện hiện Google Jobs; khóa nguồn phình index pollution ~17,39M URL. Tuyệt đối <strong>cấm dùng GSC Removals</strong> cho canonicalization.</td>
+              <td>Rich Results Test PASS 10 mẫu tin mở; <code>/tim-viec-lam/*</code> biến mất khỏi JSON-LD; <code>/viec-lam-tuong-tu/*</code> trả <code>noindex, follow</code>; slug bịa <code>-p&#123;ID&#125;</code> trả canonical chuẩn từ DB.</td>
+            </tr>
+            <tr>
+              <td><strong>Bỏ / Hoãn Phase 2+</strong><br><span class="pill pill-none">Tiết kiệm Dev</span></td>
+              <td><strong>Bỏ</strong> gói làm mới <code>CollectionPage + ItemList</code> trên Listing. <strong>Hoãn</strong> đổi Job Card <code>&lt;h2&gt;→&lt;h3&gt;</code> (P2 Opportunistic), <strong>hoãn</strong> Group Hub <code>-g</code>, <strong>bỏ</strong> code chip động ATF (chuyển sang Làn A CMS).</td>
+              <td>Tiết kiệm 2,5–3 ngày Dev cho Schema không có rich result Jobs và 4–8 tuần Dev cho chip ATF để dồn toàn lực vào B1 + JobPosting + Index Pollution.</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="callout info">
+        <h3>Trụ 2A · Company 3 Loại &amp; Recall <code>-k/-kl</code></h3>
+        <ul>
+          <li><strong>Company 3 loại:</strong> A (1 <code>emp_id</code>) → <code>-p</code>; B (đa <code>emp_id</code>) → giữ <code>-k</code> + whitelist <code>emp_id</code>; C (&lt;50% tin chính chủ: 9 trang) → bỏ template Company.</li>
+          <li><strong>Recall <code>-k/-kl</code>:</strong> Không dùng <code>exclude_title</code> làm đòn chính. Đổi cách đếm <code>&lt;title&gt;/&lt;h1&gt;</code> chỉ tính tin khớp tiêu đề (<code>n_exact</code>), tách tin mở rộng vector xuống khối <em>"Việc làm liên quan"</em>.</li>
+          <li><strong>Cổng dữ liệu:</strong> <code>0 tin → noindex/404</code> ngay; giữ ân hạn 60 ngày cho URL có click 90 ngày; tìm ngưỡng min-data thật từ phân phối 3.688 URL <code>-k</code> + áp <strong>QDP Gate ≥3/4</strong>.</li>
+        </ul>
+      </div>
+      <div class="callout ok">
+        <h3>Trụ 2B &amp; 3 · Tin Hết hạn &amp; Sprint 24/11</h3>
+        <ul>
+          <li><strong>Tin hết hạn 2 pha:</strong> Pha 1 (<code>X</code> ngày &gt; chu kỳ gia hạn ID) giữ <code>200 + noindex + validThrough</code> quá khứ + việc tương tự → Pha 2 trả <code>410 Gone</code>; ngoại lệ có backlink/click <code>301</code> về <code>-p</code>.</li>
+          <li><strong>Sprint 24/11:</strong> Dừng ngay tối thiểu <strong>13 URL sai đích</strong> (4 <code>-sort</code> + 9 brand <code>-k</code> Loại C, 5 URL ngay Tuần 1) và rà phần còn lại trong 97 URL <code>-k/-kl/-sort</code>.</li>
+          <li><strong>4 Outline AM v2.1:</strong> Gom ngưỡng Data Gate về 1 bảng; xuất JSON có khối <code>gates</code> + QA fail khi in khối tắt; <strong>pilot 10–20 trang</strong> đo trùng lặp (≥30–40% unique) + lịch refresh bảng tĩnh 7–21 ngày.</li>
+        </ul>
+      </div>
+      <div class="callout warn">
+        <h3>Trụ 4 · Mạch Báo cáo Khách hàng CRV</h3>
+        <ul>
+          <li><strong>Đổi thứ tự lập luận (TR-01 → TR-05 trước, AIO sau):</strong> KPI hợp đồng là Pageview (mục tiêu +77%, JL tăng +26,5%, giảm nằm ở Non-JL -13,1%).</li>
+          <li><strong>Đợt giảm click JL 23/10–21/11:</strong> Imp giảm mạnh hơn click, CTR tăng → không phải AIO. Trùng November Core Update (10–24/11) &amp; trước December Core Update (báo 24/11).</li>
+          <li><strong>Chưa kết luận nguyên nhân gốc cho khách</strong> trước khi hoàn tất 5 phép kiểm GSC &amp; deploy log CRV ở mục 0.3 bên dưới.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>0.3. 5 Phép kiểm GSC &amp; CRV Bắt buộc (Tick theo tiến độ thực thi)</h2>
+        <span class="pill pill-p0">Chưa kiểm vì chưa có quyền GSC property CareerViet</span>
+      </div>
+      <div class="gsc-check-list" id="gsc-checks">
+        <label class="gsc-check-item"><input type="checkbox" data-key="g1"><span><strong>1. GSC URL Inspection (<code>c2l8</code>, <code>l8</code>, <code>c2</code>):</strong> Vào <em>Xem trang đã thu thập</em> → tìm <code>&lt;h1</code> và đếm số link <code>/tim-viec-lam/</code>; đối chiếu ngày Googlebot crawl so với mốc 13/11.</span></label>
+        <label class="gsc-check-item"><input type="checkbox" data-key="g2"><span><strong>2. GSC Crawl Stats:</strong> Lấy Average response time (đo ngoài dao động 0,18–0,47 s), tỷ lệ HTML/JSON, tỷ lệ <code>304</code>, lượt crawl vào <code>/api/</code>, <code>/viec-lam-tuong-tu/</code> và <code>-sort</code>.</span></label>
+        <label class="gsc-check-item"><input type="checkbox" data-key="g3"><span><strong>3. GSC Performance theo ngày (01/09–25/11):</strong> Tách riêng đường click Job Listing vs Non-JL/Blog quanh September Spam Update (24/09–08/10) và November Core Update (10–24/11).</span></label>
+        <label class="gsc-check-item"><input type="checkbox" data-key="g4"><span><strong>4. GSC Indexing nhóm quận <code>-l\d+q\d+</code>:</strong> Lý giải nguyên nhân <code>-lq</code> mất 96% click (đã ghi nhận trang tỉnh <code>l8</code> có <strong>0 link quận trong HTML SSR</strong>, box quận tải bằng JS).</span></label>
+        <label class="gsc-check-item"><input type="checkbox" data-key="g5"><span><strong>5. Phía Dev CRV:</strong> Xin <strong>nhật ký deploy 15/09–25/11</strong> (bước TR-05) và xác nhận <strong>tin gia hạn có giữ nguyên ID không</strong> (để chốt mốc <code>X</code> ngày cho Pha 1 tin hết hạn).</span></label>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn jump-tab-btn" data-jump="overview">Xem Bằng chứng CoR &amp; Byte-Offset (Tab 1) →</button>
+        <button type="button" class="btn jump-tab-btn" data-jump="tech-explain">Xem Code sửa B1a / B1b / RFC 9309 (Tab 2) →</button>
+        <button type="button" class="btn jump-tab-btn" data-jump="feasibility-schema">Xem 3 Làn Khả thi &amp; JSON-LD (Tab 3) →</button>
+        <button type="button" class="btn jump-tab-btn" data-jump="job-detail-ugc">Xem 27 Job Detail UGC (Tab 4) →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 1: OVERVIEW, CoR & TEAM AUDIT REVIEW ==================== -->
+  <section id="tab-overview" class="tab-panel">
+    <div class="jump-bar">
+      <span><strong>Đang xem Tab 1 (Bằng chứng CoR &amp; Đo sống):</strong> Toàn bộ Note họp team, Checklist 6 quyết định mở và Final Recommendation 4 trụ cột nằm ở <strong>Tab 0</strong>.</span>
+      <button type="button" class="btn btn-primary jump-tab-btn" data-jump="team-rec">← Về Tab 0 · Họp Team &amp; Final Rec</button>
     </div>
 
     <div class="kpi-grid">
@@ -1291,14 +1523,69 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml</code></pre>
       b.classList.toggle("active", on);
       if (on) matched = true;
     });
-    if (!matched) id = "overview";
+    if (!matched) id = "team-rec";
     tabPanels.forEach(p => p.classList.toggle("active", p.id === "tab-" + id));
     if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
     window.scrollTo({ top: 0, behavior: "instant" });
   }
   tabBtns.forEach(b => b.addEventListener("click", () => activateTab(b.dataset.tab)));
+  document.querySelectorAll(".jump-tab-btn").forEach(b => b.addEventListener("click", () => activateTab(b.dataset.jump)));
   const initHash = location.hash.replace("#", "");
   if (initHash) activateTab(initHash);
+
+  // Interactive Team Meeting Board (localStorage + Copy Markdown)
+  const STORE_KEY = "cv_v3_team_meeting_v1";
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); } catch (_) { return {}; }
+  }
+  function saveState(st) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(st)); } catch (_) {}
+  }
+  const mState = loadState();
+  document.querySelectorAll("#tab-team-rec [data-key]").forEach(el => {
+    const k = el.dataset.key;
+    if (el.type === "checkbox") {
+      el.checked = !!mState[k];
+      el.closest(".gsc-check-item")?.classList.toggle("done", el.checked);
+      el.addEventListener("change", () => {
+        mState[k] = el.checked;
+        el.closest(".gsc-check-item")?.classList.toggle("done", el.checked);
+        saveState(mState);
+      });
+    } else {
+      if (mState[k] !== undefined) el.value = mState[k];
+      el.addEventListener("input", () => { mState[k] = el.value; saveState(mState); });
+      el.addEventListener("change", () => { mState[k] = el.value; saveState(mState); });
+    }
+  });
+  document.getElementById("copy-meeting-md")?.addEventListener("click", () => {
+    const lines = ["# Biên bản Chốt họp Team CareerViet (từ v3 Preview)", ""];
+    lines.push("## 6 Quyết định chính");
+    document.querySelectorAll("#decisions-tbl tbody tr").forEach((tr, i) => {
+      const title = tr.children[1].querySelector("strong")?.textContent?.trim() || ("Mục " + (i + 1));
+      const status = tr.querySelector("select")?.value || "Chờ chốt";
+      const note = (tr.querySelector("textarea")?.value || "").trim();
+      lines.push(`- **${i + 1}. ${title}:** [${status}]${note ? " — " + note : ""}`);
+    });
+    lines.push("", "## 5 Phép kiểm GSC & CRV");
+    document.querySelectorAll("#gsc-checks .gsc-check-item").forEach(lbl => {
+      const chk = lbl.querySelector("input")?.checked ? "x" : " ";
+      const txt = lbl.querySelector("span")?.textContent?.trim() || "";
+      lines.push(`- [${chk}] ${txt}`);
+    });
+    navigator.clipboard.writeText(lines.join("\n"))
+      .then(() => showToast("Đã chép biên bản chốt họp dạng Markdown!"))
+      .catch(() => showToast("Không chép được tự động."));
+  });
+  document.getElementById("reset-meeting-btn")?.addEventListener("click", () => {
+    try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+    document.querySelectorAll("#tab-team-rec [data-key]").forEach(el => {
+      if (el.type === "checkbox") { el.checked = false; el.closest(".gsc-check-item")?.classList.remove("done"); }
+      else if (el.tagName === "SELECT") { el.selectedIndex = 0; }
+      else { el.value = ""; }
+    });
+    showToast("Đã đặt lại trạng thái bảng họp!");
+  });
 
   // Copy buttons for code snippets
   document.querySelectorAll(".copy-code-btn").forEach(btn => {
