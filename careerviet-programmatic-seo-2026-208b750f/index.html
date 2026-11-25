@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerViet — Kiến trúc Programmatic SEO, Technical &amp; 4 Bộ Outline AM v2</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="robots" content="noai, noimageai">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --ink: #0F172A;
+  --navy: #182642;
+  --text: #334155;
+  --muted: #64748B;
+  --line: #E2E8F0;
+  --line-2: #CBD5E1;
+  --blue: #0693E3;
+  --blue-dark: #0369A1;
+  --blue-soft: #E0F2FE;
+  --purple: #7C3AED;
+  --purple-soft: #F3E8FF;
+  --red: #DC2626;
+  --red-soft: #FEF2F2;
+  --amber: #D97706;
+  --amber-soft: #FFFBEB;
+  --green: #059669;
+  --green-soft: #ECFDF5;
+  --font: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 14.5px/1.62 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+code, pre, .mono { font-family: var(--mono); }
+
+/* Top Hero & Sticky Nav */
+.topbar {
+  background: linear-gradient(135deg, #0F172A 0%, #182642 65%, #1E3A5F 100%);
+  color: #fff;
+  padding: 20px 24px 16px;
+}
+.topbar-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+.brand-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 11.5px/1 var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #7DD3FC;
+  margin-bottom: 6px;
+}
+.brand-dot { width: 8px; height: 8px; border-radius: 50%; background: #38BDF8; display: inline-block; }
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(20px, 2.3vw, 27px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+}
+.topbar-sub {
+  margin: 6px 0 0;
+  color: #CBD5E1;
+  font-size: 13.5px;
+}
+.meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.meta-pill {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #E2E8F0;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font: 500 12px/1.2 var(--mono);
+}
+
+/* Sticky Tab Bar */
+.tab-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 8px rgba(15,23,42,.04);
+}
+.tab-nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-nav-inner::-webkit-scrollbar { display: none; }
+.tab-btn {
+  appearance: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: 600 13px/1.2 var(--font);
+  padding: 12px 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.tab-btn:hover { color: var(--ink); background: var(--surface-2); }
+.tab-btn.active {
+  color: var(--blue-dark);
+  border-bottom-color: var(--blue);
+  background: #F0F9FF;
+}
+.tab-badge {
+  font: 700 10.5px/1 var(--mono);
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+.tab-btn.active .tab-badge { background: var(--blue); color: #fff; }
+.tab-badge.p0 { background: var(--red-soft); color: var(--red); }
+.tab-btn.active .tab-badge.p0 { background: var(--red); color: #fff; }
+.tab-sep { width: 1px; height: 22px; background: var(--line); margin: 0 6px; flex-shrink: 0; }
+
+/* Layout Container */
+.wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn .18s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* Cards & Grids */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.kpi-card.crit { border-left-color: var(--red); }
+.kpi-card.warn { border-left-color: var(--amber); }
+.kpi-card.ok { border-left-color: var(--green); }
+.kpi-label {
+  font: 700 11px/1.2 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+}
+.kpi-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 6px 0 4px;
+  line-height: 1.15;
+}
+.kpi-card.crit .kpi-val { color: var(--red); }
+.kpi-card.warn .kpi-val { color: #B45309; }
+.kpi-desc { font-size: 13px; color: var(--text); margin: 0; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.card h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.lede {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--text);
+}
+.svg-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}
+.svg-chart {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  display: block;
+}
+
+/* Tables */
+.tbl-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+table.data-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+table.data-tbl th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 12px;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+table.data-tbl td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.data-tbl tr:hover td { background: #F8FAFC; }
+.bad { color: var(--red); font-weight: 700; }
+.good { color: var(--green); font-weight: 700; }
+.warn-t { color: #B45309; font-weight: 700; }
+
+/* Pills & Tags */
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font: 700 11px/1.4 var(--mono);
+  white-space: nowrap;
+}
+.pill-p0 { background: var(--red-soft); color: var(--red); border: 1px solid #FECACA; }
+.pill-p1 { background: var(--amber-soft); color: #B45309; border: 1px solid #FDE68A; }
+.pill-p2 { background: var(--surface-2); color: #475569; border: 1px solid var(--line-2); }
+.pill-owner { background: var(--green-soft); color: #065F46; border: 1px solid #A7F3D0; }
+.pill-inter { background: var(--blue-soft); color: var(--blue-dark); border: 1px solid #7DD3FC; }
+.pill-forbid { background: var(--red-soft); color: #991B1B; border: 1px solid #FECACA; }
+.pill-cond { background: var(--amber-soft); color: #92400E; border: 1px solid #FDE68A; }
+.pill-none { background: var(--surface-2); color: #64748B; }
+
+/* Code block */
+.code-box {
+  position: relative;
+  background: #0F172A;
+  color: #E2E8F0;
+  border-radius: 10px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font: 400 12.5px/1.55 var(--mono);
+  margin: 0;
+}
+.btn {
+  appearance: none;
+  border: 1px solid var(--line-2);
+  background: #fff;
+  color: var(--ink);
+  font: 600 12.5px/1.2 var(--font);
+  padding: 8px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .15s;
+  text-decoration: none;
+}
+.btn:hover { background: var(--surface-2); border-color: #94A3B8; }
+.btn-primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.btn-navy {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.btn-navy:hover { background: #0F172A; }
+.btn.active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.search-in {
+  padding: 8px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  font: 400 13px/1.2 var(--font);
+  min-width: 240px;
+  color: var(--ink);
+  background: #fff;
+}
+.search-in:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+
+/* Two-col split */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.grid-2 > * { min-width: 0; }
+
+/* Interactive Wireframe Simulator */
+.wf-shell {
+  border: 2px solid var(--navy);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+.wf-bar {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12.5px;
+}
+.wf-url {
+  background: rgba(255,255,255,.12);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: #BAE6FD;
+}
+.wf-body { padding: 18px 20px; }
+.wf-zone {
+  border: 1.5px dashed #94A3B8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.wf-zone.atf { border-color: var(--blue); background: #F0F9FF; }
+.wf-zone.center { border-color: #CBD5E1; background: #F8FAFC; }
+.wf-zone.bottom { border-color: var(--green); background: #F0FDF4; }
+.wf-zone.hub { border-color: var(--purple); background: #FAF5FF; }
+.wf-tag {
+  display: inline-block;
+  font: 700 10.5px/1 var(--mono);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: var(--navy);
+  color: #fff;
+}
+.wf-zone.atf .wf-tag { background: var(--blue-dark); }
+.wf-zone.bottom .wf-tag { background: var(--green); }
+.wf-zone.hub .wf-tag { background: var(--purple); }
+.wf-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.wf-chip {
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid #CBD5E1;
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+.wf-chip:hover, .wf-chip.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.wf-bars { display: grid; gap: 8px; margin-top: 10px; }
+.wf-bar-row {
+  display: grid;
+  grid-template-columns: 170px 1fr 90px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+}
+.wf-track {
+  height: 14px;
+  background: #E2E8F0;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.wf-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0693E3, #2563EB);
+}
+.wf-fill.nat { background: #94A3B8; }
+.wf-ward-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+.wf-ward-res {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.wf-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+/* Google Sheet Style View */
+.sheet-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.tier-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.tier-box b { display: block; font-size: 12px; color: var(--navy); font-family: var(--mono); margin-bottom: 3px; }
+.tier-box span { font-size: 12.5px; color: var(--text); }
+
+.changes-acc {
+  border: 1px solid #BAE6FD;
+  background: #F0F9FF;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+.changes-acc summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--blue-dark);
+  font-size: 13.5px;
+}
+.changes-list {
+  margin: 10px 0 4px;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.sheet-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #F1F5F9;
+  border: 1px solid var(--line-2);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 14px;
+}
+.sheet-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sheet-scroll {
+  overflow: auto;
+  max-height: 76vh;
+  border: 1px solid var(--line-2);
+  border-radius: 0 0 10px 10px;
+  background: #fff;
+}
+table.gsheet {
+  width: 100%;
+  min-width: 1240px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.8px;
+  line-height: 1.55;
+}
+table.gsheet thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #182642;
+  color: #fff;
+  padding: 10px 12px;
+  font-weight: 700;
+  border-right: 1px solid #334155;
+  border-bottom: 2px solid #0F172A;
+  text-align: left;
+  white-space: nowrap;
+}
+table.gsheet thead th.col-rn {
+  left: 0;
+  z-index: 30;
+  width: 40px;
+  text-align: center;
+  background: #0F172A;
+}
+table.gsheet tbody td {
+  padding: 10px 12px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  white-space: pre-line;
+  word-break: break-word;
+}
+table.gsheet tbody td.col-rn {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: #F8FAFC;
+  color: #64748B;
+  font: 600 11.5px/1.4 var(--mono);
+  text-align: center;
+  border-right: 1px solid var(--line-2);
+}
+table.gsheet col.c-rn { width: 42px; }
+table.gsheet col.c-a { width: 108px; }
+table.gsheet col.c-b { width: 220px; }
+table.gsheet col.c-c { width: 410px; }
+table.gsheet col.c-d { width: 240px; }
+table.gsheet col.c-e { width: 230px; }
+table.gsheet col.c-f { width: 280px; }
+
+table.gsheet tr.row-sup td {
+  background: #FEF3C7 !important;
+  font-weight: 700;
+  color: #92400E;
+}
+table.gsheet tr.row-h1 td { background: #F8FAFC; }
+table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
+
+.type-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font: 700 11px/1.2 var(--mono);
+  white-space: nowrap;
+}
+.t-H1 { background: #0F172A; color: #fff; }
+.t-Intro { background: #0284C7; color: #fff; }
+.t-H2 { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
+.t-H3 { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+.t-Supplemental { background: #F59E0B; color: #fff; }
+.t-FAQ { background: #F3E8FF; color: #6B21A8; border: 1px solid #D8B4FE; }
+.t-Khối { background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; }
+
+.cell-hd { font-weight: 700; color: var(--ink); }
+.am-key { font-weight: 700; color: #0F172A; }
+.l-tag {
+  display: inline-block;
+  font: 700 10.5px/1.1 var(--mono);
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 200;
+  background: #0F172A;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(15,23,42,.28);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.toast.show { opacity: 1; transform: none; }
+
+.footer-note {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+@media (max-width: 1024px) {
+  .kpi-grid, .sheet-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .kpi-grid, .sheet-meta { grid-template-columns: minmax(0, 1fr); }
+  .topbar { padding: 16px 14px 14px; }
+  .wrap { padding: 16px 12px 48px; }
+  .card { padding: 15px 14px; }
+  .pill { white-space: normal; max-width: 100%; }
+  .wf-bar-row { grid-template-columns: 115px 1fr 70px; font-size: 11.5px; }
+  .search-in { min-width: 100%; }
+}
+@media print {
+  .tab-nav, .sheet-toolbar, .filter-bar, .btn { display: none !important; }
+  .tab-panel { display: block !important; page-break-after: always; }
+  .sheet-scroll { max-height: none; overflow: visible; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <div class="brand-kicker"><span class="brand-dot"></span>GTV SEO × CAREERVIET · FIRST PRINCIPLES PROGRAMMATIC ARCHITECTURE</div>
+      <h1>Audit Job Listing, Semantic HTML5 &amp; 4 Bộ Outline AM v2</h1>
+      <p class="topbar-sub">Phân tích từ dữ liệu crawl live 8 URL ngày 25/11/2026 + chuẩn hóa đồng bộ 4 template: Location · Company · Title · Title × Location (SOP v4.1).</p>
+    </div>
+    <div class="meta-pills">
+      <span class="meta-pill">Measured: 25/11/2026</span>
+      <span class="meta-pill">8 Live URLs</span>
+      <span class="meta-pill">4 Sheets · SOP v4.1</span>
+      <span class="meta-pill">Noindex Preview</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-nav" aria-label="Điều hướng nội dung báo cáo">
+  <div class="tab-nav-inner" role="tablist">
+    <button class="tab-btn active" role="tab" data-tab="overview">1. Tổng quan &amp; P0 <span class="tab-badge p0">6 P0</span></button>
+    <button class="tab-btn" role="tab" data-tab="technical">2. Technical &amp; HTML <span class="tab-badge">8 URL</span></button>
+    <button class="tab-btn" role="tab" data-tab="architecture">3. 4 Template &amp; Wireframe</button>
+    <span class="tab-sep" aria-hidden="true"></span>
+    <button class="tab-btn" role="tab" data-tab="sheet-location">Location <span class="tab-badge">18 hàng</span></button>
+    <button class="tab-btn" role="tab" data-tab="sheet-company">Company <span class="tab-badge">20 hàng</span></button>
+    <button class="tab-btn" role="tab" data-tab="sheet-title">Title <span class="tab-badge">20 hàng</span></button>
+    <button class="tab-btn" role="tab" data-tab="sheet-title_loc">Title × Location <span class="tab-badge">17 hàng</span></button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ==================== TAB 1: OVERVIEW ==================== -->
+  <section id="tab-overview" class="tab-panel active">
+    <div class="kpi-grid">
+      <div class="kpi-card crit">
+        <div class="kpi-label">P0-1 · Ngưỡng cắt HTML Googlebot</div>
+        <div class="kpi-val">4,15 MB / 2 MB</div>
+        <p class="kpi-desc"><strong>7/7 trang Job Listing vượt 2 MB</strong> (2,43–4,15 MB) do Next.js RSC rò 2,06 MB vector float64 + 897 KB từ điển dịch.</p>
+      </div>
+      <div class="kpi-card crit">
+        <div class="kpi-label">P0-2 · Lỗi RFC 9309 robots.txt</div>
+        <div class="kpi-val">21/21 Luật bị bỏ qua</div>
+        <p class="kpi-desc">Khối <code>User-agent: Googlebot / Allow: /</code> riêng làm Googlebot &amp; AI bot bỏ qua toàn bộ 21 dòng Disallow ở <code>User-agent: *</code>.</p>
+      </div>
+      <div class="kpi-card warn">
+        <div class="kpi-label">P0-3 &amp; P1-1 · DOM &amp; Heading</div>
+        <div class="kpi-val">50 H2 Card · 0 &lt;article&gt;</div>
+        <p class="kpi-desc">3/4 nhóm trang thiếu entity ở H1; 50 job card chiếm H2; 56 CSR skeleton (6 H4 rỗng); phân trang 100% JS-only.</p>
+      </div>
+      <div class="kpi-card warn">
+        <div class="kpi-label">P0-4 &amp; P0-6 · Recall &amp; Link Graph</div>
+        <div class="kpi-val">33–90% Tin lệch nghề</div>
+        <p class="kpi-desc"><code>sales-admin-k</code> chỉ 20% đúng nghề; <code>kl8</code> lọt 1/3 Sales; auto-linker cắt <code>[quận 1]0</code> và bắn link sai tỉnh.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>1.1. Phân rã dung lượng HTML uncompressed trên 8 URL live (so với trần 2 MB của Googlebot)</h2>
+        <span class="pill pill-p0">Quick Win lớn nhất — cắt ngay ~2,1 MB bằng 1 PR</span>
+      </div>
+      <p class="lede">Pure DOM chỉ chiếm 189–466 KB. Thủ phạm đẩy 7/7 trang listing vượt mốc cắt 2 MB là Next.js truyền nguyên mảng AI vector 768 chiều (<code>job_title_embed</code>, <code>job_tag_embed</code>) và toàn bộ file <code>vi.json</code> xuống Client Component.</p>
+      <div class="svg-wrap"><svg viewBox="0 0 980 446" class="svg-chart" role="img" aria-label="Biểu đồ dung lượng HTML uncompressed 8 trang CareerViet so với ngưỡng 2 MB của Googlebot">
+<line x1="232.0" y1="38" x2="232.0" y2="406" stroke="#E2E8F0" stroke-width="1" />
+<text x="232.0" y="430" text-anchor="middle" fill="#64748B" font-size="11.5" font-weight="500">0 MB</text>
+<line x1="369.8" y1="38" x2="369.8" y2="406" stroke="#E2E8F0" stroke-width="1" />
+<text x="369.8" y="430" text-anchor="middle" fill="#64748B" font-size="11.5" font-weight="500">1 MB</text>
+<line x1="507.7" y1="38" x2="507.7" y2="406" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="6 4"/>
+<text x="507.7" y="430" text-anchor="middle" fill="#DC2626" font-size="11.5" font-weight="700">2 MB (Ngưỡng cắt Googlebot)</text>
+<line x1="645.5" y1="38" x2="645.5" y2="406" stroke="#E2E8F0" stroke-width="1" />
+<text x="645.5" y="430" text-anchor="middle" fill="#64748B" font-size="11.5" font-weight="500">3 MB</text>
+<line x1="783.3" y1="38" x2="783.3" y2="406" stroke="#E2E8F0" stroke-width="1" />
+<text x="783.3" y="430" text-anchor="middle" fill="#64748B" font-size="11.5" font-weight="500">4 MB</text>
+<rect x="20" y="12" width="12" height="12" rx="3" fill="#182642"/>
+<text x="38" y="22" fill="#334155" font-size="11.5" font-weight="500">Pure DOM (56–466 KB)</text>
+<rect x="215" y="12" width="12" height="12" rx="3" fill="#DC2626"/>
+<text x="233" y="22" fill="#334155" font-size="11.5" font-weight="500">Rò rỉ vector job_*_embed (đến 2,07 MB)</text>
+<rect x="515" y="12" width="12" height="12" rx="3" fill="#F59E0B"/>
+<text x="533" y="22" fill="#334155" font-size="11.5" font-weight="500">next-intl messages dump (897 KB)</text>
+<rect x="785" y="12" width="12" height="12" rx="3" fill="#94A3B8"/>
+<text x="803" y="22" fill="#334155" font-size="11.5" font-weight="500">RSC payload khác</text>
+<text x="220" y="72" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Title × Loc (-c2l8)</text>
+<rect x="232.0" y="56" width="62.7" height="24" rx="2" fill="#182642"/>
+<rect x="294.7" y="56" width="276.7" height="24" rx="2" fill="#DC2626"/>
+<rect x="571.5" y="56" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="692.2" y="56" width="111.8" height="24" rx="2" fill="#94A3B8"/>
+<text x="812.0" y="72" fill="#DC2626" font-size="11.5" font-weight="700">4.15 MB · VƯỢT</text>
+<text x="220" y="116" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Location (-l8)</text>
+<rect x="232.0" y="100" width="60.9" height="24" rx="2" fill="#182642"/>
+<rect x="292.9" y="100" width="270.9" height="24" rx="2" fill="#DC2626"/>
+<rect x="563.9" y="100" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="684.6" y="100" width="109.7" height="24" rx="2" fill="#94A3B8"/>
+<text x="802.3" y="116" fill="#DC2626" font-size="11.5" font-weight="700">4.08 MB · VƯỢT</text>
+<text x="220" y="160" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Location Sub (-l63q276)</text>
+<rect x="232.0" y="144" width="32.4" height="24" rx="2" fill="#182642"/>
+<rect x="264.4" y="144" width="118.6" height="24" rx="2" fill="#DC2626"/>
+<rect x="383.0" y="144" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="503.7" y="144" width="93.5" height="24" rx="2" fill="#94A3B8"/>
+<text x="605.2" y="160" fill="#DC2626" font-size="11.5" font-weight="700">2.65 MB · VƯỢT</text>
+<text x="220" y="204" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Title Cat (-c2)</text>
+<rect x="232.0" y="188" width="60.7" height="24" rx="2" fill="#182642"/>
+<rect x="292.7" y="188" width="276.7" height="24" rx="2" fill="#DC2626"/>
+<rect x="569.4" y="188" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="690.2" y="188" width="109.7" height="24" rx="2" fill="#94A3B8"/>
+<text x="807.8" y="204" fill="#DC2626" font-size="11.5" font-weight="700">4.12 MB · VƯỢT</text>
+<text x="220" y="248" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Title KW Uni (-k (Unicode))</text>
+<rect x="232.0" y="232" width="56.1" height="24" rx="2" fill="#182642"/>
+<rect x="288.1" y="232" width="279.3" height="24" rx="2" fill="#DC2626"/>
+<rect x="567.4" y="232" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="688.1" y="232" width="104.8" height="24" rx="2" fill="#94A3B8"/>
+<text x="801.0" y="248" fill="#DC2626" font-size="11.5" font-weight="700">4.07 MB · VƯỢT</text>
+<text x="220" y="292" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Company Listing (-p)</text>
+<rect x="232.0" y="276" width="43.2" height="24" rx="2" fill="#182642"/>
+<rect x="275.2" y="276" width="126.0" height="24" rx="2" fill="#DC2626"/>
+<rect x="401.1" y="276" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="521.9" y="276" width="97.4" height="24" rx="2" fill="#94A3B8"/>
+<text x="627.3" y="292" fill="#DC2626" font-size="11.5" font-weight="700">2.81 MB · VƯỢT</text>
+<text x="220" y="336" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Company KW (-k (Brand))</text>
+<rect x="232.0" y="320" width="25.4" height="24" rx="2" fill="#182642"/>
+<rect x="257.4" y="320" width="97.0" height="24" rx="2" fill="#DC2626"/>
+<rect x="354.4" y="320" width="120.7" height="24" rx="2" fill="#F59E0B"/>
+<rect x="475.1" y="320" width="91.8" height="24" rx="2" fill="#94A3B8"/>
+<text x="574.9" y="336" fill="#DC2626" font-size="11.5" font-weight="700">2.43 MB · VƯỢT</text>
+<text x="220" y="380" text-anchor="end" fill="#0F172A" font-size="11.5" font-weight="600">Company Profile (/nha-tuyen-dung/)</text>
+<rect x="232.0" y="364" width="7.5" height="24" rx="2" fill="#182642"/>
+<rect x="239.5" y="364" width="112.4" height="24" rx="2" fill="#F59E0B"/>
+<rect x="351.9" y="364" width="62.0" height="24" rx="2" fill="#94A3B8"/>
+<text x="421.9" y="380" fill="#059669" font-size="11.5" font-weight="700">1.32 MB · OK</text>
+<line x1="507.7" y1="40" x2="507.7" y2="406" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="6 4"/>
+</svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>1.2. Cơ chế lỗi RFC 9309 trên <code>robots.txt</code> live &amp; Cách vá</h2>
+        <span class="pill pill-p0">P0-2 · Vá ngay trong ngày</span>
+      </div>
+      <div class="svg-wrap"><svg viewBox="0 0 980 226" class="svg-chart" role="img" aria-label="Sơ đồ lỗi RFC 9309 trên robots.txt CareerViet">
+  <defs>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/></marker>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/></marker>
+  </defs>
+  <!-- Left: Current Broken -->
+  <rect x="10" y="10" width="470" height="206" rx="12" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="26" y="34" fill="#991B1B" font-size="12.5" font-weight="700">HIỆN TẠI (LỖI RFC 9309 — VÔ HIỆU HÓA 21 LUẬT DISALLOW)</text>
+  <rect x="26" y="48" width="126" height="54" rx="8" fill="#fff" stroke="#FCA5A5"/>
+  <text x="89" y="71" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Googlebot /</text>
+  <text x="89" y="88" text-anchor="middle" fill="#475569" font-size="11">GPTBot / Claude</text>
+  <line x1="152" y1="75" x2="180" y2="75" stroke="#DC2626" stroke-width="2" marker-end="url(#arr-red)"/>
+  <rect x="184" y="48" width="144" height="54" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="256" y="67" text-anchor="middle" fill="#991B1B" font-size="11.5" font-weight="700">Khớp group riêng</text>
+  <text x="256" y="83" text-anchor="middle" fill="#7F1D1D" font-size="11" font-family="IBM Plex Mono,monospace">Allow: /</text>
+  <text x="256" y="96" text-anchor="middle" fill="#991B1B" font-size="10">Dừng đọc tại đây!</text>
+  <line x1="328" y1="75" x2="354" y2="75" stroke="#DC2626" stroke-width="2" marker-end="url(#arr-red)"/>
+  <rect x="358" y="48" width="106" height="54" rx="8" fill="#DC2626"/>
+  <text x="411" y="71" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700">CRAWL TẤT</text>
+  <text x="411" y="88" text-anchor="middle" fill="#FEE2E2" font-size="10.5">/api/*, /jobs/*</text>
+  <rect x="26" y="118" width="438" height="82" rx="8" fill="#fff" stroke="#CBD5E1" stroke-dasharray="5 4"/>
+  <text x="40" y="139" fill="#64748B" font-size="11.5" font-weight="700">User-agent: * (BỊ BỎ QUA HOÀN TOÀN bởi Googlebot &amp; AI bot)</text>
+  <text x="40" y="158" fill="#64748B" font-size="10.5" font-family="IBM Plex Mono,monospace">Disallow: /api/* · /vi/tim-ung-vien/* · /vi/jobs/* (21 luật)</text>
+  <text x="40" y="177" fill="#B91C1C" font-size="11">→ Đợt fix Q1 (đánh dấu Done 7/7) không có hiệu lực với bot chính.</text>
+  <text x="40" y="192" fill="#B91C1C" font-size="10.5">→ Bot vẫn đốt crawl budget vào endpoint API và URL cũ.</text>
+
+  <!-- Right: Fixed -->
+  <rect x="500" y="10" width="470" height="206" rx="12" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5"/>
+  <text x="516" y="34" fill="#065F46" font-size="12.5" font-weight="700">SAU KHI VÁ P0-2 (ĐÚNG CHUẨN RFC 9309)</text>
+  <rect x="516" y="48" width="126" height="54" rx="8" fill="#fff" stroke="#6EE7B7"/>
+  <text x="579" y="71" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Googlebot /</text>
+  <text x="579" y="88" text-anchor="middle" fill="#475569" font-size="11">GPTBot / Claude</text>
+  <line x1="642" y1="75" x2="670" y2="75" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+  <rect x="674" y="48" width="144" height="54" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="746" y="67" text-anchor="middle" fill="#065F46" font-size="11.5" font-weight="700">Gỡ block Allow riêng</text>
+  <text x="746" y="83" text-anchor="middle" fill="#064E3B" font-size="11" font-family="IBM Plex Mono,monospace">User-agent: *</text>
+  <text x="746" y="96" text-anchor="middle" fill="#047857" font-size="10">Áp đủ 21+ luật Disallow</text>
+  <line x1="818" y1="75" x2="844" y2="75" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
+  <rect x="848" y="48" width="106" height="54" rx="8" fill="#059669"/>
+  <text x="901" y="71" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700">CHẶN ĐÚNG</text>
+  <text x="901" y="88" text-anchor="middle" fill="#D1FAE5" font-size="10.5">Tiết kiệm crawl</text>
+  <rect x="516" y="118" width="438" height="82" rx="8" fill="#fff" stroke="#6EE7B7"/>
+  <text x="530" y="139" fill="#065F46" font-size="11.5" font-weight="700">Kết quả nghiệm thu (RFC 9309 parser):</text>
+  <text x="530" y="158" fill="#0F172A" font-size="11">✓ Cho phép: /viec-lam/* · /jobs/* · /vi/nha-tuyen-dung/*</text>
+  <text x="530" y="176" fill="#0F172A" font-size="11">✕ Chặn thật: /api/* · /vi/tim-ung-vien/* · ?sort= · ?utm_ · /login</text>
+  <text x="530" y="193" fill="#047857" font-size="10.5">✓ Chỉ giữ block riêng cho bot cần chặn hẳn (CCBot, Bytespider).</text>
+</svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>1.3. Bản đồ tự ăn thịt URL (Self-Cannibalization) trên 4 nhóm trang</h2>
+        <span class="pill pill-p1">Cần chốt Canonical trước khi scale content</span>
+      </div>
+      <div class="svg-wrap"><svg viewBox="0 0 980 278" class="svg-chart" role="img" aria-label="Sơ đồ xung đột 4 lớp URL trên CareerViet">
+  <!-- Left Panel: Company -->
+  <rect x="10" y="10" width="470" height="258" rx="12" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.5"/>
+  <text x="26" y="34" fill="#9A3412" font-size="12.5" font-weight="700">1. COMPANY: 4 LỚP URL ĐÁNH NHAU (MASAN / TECHCOMBANK)</text>
+
+  <rect x="26" y="48" width="438" height="44" rx="7" fill="#fff" stroke="#6EE7B7" stroke-width="1.2"/>
+  <text x="38" y="66" fill="#0F172A" font-size="11.5"><tspan font-weight="700" fill="#059669">Lớp 2 (-p):</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">/viec-lam/masan-consumer-p35A4FED8-vi.html</tspan></text>
+  <text x="38" y="83" fill="#059669" font-size="11" font-weight="700">→ CHỌN CANONICAL cho DN 1 tài khoản (mục đích ứng tuyển)</text>
+
+  <rect x="26" y="100" width="438" height="44" rx="7" fill="#fff" stroke="#FCD34D" stroke-width="1.2"/>
+  <text x="38" y="118" fill="#0F172A" font-size="11.5"><tspan font-weight="700" fill="#D97706">Lớp 1 (Profile):</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">/vi/nha-tuyen-dung/[5 slug].35A4FED8.html</tspan></text>
+  <text x="38" y="135" fill="#B45309" font-size="11">→ 301 gộp 5 slug alias về 1 URL · chuyển vai sang Hồ sơ DN</text>
+
+  <rect x="26" y="152" width="438" height="44" rx="7" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="38" y="170" fill="#7F1D1D" font-size="11.5"><tspan font-weight="700">Lớp 3 (-k):</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">/viec-lam/techcombank-k-vi.html</tspan></text>
+  <text x="38" y="187" fill="#991B1B" font-size="11" font-weight="600">→ Rò tin công ty outsource ở #1 → NOINDEX hoặc 301 về -p</text>
+
+  <rect x="26" y="204" width="438" height="48" rx="7" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="38" y="223" fill="#334155" font-size="11"><tspan font-weight="700">Lớp 4 &amp; Tập đoàn đa ID:</tspan> Gỡ <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">/MasanConsumer-getnamecard</tspan></text>
+  <text x="38" y="241" fill="#0F172A" font-size="11">→ Vingroup, FPT (nhiều ID): dựng Group Hub <tspan font-family="IBM Plex Mono,monospace" font-weight="700">-g{group_id}</tspan> lọc tin sạch.</text>
+
+  <!-- Right Panel: Title & Title x Loc -->
+  <rect x="500" y="10" width="470" height="258" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <text x="516" y="34" fill="#1E40AF" font-size="12.5" font-weight="700">2. TITLE &amp; TITLE × LOC: TRÙNG SLUG &amp; NHIỄU SEARCH</text>
+
+  <rect x="516" y="48" width="438" height="44" rx="7" fill="#fff" stroke="#93C5FD"/>
+  <text x="528" y="66" fill="#0F172A" font-size="11.5"><tspan font-weight="700" fill="#DC2626">Số ít vs Nhiều:</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">sales-admin-k</tspan> (344) vs <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">sale-admin-k</tspan> (334)</text>
+  <text x="528" y="83" fill="#475569" font-size="11">Cùng index, 2 bài SEO lệch dải lương (3–6tr vs 7–10tr) → 301 về 1 URL.</text>
+
+  <rect x="516" y="100" width="438" height="44" rx="7" fill="#fff" stroke="#93C5FD"/>
+  <text x="528" y="118" fill="#0F172A" font-size="11.5"><tspan font-weight="700" fill="#DC2626">Unicode vs ASCII:</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">Kế-toán-trưởng-k</tspan> vs <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">ke-toan-truong-k</tspan></text>
+  <text x="528" y="135" fill="#475569" font-size="11">Cả 2 trả 200 OK; footer bắn 6–16 link Unicode/trang → 301 ASCII.</text>
+
+  <rect x="516" y="152" width="438" height="44" rx="7" fill="#fff" stroke="#93C5FD"/>
+  <text x="528" y="170" fill="#0F172A" font-size="11.5"><tspan font-weight="700" fill="#1D4ED8">Ngành -c vs -k:</tspan> <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">ke-toan-kiem-toan-c2</tspan> (1.806) vs <tspan font-family="IBM Plex Mono,monospace" font-size="10.5">ke-toan-k</tspan> (4.649)</text>
+  <text x="528" y="187" fill="#475569" font-size="11">Trùng ≥6/10 SERP → chốt 1 canonical (-c ngành rộng, -k chức danh hẹp).</text>
+
+  <rect x="516" y="204" width="438" height="48" rx="7" fill="#FEE2E2" stroke="#DC2626"/>
+  <text x="528" y="223" fill="#7F1D1D" font-size="11.5" font-weight="700">Nhiễu recall nghiêm trọng trên URL -k / -kl:</text>
+  <text x="528" y="241" fill="#991B1B" font-size="11">Sales Admin 80% rác · SEO ~90% rác · Kế toán trưởng 33% Sales!</text>
+</svg></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>1.4. Kết luận First Principles: Cách thắng cả Google Ranking lẫn AI Search (GEO)</h2>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h3>3 sai lầm tư duy "bài blog" cần cắt bỏ</h3>
+          <ul>
+            <li><strong>Cấm viết định nghĩa giáo khoa trên trang Listing:</strong> Đẩy định nghĩa nghề về <code>Wiki Career</code>; trang listing chỉ sở hữu dữ liệu thị trường tuyển dụng thực tế.</li>
+            <li><strong>Cấm boilerplate lặp hàng nghìn trang:</strong> Xóa H2 <em>"Cách ứng tuyển 4 bước"</em>, H2 <em>"Vì sao nên chọn CareerViet"</em>, Outro tóm tắt lặp và câu mục lục ở Intro.</li>
+            <li><strong>Cấm đóng băng số tin/công ty ngắn hạn vào text/ảnh tĩnh:</strong> Bảng 8 công ty hết hạn sau 7–21 ngày sẽ tự đá với <code>{updated_month}</code> → chuyển sang Module SSR động từ DB hoặc bảng Evergreen theo mô hình doanh nghiệp.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>3 lợi thế độc quyền (Non-Commodity Moat) của CareerViet</h3>
+          <ul>
+            <li><strong>Dữ liệu bóc từ thân JD thật theo từng giao điểm:</strong> Tỷ lệ công cụ (MISA 4× FAST), lịch làm thứ Bảy ẩn, chứng chỉ hành nghề, phân tầng vận hành vs chuyên gia — LLM không thể tự bịa.</li>
+            <li><strong>Hệ sinh thái 1st-party ngay trong cùng DOM:</strong> <code>VietnamSalary</code> (Local Salary Delta), <code>Top EOC</code> &amp; <code>Followers</code> (Company Trust), <code>CVHay</code> &amp; <code>AI Matching</code> (Conversion).</li>
+            <li><strong>Dẫn đầu giải bài toán địa giới sau sáp nhập 1/7/2025:</strong> Tra nhanh quận/phường cũ ↔ mới hiển thị trực tiếp (TopCV đang ẩn <code>display:none</code>).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 2: TECHNICAL & SEMANTIC HTML ==================== -->
+  <section id="tab-technical" class="tab-panel">
+    <div class="card">
+      <div class="card-head">
+        <h2>2.1. Bảng đo định lượng 8 trang live CareerViet (25/11/2026)</h2>
+        <span class="pill pill-p2">Nguồn: Firecrawl rawHtml + curl Googlebot + Python parser</span>
+      </div>
+      <div class="tbl-wrap">
+        <table class="data-tbl" id="live-audit-tbl">
+          <thead>
+            <tr>
+              <th>Nhóm trang</th>
+              <th>HTML (vs 2 MB)</th>
+              <th>Embed / i18n</th>
+              <th>SSR Jobs / SEO</th>
+              <th>H1 Live</th>
+              <th>H2 Card/SEO · H3 Co</th>
+              <th>&lt;time&gt; (datetime)</th>
+              <th>Unicode / No-href</th>
+              <th>Lỗi phát hiện trực tiếp</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <h2>2.2. Semantic HTML5 Blueprint (Đích giao Dev FE)</h2>
+          <button class="btn btn-navy" id="copy-html-btn">Chép khung HTML5</button>
+        </div>
+        <p class="lede">Áp chung 4 nhóm trang listing: 1 <code>&lt;main&gt;</code>, 1 <code>&lt;h1&gt;</code> đủ entity, job card = <code>&lt;article&gt;</code> + <code>&lt;h3&gt;</code> (badge ngoài heading), filter = <code>&lt;aside&gt;</code>, pagination &amp; related hub = <code>&lt;nav&gt;</code> SSR.</p>
+        <pre class="code-box"><code id="html-blueprint-code">&lt;header&gt;
+  &lt;nav aria-label=&quot;Điều hướng chính&quot;&gt;&lt;!-- Menu chính; dropdown dùng &lt;button&gt; --&gt;&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Visible Breadcrumb: khớp 100% JSON-LD BreadcrumbList, URL 200 OK (/viec-lam/...) --&gt;
+&lt;nav aria-label=&quot;Breadcrumb&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href=&quot;https://careerviet.vn/&quot;&gt;Trang chủ&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://careerviet.vn/viec-lam/ho-chi-minh-l8-vi.html&quot;&gt;Việc làm tại Hồ Chí Minh&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current=&quot;page&quot;&gt;Kế toán / Kiểm toán&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Bộ lọc UI tách riêng vào &lt;aside&gt;, 100% JS state, dùng &lt;button&gt;, không sinh URL rác --&gt;
+&lt;aside aria-label=&quot;Tìm kiếm và bộ lọc việc làm&quot;&gt;
+  &lt;form role=&quot;search&quot;&gt;&lt;!-- Input + &lt;button type=&quot;submit&quot;&gt;Tìm ngay&lt;/button&gt; --&gt;&lt;/form&gt;
+&lt;/aside&gt;
+
+&lt;main id=&quot;main-content&quot;&gt;
+  &lt;!-- 1. HERO + ABOVE-THE-FOLD MICRO-INSIGHT (≤90px) --&gt;
+  &lt;header class=&quot;listing-hero&quot;&gt;
+    &lt;h1&gt;Tuyển dụng 837 việc làm Kế toán / Kiểm toán tại Hồ Chí Minh&lt;/h1&gt;
+    &lt;p&gt;Cập nhật &lt;time datetime=&quot;2026-11-25&quot;&gt;25/11/2026&lt;/time&gt; · Lương phổ biến 14–18 triệu&lt;/p&gt;
+    &lt;!-- Chips lọc 1 chạm + jump-link xuống báo cáo thị trường --&gt;
+  &lt;/header&gt;
+
+  &lt;!-- 2. CENTERPIECE JOB LIST (SSR 20–50 card đầu) --&gt;
+  &lt;section aria-labelledby=&quot;job-list-heading&quot;&gt;
+    &lt;h2 id=&quot;job-list-heading&quot; class=&quot;sr-only&quot;&gt;Danh sách việc làm&lt;/h2&gt;
+    &lt;ol class=&quot;job-list&quot;&gt;
+      &lt;li&gt;
+        &lt;article class=&quot;job-card&quot;&gt;
+          &lt;div class=&quot;job-card__badges&quot;&gt;&lt;span&gt;Mới&lt;/span&gt;&lt;/div&gt; &lt;!-- Badge NGOÀI heading --&gt;
+          &lt;h3&gt;&lt;a href=&quot;/vi/tim-viec-lam/...&quot;&gt;Kế Toán Xuất Hóa Đơn B2C - HCM&lt;/a&gt;&lt;/h3&gt;
+          &lt;p class=&quot;job-card__company&quot;&gt;&lt;a href=&quot;/vi/nha-tuyen-dung/...&quot;&gt;Nhựa Duy Tân&lt;/a&gt;&lt;/p&gt;
+          &lt;dl&gt;
+            &lt;div&gt;&lt;dt&gt;Hạn nộp&lt;/dt&gt;&lt;dd&gt;&lt;time datetime=&quot;2026-12-23&quot;&gt;23/12/2026&lt;/time&gt;&lt;/dd&gt;&lt;/div&gt;
+          &lt;/dl&gt;
+        &lt;/article&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;!-- Pagination SSR &lt;a href&gt; thật + self-canonical trên trang 2+ --&gt;
+    &lt;nav aria-label=&quot;Phân trang&quot;&gt;&lt;ol&gt;&lt;li&gt;&lt;a href=&quot;...?page=2&quot; rel=&quot;next&quot;&gt;2&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;
+  &lt;/section&gt;
+
+  &lt;!-- 3. BOTTOM SEMANTIC CONTENT + INTERACTIVE LAYER (Tắt auto-linker ở vùng này) --&gt;
+  &lt;section id=&quot;thong-tin-thi-truong&quot; aria-labelledby=&quot;guide-h2-1&quot;&gt;
+    &lt;h2 id=&quot;guide-h2-1&quot;&gt;Nhu cầu tuyển dụng Kế toán tại TP.HCM tập trung ở nhóm nào?&lt;/h2&gt;
+    &lt;p&gt;&lt;!-- Câu mở chứa đủ thực thể, không &lt;strong&gt; bọc H2, không biến lặp --&gt;&lt;/p&gt;
+    &lt;table&gt;
+      &lt;caption&gt;Mức lương Kế toán TP.HCM vs toàn quốc (&lt;time datetime=&quot;2026-11&quot;&gt;11/2026&lt;/time&gt;)&lt;/caption&gt;
+      &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Chức danh&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Tin mở TP.HCM&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;VietnamSalary&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+      &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Kế toán tổng hợp&lt;/td&gt;&lt;td&gt;14 – 18 triệu&lt;/td&gt;&lt;td&gt;9,5 – 13 triệu&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;&lt;h3&gt;Chưa có kinh nghiệm có xin được việc kế toán tại TP.HCM không?&lt;/h3&gt;&lt;/summary&gt;
+      &lt;p&gt;&lt;!-- Trả lời thẳng 40–50 từ; KHÔNG gắn FAQPage JSON-LD --&gt;&lt;/p&gt;
+    &lt;/details&gt;
+  &lt;/section&gt;
+
+  &lt;!-- 4. RELATED FACET / TABBED HUB (SSR &lt;a&gt; chuẩn ASCII, thay 56 CSR skeleton) --&gt;
+  &lt;nav aria-label=&quot;Việc làm liên quan theo khu vực và chức danh&quot;&gt;
+    &lt;!-- 3–4 tab SSR render đủ thẻ &lt;a&gt; trong DOM gốc --&gt;
+  &lt;/nav&gt;
+&lt;/main&gt;</code></pre>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>2.3. Ma trận JSON-LD Schema chuẩn (Initial SSR)</h2>
+          <span class="pill pill-forbid">NO JobPosting · NO FAQPage</span>
+        </div>
+        <p class="lede">Schema phục vụ rich results và entity disambiguation. <strong>Tuyệt đối không</strong> nhúng <code>JobPosting</code> vào trang listing (chỉ đặt ở chi tiết tin) và không đầu tư <code>FAQPage</code> JSON-LD (Google dừng FAQ rich result 05/2026; giữ FAQ bằng <code>&lt;details&gt;</code> HTML).</p>
+        <div class="tbl-wrap">
+          <table class="data-tbl">
+            <thead>
+              <tr><th>Nhóm trang</th><th>JSON-LD @graph bắt buộc</th><th>Cây BreadcrumbList (khớp DOM)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Location</strong><br><code>-l</code>, <code>-lq</code></td>
+                <td><code>CollectionPage</code> + <code>ItemList</code> (<code>numberOfItems</code>, top 20 <code>ListItem</code>) + <code>about: Place</code> + <code>BreadcrumbList</code></td>
+                <td>Trang chủ → Việc làm → Việc làm tại {Tỉnh} (→ {TP/Quận cũ})</td>
+              </tr>
+              <tr>
+                <td><strong>Title</strong><br><code>-c</code>, <code>-k</code> ASCII</td>
+                <td><code>CollectionPage</code> + <code>ItemList</code> (<code>numberOfItems</code>) + <code>about: Occupation</code> + <code>BreadcrumbList</code></td>
+                <td>Trang chủ → Việc làm → Việc làm {Ngành cha} (→ {Title})</td>
+              </tr>
+              <tr>
+                <td><strong>Title × Loc</strong><br><code>-c{X}l{Y}</code>, <code>-kl{Y}</code></td>
+                <td><code>CollectionPage</code> + <code>ItemList</code> (<code>numberOfItems</code>) + <code>BreadcrumbList</code></td>
+                <td>Trang chủ → Việc làm tại {Location} (<code>/viec-lam/...</code>, sửa lỗi <code>/tim-viec-lam/</code>) → {Title} tại {Location}</td>
+              </tr>
+              <tr>
+                <td><strong>Company</strong><br><code>-p</code> / <code>-g</code> vs Profile</td>
+                <td><strong>-p/-g:</strong> <code>CollectionPage</code> + <code>ItemList</code> + <code>about: #org</code> + <code>BreadcrumbList</code><br><strong>Profile:</strong> <code>ProfilePage</code> + <code>Organization</code> (<code>sameAs</code>) + <code>BreadcrumbList</code></td>
+                <td>Trang chủ → Nhà tuyển dụng → {Company} → Việc làm tại {Company}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>2.4. Backlog Kỹ thuật &amp; SEO ưu tiên P0 / P1 / P2 (Kèm DoD nghiệm thu)</h2>
+        <div class="filter-bar" style="margin:0">
+          <button class="btn active" data-pri="ALL">Tất cả (9)</button>
+          <button class="btn" data-pri="P0">P0 · Khẩn (6)</button>
+          <button class="btn" data-pri="P1">P1 · Cấu trúc (2)</button>
+          <button class="btn" data-pri="P2">P2 · Vệ sinh (1)</button>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table class="data-tbl" id="backlog-tbl">
+          <thead>
+            <tr><th style="width:72px">ID</th><th style="width:110px">Owner</th><th>Hạng mục &amp; Gốc lỗi đã đo</th><th>Yêu cầu triển khai</th><th>Tiêu chí nghiệm thu (DoD)</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 3: ARCHITECTURE & INTERACTIVE WIREFRAME ==================== -->
+  <section id="tab-architecture" class="tab-panel">
+    <div class="card">
+      <div class="card-head">
+        <h2>3.1. Ma trận Phân quyền Thuộc tính chống Cannibalization (5 nhóm trang)</h2>
+        <div class="meta-pills" style="gap:6px">
+          <span class="pill pill-owner">Chủ sở hữu</span>
+          <span class="pill pill-inter">Giao điểm riêng</span>
+          <span class="pill pill-cond">Có điều kiện</span>
+          <span class="pill pill-forbid">Cấm</span>
+        </div>
+      </div>
+      <p class="lede">Mỗi thuộc tính chỉ được phép xuất hiện trên <code>Title × Location</code> khi nó biến thiên theo đồng thời cả nghề và địa phương: tránh biến 500 trang giao điểm thành bản ghép cơ học giữa trang <code>Title</code> và trang <code>Location</code>.</p>
+      <div class="tbl-wrap">
+        <table class="data-tbl" id="ownership-tbl">
+          <thead>
+            <tr>
+              <th>Thuộc tính / Ý định tìm kiếm</th>
+              <th>Wiki Career (Blog)</th>
+              <th>Location (-l / -lq)</th>
+              <th>Company (-p / -g)</th>
+              <th>Title (-k / -c)</th>
+              <th>Title × Location (-cXlY / -klY)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>3.2. Mô phỏng Visual Semantic &amp; Interactive Layer (Bấm chuyển 4 nhóm trang)</h2>
+        <div class="filter-bar" style="margin:0" id="wf-switcher">
+          <button class="btn active" data-wf="title_loc">Title × Location (Kế toán TP.HCM)</button>
+          <button class="btn" data-wf="location">Location (Đà Lạt)</button>
+          <button class="btn" data-wf="company">Company (Masan Consumer)</button>
+          <button class="btn" data-wf="title">Title (Sales Admin / KT Trưởng)</button>
+        </div>
+      </div>
+      <p class="lede">Khung minh họa thực tế 4 vùng DOM đích: <strong>Above-the-Fold Micro-Layer</strong> (kéo tương tác thật cho Navboost &amp; nhảy xuống báo cáo) → <strong>Centerpiece Listing</strong> → <strong>Bottom Market Intelligence Hub</strong> (SSR HTML + JS siêu nhẹ, bấm thử ô tra cứu phường mới và tab bên dưới) → <strong>Tabbed Related Hub</strong>.</p>
+      <div id="wf-mount"></div>
+    </div>
+  </section>
+
+  <!-- ==================== TABS 4-7: FOUR SHEETS ==================== -->
+  <section id="tab-sheet-location" class="tab-panel" data-sheet-key="location"></section>
+  <section id="tab-sheet-company" class="tab-panel" data-sheet-key="company"></section>
+  <section id="tab-sheet-title" class="tab-panel" data-sheet-key="title"></section>
+  <section id="tab-sheet-title_loc" class="tab-panel" data-sheet-key="title_loc"></section>
+
+</main>
+
+<footer class="footer-note">
+  Tài liệu nội bộ GTV SEO × CareerViet · Đo kiểm thực tế ngày 25/11/2026 trên 8 URL live và 3 Google Sheet chuẩn SOP v4.1 · Trang cài <code>noindex, nofollow, noai</code>.
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script id="app-data" type="application/json">{"liveUrls": [{"group": "Title × Loc", "code": "-c2l8", "url": "careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html", "total_mb": 4.15, "dom_kb": 466.1, "embed_kb": 2056, "i18n_kb": 897, "other_rsc_kb": 731, "jobs_ssr": 50, "seo_words": 2661, "skeletons": 56, "h1": "837 việc làm theo ngày cập nhật mới nhất", "h1_ok": false, "h2_card": 50, "h2_seo": 8, "h3_co": 50, "time_total": 98, "time_dt": 0, "unicode_links": 11, "no_href": 72, "bugs": "[việc làm quận 1]0 (×2), tháng tháng (×3), cập nhập (×9), self-link"}, {"group": "Location", "code": "-l8", "url": "careerviet.vn/viec-lam/ho-chi-minh-l8-vi.html", "total_mb": 4.08, "dom_kb": 452.7, "embed_kb": 2013, "i18n_kb": 897, "other_rsc_kb": 717, "jobs_ssr": 50, "seo_words": 2407, "skeletons": 56, "h1": "6,487 việc làm theo ngày cập nhật mới nhất", "h1_ok": false, "h2_card": 50, "h2_seo": 8, "h3_co": 49, "time_total": 99, "time_dt": 0, "unicode_links": 11, "no_href": 70, "bugs": "dính chữ TPHCMtuy, tháng tháng (×1), cập nhập (×3), self-link"}, {"group": "Location Sub", "code": "-l63q276", "url": "careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html", "total_mb": 2.65, "dom_kb": 240.9, "embed_kb": 881, "i18n_kb": 897, "other_rsc_kb": 631, "jobs_ssr": 23, "seo_words": 1493, "skeletons": 56, "h1": "23 việc làm theo ngày cập nhật mới nhất", "h1_ok": false, "h2_card": 23, "h2_seo": 4, "h3_co": 23, "time_total": 45, "time_dt": 0, "unicode_links": 10, "no_href": 39, "bugs": "self-link, cập nhập (×9), Breadcrumb mất cấp Đà Lạt"}, {"group": "Title Cat", "code": "-c2", "url": "careerviet.vn/viec-lam/ke-toan-kiem-toan-c2-vi.html", "total_mb": 4.12, "dom_kb": 450.9, "embed_kb": 2056, "i18n_kb": 897, "other_rsc_kb": 716, "jobs_ssr": 50, "seo_words": 1534, "skeletons": 56, "h1": "1,806 việc làm theo ngày cập nhật mới nhất", "h1_ok": false, "h2_card": 50, "h2_seo": 4, "h3_co": 50, "time_total": 99, "time_dt": 0, "unicode_links": 16, "no_href": 72, "bugs": "self-link (×2), cập nhập (×9), cannibalize với ke-toan-k"}, {"group": "Title KW Uni", "code": "-k (Unicode)", "url": "careerviet.vn/viec-lam/Kế-toán-trưởng-k-vi.html", "total_mb": 4.07, "dom_kb": 417.0, "embed_kb": 2075, "i18n_kb": 897, "other_rsc_kb": 681, "jobs_ssr": 50, "seo_words": 0, "skeletons": 56, "h1": "779 việc làm Kế toán trưởng (lệch title 778)", "h1_ok": true, "h2_card": 50, "h2_seo": 0, "h3_co": 50, "time_total": 98, "time_dt": 0, "unicode_links": 7, "no_href": 73, "bugs": "200 OK trùng bản ASCII, cập nhập (×9), rò tin Key Account Manager"}, {"group": "Company Listing", "code": "-p", "url": "careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html", "total_mb": 2.81, "dom_kb": 320.7, "embed_kb": 936, "i18n_kb": 897, "other_rsc_kb": 656, "jobs_ssr": 27, "seo_words": 3740, "skeletons": 56, "h1": "Tuyển dụng 27 việc làm tại Masan Consumer MỚI 11/2026", "h1_ok": true, "h2_card": 27, "h2_seo": 7, "h3_co": 27, "time_total": 54, "time_dt": 0, "unicode_links": 7, "no_href": 43, "bugs": "CTA copy-paste ReactJS, [làm việc tại nhà] máy, tháng tháng (×1), mất tên DN ở Breadcrumb"}, {"group": "Company KW", "code": "-k (Brand)", "url": "careerviet.vn/viec-lam/vingroup-k-vi.html", "total_mb": 2.43, "dom_kb": 188.5, "embed_kb": 721, "i18n_kb": 897, "other_rsc_kb": 623, "jobs_ssr": 18, "seo_words": 0, "skeletons": 56, "h1": "18 việc làm vingroup", "h1_ok": true, "h2_card": 18, "h2_seo": 0, "h3_co": 18, "time_total": 36, "time_dt": 0, "unicode_links": 6, "no_href": 35, "bugs": "rò tin công ty ngoài (Weldcom, TBKT), cập nhập (×9)"}, {"group": "Company Profile", "code": "/nha-tuyen-dung/", "url": "careerviet.vn/vi/nha-tuyen-dung/cong-ty-co-phan-san-xuat-nhua-duy-tan.35A4FF46.html", "total_mb": 1.32, "dom_kb": 55.9, "embed_kb": 0, "i18n_kb": 835, "other_rsc_kb": 429, "jobs_ssr": 10, "seo_words": 137, "skeletons": 2, "h1": "Công Ty Cổ Phần Sản Xuất Nhựa Duy Tân", "h1_ok": true, "h2_card": 0, "h2_seo": 0, "h3_co": 10, "time_total": 10, "time_dt": 0, "unicode_links": 6, "no_href": 7, "bugs": "thiếu BreadcrumbList, cập nhập (×3), cạnh tranh trực tiếp trang -p"}], "devBacklog": [{"id": "P0-1", "pri": "P0", "owner": "Dev BE/FE", "title": "Cắt HTML từ 4,15 MB xuống < 800 KB", "root": "Next.js RSC nhồi job_title_embed + job_tag_embed (2,06 MB) + toàn bộ next-intl messages (897 KB) + ~200 KB HTML trang CV/thuế vào mọi trang listing.", "action": "Strip toàn bộ *_embed khỏi DTO truyền xuống Client Component; scope NextIntlClientProvider theo route; gỡ HTML trang CV/thuế khỏi layout listing.", "dod": "curl --compressed -A Googlebot trên 4 template < 1,0 MB uncompressed; job_title_embed = 0; messages < 60 KB."}, {"id": "P0-2", "pri": "P0", "owner": "DevOps / SEO", "title": "Vá lỗi RFC 9309 trên robots.txt", "root": "User-agent: Googlebot / Bingbot / GPTBot / ClaudeBot / Google-Extended có Allow: / riêng → theo RFC 9309 các bot này bỏ qua toàn bộ 21 luật Disallow ở User-agent: *.", "action": "Gỡ các khối Allow: / thừa để dùng chung 21 luật Disallow của User-agent: *; chỉ giữ khối riêng cho bot cần chặn hoàn toàn (CCBot, Bytespider).", "dod": "Kiểm parser RFC 9309: Googlebot & GPTBot bị BLOCKED tại /api/*, /vi/tim-ung-vien/*, /vi/jobs/* nhưng ALLOWED tại /viec-lam/*."}, {"id": "P0-3", "pri": "P0", "owner": "Dev FE", "title": "Fix H1 động + đồng bộ count + vá typo VI/EN", "root": "-c2l8, -l8, -l63q276, -c2 in '837 việc làm theo ngày cập nhật mới nhất'; biến {updated_month} lặp 'tháng tháng'; typo 'cập nhập' trên 7/8 trang.", "action": "Generate H1 đủ Entity + Location; bỏ số 0 khi count=0; dùng 1 nguồn count cho Title & H1; đổi {updated_month} = '11/2026' (hoặc bỏ chữ 'tháng' thừa); sửa 'cập nhập' → 'cập nhật'.", "dod": "Kiểm 20 URL (đủ 4 nhóm + 0 kết quả + EN): 100% H1 đủ entity, 0 'tháng tháng', 0 'cập nhập', Title count === H1 count."}, {"id": "P0-4", "pri": "P0", "owner": "Dev BE / Search", "title": "Chuẩn hóa URL -k ASCII + siết Search Recall", "root": "Slug Unicode/viết hoa/số ít-nhiều (Kế-toán-trưởng-k vs ke-toan-truong-k, sale-admin vs sales-admin) cùng 200 OK self-canonical; search -k/-kl rò 33–90% tin sai chức danh.", "action": "Middleware 301 mọi slug có dấu/viết hoa/alias về lowercase ASCII; sửa footer & internal links; khóa từ điển matching chức danh + taxonomy cho trang -k/-kl.", "dod": "Slug Unicode trả 301; 0 link có %/viết hoa trên site; tỷ lệ tin đúng chức danh trang 1 ≥ 80%."}, {"id": "P0-5", "pri": "P0", "owner": "Dev FE/BE", "title": "Fix Pagination SSR + HTTP 404 thật + Breadcrumb", "root": "Pagination JS-only (<a href=None>); -trang-2 canonical về trang 1; ?page=2 vừa noindex vừa canonical trang 1; Breadcrumb trỏ /tim-viec-lam/... → 308 → HTTP 200 Soft-404.", "action": "Chốt 1 định dạng phân trang (?page=N SSR <a href> + self-canonical); trả HTTP 404 thật (gỡ canonical homepage); render visible <nav aria-label='Breadcrumb'> khớp JSON-LD, sửa /tim-viec-lam/ → /viec-lam/.", "dod": "Trang 2 trả 200 self-canonical có SSR job #51–100; URL lỗi trả 404 thật; 100% URL BreadcrumbList trả 200 & khớp DOM."}, {"id": "P0-6", "pri": "P0", "owner": "Dev + SEO Lead", "title": "Tắt Auto-linker trong khối SEO + Chốt Canonical 4 tầng Company", "root": "Auto-linker cắt [việc làm quận 1]0, [làm việc tại nhà] máy, bơm link BĐS 12/2025 & link sang Khánh Hòa/An Giang; Masan -p còn CTA ReactJS; 4 lớp URL Company đánh nhau.", "action": "Tắt countable-link bên trong div.seo-content; vá ngay CTA ReactJS trên Masan -p; chốt 1 URL đích mỗi Company (-p đơn tài khoản, -g tập đoàn Vingroup/FPT; gộp 5 slug alias /nha-tuyen-dung/; noindex -k brand & -sort*).", "dod": "0 self-link, 0 lỗi cắt chữ, 0 link lạc tỉnh trong khối SEO; 10 doanh nghiệp lớn không còn 2–3 URL cạnh tranh."}, {"id": "P1-1", "pri": "P1", "owner": "Dev FE", "title": "Refactor Semantic HTML5 Job Card & Landmarks", "root": "50 job title dùng <h2>, 50 công ty dùng <h3>, 0 <article>, 0 <nav>, 0 <aside>, 0/98 <time> có datetime.", "action": "Job card bọc <article> + <h3> title (badge ngoài heading) + <p> công ty + <time datetime='YYYY-MM-DD'>; bọc bộ lọc vào <aside>; bọc menu/breadcrumb/pagination/related vào <nav>.", "dod": "<h2> chỉ thuộc section thật (1 sr-only + 4–8 SEO H2); 100% <time> có datetime ISO; 0 lệch visual > 1px trên 1366px & 390px."}, {"id": "P1-2", "pri": "P1", "owner": "Dev FE/BE", "title": "SSR cụm .box-job-type & Bổ sung JSON-LD Listing", "root": "56 CSR skeleton (6 <h4> rỗng) thay cụm internal link liên quan; thiếu CollectionPage + ItemList JSON-LD trên 4 nhóm trang.", "action": "Chuyển fetch dữ liệu cụm link liên quan sang Server Component (SSR thẻ <a> chọn lọc); xuất CollectionPage + ItemList (có numberOfItems) + BreadcrumbList (KHÔNG JobPosting, KHÔNG FAQPage).", "dod": "Skeleton trong .box-job-type = 0; <h4> rỗng = 0; Schema Validator 0 lỗi; ItemList.numberOfItems === job_count."}, {"id": "P2-1", "pri": "P2", "owner": "Dev FE", "title": "Vệ sinh DOM, Table SEO, rel='noopener' & Hreflang", "root": "70+ <a href=None> dùng thay nút UI; 120–177 link _blank thiếu noopener; <table> thiếu <thead>/<caption>; <h2><strong> thừa; cặp hreflang en-vn lệch slug Unicode.", "action": "Đổi <a href=None> sang <button type='button'>; thêm rel='noopener noreferrer'; chuẩn hóa <table> có <caption>/<thead>; bỏ <strong> trong heading; kiểm return-tag hreflang vi-vn ↔ en-vn.", "dod": "<a href=None> = 0; _blank thiếu noopener = 0; <h2><strong> = 0; 100% cặp hreflang trả 200 khớp 2 chiều."}], "ownership": [["Định nghĩa nghề & nhiệm vụ giáo khoa", "owner:Định nghĩa nghề, nhiệm vụ hằng ngày, lộ trình", "forbid:Nhường Wiki Career", "forbid:Nhường Wiki Career", "cond:Chỉ 1 đoạn phạm vi JD (Supplemental) + link Wiki", "forbid:Nhường Title & Wiki Career"], ["Giới thiệu DN & môi trường làm việc", "none:—", "forbid:Không tả riêng 1 DN", "owner:Hồ sơ DN (Supplemental + EOC/Followers, bỏ PR)", "forbid:Không tả riêng 1 DN", "forbid:Không tả riêng 1 DN"], ["Cơ cấu cầu việc làm (H2-1)", "none:—", "owner:6–10 nhóm ngành dẫn đầu tại {Location}", "owner:Danh sách pháp nhân + vị trí 2 tầng cấp bậc", "owner:Nhánh chuyên môn / biến thể toàn quốc (Class A/B1/B2)", "inter:Nhánh vị trí × ngành hàng địa phương hoặc loại hình DN"], ["Doanh nghiệp tuyển dụng", "none:—", "owner:DN nổi bật đa ngành tại {Location}", "owner:Chính 1 {Company} (đơn tài khoản / Group Hub)", "owner:Module SSR động tin lương cao toàn quốc + 3 đòn bẩy", "inter:Module SSR động DN tuyển đúng {Title} tại {Location}"], ["Dữ liệu mức lương", "none:Khái quát", "owner:Lương đa ngành tỉnh + Lương tối thiểu vùng NĐ 293", "owner:VietnamSalary cùng chức danh + trạng thái công bố lương", "owner:VietnamSalary toàn quốc theo KN + so 2–3 nghề liền kề", "inter:Local Salary Delta: tin mở tại {Location} vs toàn quốc"], ["Yêu cầu JD & Chế độ làm việc", "none:Kiến thức chung", "owner:Yêu cầu & giờ làm đa ngành đặc thù tỉnh", "owner:Deal-breakers & ca kíp đủ 2 tầng JD của {Company}", "owner:Tần suất công cụ/chứng chỉ/lịch T7 toàn quốc của nghề", "inter:Độ lệch công cụ/ngoại ngữ/chế độ riêng tại {Location}"], ["Khu vực & Địa giới 1/7/2025", "none:—", "owner:Top quận/phường đa ngành + tra cứu toàn địa bàn", "cond:Chỉ các tỉnh/cụm {Company} đang mở tin", "owner:Top 3–4 tỉnh lớn nhất + Remote (Core Content)", "inter:2–4 cụm địa bàn riêng của nghề {Title} + phường cụm đó"], ["Cuối bài & Điều hướng link", "none:CTA đọc tiếp", "owner:CTA gọn + Tabbed Hub (tách khỏi prose)", "owner:Dual-Path CTA (Apply vs Job Alert) + Peer Employers", "owner:CTA gọn + Tabbed Hub 4 tab trong <aside>", "inter:CTA gọn + Tabbed Hub 4 chiều (Up · Across · Down)"]], "sheets": {"location": {"id": "location", "title": "Template v2 — Việc làm {location}", "subtitle": "Geo Discovery Hub (-l / -lq) · Ví dụ: Việc làm Đà Lạt, Việc làm Đà Nẵng, Việc làm Bình Dương", "orig_url": "https://docs.google.com/spreadsheets/d/1XDeg73wL0laioEljBt0BJsIAgJqUQneyzVqik_kB0lA/edit?usp=sharing", "tiers": [["Tier 1 · ≥100 tin", "850–1.100 từ · Đủ khung, tách 2 H3 Lương & Phúc lợi"], ["Tier 2 · 20–99 tin", "550–750 từ · Gộp H2-3 Lương & Phúc lợi, bỏ 2 H3 mỏng"], ["Tier 3 · 10–19 tin", "350–450 từ · Khung rút gọn (Ngành + Lương/YC gộp + Lân cận)"], ["Tier 4 · <10 tin", "150–250 từ · Bản tối giản dẫn lên Tỉnh · 0 tin: không dựng chữ"]], "changes": [["Khóa Canonical URL", "Chốt 1 URL đích duy nhất giữa -l, -lq và -k trước khi viết (tránh ca Đà Lạt -k đang top 5–6 nhưng viết vào -lq)."], ["Hạ trần từ theo 4 Tier", "Bỏ ép 1.200–1.500 từ từ mốc 20 tin; Tier 2 (20–99 tin) rút còn 550–750 từ, Tier 4 (<10 tin) còn 150–250 từ."], ["Sửa mâu thuẫn H2-2 & H3-2", "Bỏ chữ 'lương cao' khỏi H2-2 mặc định (tránh mâu thuẫn luật cấm ghi số lương & vòng lặp ngược H2-3); thêm câu L0 25–30 từ dưới H3 logo làm cầu nối sang H2-3."], ["Sửa Predicate H2-5 & Xóa 11 anchor rác", "Đổi heading thành 'Các khu vực tập trung nhiều việc làm tại {location}'; cấm nhồi 11 anchor chức danh khác ngành vào văn xuôi, đẩy sang Tabbed Hub."], ["Khóa cỡ mẫu bảng lương & ngày tĩnh", "Chỉ dựng bảng lương từ tin mở khi ≥15 tin ghi lương số (≥2 tin/dòng), dưới ngưỡng dùng VietnamSalary hoặc đoạn 70–90 từ; bảng tĩnh ghi ngày crawl dd/mm/yyyy."], ["Xóa lặp ý kinh nghiệm & Bỏ Outro thừa", "Gom trọn kinh nghiệm/fresher vào H2-4; đổi FAQ 1 sang câu hỏi có search demand riêng của địa phương; bỏ hàng Outro 90 từ tóm tắt lặp."]], "rows": [["H1", "Việc làm {location}", "Information gain (cả bài): Top 10 SERP của nhóm keyword việc làm + khu vực là trang listing thuần, không có phân tích hay bảng dữ liệu. Bài bổ sung 4 lớp dữ kiện rút trực tiếp từ tin đang đăng tại {location}: phân bổ 6-10 nhóm ngành kèm chức danh thật, doanh nghiệp nổi bật đang mở tin, dải lương và phúc lợi từ tin thật (hoặc VietnamSalary), và phân bố tin theo khu vực kèm hướng dẫn tra địa giới sau sáp nhập 1/7/2025.\nData point riêng (≥3): bảng 6-10 nhóm ngành theo số tin facet thật · danh sách DN nổi bật kèm vị trí thường tuyển · dải lương & phúc lợi trích từ tin thật/VietnamSalary · danh sách cụm khu vực kèm quy đổi địa giới sau 1/7/2025.\nHuman effort (cả bài):\n1. Danh sách tin tại {location} (chức danh, công ty, lương, ngành, phúc lợi) kéo từ JSON trang đích bằng script jobs.js, sum.js — SEO phụ trách URL chạy — dùng ở Intro, H2-1, H2-2, H2-3 — Đã có\n2. Số tin từng facet ngành × khu vực và từng khu vực con đọc từ thẻ title — SEO phụ trách URL — dùng ở H2-1, H2-5 — Cần xin, hỏi SEO phụ trách URL\n3. Giờ làm việc, số năm kinh nghiệm, yêu cầu kỹ năng và địa chỉ làm việc đọc từ trang chi tiết tin bằng script jd.js — SEO phụ trách URL chạy — dùng ở H3 chế độ, H2-4, H2-5 — Đã có\n4. Văn bản sắp xếp đơn vị hành chính cấp xã của tỉnh, bản gốc còn hiệu lực — người viết tra chinhphu.vn — dùng ở H2-5 — Cần xin, hỏi người viết\n5. Một dữ kiện kinh tế địa phương có nguồn báo tỉnh hoặc cơ quan thống kê — người viết — dùng ở Intro — Cần xin, hỏi người viết\n6. Khối thẻ logo công ty đang tuyển nhiều nhất (logo, tên công ty, số việc làm) — team SEO lấy data khi on-page hoặc Dev bind API — dùng ở H3 của H2-2 — Đã có\n7. Dữ liệu VietnamSalary theo chức danh tại {location} (dùng khi tin ghi lương dưới ngưỡng mẫu) — người viết tra vietnamsalary.careerviet.vn — dùng ở H2-3 — Cần xin\nE-E-A-T:\nExperience: số liệu đọc trực tiếp từ các tin đang mở tại {location} trên CareerViet, thể hiện ở H2-1, H2-2, H2-3, H2-4\nExpertise: đội nội dung CareerViet biên soạn, SEO phụ trách nhóm Location kiểm số liệu trước khi đăng\nAuthoritativeness: nghị quyết sắp xếp đơn vị hành chính (bản gốc), nghị định lương tối thiểu vùng hiện hành, báo tỉnh hoặc cơ quan thống kê\nTrust: tách bạch rõ ngày crawl tĩnh dd/mm/yyyy cho bảng tĩnh và biến động {job_count}/{updated_month} cho dữ liệu live; nêu rõ phạm vi mẫu khi số tin nhỏ", "Nguồn chung: JSON danh sách tin của URL đích đã chốt Canonical (API jobs/public?location={Y}&district={Z}), crawl ngày {ngay_crawl}\nSố tin trang đích và từng facet — thẻ title trang CareerViet (site trả 200 cho mọi URL, chỉ thẻ title xác nhận trang thật và số tin)", "(Không dựng ảnh Hero trang trí đáy trang; tập trung visual vào Market Snapshot, biểu đồ ngành, thẻ công ty, bảng lương và tra cứu địa giới)", "Title: Việc làm {location}: {job_count} tin tuyển dụng mới {updated_month} (bỏ {job_count} nếu = 0)\nCổng Canonical bắt buộc: chốt 1 URL đích duy nhất giữa -l, -lq và -k; không bơm bài đè song song lên 2 URL cùng intent.\nCổng dựng trang: Tier 1 (≥100 tin): 850-1.100 từ · Tier 2 (20-99 tin): 550-750 từ (gộp H2-3) · Tier 3 (10-19 tin): 350-450 từ · Tier 4 (<10 tin): 150-250 từ · 0 tin: không dựng chữ.\nPredicate trục: tuyển dụng, tập trung, ghi nhận, yêu cầu, công khai mức lương, lọc tin.\nChunk Independence: mọi câu mở H2/H3 phải gọi đủ tên {location}, cấm 'ở đây', 'khu vực này'."], ["Intro", "(Hộp :::sapo + Market Snapshot)", "Trình bày: 1 hộp sapo 2-3 dòng (không bullet), đi kèm thanh Market Snapshot 4 chỉ số ngắn phía dưới\nWord count estimate: 60 từ\nCâu mở: Việc làm {location} trên CareerViet hiện có {job_count} tin trong {updated_month} + nhóm ngành dẫn đầu theo lượng tin thật + 1 dữ kiện kinh tế địa phương có nguồn giải thích nhu cầu tuyển dụng\nCâu hỏi cần trả lời (theo thứ tự):\n1. Tại {location} đang có bao nhiêu tin và nhóm ngành nào tuyển nhiều nhất? → {job_count} tin và top 2 nhóm ngành từ H2-1 [L1]\n2. Vì sao nhóm ngành đó dẫn đầu tại {location}? → 1 câu bối cảnh kinh tế địa phương có tên nguồn [L2]\n3. Mặt bằng lương phổ biến đang ở khoảng nào và ứng viên xem nhanh thông số thị trường ra sao? → 1 vế nối gọn sang thống kê [L1]", "Số tin và nhóm ngành dẫn đầu — thẻ title trang đích và facet ngành ngày {ngay_crawl}\nDữ kiện kinh tế địa phương — báo tỉnh, cổng thông tin tỉnh hoặc cơ quan thống kê (ghi rõ phạm vi tỉnh mới/khu vực cũ; ghi tên nguồn, không gắn link ngoài)", "Khối tương tác: thanh Market Snapshot 4 thẻ chỉ số gọn (Tổng tin {job_count} · Ngành dẫn đầu · Khoảng lương phổ biến · Khu vực nhiều tin nhất), bấm thẻ cuộn xuống đúng mục hoặc áp bộ lọc thật.\nAlt: Tổng quan thị trường việc làm {location} {updated_month} trên CareerViet", "Mở đầu câu bằng đúng cụm Việc làm {location}.\nViết {updated_month} không thêm chữ tháng phía trước (chặn lỗi 'tháng tháng').\nRanh giới: không viết câu mục lục kiểu bài blog.\nKhông viết: câu chào, giới thiệu địa danh du lịch, ngành 0 tin, tự gắn link về chính URL hiện tại."], ["H2", "Nhóm ngành và các vị trí công việc đang tuyển nhiều tại {location}", "Trình bày: 1 đoạn mở + 1 câu dẫn + bảng 2 cột Nhóm ngành | Các vị trí đang tuyển nhiều (6-10 hàng Tier 1; 4-7 hàng Tier 2) + 1 câu chốt 1-2 dòng\nWord count estimate: 200 từ\nCâu mở: Tại {location}, nhóm {Nganh_1} đang dẫn đầu về lượng tin tuyển dụng, theo sau là {Nganh_2} và {Nganh_3} + thứ tự xếp theo lượng tin thực tế trên sàn\nCâu hỏi cần trả lời (theo thứ tự):\n1. Tại {location}, nhóm ngành nào mở nhiều tin nhất và thứ tự kế tiếp ra sao? → thứ tự bảng theo số tin facet [L1]\n2. Mỗi nhóm ngành đang tuyển những chức danh cụ thể nào? → 2-4 chức danh thật từ tin đăng, không định nghĩa nghề [L3]\n3. Chuyển sang H2 công ty: sau khi xác định nhóm ngành đang mở rộng tại {location}, ứng viên xem doanh nghiệp nào đang tuyển nổi bật ở các nhóm việc này\nInformation gain: bảng 6-10 nhóm ngành xếp theo số tin thật tại đúng {location} kèm chức danh thật đang tuyển, top 10 SERP chưa trang nào có\nHuman effort: mục 1, mục 2\nContextual phrase: tin tuyển dụng tại {location}; nhóm ngành tuyển nhiều nhất; vị trí đang tuyển; cơ hội việc làm {location}", "Thứ tự hàng — số tin từng facet ngành × khu vực (thẻ title URL c{X}l{Y}q{Z} hoặc c{X}l{Y}), crawl ngày {ngay_crawl}, xếp giảm dần\nCột Các vị trí đang tuyển nhiều — job_title trong JSON trang đích lọc theo job_industry (2-4 chức danh thông dụng, bỏ mã tin/tên DN/địa danh)\n1 tin gắn tối đa 3 ngành: không cộng dồn, không tính tỷ lệ %", "Khối tương tác: biểu đồ thanh ngang HTML/SVG 6-10 nhóm ngành xếp theo tỷ trọng tin tại {location}, mỗi thanh gắn <a> thật trỏ sang trang việc làm {Nganh} tại {location}. Nếu Dev chưa gắn API, dùng Infographic xếp thứ tự tương đối không đóng cứng số tin tĩnh.\nAlt: Biểu đồ các nhóm ngành có nhiều tin tuyển dụng nhất tại {location}, dẫn đầu là {Nganh_1}", "Ranh giới: chỉ tập trung nhóm ngành và chức danh; phần kinh nghiệm & người mới chuyển trọn sang H2-4 (xóa lặp ý).\nKhông viết: định nghĩa nghề, tên công ty, con số lương, con số tin tĩnh trong ô bảng và văn xuôi.\nLink nội bộ: gắn trực tiếp link việc làm {Nganh} cho nhóm đang có tin trong bảng."], ["H2", "Công ty tuyển dụng nổi bật tại {location}", "Trình bày: câu dẫn 2 câu + bảng 3 cột Tên doanh nghiệp | Lĩnh vực công ty | Vị trí thường tuyển nhiều (5-8 hàng Tier 1; 3-5 hàng Tier 2) + 1 dòng Lưu ý ghi ngày crawl tĩnh, sau đó đến H3 khối logo\nWord count estimate: 140 từ\nCâu mở: Các doanh nghiệp tuyển dụng nổi bật tại {location} đang có tin còn hiệu lực + trải từ {linh_vuc_a} đến {linh_vuc_b} + tiêu chí chọn dựa trên độ uy tín, quy mô tuyển và đãi ngộ công khai\nCâu hỏi cần trả lời (theo thứ tự):\n1. Doanh nghiệp nổi bật nào đang mở tin tại {location} và thuộc lĩnh vực gì? → bảng 3 cột, tên giữ đúng như tin đăng [L1]\n2. Từng doanh nghiệp thường tuyển nhiều nhất những chức danh nào tại {location}? → cột 3 bảng, 1-3 chức danh thật [L3]\nInformation gain: bảng doanh nghiệp nổi bật đang mở tin thật kèm chức danh thường tuyển tại đúng {location}, trả lời thẳng query các công ty ở {location} tuyển dụng\nHuman effort: mục 1\nContextual phrase: doanh nghiệp nổi bật tại {location}; công ty đang tuyển dụng; tin tuyển dụng còn hiệu lực; vị trí thường tuyển nhiều", "Tên DN (emp_name), lĩnh vực (url_emp_default, 1-4 từ), chức danh lặp nhiều nhất (job_title) — JSON ngày {ngay_crawl}\nDòng Lưu ý nguyên văn: Lưu ý: Danh sách ghi nhận các doanh nghiệp nổi bật có tin tuyển dụng còn hiệu lực tại thời điểm tổng hợp {ngay_crawl}.", "(Xem khối thẻ logo tương tác ở H3 liền dưới; dài hạn gộp H2+H3 thành 1 khối thẻ có 2 tab Tuyển nhiều nhất | Ghi lương cao)", "Đã bỏ chữ 'lương cao' khỏi heading mặc định để xóa mâu thuẫn luật cấm ghi số lương & vòng lặp ngược H2-3.\nPhương án B (nếu team SEO giữ 'lương cao'): dời H2 Mức lương lên TRƯỚC H2 Công ty và ghi rõ mốc sàn lương bằng số ngay câu mở.\nTier 2: cân nhắc gộp bảng vào khối thẻ ở H3; dưới 3 DN thì bỏ cả H2 và H3. Cấm dùng {updated_date} cho bảng tĩnh."], ["H3", "Công ty đang tuyển nhiều nhất tại {location} {updated_month}", "Trình bày: 1 câu dẫn ngắn (20-30 từ) + khối HTML thẻ logo cuộn ngang (logo, tên công ty, số việc làm)\nWord count estimate: 30 từ\nCâu mở: Danh sách dưới đây tổng hợp các doanh nghiệp mở nhiều vị trí nhất tại {location} trong {updated_month} + nối ý sang H2 Mức lương và phúc lợi để ứng viên đối chiếu đãi ngộ\nCâu hỏi cần trả lời (theo thứ tự):\n1. Doanh nghiệp nào đang mở nhiều tin nhất tại {location} trong {updated_month}? → thẻ logo xếp theo số việc làm giảm dần [L1]\n2. Chuyển sang H2 Mức lương: bên cạnh quy mô tin mở của doanh nghiệp, ứng viên cần đối chiếu mặt bằng lương và phúc lợi thực tế tại {location}\nHuman effort: mục 6", "Logo (emp_logo), tên DN (emp_name), số việc làm đang mở — team SEO lấy khi on-page hoặc Dev kết xuất động từ API", "Khối tương tác: khối thẻ logo công ty cuộn ngang (scroll-snap trên mobile) hiển thị logo, tên DN, số việc làm đang mở kèm link bấm xem tin; nâng cấp gộp 2 nút Tuyển nhiều nhất | Ghi lương cao.\nAlt: Logo {Cong_ty} đang tuyển dụng tại {location} trên CareerViet", "Bỏ trạng thái Word count = 0 của bản cũ: bắt buộc có 1 câu dẫn L0 (20-30 từ) để tránh heading rỗng và nối mạch sang H2-3.\nViết {updated_month} liền sau {location}, không thêm chữ tháng."], ["H2", "Mức lương và phúc lợi khi làm việc tại {location}", "Trình bày: Tier 1 (≥100 tin): 1 đoạn mở 40-50 từ, sau đó tách 2 H3. Tier 2 (20-99 tin): gộp trọn mức lương và phúc lợi vào 1 H2 (140-160 từ), bỏ 2 H3\nWord count estimate: 45 từ\nCâu mở: Mức lương tuyển dụng tại {location} phổ biến từ {luong_tu} đến {luong_den} triệu đồng mỗi tháng + bảo hiểm và đào tạo là phúc lợi cơ bản + dẫn xuống lương theo vị trí và chế độ làm việc\nCâu hỏi cần trả lời (theo thứ tự):\n1. Khoảng lương phổ biến khi đi làm tại {location} đang nằm ở mức nào? → dải phổ biến, tách riêng mức ngoại lai cấp quản lý [L1]\n2. Chuyển xuống 2 H3 (Tier 1): mức lương theo nhóm vị trí và chế độ làm việc, phúc lợi thường gặp\nInformation gain: mức lương và phúc lợi tổng hợp trực tiếp từ tin tuyển dụng thật tại {location} kèm đối chiếu VietnamSalary\nHuman effort: mục 1, mục 3, mục 7\nContextual phrase: mức lương tại {location}; phúc lợi nhân viên; thu nhập trung bình tại {location}; chế độ làm việc", "Dải lương phổ biến — tổng hợp tin công khai lương số trong JSON ngày {ngay_crawl} (loại tin Cạnh tranh) hoặc VietnamSalary tại {location}", "(Đặt ở H3 liền dưới)", "Luật Modality theo cỡ mẫu: nếu mẫu công khai lương <15 tin, câu mở bắt buộc ghi 'ghi nhận trên các tin đang mở', không khẳng định mặt bằng toàn thị trường.\nTier 2 & Tier 3: bỏ 2 H3 bên dưới, gộp gọn trong H2 này."], ["H3", "Mức lương tham khảo theo nhóm vị trí tại {location} (Chỉ tách ở Tier 1 ≥100 tin)", "Trình bày: 1 câu dẫn + bảng 2 cột Nhóm vị trí | Mức lương tham khảo (4-6 hàng) + 1 dòng ghi chú nguồn + 1 câu chốt 2 dòng + CTA VietnamSalary\nWord count estimate: 110 từ\nCâu mở: Tại {location}, nhóm {vi_tri_cao} đang ghi nhận khung lương cao nhất, trong khi nhóm {vi_tri_pho_bien} phổ biến từ {x} đến {y} triệu đồng mỗi tháng + nêu rõ nguồn\nCâu hỏi cần trả lời (theo thứ tự):\n1. Từng nhóm vị trí tại {location} có khung lương tham khảo bao nhiêu? → bảng 2 cột, chỉ 1 nguồn thống nhất [L1]\n2. Nhóm vị trí nào lương cứng ổn định, nhóm nào biến động mạnh theo doanh số? → phân tích biên độ trong bảng [L4]", "1 nguồn duy nhất: ưu tiên VietnamSalary; nếu thiếu >50% số dòng thì lấy từ tin đang mở ngày {ngay_crawl}.\nCổng mẫu dựng bảng từ tin mở: bắt buộc ≥15 tin ghi lương số và ≥2 tin/dòng; dưới ngưỡng thì KHÔNG dựng bảng, viết đoạn 70-90 từ.", "Khối tương tác: bảng lương kèm thanh dải Min-Max bằng CSS và nút lọc nhanh tin theo mức lương / mở VietnamSalary đúng khu vực.\nAlt: Bảng mức lương tham khảo theo nhóm vị trí tại {location} trên CareerViet", "Bảng tĩnh ghi ngày crawl dd/mm/yyyy; chỉ dùng {updated_date} khi Dev render động từ API.\nKhông viết mốc cực đoan từ 1 tin lẻ. Link nội bộ: CTA VietnamSalary ngay dưới bảng."], ["H3", "Chế độ làm việc và phúc lợi thường gặp tại {location} (Chỉ tách ở Tier 1 ≥100 tin)", "Trình bày: 1 câu mở + danh sách 3-4 mục ngắn + 1 câu chuyển\nWord count estimate: 90 từ\nCâu mở: Phần lớn tin tuyển dụng tại {location} áp dụng giờ hành chính {gio_lam}, trong đó bảo hiểm và đào tạo xuất hiện phổ biến còn {phuc_loi_khac_biet} tạo chênh lệch thực nhận\nCâu hỏi cần trả lời (theo thứ tự):\n1. Khung giờ làm việc phổ biến tại {location} là gì và nhóm nào làm ca? → trường workHours [L1]\n2. Khoản phúc lợi nào tin nào cũng có, khoản nào tạo khác biệt giữa các tin cùng lương? → benefit_name_vn [L4]\n3. Chuyển sang H2 Yêu cầu tuyển dụng: mức thu nhập và đãi ngộ này đi kèm những điều kiện đầu vào nào", "workHours trên trang chi tiết tin ngày {ngay_crawl} (không suy diễn ngày nghỉ nếu mô tả không ghi); benefit_name_vn từ JSON", "(Trống)", "3-4 bullet: Giờ làm việc · Phúc lợi cơ bản · Khoản tạo chênh lệch · Nhóm làm ca (bỏ nếu không có).\nKhông viết tỷ lệ % chi tiết trên mẫu nhỏ."], ["H2", "Yêu cầu tuyển dụng phổ biến tại {location}", "Trình bày: 1 đoạn mở + danh sách đúng 3 mục + 1 câu chuyển\nWord count estimate: 160 từ\nCâu mở: Yêu cầu tuyển dụng tại {location} ưu tiên {yeu_cau_chinh}, với mốc kinh nghiệm phổ biến {so_nam} năm và vẫn có cửa vào cho ứng viên chưa có kinh nghiệm ở nhóm {nhom_fresher}\nCâu hỏi cần trả lời (theo thứ tự):\n1. Học vấn, mốc kinh nghiệm phổ biến và nhóm vị trí nhận ứng viên chưa có kinh nghiệm tại {location} là gì? → dòng Kinh nghiệm trong JD [L1]\n2. Kỹ năng chuyên môn hoặc công cụ nào xuất hiện nhiều nhất trong JD tại {location}? → 8-10 JD đại diện [L3]\n3. Yêu cầu ngoại ngữ và điều kiện làm việc đặc thù địa phương là gì (ca kíp, đi thị trường, đi tỉnh)? → đọc từ JD [L4]\n4. Chuyển sang H2 Khu vực: nắm yêu cầu đầu vào rồi thì xem khu vực nào tại {location} tập trung nhiều tin nhất\nInformation gain: mốc kinh nghiệm, nhóm nhận người mới và kỹ năng thực tế đọc trực tiếp từ JD tại {location}\nHuman effort: mục 3\nContextual phrase: yêu cầu tuyển dụng tại {location}; số năm kinh nghiệm; kỹ năng chuyên môn; việc làm {location} không cần kinh nghiệm", "Dòng Kinh nghiệm trên chi tiết tin; phần Yêu cầu công việc của 8-10 JD đại diện các nhóm ngành ở H2-1 ngày {ngay_crawl}", "(Trống)", "Ranh giới: NƠI DUY NHẤT phân tích mốc kinh nghiệm và cửa vào cho người chưa có kinh nghiệm (xóa lặp ở H2-1 và FAQ).\n3 bullet: Học vấn & kinh nghiệm (kèm fresher) · Kỹ năng & công cụ · Ngoại ngữ & điều kiện làm việc.\nLink nội bộ: nhánh lọc việc làm không cần kinh nghiệm tại {location} (nếu có tin)."], ["Supplemental", "— SUPPLEMENTAL CONTENT —", "", "", "", "Ranh giới Main Content → Supplemental Content."], ["H2", "Các khu vực tập trung nhiều việc làm tại {location}", "Trình bày: 1 đoạn mở + danh sách đánh số 3-5 khu vực xếp theo số tin + 1 đoạn ngắn dẫn khu vực lân cận + 1 ghi chú địa giới sau 1/7/2025 đặt cuối\nWord count estimate: 160 từ\nCâu mở: Tại {location}, tin tuyển dụng tập trung nhiều nhất ở {Khu_vuc_1}, kế đến là {Khu_vuc_2} và {Khu_vuc_3} + nêu nhóm việc chính từng khu vực + không mở bằng thủ tục sáp nhập\nCâu hỏi cần trả lời (theo thứ tự):\n1. Khu vực nào tại {location} tập trung nhiều tin nhất và mạnh về nhóm nghề nào? → danh sách đánh số theo thứ tự số tin thật [L1]\n2. Ít tin ở địa bàn mong muốn thì nới sang khu vực lân cận hoặc trang tỉnh nào đang có tin? → 2-3 địa bàn lân cận + trang tỉnh có ≥1 tin [L5]\n3. Địa chỉ trên tin ghi theo tên hành chính cũ hay mới sau 1/7/2025? → quy đổi ngắn theo văn bản gốc, đặt cuối mục [L6]\nInformation gain: bản đồ nhóm nghề theo cụm khu vực thật của {location} kèm hướng dẫn đọc địa chỉ trước và sau sáp nhập 1/7/2025\nHuman effort: mục 2, mục 3, mục 4\nContextual phrase: khu vực nhiều việc làm tại {location}; việc làm tại {Khu_vuc_1}; việc làm {Tinh}; địa giới hành chính mới", "Thẻ title URL khu vực con l{Y}q{Z} hoặc streetAddress ngày {ngay_crawl} (chỉ khu vực ≥1 tin)\nĐịa giới mới: {Van_ban_dia_gioi} bản gốc trên chinhphu.vn (cấp huyện kết thúc từ 1/7/2025)", "Khối tương tác: chip khu vực bấm lọc kèm ô tra nhanh 1 dòng tên quận/phường cũ ↔ phường/xã mới theo {Van_ban_dia_gioi}. Địa phương ≤10 phường (như Đà Lạt) có thể dùng Sơ đồ gọn.\nAlt: Tra cứu và sơ đồ phường, xã mới tại {location} từ 1/7/2025 cùng khu vực nhiều việc làm", "Chỉnh heading chuẩn Predicate (thay 'quận, huyện đang tuyển dụng số lượng công việc nhiều'). TP không chia quận (Đà Lạt): đổi thành Các phường tập trung nhiều việc làm tại {location}.\nCẤM nhồi 11 anchor chức danh khác ngành vào văn xuôi (chuyển sang Hàng 18 Tabbed Hub).\nLink nội bộ: chỉ lên việc làm {Tinh} + ngang 2-3 khu vực lân cận có tin."], ["H2", "Câu hỏi thường gặp khi tìm việc tại {location}", "Trình bày: 3 câu hỏi dạng <details><summary> thuần HTML5 (câu 1 mở sẵn), mỗi câu 30-45 từ, câu đầu trả lời thẳng kèm 1 link lọc hành động nếu có", "Tổng hợp từ 3 hàng FAQ bên dưới", "(Trống)", "Schema: Không cần gắn FAQPage JSON-LD (giữ HTML <details> answer-first). Tuyệt đối không lặp câu hỏi người chưa có kinh nghiệm đã trả lời ở H2-4."], ["FAQ", "{Cau_hoi_demand_rieng_cua_location} (vd trên 50 tuổi / KCN bao ăn ở / mở rộng tỉnh)", "Word count estimate: 40 từ\nCâu mở: Trả lời thẳng Có/Không cho câu hỏi có search demand riêng của {location} mà thân bài chưa trả lời + nhóm vị trí có dữ kiện thật + bước lọc tin tiếp theo", "Query có volume thật Ahrefs/PAA/GSC của {location} (vd Đà Lạt có việc làm cho người trên 50 tuổi vol 250) + xác minh dữ kiện từ JD thật", "(Trống)", "Nếu không có dữ kiện trong JD → đổi sang: Khi {location} ít tin đúng chuyên môn nên mở rộng phạm vi lọc ra đâu?"], ["FAQ", "Có việc làm bán thời gian tại {location} không?", "Word count estimate: 40 từ\nCâu mở: Có hoặc Có nhưng ít + nhóm vị trí đang có tin bán thời gian tại {location} + cách lọc theo hình thức làm việc trên trang", "Trường Hình thức làm việc & tiêu đề tin ngày {ngay_crawl}; volume part time + {location}", "(Trống)", "Chỉ giữ khi có ≥1 tin bán thời gian thật; 0 tin thì thay bằng câu về tin remote/hybrid hoặc câu có dữ kiện thật."], ["FAQ", "Lương tối thiểu vùng áp dụng tại {location} là bao nhiêu?", "Word count estimate: 40 từ\nCâu mở: {location} thuộc {Vung_luong} với mức sàn theo tháng và theo giờ theo {So_hieu_nghi_dinh} + đối chiếu ngắn với dải lương trên tin đăng", "Nghị định lương tối thiểu vùng hiện hành (NĐ 293/2025/NĐ-CP), tra phụ lục theo xã/phường mới trên chinhphu.vn", "(Trống)", "Ghi số hiệu nghị định ngay sau con số; kiểm tra địa bàn có tách nhiều vùng lương giữa các phường/xã không."], ["Khối", "Hộp :::cta (Bỏ hàng Outro 90 từ thừa)", "Trình bày: 1 hộp CTA gọn thay thế hoàn toàn đoạn Outro tóm tắt lặp\nWord count estimate: 35 từ\nTiêu đề sentence case (Ứng tuyển việc làm {location} cùng CareerViet) + 1-2 câu chốt chứa {job_count} và {updated_month} + 2 nút: Tạo CV miễn phí cùng CareerViet · Trải nghiệm AI Matching của CareerViet", "{job_count}, {updated_month}", "(Khối UI :::cta 2 nút)", "Đã loại bỏ hàng Outro 90 từ. Dùng 'có thể', cấm 'hãy'; kiểm không lặp chữ tháng trước {updated_month}."], ["Khối", "Khối điều hướng mở rộng (Tabbed Related Hub)", "Trình bày: 3 tab ngang đặt tách biệt dưới hộp CTA (toàn bộ <a> nằm sẵn trong HTML SSR): Tab 1 Khu vực lân cận & Tỉnh · Tab 2 Ngành nghề đang có tin tại {location} · Tab 3 Hình thức & cấp bậc phổ biến\nWord count estimate: 0 từ prose", "URL facet thật có ≥1 tin (100% slug lowercase ASCII không dấu)", "Khối tương tác: thanh 3 tab ngang SSR phân phối liên kết nội bộ sạch theo cụm ngữ cảnh.", "Giải phóng văn xuôi khỏi 11 anchor khác ngành ở H2-5; tự động ẩn link 0 tin."], ["Khối", "Bản tối giản khi {location} dưới 10 tin (Tier 4)", "Trình bày: sapo 2 dòng (mở bằng Việc làm {location}, {job_count}, {updated_month}) + 1 đoạn nêu 2-3 chức danh thật đang tuyển + 1 câu dẫn lên việc làm {Tinh} và 1-2 khu vực lân cận có tin + hộp :::cta\nWord count estimate: 150-250 từ", "Thẻ title & JSON trang đích ngày {ngay_crawl}; số tin trang tỉnh & lân cận", "(Trống)", "Rút trần từ 300-500 từ xuống 150-250 từ chống loãng. Không dựng H2 ngành, công ty, lương, FAQ. 0 tin: không dựng chữ & bỏ số 0 khỏi Title/H1."]]}, "company": {"id": "company", "title": "Template v2 — Việc làm {Company}", "subtitle": "Independent Employer Intelligence Hub (-p / -g) · Ví dụ: Masan Consumer, Techcombank, Vingroup", "orig_url": "https://docs.google.com/spreadsheets/d/1X5H9n0JOwc4bgZMqcSnpLmRhGib-0zd2IOmtj9XaNPQ/edit?usp=sharing", "tiers": [["Tier 1 · ≥30 tin", "1.250–1.550 từ · Đủ 2 tầng H3 vị trí, 2 H3 lương/phúc lợi, 3 interactive modules"], ["Tier 2 · 10–29 tin", "1.000–1.300 từ · Khung chuẩn v2 (gộp H3 vị trí nếu chỉ có 1 tầng cấp bậc)"], ["Tier 3 · 1–9 tin", "600–800 từ · 1 bảng vị trí gộp, bỏ H2 Địa điểm, ưu tiên Job Alert + Peer Employers"], ["Tier 4 · 0 tin (Brand SV ≥200)", "450–600 từ · HTTP 200 Evergreen + Job Alert 1-click + 6–10 tin doanh nghiệp cùng ngành"]], "changes": [["Chốt 2 mô hình URL chống đánh nhau 4 chiều", "Single-account (Masan, Techcombank) dùng -p{emp_id}; Tập đoàn nhiều tài khoản (Vingroup, FPT) dùng Group Hub -g{group_id}; noindex -k brand và -sort*; gộp 5 slug alias /nha-tuyen-dung/."], ["Đổi H2-1 về trục Tuyển dụng", "Đưa 'Vị trí & Pháp nhân' lên H2-1; đẩy 'Lĩnh vực & Môi trường' xuống Supplemental, bỏ sứ mệnh PR và đưa tài sản độc quyền Followers + Top EOC vào bài."], ["Khắc phục Sampling Bias & Phân tầng Expert", "Bắt buộc đọc thân JD đủ CẢ 2 tầng (vận hành/nhân viên VÀ chuyên gia/quản lý); đổi tên H3-2 bao phủ cả Expert/Senior IC (như Techcombank)."], ["Tách H2 Lương & Phúc lợi thành 2 H3", "Đảm bảo Chunk Independence cho RAG/AI Mode và pass O8; khóa Epistemic Modality tách lương VietnamSalary vs lương tin đăng vs thỏa thuận; cấm lấy 1 tin lẻ sắp hết hạn đại diện cả tập đoàn."], ["Bỏ số tin cứng trên Banner + Thêm Tier 4 (0 tin)", "Chặn mâu thuẫn 24 vs 27 tin sau 48 giờ; bổ sung chế độ Tier 4 giữ hạng thương hiệu lớn mùa thấp điểm kèm lưới doanh nghiệp cùng ngành."], ["Dual-Path CTA + Tabbed Hub", "Cắt Outro nhồi 8 anchor; chuyển sang CTA 2 nhánh (Ứng tuyển ngay vs Theo dõi/Job Alert) + Tabbed Hub có tab Doanh nghiệp cùng ngành."]], "rows": [["H1", "{Company} tuyển dụng (CMS H1 live đầu trang; khối SEO bắt đầu từ Intro và H2)", "Information gain (cả bài): Giải mã 4 lớp dữ liệu riêng mà trang career chính chủ và top 5 đối thủ không ghép chung: (1) danh sách pháp nhân thực tế đang đăng tin dưới thương hiệu {Company}; (2) cơ cấu vị trí theo 2 tầng (vận hành/nhân viên vs chuyên gia/quản lý) trích đầu việc từ thân JD; (3) đối chiếu mặt bằng lương 1st-party VietnamSalary với trạng thái công bố lương và chế độ ca kíp thực tế; (4) điều kiện sàng lọc bắt buộc trên đủ 2 tầng JD và tín hiệu độc quyền (Followers, Top EOC).\nData point riêng (≥3): danh sách pháp nhân đang mở tin · cơ cấu vị trí 2 tầng rút từ thân JD · bảng lương VietnamSalary đúng chức danh + chế độ từ thân JD · điều kiện sàng lọc đại diện đủ 2 tầng JD.\nHuman effort (cả bài):\n1. Toàn bộ danh sách tin sống {Company} (chức danh, pháp nhân, khu vực, cấp bậc, lương thẻ) — trích xuất ngày {snapshot_date} — dùng ở Intro, H2-1, H2-5 — Đã có\n2. Mẫu thân JD đại diện ĐỦ CẢ 2 TẦNG (≥50% tin hoặc tối đa 15 JD trải đều vận hành/nhân viên VÀ chuyên gia/quản lý: đầu việc, giờ làm, ca kíp, phúc lợi, bằng cấp, chứng chỉ, kinh nghiệm) — writer đọc trực tiếp — dùng ở H3-1, H3-2, H3-2.2, H2-3, FAQ — Đã có\n3. Bảng lương VietnamSalary theo chức danh & địa bàn tương ứng + dữ liệu 1st-party CareerViet (Followers, Top EOC) — tra ngày {snapshot_date} — dùng ở H3-2.1, H2-4 — Đã có\n4. Hồ sơ pháp nhân & mảng kinh doanh cốt lõi từ trang chính thức / báo cáo thường niên {Company} kèm {Thang_nam_truy_cap} — writer xác minh — dùng ở H2-1, H2-4 — Cần xin nếu DN chưa có trang chính thức\nE-E-A-T:\nExperience: tổng hợp trực tiếp từ thân JD đang tuyển ở cả 2 cấp bậc (mục 2), nêu rõ ca làm, chứng chỉ không hiện trên thẻ tin.\nExpertise: đội nội dung CareerViet biên soạn theo ngôi thứ ba trung lập, tuyệt đối không mạo danh doanh nghiệp.\nAuthoritativeness: dữ liệu VietnamSalary, Top EOC & Followers (mục 3), trang chính thức/báo cáo thường niên {Company} (mục 4).\nTrust: tách bạch biến sống ({job_count}, {updated_month}) với mốc phân tích {snapshot_date}, cảnh báo lừa đảo tuyển dụng.", "URL canonical {Company} (-p{emp_id} đơn tài khoản hoặc -g{group_id} tập đoàn) · Thân JD đủ 2 tầng · VietnamSalary · Hồ sơ NTD CareerViet (Followers, Top EOC) · Trang chính thức {Company}", "(Không dựng ảnh Hero/Banner in cứng số tin tĩnh ở đáy trang; đầu trang dùng thanh Verified Employer Identity Strip sống)", "Supply Tiers: Tier 1 (≥30 tin): 1.250-1.550 từ · Tier 2 (10-29 tin): 1.000-1.300 từ · Tier 3 (1-9 tin): 600-800 từ · Tier 4 (0 tin, SV ≥200): 450-600 từ.\nTop 1-5 live: Không áp đè cấu trúc; chỉ vá lỗi fact/kỹ thuật (CTA ReactJS, tháng tháng, tắt auto-linker) và bổ sung khối thiếu; tụt >3 bậc qua 2 tuần → rollback.\nPredicate trục: tuyển dụng, phân bổ theo pháp nhân, công bố đãi ngộ, sàng lọc hồ sơ.\nModality & Pháp lý: Ngôi thứ ba trung lập; cấm bịa vòng phỏng vấn/phúc lợi."], ["Intro", "(Sapo :::sapo)", "Trình bày: 1 hộp sapo gọn 2-3 câu (không liệt kê mục lục bài kiểu blog)\nWord count estimate: 65 từ\nCâu mở: {Company} tuyển dụng {job_count} vị trí cập nhật {updated_month} trên CareerViet + gom tin từ N pháp nhân thuộc {Company} + tập trung nhóm vị trí và khu vực chủ lực\nCâu hỏi cần trả lời (theo thứ tự):\n1. {Company} đang mở bao nhiêu tin tuyển dụng, thuộc những pháp nhân nào và tập trung mảng việc/khu vực nào? → {job_count} tin sống, danh sách pháp nhân chính, mảng chủ lực [L1]\n2. Bức tranh đãi ngộ và điều kiện gia nhập nổi bật tại {Company} ra sao? → 1 câu tóm tắt khung lương tham khảo hoặc trạng thái công bố lương + mức độ tiếp nhận ứng viên [L1]", "Số tin sống — biến {job_count}, {updated_month} (cấm ghi số tĩnh).\nPháp nhân, mảng chủ lực, khu vực — tổng hợp ngày {snapshot_date}.", "(Đầu trang có thanh Verified Employer Identity Strip: Logo + N pháp nhân + Top EOC + Followers + nút Theo dõi)", "Không viết: chữ 'tháng' trước {updated_month}, năm thành lập, slogan PR, tự link về chính URL hiện tại hay /vi/nha-tuyen-dung/.\nChunk Independence: mở thẳng bằng thực thể {Company}."], ["H2", "{Company} đang tuyển những vị trí nào và thuộc pháp nhân nào?", "Trình bày: 1 đoạn mở 3-4 câu dẫn xuống 2 H3 theo 2 tầng cấp bậc\nWord count estimate: 90 từ\nCâu mở: Danh sách tuyển dụng {Company} trên CareerViet gom tin từ N pháp nhân đang mở tuyển + phân bổ theo M khối chức năng + tách rõ 2 tầng cấp bậc để ứng viên lọc nhanh\nCâu hỏi cần trả lời (theo thứ tự):\n1. Trang tuyển dụng {Company} gồm những pháp nhân, công ty thành viên nào và khác gì quy mô cả tập đoàn? → liệt kê đúng emp_name trên thẻ tin sống [L3]\n2. Tin tuyển dụng tập trung vào những khối chức năng nào và chia thành 2 tầng cấp bậc ra sao? → vận hành/nhân viên/chuyên viên vs chuyên gia/giám sát/quản lý [L1]\n3. Chuyển xuống 2 H3: đi từ tầng vận hành đến tầng chuyên gia và quản lý\nInformation gain: làm rõ ranh giới pháp nhân (công ty con/nhà máy) gắn trực tiếp với từng khối tuyển dụng — top 5 đối thủ bỏ trống\nHuman effort: mục 1\nContextual phrase: {Company} tuyển dụng; pháp nhân thuộc {Company}; vị trí đang tuyển tại {Company}; khối chức năng {Company}", "emp_name và phân bổ khối chức năng — tập tin sống ngày {snapshot_date}", "Khối tương tác: Employer Role-Matrix & Quick-Jump (lọc Pháp nhân · Khối chức năng · Cấp bậc → cuộn lên kích hoạt bộ lọc job list sống; bản tĩnh SSR HTML).\nAlt: Bộ lọc nhanh vị trí và pháp nhân đang tuyển tại {Company}", "Đặt H2-1 khóa chặt Macro Vector Tuyển dụng tại Centerpiece.\nModality: ghi rõ 'tính đến đợt tuyển {snapshot_month}, danh sách mở thực tế hiển thị phía trên', không chốt cứng số tin lẻ dễ sai sau 48h.\nTier 2/3: nếu toàn bộ tin thuộc 1 cấp bậc → bỏ 2 H3, dùng 1 bảng duy nhất."], ["H3", "Vị trí khối vận hành, nhân viên và chuyên viên", "Trình bày: 1 câu mở + bảng 3 cột (Vị trí tiêu biểu | Đầu việc chính | Pháp nhân / Khu vực, tối đa 8 dòng) + 1 câu chốt 2 dòng\nWord count estimate: 105 từ (chưa tính chữ bảng)\nCâu mở: Nhóm vị trí vận hành, nhân viên và chuyên viên tại {Company} tập trung mạnh nhất ở mảng X + gắn với nhà máy hoặc khối vận hành tại {Location_1}\nCâu hỏi cần trả lời (theo thứ tự):\n1. {Company} đang mở những vị trí tiêu biểu nào ở tầng thực thi và đầu việc chính của từng vị trí là gì? → bảng tối đa 8 dòng, ô đầu việc ≤10 từ đọc từ thân JD [L1]\n2. Mảng nào có nhu cầu dày nhất ở tầng này và tập trung tại đâu? → nêu mảng chủ lực + khu vực + mốc {snapshot_date} [L3]", "Chức danh, pháp nhân, khu vực — thẻ tin sống {snapshot_date}; đầu việc chính — thân JD (ưu tiên thân JD nếu lệch thẻ tóm tắt)", "(Trống)", "Chunk Independence: câu mở H3 bắt buộc lặp tên {Company}.\nKhông viết: số tin lẻ từng dòng, địa chỉ số nhà, ô đầu việc >10 từ (tránh vỡ mobile 375px). Tối đa 1-2 link chức danh chủ lực ở câu chốt."], ["H3", "Vị trí cấp chuyên gia, giám sát và quản lý", "Trình bày: 1 câu mở + bảng 3 cột (Vị trí tiêu biểu | Trọng tâm phụ trách | Pháp nhân / Khu vực, tối đa 8-10 dòng) + 1 câu chốt 2 dòng\nWord count estimate: 100 từ (chưa tính chữ bảng)\nCâu mở: Tầng chuyên gia, giám sát và quản lý tại {Company} mở rộng ở mảng X và Y + đặt trọng tâm tại văn phòng chính hoặc khối chuyên môn tại {Location_1}, {Location_2}\nCâu hỏi cần trả lời (theo thứ tự):\n1. {Company} đang tuyển chức danh nào ở tầng chuyên gia (Expert/Senior IC), giám sát và quản lý? → bảng 8-10 dòng chuẩn hóa chính tả tên vị trí [L1]\n2. Mảng chuyên sâu hoặc quản lý nào chiếm tỷ trọng lớn nhất và phân bố ở đâu? → nêu khối chuyên môn + khu vực + mốc {snapshot_date} [L3]", "Chức danh, cấp bậc, pháp nhân — thẻ tin sống {snapshot_date}; trọng tâm phụ trách — mẫu JD tầng chuyên gia/quản lý (mục 2)", "(Trống)", "Bao phủ cả Expert / Senior Specialist (IC bậc cao như Techcombank/IT) lẫn Supervisor/Manager. Sửa lỗi chính tả gốc từ JD (vd Intergrated → Integrated)."], ["H2", "Mức lương và chế độ phúc lợi tại {Company}", "Trình bày: 1 đoạn dẫn nhập 2-3 câu tách xuống 2 H3 độc lập\nWord count estimate: 60 từ\nCâu mở: Thu nhập cho các vị trí {Company} đang tuyển phân hóa từ nhóm vận hành đến cấp chuyên gia, quản lý theo VietnamSalary + đa số tin áp dụng lương thỏa thuận kèm phụ cấp theo từng khối việc\nCâu hỏi cần trả lời (theo thứ tự):\n1. Bức tranh chung về cơ chế công bố lương và dải thu nhập tham khảo tại {Company} ra sao? → dải tổng VietnamSalary + tỷ lệ tin ghi số hay 'Cạnh tranh' [L1]\n2. Chuyển xuống 2 H3: xem bảng lương tham khảo theo chức danh trước, sau đó kiểm tra giờ làm việc, hợp đồng và phúc lợi trích từ thân JD\nInformation gain: tách bạch 1st-party VietnamSalary cùng địa bàn và cấu trúc ca kíp/phúc lợi từ thân JD\nHuman effort: mục 2, mục 3\nContextual phrase: mức lương {Company}; lương tại {Company}; phúc lợi {Company}; đãi ngộ nhân sự {Company}", "VietnamSalary + thống kê thẻ tin sống ngày {snapshot_date}", "(Đặt ở H3-2.1)", "Tách thành 2 H3 (≤140 từ/H3) để đạt chuẩn O8 và để AI Search trích tách biệt 'lương {Company}' vs 'phúc lợi/giờ làm {Company}'."], ["H3", "Mức lương tham khảo theo nhóm chức danh", "Trình bày: 1 câu mở + bảng 2 cột (Nhóm chức danh đang tuyển | Khoảng lương tham khảo thị trường, 4-7 hàng) + dòng ghi chú nguồn + 1 đoạn nhận xét 2-3 câu + CTA VietnamSalary\nWord count estimate: 140 từ (chưa tính chữ bảng)\nCâu mở: Theo dữ liệu VietnamSalary cập nhật {updated_month}, mặt bằng lương thị trường cho các chức danh tương đương {Company} đang tuyển trải từ X đến Y triệu đồng mỗi tháng\nCâu hỏi cần trả lời (theo thứ tự):\n1. Khoảng lương tham khảo (trung bình thấp – trung bình cao) của từng nhóm chức danh đang tuyển tại {Company} là bao nhiêu? → bảng 4-7 dòng 100% khớp chức danh đang mở (cấm để chức danh hết tin) [L1]\n2. Tin tuyển dụng của {Company} công bố lương thế nào và yếu tố nào quyết định mức đàm phán thực tế? → cơ chế công khai/thỏa thuận từ tin sống (chỉ trích số trên tin khi có ≥2 tin cùng nhóm và ghi địa bàn, cấm lấy 1 tin lẻ sắp hết hạn) + thâm niên, khu vực, phụ cấp [L3][L6]", "Tra tươi trực tiếp vietnamsalary.careerviet.vn ngày {snapshot_date} (1 bảng 1 nguồn, cấm chép bảng live cũ); mức công bố trên tin sống {snapshot_date}", "Khối tương tác: thanh ngang CSS/SVG so sánh dải lương 4-7 chức danh VietnamSalary kèm bộ chọn thâm niên (<1 / 1-3 / 3-5+ năm) và nút mở VietnamSalary (bảng HTML SSR).\nAlt: Biểu đồ khoảng lương tham khảo {N} nhóm chức danh đang tuyển tại {Company} theo VietnamSalary", "Luật Modality & Pháp lý: tách 3 tầng phát ngôn: (a) 'Mặt bằng thị trường VietnamSalary'; (b) 'Mức công bố trên tin đợt {snapshot_month}'; (c) 'Mức thực nhận phụ thuộc thỏa thuận'. Cấm khẳng định '{Company} trả mức X' khi tin ghi 'Cạnh tranh'."], ["H3", "Giờ làm việc, loại hợp đồng và chế độ phúc lợi", "Trình bày: 1 câu mở + danh sách 3-4 mục + 1 câu chốt\nWord count estimate: 130 từ\nCâu mở: Tập tin đang mở của {Company} ghi nhận rõ khung giờ làm việc theo từng khối + loại hợp đồng và nhóm phúc lợi xuất hiện lặp lại trên thân JD\nCâu hỏi cần trả lời (theo thứ tự):\n1. Thời gian làm việc, chế độ xoay ca và loại hợp đồng ghi trong thân JD của {Company} ra sao? → phân biệt khối sản xuất/vận hành (vd 48h/tuần, xoay ca) vs khối văn phòng, chính thức vs thời vụ [L3]\n2. Những khoản phúc lợi nào lặp lại phổ biến và khoản đặc thù nào đi kèm từng khối? → bảo hiểm, khám sức khỏe, thưởng, đào tạo; phụ cấp ca/xe đưa đón/laptop nếu JD ghi rõ [L3]", "workHours, loại hợp đồng, phúc lợi — mẫu thân JD (mục 2) ngày {snapshot_date}", "(Trống)", "Chỉ liệt kê phúc lợi thực sự có trong JD đợt {snapshot_month}; cấm tự thêm tháng 13 hay ESOP nếu nguồn không ghi."], ["H2", "{Company} yêu cầu gì và sàng lọc hồ sơ như thế nào?", "Trình bày: 1 đoạn mở + danh sách 3-4 mục (phân tách đủ 2 tầng cấp bậc) + 1 đoạn ngắn 2-3 câu về sàng lọc hồ sơ\nWord count estimate: 190 từ\nCâu mở: Tiêu chuẩn tuyển dụng tại {Company} phân hóa rõ giữa tầng vận hành và tầng chuyên gia, quản lý + xoay quanh bằng cấp, mốc kinh nghiệm tối thiểu và các điều kiện bắt buộc trích từ thân JD\nCâu hỏi cần trả lời (theo thứ tự):\n1. Bằng cấp và mốc kinh nghiệm tối thiểu {Company} đặt ra ở tầng vận hành khác gì tầng chuyên gia/quản lý? → đối chiếu từ mẫu JD ĐỦ 2 TẦNG [L1]\n2. Những điều kiện bắt buộc nào lặp lại trong thân JD nhưng ít hiện trên thẻ tóm tắt? → chế độ làm ca, chứng chỉ nghề/hành nghề, phần mềm chuyên dụng, ngoại ngữ [L3]\n3. Yếu tố nào giúp hồ sơ qua vòng sàng lọc nhanh hơn và cần lưu ý gì khi đọc tin {Company}? → kỹ năng ưu tiên từ JD + lấy thân JD làm căn cứ cuối (chỉ nêu vòng phỏng vấn khi có nguồn trang career chính thức) [L4][L6]\nInformation gain: bóc tách deal-breakers trên đủ cả 2 tầng JD — khắc phục sai lệch khi ứng viên chỉ nhìn thẻ tin tóm tắt\nHuman effort: mục 2\nContextual phrase: {Company} yêu cầu tuyển dụng; điều kiện ứng tuyển {Company}; kinh nghiệm làm việc tại {Company}; sàng lọc hồ sơ {Company}", "Mục Yêu cầu công việc của mẫu JD đại diện ĐỦ 2 TẦNG ngày {snapshot_date}; quy trình phỏng vấn (nếu có) từ trang career chính thức {Company}", "Khối tương tác: 3-Step Self-Fit Checklist (chọn Bằng cấp · Kinh nghiệm · Sẵn sàng ca/địa điểm → trả gợi ý AI Matching / CVHay / Job Alert; bản tĩnh SSR tóm tắt 3 tiêu chí).\nAlt: Bảng tự kiểm mức độ phù hợp điều kiện ứng tuyển tại {Company}", "Chống Selection Bias: bắt buộc nêu yêu cầu CẢ 2 tầng khi cả 2 đang tuyển.\nLuật pháp lý: cấm bịa số vòng phỏng vấn; bỏ kỹ năng mềm sáo rỗng."], ["Supplemental", "— SUPPLEMENTAL CONTENT —", "", "", "", "Đường ranh giới Main (~70%: Vị trí · Lương · Yêu cầu) → Supplemental (~30%: Bối cảnh DN · Địa điểm · FAQ)."], ["H2", "Lĩnh vực hoạt động và môi trường làm việc của {Company}", "Trình bày: 1 đoạn tổng quan + danh sách 3-6 mảng kinh doanh chủ chốt + 1 đoạn 2 câu về tín hiệu uy tín nhà tuyển dụng trên CareerViet\nWord count estimate: 155 từ\nCâu mở: {Company} hoạt động trong ngành {Industry} với N mảng kinh doanh chủ chốt + sở hữu lượng quan tâm và chứng nhận nhà tuyển dụng trên CareerViet tính đến {Thang_nam_truy_cap}\nCâu hỏi cần trả lời (theo thứ tự):\n1. {Company} kinh doanh ở những mảng cốt lõi nào (tính đến {Thang_nam_truy_cap}) và mảng nào đang mở tuyển nhiều nhất? → phân biệt rõ toàn DN vs mảng đang có tin [L1]\n2. Tín hiệu mức độ quan tâm và uy tín nhà tuyển dụng của {Company} trên CareerViet thể hiện qua chỉ số nào? → số lượt Followers trên hồ sơ NTD + danh hiệu Top EOC (nếu đạt) [L3]\nInformation gain: gắn bản đồ mảng kinh doanh với cơ hội việc làm thực tế và trưng bằng chứng 1st-party độc quyền (Followers, Top EOC) thay cho sứ mệnh PR\nHuman effort: mục 3, mục 4\nContextual phrase: công ty {Company}; môi trường làm việc {Company}; mảng kinh doanh {Company}; ngành {Industry}", "Trang chính thức / báo cáo thường niên {Company} ({Thang_nam_truy_cap}); Followers & Top EOC trên hồ sơ NTD CareerViet ngày {snapshot_date}", "Infographic: sơ đồ N mảng kinh doanh chủ chốt của {Company} đánh dấu mảng đang mở tuyển, ghi mốc Tính đến {Thang_nam_truy_cap} (chỉ Tier 1-2).\nAlt: Sơ đồ {N} mảng kinh doanh chủ chốt của {Company} tính đến {Thang_nam_truy_cap}", "Không viết: sứ mệnh/tầm nhìn PR, xưng 'chúng tôi', số báo cáo cũ >2 năm không ghi năm, địa chỉ số nhà, tên miền career ngoài site.\nLink nội bộ: 1 link duy nhất lên trang ngành cha việc làm {Industry}."], ["H2", "Địa điểm làm việc của {Company} theo khu vực", "Trình bày: 1 câu mở + danh sách 2-4 cụm địa bàn đang có tin + 1 câu ghi chú sáp nhập hành chính (chỉ khi thẻ tin giữ tên tỉnh cũ)\nWord count estimate: 115 từ\nCâu mở: Đợt tuyển {snapshot_month}, {Company} mở vị trí tại các cụm địa bàn {Location_1}, {Location_2} + tập trung mật độ tin cao nhất ở {Location_1}\nCâu hỏi cần trả lời (theo thứ tự):\n1. {Company} đang tuyển dụng ở những khu vực nào và khu vực nào nhiều vị trí nhất? → liệt kê đúng khu vực trên thẻ tin sống [L1]\n2. Mỗi khu vực tuyển chủ yếu khối việc nào (nhà máy hay văn phòng) và lưu ý gì về nhãn địa danh sau 1/7/2025? → ánh xạ khu vực ↔ khối việc + NQ 202/2025/QH15 nếu cần [L5]", "Nhãn địa điểm thẻ tin sống {snapshot_date} · NQ 202/2025/QH15", "(Trống)", "Điều kiện dựng: chỉ dựng Tier 1-2 khi có ≥2 khu vực có tin (Tier 3 hoặc 1 tỉnh → bỏ H2 này, gộp vào Intro/H2-1).\nCấm nhắc tỉnh hiện có 0 tin của {Company}. Link tối đa 2-3 địa bàn đang có tin thật."], ["H2", "Câu hỏi thường gặp về tuyển dụng {Company}", "Trình bày: 4 câu hỏi (Tier 3-4 dùng 2-3 câu) dạng <details><summary> thuần HTML5 (câu 1 mở sẵn), mỗi câu 35-50 từ, câu đầu trả lời thẳng mang đủ tên {Company}", "Tổng hợp từ 4 hàng FAQ bên dưới", "(Trống)", "Schema: Không cần gắn FAQPage JSON-LD (giữ HTML <details> answer-first). Bỏ câu thử việc chung theo BLLĐ 2019."], ["FAQ", "{Company} có tuyển sinh viên mới ra trường hoặc chưa có kinh nghiệm không?", "Word count estimate: 45 từ\nCâu mở: Tại đợt tuyển {snapshot_month}, tin đang mở của {Company} yêu cầu kinh nghiệm từ X năm hoặc có mở nhóm vị trí cho sinh viên mới ra trường + điều kiện kèm theo", "Mốc kinh nghiệm thấp nhất trong tập JD sống {snapshot_date}", "(Trống)", "Bắt buộc gắn mốc 'tại đợt tuyển {snapshot_month}', không hứa vĩnh viễn khi tin hiện hành đều yêu cầu ≥1 năm."], ["FAQ", "Có thể ứng tuyển nhiều vị trí hoặc công ty thành viên của {Company} cùng lúc không?", "Word count estimate: 45 từ\nCâu mở: Ứng viên có thể nộp hồ sơ riêng lẻ cho từng tin phù hợp của {Company} trên CareerViet + mỗi tin và pháp nhân đăng tuyển tiếp nhận, sàng lọc độc lập theo đúng JD đó", "Cơ chế nộp hồ sơ theo job_id và emp_name trên CareerViet", "(Trống)", "Trả lời theo cơ chế thật của nền tảng, không phỏng đoán quy trình ATS nội bộ của {Company}."], ["FAQ", "Mức lương ghi 'Cạnh tranh' trên tin tuyển dụng {Company} được thỏa thuận như thế nào?", "Word count estimate: 45 từ\nCâu mở: Nhãn 'Cạnh tranh' trên tin {Company} cho biết mức lương thỏa thuận theo năng lực và kinh nghiệm + ứng viên có thể đối chiếu khung VietnamSalary cùng chức danh trước khi phỏng vấn", "Cơ chế hiển thị lương CareerViet + VietnamSalary", "(Trống)", "Giải quyết băn khoăn lớn nhất khi 80-90% tin doanh nghiệp lớn ẩn lương và kéo traffic về VietnamSalary."], ["FAQ", "Làm sao nhận biết tin tuyển dụng {Company} chính thức và tránh lừa đảo?", "Word count estimate: 45 từ\nCâu mở: Tin tuyển dụng {Company} xác thực trên CareerViet nhận hồ sơ trực tuyến ngay trên trang tin + không thu phí hồ sơ, đồng phục hay tiền đặt cọc dưới mọi hình thức", "Quy trình kiểm duyệt CareerViet; lưu ý phân biệt tin chính chủ vs đối tác thuê ngoài (nếu trên -k)", "(Trống)", "Khách quan, bảo vệ ứng viên, không dẫn link tên miền/fanpage ngoài site."], ["Khối", "Hộp :::cta Dual-Path (Bỏ Outro tóm tắt lặp)", "Trình bày: 1 hộp CTA 2 nhánh gọn (không lặp tóm tắt 4 H2)\nWord count estimate: 55 từ\nCâu mở: Danh sách việc làm {Company} cập nhật {job_count} tin trong {updated_month} + nhánh 1 cho ứng viên đã thấy tin khớp (CVHay, AI Matching) + nhánh 2 cho ứng viên chờ đợt tuyển kế (Theo dõi NTD / Thông báo việc làm)", "{job_count}, {updated_month}", "(Khối UI :::cta 2 nút chính + 1 nút Theo dõi/Job Alert)", "Nút CTA: Tạo CV miễn phí trên CVHay · Soi độ khớp JD bằng AI Matching + Bật thông báo việc làm {Company}. Cấm nhồi link chức danh; kiểm chặt tên {Company} (chặn lỗi ReactJS)."], ["Khối", "Tabbed Navigation Hub (<nav> SSR ngoài prose)", "Trình bày: 3 tab SSR render sẵn <a> dạng chip:\n• Tab 1: {Company} theo khu vực (≥3 tin)\n• Tab 2: Doanh nghiệp cùng ngành {Industry} đang tuyển (4-6 URL -p có tin sống)\n• Tab 3: Chức danh tương đương (4-6 URL -k ASCII có tin)\nWord count estimate: 0 từ prose", "Truy vấn DB URL HTTP 200 & job_count > 0, slug lowercase ASCII", "Khối tương tác: cụm 3 tab điều hướng SSR HTML (CSS toggle, 100% <a> crawlable trong DOM gốc).", "Giải phóng 100% văn xuôi khỏi 8-26 anchor rác; Tab 2 cứu Navboost khi trang ít tin/0 tin."], ["Khối", "Fallback Override — Tier 3 (1–9 tin) & Tier 4 (0 tin)", "Tier 3 (1-9 tin · 600-800 từ): H2-1 bỏ 2 H3 dùng 1 bảng 3 cột · bỏ H2-5 Địa điểm · giữ 3 FAQ · Dual CTA ưu tiên Job Alert + Tab 2 doanh nghiệp cùng ngành.\nTier 4 (0 tin · Brand SV ≥200 · 450-600 từ): Giữ HTTP 200 + index, follow (bỏ số 0 khỏi H1/Title) · Banner đầu trang báo minh bạch 'Hiện tại {Company} chưa có tin đang mở ({updated_date})' + nút Đăng ký thông báo {Company} + lưới 6-10 tin đang mở của doanh nghiệp cùng ngành {Industry} · H2-1 đổi thành 'Các nhóm vị trí {Company} thường tuyển dụng' (dữ liệu lịch sử 6-12 tháng, CẤM viết 'đang tuyển') · H2-2 bảng VietnamSalary · H2-3 Lĩnh vực hoạt động (100 từ) · 2 FAQ (lịch mở đợt tuyển + chống lừa đảo).", "Lịch sử tin {Company} 6-12 tháng · VietnamSalary · Top Employers cùng {Industry} đang mở tin", "Khối tương tác (Tier 4): hộp Đăng ký Job Alert 1-click cho {Company} ngay above-the-fold + lưới gợi ý tin cùng ngành đang mở.", "Chống mất hạng thương hiệu mùa thấp điểm; giữ trung thực 100% về trạng thái 0 tin."]]}, "title": {"id": "title", "title": "Template v2 — Việc làm {Title} (Toàn quốc)", "subtitle": "Nationwide Profession Discovery Hub (-k ASCII / -c) · Ví dụ: Kế toán, SEO, Hành chính nhân sự, Kế toán trưởng", "orig_url": "https://docs.google.com/spreadsheets/d/1_bBi4_SdBzud5virXm5EnVl16LtMaILOL8DonMsMwyA/edit?usp=sharing", "tiers": [["Class A · Broad Function", "Kế toán, HCNS, Marketing → bật H3-1a + H3-1b, bảng lương theo chuyên môn con (~1.300 từ)"], ["Class B1 · Operational", "Sales Admin, SEO, Video Editor → H2-1 phẳng, bảng lương <1 / 1–4 / 5–9 năm (~1.200 từ)"], ["Class B2 · Senior/Statutory", "Kế toán trưởng, Trưởng phòng NS → H2-1 theo quy mô DN, FAQ hỏi chứng chỉ/quản lý (~1.200 từ)"], ["Min-Data Tiers (exact_job_count)", "Tier 1 ≥50 tin (Full) · Tier 2 15–49 tin (650–800 từ) · Tier 3 <15 tin (300–400 từ / xét noindex)"]], "changes": [["Bỏ 'Công việc {Title} là gì?' khỏi H2-1", "H2-1 cũ cannibalize trực diện Wiki Career và trái brand-guideline. Chuyển xuống Supplemental thành 'Phạm vi công việc thực tế trên tin tuyển và lộ trình phát triển {Title}' + link Wiki & CareerMap."], ["Tách 3 phân lớp Class A / B1 / B2", "Xóa lỗi template vỡ ở chức danh Senior (vd Kế toán trưởng không có mốc <1 năm và không ai hỏi 'chưa có kinh nghiệm ứng tuyển được không?')."], ["Đảo H2 Doanh nghiệp xuống SAU H2 Lương + Dùng SSR động", "Xóa vòng lặp ngược và xóa quả bom 6/8 tin bảng tĩnh hết hạn sau 7–21 ngày (có Chế độ B evergreen theo mô hình DN khi Dev chưa làm SSR)."], ["Đưa H2 Khu vực lên Core Content + Xóa luật ép 5 tỉnh", "Trang Title là Nationwide Hub dẫn xuống Title×Location; bỏ ép nhồi Cần Thơ 0 tin, thêm Hà Nội & Remote; đẩy link mở rộng xuống Tabbed Hub <aside>."], ["Xóa ảnh Hero đáy trang & Infographic 3 thẻ lặp text", "Chuyển sang Market Pulse Strip above-fold, Ma trận lương 2 tab SVG, Thanh tần suất công cụ JD và Sơ đồ lộ trình 3 nấc."], ["Đồng bộ tab Mẫu ô SOP v4.1 & Khóa exact_job_count", "Sửa lỗi tab Mẫu ô dùng ngoặc kép ở Câu mở; cổng Tier đo trên exact_job_count (không tin tổng job_count nhiễu 80–90% trên -k)."]], "rows": [["H1", "Tuyển dụng {Title} (CMS H1 live đầu trang; block SEO bắt đầu từ Intro và H2)", "Information gain (cả bài): Ghép trên cùng 1 trang 3 tầng dữ liệu 1st-party mà top 5 SERP tách rời: (1) phân bố tin đúng chức danh theo nhánh/cấp bậc từ dữ liệu CareerViet; (2) mặt bằng lương VietnamSalary đặt cạnh 2-3 chức danh liền kề cùng nguồn; (3) tần suất công cụ, chứng chỉ, ngoại ngữ và lịch làm thứ Bảy/phúc lợi chênh lệch đọc từ mẫu JD đang mở.\nData point riêng (≥3): tỷ trọng nhánh/cấp bậc/khu vực từ tập tin đúng chức danh · bảng lương VietnamSalary kèm 2-3 vị trí liền kề cùng ngày đo · tần suất công cụ/chứng chỉ/lịch thứ Bảy từ ≥50 JD đang mở.\nHuman effort (cả bài):\n1. Tập tin {Title} đang mở (lọc exact_job_count đúng chức danh, đủ trang) — DB/script — dùng ở H2-1, H2-3, H2-4, H2-5, H2-6 — Đã có\n2. Dữ liệu lương VietnamSalary của {Title} và 2-3 vị trí liền kề cùng ngày đo — VietnamSalary — dùng ở Intro, H2-2 — Đã có\n3. Mẫu ≥50 trang chi tiết JD đúng chức danh (đầu việc thực tế, học vấn, công cụ, chứng chỉ, ngoại ngữ, lịch thứ Bảy, phúc lợi) — batch extract theo quý — dùng ở H2-4, H2-5, H2-7, FAQ — Cần xin\nE-E-A-T:\nExperience: tổng hợp từ tin đang hoạt động trên CareerViet, tách bạch tin đúng chức danh và tin liên quan.\nExpertise: đội ngũ nội dung nhân sự CareerViet biên tập theo 3 phân lớp (Class A / B1 / B2).\nAuthoritativeness: VietnamSalary; văn bản luật hiện hành với nghề có điều kiện (vd Luật Kế toán 2015).\nTrust: công khai nguồn đo, dùng module tin động (không giữ tin hết hạn), tách sạch văn xuôi khỏi khối điều hướng.", "URL canonical -k-vi.html (lowercase ASCII) hoặc -c{X} nếu là ngành rộng · VietnamSalary · Mẫu ≥50 JD chi tiết · CareerMap · Wiki Career", "(Không dựng ảnh Hero trang trí đáy trang; đầu trang có Breadcrumb + Market Pulse Strip + Quick-Pivot Chips)", "Phân lớp bắt buộc: Class A (Broad: kế toán, HCNS, marketing) · Class B1 (Operational: sales admin, seo, video editor) · Class B2 (Senior/Statutory: kế toán trưởng, trưởng phòng NS).\nTrần tổng Tier 1: 1.100-1.300 từ (giảm ~25% chữ thừa so với 1.645 từ cũ).\nCanonical Gate: chốt 1 URL duy nhất nếu -k trùng -c{X} hoặc biến thể số ít/nhiều (sale-admin vs sales-admin)."], ["Intro", "(Sapo :::sapo)", "Trình bày: 1 khối :::sapo 2-3 câu mật độ dữ kiện cao (bỏ câu mục lục kiểu blog)\nWord count estimate: 60 từ\nCâu mở: Tuyển dụng {Title} trên CareerViet ghi nhận {job_count} tin liên quan cập nhật {updated_month} + phân bố nhánh/cấp bậc chủ đạo + dải lương phổ biến VietnamSalary và 2 đầu cầu lớn nhất\nCâu hỏi cần trả lời (theo thứ tự):\n1. Quy mô tuyển dụng {Title} hiện nay và nhóm tin đúng chức danh tập trung ở nhánh/cấp bậc nào? → {job_count} tin liên quan (phân biệt rõ tin đúng chức danh nếu tỷ lệ khớp <50%) [L1]\n2. Mặt bằng lương phổ biến và hai đầu cầu tuyển dụng lớn nhất nằm ở đâu? → dải lương tổng từ H2-2 + 2 tỉnh/thành dẫn đầu từ H2-6 [L1]", "Tổng hợp từ H2-1, H2-2, H2-6; biến {job_count}, {updated_month}", "(Đầu trang có Market Pulse Strip: tin đúng chức danh/tổng liên quan · lương VietnamSalary · top đầu cầu · chip lọc 1 chạm)", "Predicate trục: ghi nhận, tập trung ở, dao động từ.\nKhông viết: câu mục lục kiểu blog, định nghĩa {Title} là gì, chữ 'tháng' trước {updated_month}, từ sáo rỗng ('sôi động', 'hấp dẫn')."], ["H2", "{Title} đang tuyển những vị trí nào trên thị trường?", "Trình bày: Class B1/B2: 1 đoạn mở + danh sách 4-5 mục + 1 câu chốt lọc tin (~180 từ). Class A: 1 đoạn mở 65 từ dẫn xuống 2 H3 con\nWord count estimate: 180 từ (Class B1/B2) · 65 từ (Class A)\nCâu mở: Tin tuyển dụng {Title} tập trung ở 2-3 nhóm chức danh hoặc cấp bậc chính + tỷ trọng cấp phổ biến nhất + khác biệt cốt lõi giữa các nhánh tin\nCâu hỏi cần trả lời (theo thứ tự):\n1. Tin {Title} đang mở chia thành những nhóm vị trí/cấp bậc nào? → đọc từ tiêu đề tin đúng chức danh [L1]\n2. Mỗi nhóm vị trí khác nhau ở phạm vi phụ trách hoặc mô hình doanh nghiệp nào? → 4-5 mục ngắn 1-2 câu [L4]\n3. Ứng viên dùng tiêu chí nào để lọc nhanh đúng nhánh tin phía trên? → tên gọi song ngữ, cấp bậc hoặc ngành hàng [L6]\nInformation gain: phân nhóm chức danh và biến thể tên gọi thực tế từ tiêu đề tin đang mở gắn với mô hình doanh nghiệp\nHuman effort: mục 1\nContextual phrase: việc làm {Title}; tin tuyển dụng {Title}; vị trí {Title} đang tuyển; cấp bậc tuyển dụng", "Tiêu đề tin, job_level, job_industry từ tập tin đúng chức danh", "(Trống)", "Đưa lên làm H2-1 (thay H2 định nghĩa cũ).\nClass B1: theo nhánh mô hình (Agency vs In-house, B2B vs Sản xuất, song ngữ). Class B2: theo quy mô DN (KCN, FDI/Chief, SME).\nRanh giới: không nêu tên công ty (H2-3), không chép nhiệm vụ giáo khoa (H2-7)."], ["H3", "(Chỉ Class A) Các chuyên môn {Title} có nhiều tin nhất", "Trình bày: 1 câu mở + danh sách 4-5 chuyên môn con (1-2 câu/mục)\nWord count estimate: 120 từ\nCâu mở: Nhóm việc làm {Title} tách thành 4-5 mảng chuyên môn chính trên tin tuyển dụng + mảng chiếm tỷ trọng cao nhất + tiêu chí chọn mảng theo thế mạnh\nCâu hỏi cần trả lời (theo thứ tự):\n1. Những chuyên môn con nào trong nhóm {Title} có nhu cầu tuyển đều nhất? → 4-5 chuyên môn con từ DB [L4]\n2. Nên dựa vào yếu tố nào để chọn đúng chuyên môn con khi lọc tin? → đặc thù nghiệp vụ và loại hình DN [L6]", "Phân cụm tiêu đề tin theo chuyên môn con (vd Kế toán: tổng hợp, thuế, kho, công nợ, giá thành)", "(Trống)", "BẮT BUỘC BỎ với Class B1 và B2. Gắn 2-3 link tới chức danh con -k ASCII có ≥15 tin."], ["H3", "(Chỉ Class A) Phân bố tin {Title} theo cấp bậc", "Trình bày: 1 đoạn 3-4 câu phân tích từ Thực tập/Nhân viên đến Quản lý\nWord count estimate: 80 từ\nCâu mở: Tin tuyển dụng {Title} phân bổ chủ yếu ở cấp nhân viên và chuyên viên + tỷ trọng nhóm mới tốt nghiệp và cấp trưởng phòng/quản lý\nCâu hỏi cần trả lời (theo thứ tự):\n1. Cấp bậc nào chiếm tỷ trọng lớn nhất và cửa vào cho nhóm thực tập/quản lý ra sao? → thống kê job_level [L1]\n2. Ứng viên quản lý nên lọc thế nào để loại tin sơ cấp? → kết hợp từ khóa cấp bậc hoặc bộ lọc Cấp bậc [L6]", "Trường job_level từ tập tin đang mở", "(Trống)", "BẮT BUỘC BỎ với Class B1 và B2. Không đưa con số lương (để trọn cho H2-2)."], ["H2", "Mức lương {Title} theo kinh nghiệm và so sánh vị trí liền kề (Class A/B2 đổi: theo chuyên môn/cấp bậc và vị trí liền kề)", "Trình bày: 1 đoạn mở + bảng 2 cột × 5-6 hàng + dòng ghi chú nguồn & {updated_date} + 1 đoạn phân tích độ lệch với tin đang mở + CTA VietnamSalary\nWord count estimate: 220 từ\nCâu mở: Mức lương {Title} phổ biến từ trung bình thấp đến trung bình cao theo VietnamSalary + biên độ tăng theo kinh nghiệm/cấp bậc + vị trí so với nghề liền kề\nCâu hỏi cần trả lời (theo thứ tự):\n1. Mức lương {Title} ở từng mốc kinh nghiệm (hoặc chuyên môn/cấp bậc) đạt bao nhiêu? → 3-4 mốc trong bảng từ VietnamSalary [L1]\n2. So với 2-3 vị trí liền kề cùng nguồn, thu nhập {Title} chênh lệch thế nào? → 2-3 hàng đối chiếu cùng bảng [L5]\n3. Mức lương công khai trên tin đang mở lệch gì so với khảo sát và vì sao? → đối chiếu trung vị tin ghi lương + cơ chế chọn mẫu/ngoại ngữ/cấp bậc [L2]\nInformation gain: đặt lương theo nấc thang cạnh 2-3 chức danh liền kề trong 1 bảng cùng nguồn VietnamSalary kèm giải thích độ lệch với tin chào tuyển\nHuman effort: mục 2\nContextual phrase: mức lương {Title}; thu nhập {Title}; lương theo kinh nghiệm; so sánh vị trí liền kề; VietnamSalary", "VietnamSalary (vietnamsalary.careerviet.vn/detail/{Chuc-Danh}-kw, {updated_date}) · Trung vị lương công khai từ DB listing", "Khối tương tác: Ma trận lương 2 tab (Theo kinh nghiệm/vị trí liền kề · Theo TP.HCM/Hà Nội/Đà Nẵng) kèm thanh khoảng lương SVG động, bản tĩnh SSR là bảng 2 cột HTML.\nAlt: Biểu đồ và bảng mức lương {Title} theo kinh nghiệm và so sánh vị trí liền kề, triệu đồng/tháng", "Vượt trần: 220 từ do bảng đối chiếu 5-6 hàng + dòng nguồn bắt buộc (O8).\nClass B1: <1 / 1-4 / 5-9 năm + 2-3 vị trí liền kề. Class B2: 3-4 cấp bậc liên quan + mốc 1-4 / 5-9 / 9+ năm. Class A: 4-5 chuyên môn con + cấp quản lý.\nKhông viết số mẫu khảo sát hay mốc cực đoan. Đơn vị triệu đồng/tháng."], ["H2", "Nhóm doanh nghiệp trả lương {Title} cao và yếu tố đẩy trần thu nhập", "Trình bày: 1 đoạn mở + module SSR động 5-6 tin công khai lương cao còn hạn (2 cột mobile) + 1 đoạn phân tích 3 yếu tố đẩy trần thu nhập\nWord count estimate: 170 từ (chỉ tính phần văn xuôi)\nCâu mở: Nhóm tin {Title} trả lương vượt mặt bằng tập trung ở 2-3 khối doanh nghiệp đặc thù + khoảng lương nhóm trần + điểm chung về yêu cầu\nCâu hỏi cần trả lời (theo thứ tự):\n1. Những khối doanh nghiệp và ngành hàng nào thường trả mức lương {Title} cao hơn mặt bằng? → gọi rõ 2-3 khối DN (FDI/xuất khẩu, sản xuất lớn, tài chính/công nghệ, chuỗi bán lẻ) [L1]\n2. Các tin {Title} công khai lương cao đang còn hạn nhận hồ sơ gồm những vị trí nào? → module SSR động kéo 5-6 tin còn hạn cao nhất gắn link ứng tuyển [L3]\n3. Ba yếu tố nào giúp ứng viên {Title} đàm phán vào nhóm trần? → phạm vi quản lý, ngoại ngữ làm việc, công cụ/hệ thống khó thay thế đọc từ JD [L2]\nInformation gain: kết hợp danh sách tin lương cao sống theo thời gian thực với 3 đòn bẩy tăng lương cấu trúc từ JD\nHuman effort: mục 1, mục 3\nContextual phrase: công ty tuyển {Title} lương cao; yếu tố tăng lương {Title}; doanh nghiệp FDI; mức lương ghi trên tin", "Module SSR động: exact_title = true AND salary_disclosed = true AND expire_date >= TODAY ORDER BY salary_max DESC LIMIT 6 (tối đa 1 tin/DN); Top 20% tin lương cao từ mẫu JD", "Khối tương tác: Module SSR danh sách 5-6 tin {Title} công khai lương cao còn hạn (card 2 cột gọn 375px, tự ẩn tin hết hạn).\nAlt: Danh sách tin tuyển dụng {Title} công khai mức lương cao đang nhận hồ sơ trên CareerViet", "Đảo xuống SAU H2-2 Lương (đúng Contextual Flow).\nTemporal Coherence: Cấm hardcode tên công ty có hạn nộp ngắn vào văn xuôi tĩnh. Nếu Dev chưa làm SSR động → dùng Chế độ B (Evergreen): bảng 2 cột Nhóm doanh nghiệp / Đặc thù JD | Dải lương ghi nhận."], ["H2", "Nhà tuyển dụng yêu cầu gì ở ứng viên {Title}?", "Trình bày: 1 đoạn mở + danh sách 3-4 mục (Học vấn & kinh nghiệm · Công cụ/phần mềm · Ngoại ngữ · Chứng chỉ/Portfolio) + 1 câu chốt đòn bẩy lọc CV\nWord count estimate: 180 từ\nCâu mở: Nhà tuyển dụng {Title} đặt trọng tâm vào mốc kinh nghiệm phổ biến + nhóm công cụ/chứng chỉ cốt lõi + điều kiện tạo ưu thế nhanh nhất vòng lọc CV\nCâu hỏi cần trả lời (theo thứ tự):\n1. Mức học vấn, mốc kinh nghiệm tối thiểu và chứng chỉ (nếu có) nhà tuyển dụng yêu cầu là gì? → mốc từ JD; nêu cửa vào Fresher (A/B1) hoặc chứng chỉ pháp lý (B2) [L1]\n2. Những công cụ, phần mềm hoặc năng lực thực chiến nào lặp lại nhiều nhất trong JD {Title}? → xếp theo tần suất thực tế [L4]\n3. Một điều kiện nào giúp hồ sơ {Title} bật lên nhanh nhất ở vòng sàng lọc? → ngoại ngữ, ERP/công cụ chuyên sâu hoặc portfolio/case study kèm lý do [L6]\nInformation gain: xếp hạng công cụ, chứng chỉ và ngoại ngữ theo tần suất xuất hiện thật trong JD đang mở, tách rạch ròi điều kiện sàn vs lợi thế cạnh tranh\nHuman effort: mục 3\nContextual phrase: yêu cầu tuyển dụng {Title}; kinh nghiệm ứng tuyển {Title}; phần mềm cần biết; kỹ năng {Title}", "job_experience từ DB + mẫu ≥50 JD đúng chức danh", "Infographic: biểu đồ thanh ngang HTML/SVG tần suất 4-5 công cụ, chứng chỉ và ngoại ngữ trong JD {Title} (bỏ mẫu 3 thẻ lặp text cũ).\nAlt: Biểu đồ tần suất công cụ, phần mềm và ngoại ngữ trong tin tuyển dụng {Title} trên CareerViet", "Class B2: bắt buộc có mục Chứng chỉ / Điều kiện pháp lý và quy mô bộ máy từng quản lý.\nNghề kỹ thuật/sáng tạo (SEO, Video Editor): bắt buộc có Portfolio / Case thực chiến. Không viết giáo trình dạy kỹ năng."], ["H2", "Chế độ làm việc và phúc lợi thực tế của {Title}", "Trình bày: 1 đoạn mở + danh sách 4 mục gọn + 1 câu chốt so 2 tin cùng lương\nWord count estimate: 165 từ\nCâu mở: Tin tuyển dụng {Title} chủ yếu áp dụng hình thức hợp đồng gọi đúng tên + khung giờ/lịch thứ Bảy phổ biến + khoản phúc lợi tạo chênh lệch lớn nhất\nCâu hỏi cần trả lời (theo thứ tự):\n1. Hình thức hợp đồng, khung giờ và lịch thứ Bảy (hoặc hybrid/remote) của {Title} phổ biến ra sao? → tỷ lệ nghỉ thứ Bảy vs làm sáng thứ Bảy/cách tuần từ thân JD [L1]\n2. Phúc lợi nào gần như mặc định và khoản nào tạo chênh lệch thực nhận? → tách 1 câu mặc định (BHXH, thưởng, đào tạo) và nhấn sâu khoản chênh lệch (lương tháng 13, laptop, phụ cấp, xe đưa đón KCN) [L4]\n3. Khi cân nhắc hai tin {Title} cùng mức lương, ứng viên nên kiểm tra yếu tố nào trước? → 2 khoản chênh lệch đặc thù nhất của nghề [L6]\nInformation gain: bóc tách lịch thứ Bảy ẩn trong JD và ranh giới phúc lợi mặc định vs tạo chênh lệch\nHuman effort: mục 1, mục 3\nContextual phrase: chế độ làm việc {Title}; phúc lợi tuyển dụng; lịch làm thứ Bảy; lương tháng 13; phụ cấp", "Thân mẫu ≥50 JD + benefit_name_vn từ DB listing", "(Trống)", "Chống Boilerplate: không kể dài dòng BHXH/du lịch; bắt buộc nêu ≥2 đặc thù đãi ngộ của chính chức danh đó."], ["H2", "Nhu cầu tuyển dụng {Title} theo tỉnh thành và hình thức làm việc (CORE CONTENT)", "Trình bày: 1 đoạn mở + danh sách 3-4 cụm địa bàn dẫn đầu (thêm nhánh Remote/Hybrid nếu ≥10% tin) + 1 câu hướng dẫn lọc địa giới sau sáp nhập\nWord count estimate: 175 từ\nCâu mở: Nhu cầu tuyển dụng {Title} tập trung cao nhất tại {Location_1} và {Location_2} + cụm tỉnh công nghiệp kế tiếp + đặc thù ngành hàng từng khu vực\nCâu hỏi cần trả lời (theo thứ tự):\n1. Những tỉnh thành nào có lượng tin tuyển {Title} lớn nhất toàn quốc (kèm nhánh Remote nếu có)? → xếp hạng 3-4 địa bàn dẫn đầu từ DB [L1]\n2. Đặc thù ngành hàng doanh nghiệp tuyển {Title} ở từng khu vực khác nhau ra sao? → gắn từng địa bàn với loại hình DN chủ đạo [L4]\n3. Ứng viên ở địa phương đã sáp nhập địa giới nên tra cứu thế nào để không sót tin? → lọc song song tên tỉnh mới và tên cũ (NQ 202/2025/QH15) [L6]\nInformation gain: nối phân bố địa lý thật với cơ cấu ngành hàng từng khu vực và hướng dẫn lọc sau sáp nhập tỉnh\nHuman effort: mục 1\nContextual phrase: việc làm {Title} TPHCM; việc làm {Title} Hà Nội; nhu cầu tuyển dụng {Title}; tìm việc theo tỉnh thành", "location_name từ DB · Số tin thật trên trang con Title × Location (≥5 tin) · NQ 202/2025/QH15", "Khối tương tác: Interactive City Switcher (TP.HCM · Hà Nội · Top tỉnh KCN · Đà Nẵng · Remote) hiện đặc thù ngành hàng + nút xem tin địa phương (bản tĩnh SSR là danh sách 3-4 cụm địa bàn).\nAlt: Phân bố nhu cầu tuyển dụng {Title} tại các tỉnh thành trọng điểm Việt Nam", "Đưa lên Core Content (chỉ ẩn nếu >85% tin dồn vào 1-2 tỉnh).\nXÓA LUẬT ÉP 5 ANCHOR TỈNH CỐ ĐỊNH: mỗi bullet tối đa 1 anchor tới trang Title × Location có ≥5 tin (slug lowercase ASCII); tỉnh khác đẩy xuống Tabbed Hub <aside>."], ["Supplemental", "— SUPPLEMENTAL CONTENT —", "", "", "", "Đường ranh giới tách Core Market Analysis khỏi phần định hướng nghề & FAQ."], ["H2", "Phạm vi công việc thực tế trên tin tuyển và lộ trình phát triển {Title} (Thay 'Công việc {Title} là gì?')", "Trình bày: 1 đoạn 3-4 câu về đầu việc thực tế trên JD (SME vs công ty lớn) + 1 đoạn 2-3 câu về lộ trình dọc/ngang dẫn sang Wiki Career & CareerMap\nWord count estimate: 120 từ\nCâu mở: Trên tin tuyển dụng thực tế, {Title} đảm nhiệm 3-4 nhóm đầu việc cốt lõi xếp theo mức độ lặp lại + khác biệt phạm vi giữa SME và tập đoàn + nấc phát triển kế tiếp\nCâu hỏi cần trả lời (theo thứ tự):\n1. Tin tuyển {Title} thực tế đang giao những đầu việc nào nhiều nhất và thay đổi ra sao theo quy mô công ty? → 3-4 đầu việc lặp lại nhiều nhất trong JD (SME kiêm nhiệm vs tập đoàn chuyên môn hóa) [L4]\n2. Từ {Title}, lộ trình thăng tiến dọc hoặc rẽ nhánh ngang phổ biến đi theo hướng nào? → 1 bước tiến dọc + 1-2 nhánh ngang nối sang Wiki Career và CareerMap [L5]\nInformation gain: đối chiếu đầu việc thật SME vs tập đoàn thay vì định nghĩa giáo khoa\nHuman effort: mục 3\nContextual phrase: mô tả công việc {Title}; đầu việc {Title}; lộ trình phát triển {Title}; CareerMap; Wiki Career", "Mẫu ≥50 JD (mục Mô tả công việc) · careerviet.vn/careermap · bài tương ứng trên Wiki Career", "Sơ đồ: lộ trình 3 nấc ngang SVG (Vị trí tiền đề → {Title} → Bước tiến kế tiếp + nhánh ngang sang chức danh liền kề), đồng bộ màu CareerViet.\nAlt: Sơ đồ lộ trình thăng tiến và chuyển hướng nghề nghiệp vị trí {Title} trên CareerMap", "Chống Cannibalization Wiki Career: cấm cấu trúc '{Title} là người...', cấm chép JD giáo khoa 5-7 gạch.\nContextual Bridge bắt buộc: 1 link ra Wiki Career + 1 link sang CareerMap."], ["H2", "Câu hỏi thường gặp về tuyển dụng {Title}", "Trình bày: 3-4 câu hỏi dạng <details><summary> thuần HTML5 (câu 1 mở sẵn), mỗi câu 40-50 từ, câu đầu trả lời thẳng chứa đủ {Title}", "PAA SERP + mẫu JD + DB listing", "(Trống)", "Không cần gắn FAQPage JSON-LD. Không hỏi lại lương chung, lịch làm hay '{Title} là gì?'."], ["FAQ", "{Title} có {đặc thù thực tế gây do dự nhất trước khi nộp} không?", "Word count estimate: 45 từ\nCâu mở: Có hoặc Không + điều kiện phân tách theo mô hình doanh nghiệp + dẫn chứng đọc từ JD đang mở", "Mẫu JD đúng chức danh (vd Sales Admin: chịu KPI doanh số?; SEO: kiêm content/ads?; Kế toán trưởng: chịu trách nhiệm pháp lý sổ sách cũ?)", "(Trống)", "Giải quyết đúng 1 ma sát tâm lý thật nhất của nghề; không leak số đếm thô kiểu 0/67 tin."], ["FAQ", "(Class A/B1) Chưa có kinh nghiệm có ứng tuyển {Title} được không? HOẶC (Class B2) Chưa có {chứng chỉ / đủ năm quản lý} có nộp {Title} được không?", "Word count estimate: 45 từ\nCâu mở: Được hoặc Khó + phân loại nhóm tin phù hợp (thực tập/Fresher cho A/B1; quy định luật định hoặc lộ trình bước đệm cho B2) + điều kiện bù đắp", "A/B1: tin cấp Thực tập/0 năm KN trong DB. B2: luật hành nghề + tỷ lệ JD yêu cầu ngay lúc nộp", "(Trống)", "Cấm hỏi 'chưa có kinh nghiệm' cho Class B2 (Kế toán trưởng, Trưởng phòng). A/B1 dẫn tới CareerStart nếu phù hợp."], ["FAQ", "Ngoài {Title}, nên tìm thêm tin theo những chức danh nào?", "Word count estimate: 45 từ\nCâu mở: Nên mở rộng sang 2-3 tên gọi chức danh đồng nghĩa hoặc liền kề + khác biệt phạm vi để không bỏ sót tin đúng việc", "Biến thể job_title + các URL -k liền kề có >20 tin thật (slug ASCII)", "(Trống)", "Giải quyết hiện tượng mỗi DN đặt 1 tên (Sales Admin / Sales Support, Kế toán trưởng / Chief Accountant)."], ["FAQ", "(Tùy chọn khi ≥35% tin ghi Cạnh tranh) Nên xử lý thế nào khi nhiều tin {Title} ghi lương 'Cạnh tranh'?", "Word count estimate: 45 từ\nCâu mở: Nên đối chiếu nhóm tin công khai lương và mặt bằng VietnamSalary trước + cách đặt khung kỳ vọng rõ khi nộp hồ sơ hoặc phỏng vấn", "Tỷ trọng tin Cạnh tranh trong DB + VietnamSalary", "(Trống)", "Không lặp lại con số lương đã nêu ở H2-2."], ["Khối", "Hộp :::cta Hành động & Lưu ý an toàn (Bỏ Outro lặp)", "Trình bày: 1 đoạn hành động 2 câu + hộp :::cta 2 nút + 1 dòng lưu ý an toàn có điều kiện\nWord count estimate: 60 từ\nCâu mở: Lọc trực tiếp tin {Title} phía trên theo khu vực và mức lương + chuẩn hóa hồ sơ trên CVHay + đo độ khớp JD bằng AI Matching trước khi nộp", "Hệ sinh thái CVHay, AI Matching", "(Khối UI :::cta 2 nút)", "Bỏ hoàn toàn H2 '4 bước' & H2 'Vì sao chọn CareerViet'. Lưu ý có điều kiện: Entry-level → không thu phí/đặt cọc; Senior → xác minh pháp nhân/quy mô bộ máy."], ["Khối", "Tabbed Navigation Hub (<aside> SSR ngoài prose)", "Trình bày: 4 tab trong <aside> render sẵn <a> (chỉ URL ≥5 tin, slug lowercase ASCII): Tab 1 Tỉnh/Thành (Title × Location) · Tab 2 Chức danh liên quan · Tab 3 Ngành cha (-c{X}) & Cấp bậc · Tab 4 Cẩm nang Wiki Career, CVHay, CareerMap\nWord count estimate: 0 từ prose", "Truy vấn DB lọc job_count >= 5, cấm URL 0 tin và URL Unicode", "Khối tương tác: thanh 4 tab điều hướng SSR HTML gọn dưới chân bài.", "Thay thế hoàn toàn khối Xem thêm bị lệch ngành (như 5 link Nhân sự đang bám trên sales-admin-k)."], ["Khối", "Min-Data Tier Fallback Matrix (Theo exact_job_count)", "Tier 1 (≥50 tin đúng chức danh & ≥3 tỉnh): Đủ 7 H2 (~1.100-1.300 từ).\nTier 2 (15-49 tin đúng chức danh): Rút còn ~650-800 từ (Intro + H2-1 + H2-2 + H2-4 + H2-7 gọn + 2 FAQ + CTA + <aside>; bỏ H2-3 và bỏ H2-6 nếu <3 tỉnh có tin).\nTier 3 (<15 tin đúng chức danh): Micro-brief 300-400 từ (Intro + Phạm vi & yêu cầu + điều hướng lên -c{X} và -k lớn hơn). 0-3 tin kéo dài >30 ngày → gắn cờ xét noindex hoặc 301 về trang ngành cha.", "exact_job_count (cấm dùng tổng job_count nhiễu!) · số tỉnh ≥3 tin · trạng thái VietnamSalary", "(Trống)", "Chặn tuyệt đối lỗi viết 1.400 từ trên trang -k có 100 tin nhưng chỉ 5 tin đúng chức danh (như seo-k hiện tại)."]]}, "title_loc": {"id": "title_loc", "title": "Template v2 — Việc làm {Title} tại {Location}", "subtitle": "Local-Role Intersection Hub (-c{X}l{Y} / -kl{Y}) · Ví dụ: Marketing TP.HCM, Kế toán Hà Nội, Video Editor Đà Nẵng", "orig_url": "", "tiers": [["Tier 1 · n_clean ≥50 & SV ≥500", "1.050–1.300 từ · Đủ khung, Local Salary Delta, tách 2 H3 Yêu cầu & Chế độ, sơ đồ 2–4 cụm địa bàn"], ["Tier 2 · n_clean 15–49 & SV ≥100", "650–900 từ · Gộp H2-4 Yêu cầu & Chế độ, CẤM dùng %, bảng DN 3–4 hàng, bỏ sơ đồ địa giới"], ["Tier 3 · n_clean 5–14 & SV ≥100", "280–400 từ · Bản tối giản (2 H2 ngắn + CTA + Tabbed Hub; bỏ bảng DN, biểu đồ, FAQ)"], ["Tier 4 · n_clean <5 (hoặc SV <50)", "0 từ SEO · noindex, follow (giữ grace period 60 ngày cho URL Tier 2 đã có hạng nếu tụt mùa vụ)"]], "changes": [["Kiến trúc giao điểm chống cannibalize 2 trang cha", "Chỉ giữ thuộc tính thay đổi đồng thời theo cả {Title} và {Location} (cơ cấu DN địa phương, Local Salary Delta vs VietnamSalary, độ lệch công cụ/ngoại ngữ, 2–4 cụm địa bàn nghề)."], ["Khóa cổng QDP bằng n_clean (lọc nhiễu search)", "Trên kl8 live (Kế toán trưởng TP.HCM), 1/3 trang 1 bị rò tin Key Account Manager (Bán hàng). Mọi số liệu & cổng Tier bắt buộc chạy trên n_clean."], ["Xóa sạch định nghĩa giáo khoa & boilerplate của live c2l8/kl8", "Bỏ 7 định nghĩa vị trí kế toán của c2l8, bỏ chép Điều 53–54 Luật Kế toán của kl8, bỏ H2 4 bước, bỏ H2 Vì sao chọn CareerViet, bỏ Outro lặp."], ["Đặt H2 Mức lương TRƯỚC H2 Doanh nghiệp + SSR động", "Đối chiếu trực tiếp tin mở tại {Location} với VietnamSalary toàn quốc (xóa lỗi bảng lương kl8 tự mâu thuẫn với thẻ tin live), dùng module SSR động cho DN trả cao."], ["Cấm dùng % khi n_clean <50 & sửa lỗi RAG Chunk", "Chặn lỗi 1 tin đóng làm lệch 5–10%; bỏ đại từ 'ở đây', 'nhóm điều kiện thứ ba' và mốc tương đối '16 ngày tới'."], ["Tabbed Hub 4 chiều & Tắt auto-linker", "Thay thế auto-linker đang bơm link sang Khánh Hòa/An Giang/Gia Lai/Lâm Đồng trên kl8 và cắt [quận 1]0 trên c2l8."]], "rows": [["H1", "Tuyển dụng {Title} tại {Location} (CMS H1 live đầu trang; khối SEO bắt đầu từ Intro và H2)", "Information gain (cả bài): Bốn lớp dữ kiện chỉ tồn tại tại giao điểm {Title} × {Location} mà cả Top 5 SERP lẫn 2 trang cha Title và Location đều không có: (1) cơ cấu cầu theo biến thể vị trí/loại hình DN riêng tại {Location}; (2) nhóm doanh nghiệp đang tuyển {Title} trả cao kèm khu vực và loại hình tại {Location}; (3) đối chiếu chênh lệch lương tin đang mở tại {Location} với mặt bằng toàn quốc VietnamSalary kèm lý do lệch; (4) độ lệch công cụ/ngoại ngữ/lịch làm việc đọc từ JD sạch và 2-4 cụm địa bàn riêng của nghề {Title} kèm quy đổi phường mới sau 1/7/2025.\nData point riêng (≥3): cơ cấu cầu n_clean tại {Location} · chênh lệch lương tin đăng {Location} vs VietnamSalary · tần suất công cụ/ngoại ngữ/lịch thứ Bảy từ 20-40 JD sạch tại {Location} · 2-4 cụm địa bàn nghề sau 1/7/2025.\nHuman effort (cả bài):\n1. Toàn bộ tin {Title} tại {Location} chạy bộ lọc làm sạch n_clean (loại tin lệch chức danh như Key Account Manager) — script jobs.js/clean.js — dùng ở Intro, H2-1, H2-2, H2-3, H3-4.2 — Đã có\n2. Số liệu lương toàn quốc (và địa phương nếu có) của {Title} — VietnamSalary — dùng ở H2-2 — Đã có\n3. Mẫu 20-40 JD sạch tại {Location} (công cụ, ngoại ngữ, lịch thứ Bảy ẩn, hybrid/remote, địa chỉ làm việc) — script jd.js — dùng ở H2-1, H3-4.1, H3-4.2, H2-5, FAQ — Cần xin / crawl ngày viết\n4. Bản gốc nghị quyết sắp xếp đơn vị hành chính cấp xã của {Location} (chỉ trích 2-4 cụm có tin {Title}) — tra chinhphu.vn — dùng ở H2-5 — Cần xin\n5. Module SSR động doanh nghiệp tuyển nhiều/lương cao & dữ liệu 4 tab điều hướng — team SEO/Dev — dùng ở H2-3, Tabbed Hub — Đã có\nE-E-A-T:\nExperience: phân tích trực tiếp từ tập tin sạch n_clean đang mở tại {Location}, gắn rõ cỡ mẫu và ngày crawl {ngay_crawl}.\nExpertise: đội nội dung CareerViet biên soạn theo cấu trúc tách biệt giao điểm, SEO phụ trách URL duyệt tập n_clean.\nAuthoritativeness: VietnamSalary cho mốc tham chiếu toàn quốc; văn bản gốc trên chinhphu.vn cho quy đổi phường mới.\nTrust: tách biến động và ngày crawl tĩnh, cấm dùng % khi n_clean <50, không bịa số liệu.", "URL canonical -c{X}l{Y} (ngành rộng) hoặc -kl{Y} (chức danh hẹp) đã lọc sạch n_clean ngày {ngay_crawl} · VietnamSalary · 20-40 JD sạch chi tiết · Nghị quyết địa giới trên chinhphu.vn", "(Không dựng ảnh Hero trang trí đáy trang; đầu trang có thanh Nhịp thị trường giao điểm 64px)", "Cổng QDP theo n_clean: Tier 1 (≥50, SV ≥500): 1.050-1.300 từ · Tier 2 (15-49, SV ≥100): 650-900 từ (cấm %) · Tier 3 (5-14, SV ≥100): 280-400 từ · Tier 4 (<5): 0 từ, noindex, follow.\nURL Rule: -c{X}l{Y} canonical ngành rộng; -kl{Y} chỉ dùng chức danh hẹp; trùng ≥6/10 SERP chỉ index 1 URL.\nPredicate trục: tập trung, chênh lệch lương, ưu tiên công cụ, phân bố theo cụm địa bàn.\nChunk Independence: câu mở mọi H2/H3 chứa đủ {Title} và {Location}; cấm 'ở đây', 'nhóm thứ ba', '16 ngày tới'."], ["Intro", "(Sapo :::sapo)", "Trình bày: 1 khối :::sapo 2-3 câu gọn (không viết câu mục lục bài blog)\nWord count estimate: 60 từ\nCâu mở: Tuyển dụng {Title} tại {Location} trên CareerViet ghi nhận {job_count} tin cập nhật {updated_month} + nhóm vị trí hoặc loại hình DN tuyển chủ lực + dải lương phổ biến so với mặt bằng toàn quốc\nCâu hỏi cần trả lời (theo thứ tự):\n1. Tại {Location} đang có bao nhiêu tin tuyển {Title} và nhóm vị trí/loại hình DN nào chiếm chủ lực? → {job_count} tin cập nhật {updated_month} (ghi rõ tin sạch nếu cần) + tên nhóm chủ lực [L1]\n2. Mức lương trên tin đăng tại {Location} đang cao hơn hay ngang bằng mặt bằng toàn quốc? → 1 dải lương tổng từ H2-2 kèm chiều so sánh [L1]", "Đồng bộ từ H2-1, H2-2 và tập tin sạch n_clean", "(Đầu trang có thanh Nhịp thị trường giao điểm: n_clean · biên độ lương + delta % · 2-3 chip công cụ bấm lọc · 2 chip cụm địa bàn)", "Mở bằng keyword chính; cấm định nghĩa {Title}, cấm bối cảnh kinh tế chung của {Location}, cấm tự link về chính URL hiện tại, cấm viết chữ 'tháng' trước {updated_month}."], ["H2", "Nhu cầu tuyển dụng {Title} tại {Location} tập trung ở nhóm nào?", "Trình bày: Archetype A (Tier 1): 1 đoạn mở + bảng 2 cột × 4-6 hàng (Nhóm vị trí | Ngành hàng & cấp bậc tại {Location}) + 1 câu chốt. Archetype B / Tier 2: 1 đoạn mở + danh sách 3-4 loại hình DN địa phương (~140 từ)\nWord count estimate: 190 từ (Tier 1) · 140 từ (Tier 2)\nCâu mở: Nhu cầu tuyển dụng {Title} tại {Location} tập trung mạnh nhất ở {Nhom_1} và {Nhom_2} + đặc thù ngành hàng hoặc loại hình doanh nghiệp địa phương tạo ra cơ cấu này\nCâu hỏi cần trả lời (theo thứ tự):\n1. Nhóm biến thể vị trí (Archetype A) hoặc loại hình DN FDI/Tập đoàn/SME/Agency (Archetype B) nào đang tuyển {Title} nhiều nhất tại {Location}? → xếp giảm dần theo n_clean [L1]\n2. Đặc thù ngành hàng tại {Location} kéo cơ cấu tuyển dụng của từng nhóm đi theo hướng nào? → gắn đúng ngành hàng/cấp bậc tại {Location} [L2][L4]\n3. Nhóm nào mở cửa cho người 1-2 năm kinh nghiệm và nhóm nào tập trung cấp quản lý tại {Location}? → gọi đích danh tên nhóm ở câu chốt [L5]\nInformation gain: phân rã cơ cấu cầu riêng tại {Location} theo tập tin sạch, làm rõ độ lệch ngành hàng so với tỉnh khác\nHuman effort: mục 1, mục 3\nContextual phrase: nhu cầu tuyển dụng {Title} tại {Location}; nhóm vị trí {Title}; doanh nghiệp tại {Location}; cấp bậc tuyển dụng", "job_title, job_industry, emp_name từ tập tin sạch n_clean (không in số tin tĩnh từng nhóm ra văn xuôi)", "(Trống)", "CẤM TUYỆT ĐỐI định nghĩa nghề (xóa lỗi 7 định nghĩa giáo khoa của c2l8 live!). Không nêu tên DN cụ thể (H2-3), không nêu số lương (H2-2). Tối đa 1-2 link dọc sang trang Title × Location con có tin thật."], ["H2", "Mức lương {Title} tại {Location} so với mặt bằng chung (Đặt TRƯỚC H2 Doanh nghiệp)", "Trình bày: 1 đoạn mở + bảng 3 cột (Phân khúc / Cấp bậc | Tin đang đăng tại {Location} | Mặt bằng toàn quốc VietnamSalary, 4-6 hàng Tier 1 / 3-4 hàng Tier 2) + dòng ghi chú nguồn + 1 câu chốt giải thích chênh lệch + CTA VietnamSalary\nWord count estimate: 210 từ (Tier 1) · 155 từ (Tier 2)\nCâu mở: Mức lương {Title} trên tin đăng tại {Location} dao động từ {local_min} đến {local_max} triệu đồng + so sánh trực tiếp cao hơn hay ngang bằng mặt bằng toàn quốc VietnamSalary\nCâu hỏi cần trả lời (theo thứ tự):\n1. Mức lương {Title} trên tin đang đăng tại {Location} ở từng phân khúc vị trí/cấp bậc hoặc quy mô DN là bao nhiêu? → cột 2 từ tin sạch công khai lương [L1]\n2. So với khảo sát toàn quốc VietnamSalary, thu nhập tại {Location} chênh lệch bao nhiêu và vì sao? → cột 3 + giải thích nguyên nhân (mốc KN tối thiểu, phụ cấp FDI/ngoại ngữ, hoa hồng/KPI, tỷ lệ công khai lương) [L2][L5]\n3. Nhóm tin ghi 'Cạnh tranh' hoặc tiêu đề tiếng Anh tại {Location} khác gì nhóm công khai số? → 1 câu thực chứng từ tin sạch [L4]\nInformation gain: đối chiếu song song tin đang mở tại {Location} với mặt bằng toàn quốc VietnamSalary và lý giải nguyên nhân lệch — xóa triệt để lỗi mâu thuẫn dữ liệu trên kl8 live\nHuman effort: mục 1, mục 2\nContextual phrase: mức lương {Title} tại {Location}; mặt bằng lương toàn quốc; tin công khai lương; lương theo kinh nghiệm; VietnamSalary", "Cột 2: job_from_salary, job_to_salary từ n_clean ngày {ngay_crawl}. Cột 3: VietnamSalary ({updated_date}). Nếu nghề ngách chưa có trên VietnamSalary (vd Video Editor) → rút bảng 2 cột từ tin đăng tại {Location}.", "Infographic: biểu đồ thanh phạm vi song song HTML/SVG (Local Salary Delta) đặt dải lương {Location} cạnh mặt bằng toàn quốc theo từng phân khúc (chỉ Tier 1; Tier 2 bỏ nếu ít tầng dữ liệu).\nAlt: Biểu đồ so sánh mức lương {Title} tại {Location} với mặt bằng toàn quốc theo từng phân khúc, triệu đồng/tháng", "Vượt trần: 210 từ do bảng 3 cột + dòng nguồn bắt buộc (O8).\nArchetype A: hàng theo 4-6 chuyên môn con. Archetype B: hàng theo 3-4 cấp KN hoặc quy mô DN (SME / Chuỗi / FDI).\nTier 2 (n_clean <50): cấm dùng %; bỏ lương tối thiểu vùng NĐ 293 (thuộc Location)."], ["H2", "Nhóm doanh nghiệp đang tuyển {Title} lương cao tại {Location}", "Trình bày: 1 đoạn mở + Module SSR động bảng lọc 4 cột (Doanh nghiệp | Loại hình & Khu vực | Vị trí & Cấp bậc | Mức lương) × 5-8 hàng (Tier 1) hoặc 3-4 hàng (Tier 2) + 1 câu chốt điểm chung nhóm trả cao\nWord count estimate: 165 từ (chỉ tính phần văn xuôi; bảng kết xuất động từ DB)\nCâu mở: Nhóm doanh nghiệp đang tuyển {Title} trả vượt mặt bằng tại {Location} tập trung ở khối FDI, tập đoàn hoặc đơn vị quy mô lớn + mức trần ghi nhận trên tin sống + điểm chung về phạm vi phụ trách\nCâu hỏi cần trả lời (theo thứ tự):\n1. Những doanh nghiệp nào tại {Location} đang mở tin {Title} công khai mức lương cao còn hiệu lực? → Module SSR động 4 cột xếp theo lương giảm dần, tự ẩn tin hết hạn [L1][L3]\n2. Nhóm doanh nghiệp trả cao tại {Location} có điểm chung gì về loại hình (FDI/nội địa), khu vực và yêu cầu đầu vào? → 1-2 câu tổng hợp từ JD nhóm top lương [L2]\nInformation gain: danh sách doanh nghiệp đang mở tin {Title} công khai lương cao kèm loại hình & khu vực làm việc tại đúng {Location}\nHuman effort: mục 1, mục 3, mục 5\nContextual phrase: công ty tuyển {Title} tại {Location}; doanh nghiệp trả lương cao; mức lương ghi trên tin; khối FDI tại {Location}", "Module SSR động từ DB: exact_title = true AND location = {Location} AND salary_disclosed = true AND expire_date >= TODAY (mỗi DN 1 tin cao nhất). Chế độ chuyển tiếp: bảng 4 cột crawl ngày {ngay_crawl} kèm dòng Lưu ý ghi ngày crawl tĩnh.", "Khối tương tác: bảng lọc SSR doanh nghiệp tuyển {Title} tại {Location} với 3 nút lọc gọn (Cụm khu vực · Mức lương tối thiểu · FDI/Nội địa).\nAlt: Bảng doanh nghiệp đang tuyển {Title} lương cao tại {Location} kèm loại hình và khu vực", "Tùy chọn H3 khối logo (chỉ Tier 1 khi ≥6 DN mở ≥2 tin sạch): nếu dựng H3 bắt buộc thêm 1 câu dẫn 20-25 từ (không để H3 rỗng 0 từ) và không thêm chữ 'tháng' trước {updated_month}. Nếu <3 tin công khai lương → đổi cột 4 sang Điểm nổi bật chế độ và bỏ chữ 'lương cao'."], ["H2", "Yêu cầu và chế độ làm việc của {Title} tại {Location}", "Trình bày: Tier 1: 1 đoạn mở 45 từ dẫn xuống 2 H3. Tier 2: bỏ 2 H3, gộp thành 1 H2 duy nhất ~175 từ gồm 3 bullet (Công cụ & kinh nghiệm · Ngoại ngữ/đặc thù · Lịch làm & phúc lợi)\nWord count estimate: 45 từ (Tier 1) · 175 từ (Tier 2 gộp)\nCâu mở: Doanh nghiệp tuyển {Title} tại {Location} đặt yêu cầu thực chiến về {Cong_cu_hoac_KN} lên trước + chế độ đồng nhất về hợp đồng nhưng chênh lệch rõ ở {Khoan_khac_biet}\nCâu hỏi cần trả lời (theo thứ tự):\n1. Hai rào cản lọc hồ sơ và hai yếu tố đãi ngộ cần kiểm tra trước tiên khi ứng tuyển {Title} tại {Location} là gì? → tóm gọn từ JD sạch [L1]\n2. Chuyển xuống 2 H3 (Tier 1): tách riêng yêu cầu công cụ/kinh nghiệm/ngoại ngữ và lịch làm việc/phúc lợi tạo chênh lệch", "Tổng hợp từ H3-4.1 và H3-4.2", "(Đặt ở H3-4.1)", "Không giảng giải lý thuyết công cụ/kỹ năng là gì. Tier 2 cấm dùng %."], ["H3", "(Chỉ Tier 1) Công cụ, kinh nghiệm và ngoại ngữ doanh nghiệp tại {Location} ưu tiên", "Trình bày: 1 câu mở + danh sách 3 mục (Công cụ và phần mềm · Kinh nghiệm và học vấn · Ngoại ngữ và chứng chỉ) + 1 câu chốt\nWord count estimate: 145 từ\nCâu mở: Tin tuyển {Title} tại {Location} ưu tiên ứng viên thành thạo {Cong_cu_1} và {Cong_cu_2} + mốc kinh nghiệm phổ biến {so_nam} năm + ngoại ngữ gắn với khối doanh nghiệp địa phương\nCâu hỏi cần trả lời (theo thứ tự):\n1. Công cụ, phần mềm nào xuất hiện dày nhất trong JD {Title} tại {Location}? → nêu đúng tên và hệ số/tần suất kèm cỡ mẫu & ngày crawl (vd MISA gấp ~4× FAST ở TP.HCM) [L1][L4]\n2. Mốc kinh nghiệm và học vấn tại {Location} có linh hoạt cho người ít kinh nghiệm/Cao đẳng không? → dữ kiện thật từ JD sạch [L1]\n3. Ngoại ngữ hay chứng chỉ nào tạo lợi thế tăng lương nhanh nhất tại {Location}? → gắn cơ cấu DN địa phương (Anh CBD/FDI; Nhật/Hàn/Trung KCN) [L6]", "job_experience + phần Yêu cầu của 20-40 JD sạch tại {Location} (mục 3)", "Khối tương tác: biểu đồ thanh ngang HTML/SVG 4-6 công cụ & ngoại ngữ xuất hiện nhiều nhất trong JD {Title} tại {Location}, bấm thanh cuộn lên lọc tin tương ứng (SSR tĩnh kèm cỡ mẫu & ngày crawl).\nAlt: Biểu đồ công cụ, phần mềm và ngoại ngữ được yêu cầu nhiều nhất trong tin {Title} tại {Location}", "Chống lặp trang cha Title: chỉ nhấn mạnh độ lệch địa phương.\nChunk Independence: cấm viết 'Nhóm điều kiện thứ ba...'; gọi đích danh tên công cụ/ngoại ngữ + {Title} tại {Location}."], ["H3", "(Chỉ Tier 1) Lịch làm việc và phúc lợi tạo chênh lệch cho {Title} tại {Location}", "Trình bày: 1 câu mở + danh sách 3 mục (Hình thức & lịch làm · Phúc lợi mặc định · Khoản tạo chênh lệch) + 1 câu chốt\nWord count estimate: 125 từ\nCâu mở: Phần lớn tin tuyển {Title} tại {Location} áp dụng hợp đồng chính thức giờ hành chính {gio_lam} + chênh lệch thực nhận nằm ở lịch thứ Bảy, chế độ hybrid và phụ cấp đặc thù\nCâu hỏi cần trả lời (theo thứ tự):\n1. Khung giờ phổ biến, lịch thứ Bảy ẩn trong mô tả và tùy chọn hybrid/remote của {Title} tại {Location} ra sao? → đọc workHours + thân mô tả JD [L1]\n2. Phúc lợi nào mặc định và khoản nào tạo chênh lệch rõ giữa 2 tin cùng lương tại {Location}? → tách BHXH/thưởng/đào tạo vs laptop, phụ cấp, xe đưa đón KCN, thưởng dự án [L4]", "workHours, thân JD và benefit_name_vn từ n_clean (mục 3)", "(Trống)", "Không suy diễn ngày nghỉ cuối tuần chỉ từ workHours; phải kiểm thân JD."], ["Supplemental", "— SUPPLEMENTAL CONTENT —", "", "", "", "Ranh giới Main (~72%) / Supplemental (~28%)."], ["H2", "Khu vực tập trung nhiều việc làm {Title} tại {Location}", "Trình bày: Tier 1: 1 đoạn mở + danh sách 2-4 cụm địa bàn nghề + 1 câu hướng dẫn lọc địa giới sau 1/7/2025 & nới phạm vi (~175 từ). Tier 2: 1 đoạn tổng hợp 90-100 từ nêu 1-2 cụm chính + mở rộng sang tin remote/tỉnh lớn\nWord count estimate: 175 từ (Tier 1) · 95 từ (Tier 2)\nCâu mở: Việc làm {Title} tại {Location} tập trung theo {so_cum} cụm địa bàn gắn với loại hình doanh nghiệp + áp dụng tên phường mới từ 1/7/2025 song song tên quận cũ\nCâu hỏi cần trả lời (theo thứ tự):\n1. Nghề {Title} tại {Location} tập trung ở những cụm địa bàn nào và mỗi cụm đặc trưng cho loại hình công việc gì? → 2-4 cụm (CBD, FDI, creative/agency, vành đai KCN) kèm phường mới và quận cũ [L1][L4]\n2. Ứng viên gõ địa chỉ thế nào để không sót tin sau 1/7/2025 và nên mở rộng đi đâu khi ít tin? → gõ song song phường mới/quận cũ + 1-2 tỉnh giáp ranh có tin thật hoặc lọc remote [L5][L6]\nInformation gain: gom địa bàn theo chính hệ sinh thái doanh nghiệp của nghề {Title} thay vì xếp hạng quận đa ngành chung chung\nHuman effort: mục 3, mục 4\nContextual phrase: khu vực việc làm {Title} tại {Location}; phường mới {Location}; cụm khu công nghiệp; tìm việc {Title} lân cận", "Địa chỉ làm việc trên 20-40 JD sạch + nghị quyết địa giới gốc trên chinhphu.vn (chỉ trích phường thuộc 2-4 cụm có tin {Title}) + kiểm thẻ title tỉnh lân cận (n_clean ≥ 5)", "Khối tương tác / Sơ đồ (chỉ Tier 1): chip 2-4 cụm địa bàn gắn nghề {Title} kèm bảng tra nhanh Phường mới từ 1/7/2025 ↔ Quận/huyện cũ chỉ của các cụm đó.\nAlt: Bản đồ {so_cum} cụm khu vực tập trung việc làm {Title} tại {Location} kèm quy đổi phường mới từ 1/7/2025", "Khác biệt với Location H2-5: chỉ đi vào cụm nơi chính {Title} tập trung.\nLink nội bộ: 1 link lên trang cha Việc làm {Location} + 1-2 link sang {Title} ở tỉnh lân cận có n_clean ≥ 5; cấm nhồi 5 tỉnh rỗng."], ["H2", "Câu hỏi thường gặp về việc làm {Title} tại {Location}", "Trình bày: 3 câu hỏi (Tier 1) hoặc 2 câu (Tier 2) dạng <details><summary> thuần HTML5 (câu 1 mở sẵn), mỗi câu 35-45 từ, câu đầu trả lời thẳng chứa đủ {Title} và {Location}", "Tổng hợp từ các hàng FAQ bên dưới", "(Trống)", "Bắt buộc mang tính giao điểm {Title} × {Location}. Không gắn FAQPage JSON-LD. Cấm hỏi câu vĩ mô kiểu 'AI có thay thế nghề X không?' hoặc lặp thân bài."], ["FAQ", "Chưa có kinh nghiệm có xin được việc {Title} tại {Location} không? (Senior đổi sang điều kiện chứng chỉ/thâm niên quản lý)", "Word count estimate: 40 từ\nCâu mở: Được hoặc Khó + thực tế cửa vào đọc từ tập tin sạch {Title} tại {Location} + nhóm phần hành hoặc loại hình doanh nghiệp nên nộp trước", "job_experience trên tập n_clean tại {Location}", "(Trống)", "Trả lời thẳng Được, / Khó, kèm điều kiện thật tại {Location}."], ["FAQ", "Tin tuyển {Title} tại {Location} có {đặc thù giao điểm: remote/hybrid · chứng chỉ · ca/KCN · agency vs in-house} không?", "Word count estimate: 40 từ\nCâu mở: Có hoặc Ít + phân loại nhóm doanh nghiệp tại {Location} áp dụng đặc thù đó + dữ kiện đọc từ JD sạch", "Mẫu 20-40 JD sạch tại {Location} (mục 3)", "(Trống)", "Chọn đúng 1 thắc mắc sát nhất với giao điểm (vd Video Editor Đà Nẵng: remote/portfolio; Marketing TP.HCM: in-house vs agency; Kế toán trưởng TP.HCM: SME có ép chứng chỉ ngay khi nộp?)."], ["FAQ", "(Chỉ Tier 1) Nếu ít tin {Title} tại {Location} khớp hồ sơ, nên mở rộng theo hướng nào?", "Word count estimate: 40 từ\nCâu mở: Nên mở rộng đồng thời theo 2 hướng + 2-3 chức danh liền kề tại {Location} + tỉnh lân cận hoặc tùy chọn làm việc từ xa có tin thật", "Chức danh liền kề có tin tại {Location} & tỉnh giáp ranh n_clean ≥ 5", "(Trống)", "Cầu nối tự nhiên sang Tabbed Hub 4 chiều bên dưới."], ["Khối", "Hộp :::cta Hành động (Bỏ Outro lặp & H2 4 bước)", "Trình bày: 1 đoạn chốt hành động 2 câu + hộp :::cta 2 nút + 1 dòng lưu ý an toàn có điều kiện\nWord count estimate: 50 từ\nCâu mở: Lọc trực tiếp {job_count} tin {Title} tại {Location} cập nhật {updated_month} theo mức lương và cụm khu vực + chuẩn hóa CV trên CVHay + đối chiếu JD bằng AI Matching", "{job_count}, {updated_month}", "(Khối UI :::cta 2 nút)", "Xóa hoàn toàn H2 4 bước, H2 Vì sao chọn CareerViet và Outro tóm tắt lặp. Dùng 'có thể / nên', cấm 'hãy', cấm chữ 'tháng' trước {updated_month}."], ["Khối", "Tabbed Navigation Hub 4 chiều (<nav> SSR ngoài prose)", "Trình bày: 4 tab SSR render sẵn <a> (chỉ URL n_clean ≥ 5, slug lowercase ASCII):\n• Tab 1 (Lên 2 cha): Tuyển dụng {Title} · Việc làm {Location} · Lương {Title} VietnamSalary\n• Tab 2 (Cùng nghề tỉnh khác): 4-6 URL {Title} tại tỉnh có n_clean ≥ 5\n• Tab 3 (Nghề liền kề tại {Location}): 5-8 URL cùng tỉnh\n• Tab 4 (Khu vực & Bộ lọc): cụm quận/phường chuẩn -lq/facet · không cần kinh nghiệm · remote\nWord count estimate: 0 từ prose", "Kiểm DB từng URL đích n_clean ≥ 5, 100% slug lowercase ASCII", "Khối tương tác: cụm 4 tab điều hướng SSR HTML thay thế hoàn toàn auto-linker và đoạn nhồi 5 tỉnh gượng ép.", "Khóa chặt 3 chiều đồ thị liên kết (Up → Parents · Across → Geo/Role Siblings · Down → Valid Facets)."], ["Khối", "Bản tối giản Tier 3 (5–14 tin) & Cổng chặn Tier 4 (<5 tin)", "Tier 3 (n_clean = 5-14, SV ≥100 · 280-400 từ): Chỉ gồm (1) :::sapo 55 từ · (2) 1 H2 'Tình hình tuyển dụng và yêu cầu {Title} tại {Location}' (~130 từ: 2-3 vị trí/DN thực tế, công cụ chính, lịch làm; cấm %, cấm bảng DN) · (3) 1 H2 'Mức lương tham khảo và hướng mở rộng tìm việc' (~110 từ: dải lương nếu ≥3 tin công khai số hoặc VietnamSalary + dẫn lên 2 trang cha và tin remote) · (4) :::cta + Tabbed Hub. Bỏ bảng DN, biểu đồ, sơ đồ địa giới, FAQ.\nTier 4 (n_clean < 5): 0 từ nội dung SEO + noindex, follow + banner gợi ý mở rộng sang trang cha Title và Location (giữ grace period 60 ngày cho URL Tier 2 đã có hạng).", "n_clean ngày {ngay_crawl} + SV Ahrefs/GSC", "(Trống ở Tier 3-4)", "Chặn triệt để việc ép 1.300 từ trên trang tỉnh nhỏ có 8-12 tin."]]}}}</script>
+<script>
+(function() {
+  const DATA = JSON.parse(document.getElementById("app-data").textContent);
+
+  function esc(s) {
+    return String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function showToast(msg) {
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.classList.remove("show"), 2600);
+  }
+
+  // 1. TAB NAVIGATION + URL HASH
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+  function activateTab(id) {
+    let matched = false;
+    tabBtns.forEach(b => {
+      const on = b.dataset.tab === id;
+      b.classList.toggle("active", on);
+      if (on) matched = true;
+    });
+    if (!matched) id = "overview";
+    tabPanels.forEach(p => p.classList.toggle("active", p.id === "tab-" + id));
+    if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+  tabBtns.forEach(b => b.addEventListener("click", () => activateTab(b.dataset.tab)));
+  const initHash = location.hash.replace("#", "");
+  if (initHash) activateTab(initHash);
+
+  // 2. RENDER LIVE AUDIT TABLE
+  const liveTbody = document.querySelector("#live-audit-tbl tbody");
+  DATA.liveUrls.forEach(u => {
+    const tr = document.createElement("tr");
+    const sizeCls = u.total_mb > 2 ? "bad" : "good";
+    tr.innerHTML = `
+      <td><strong>${esc(u.group)}</strong><br><span class="mono" style="font-size:11.5px;color:#64748B">${esc(u.code)}</span></td>
+      <td class="${sizeCls}">${u.total_mb.toFixed(2)} MB<br><span style="font-size:11px;font-weight:500;color:#64748B">DOM ${u.dom_kb} KB</span></td>
+      <td><span class="${u.embed_kb > 0 ? "bad" : "good"}">${u.embed_kb} KB</span> / <span class="warn-t">${u.i18n_kb} KB</span></td>
+      <td>${u.jobs_ssr} job<br><span style="color:#64748B">${u.seo_words.toLocaleString("vi-VN")} từ</span></td>
+      <td><span class="${u.h1_ok ? "good" : "bad"}">${u.h1_ok ? "✓" : "✕"}</span> ${esc(u.h1)}</td>
+      <td><span class="${u.h2_card > 0 ? "bad" : "good"}">${u.h2_card}</span>/${u.h2_seo} · ${u.h3_co}</td>
+      <td class="${u.time_dt === 0 ? "bad" : "good"}">${u.time_total} (${u.time_dt})</td>
+      <td><span class="bad">${u.unicode_links}</span> / <span class="warn-t">${u.no_href}</span></td>
+      <td style="max-width:260px">${esc(u.bugs)}</td>
+    `;
+    liveTbody.appendChild(tr);
+  });
+
+  // 3. RENDER DEV BACKLOG + FILTER
+  const backlogTbody = document.querySelector("#backlog-tbl tbody");
+  function renderBacklog(pri) {
+    backlogTbody.innerHTML = "";
+    DATA.devBacklog.filter(x => pri === "ALL" || x.pri === pri).forEach(x => {
+      const tr = document.createElement("tr");
+      const pCls = x.pri === "P0" ? "pill-p0" : (x.pri === "P1" ? "pill-p1" : "pill-p2");
+      tr.innerHTML = `
+        <td><span class="pill ${pCls}">${esc(x.id)}</span></td>
+        <td style="font-weight:600;color:#182642">${esc(x.owner)}</td>
+        <td><strong>${esc(x.title)}</strong><div style="margin-top:4px;color:#475569;font-size:12.5px">${esc(x.root)}</div></td>
+        <td>${esc(x.action)}</td>
+        <td style="color:#065F46;font-size:12.5px">${esc(x.dod)}</td>
+      `;
+      backlogTbody.appendChild(tr);
+    });
+  }
+  renderBacklog("ALL");
+  document.querySelectorAll("[data-pri]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-pri]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderBacklog(btn.dataset.pri);
+    });
+  });
+
+  // Copy HTML5 blueprint
+  document.getElementById("copy-html-btn").addEventListener("click", () => {
+    navigator.clipboard.writeText(document.getElementById("html-blueprint-code").textContent)
+      .then(() => showToast("Đã chép khung Semantic HTML5!"))
+      .catch(() => showToast("Không chép được tự động — hãy chọn và chép thủ công."));
+  });
+
+  // 4. RENDER ATTRIBUTE OWNERSHIP MATRIX
+  const ownTbody = document.querySelector("#ownership-tbl tbody");
+  function renderOwnCell(raw) {
+    const idx = raw.indexOf(":");
+    const kind = raw.slice(0, idx);
+    const txt = raw.slice(idx + 1);
+    const map = { owner: "pill-owner", inter: "pill-inter", forbid: "pill-forbid", cond: "pill-cond", none: "pill-none" };
+    const labelMap = { owner: "Chủ sở hữu", inter: "Giao điểm", forbid: "Cấm", cond: "Có điều kiện", none: "Ngoài trục" };
+    return `<span class="pill ${map[kind] || "pill-none"}" style="margin-bottom:4px">${labelMap[kind]}</span><div style="font-size:12.5px">${esc(txt)}</div>`;
+  }
+  DATA.ownership.forEach(r => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><strong>${esc(r[0])}</strong></td>` + r.slice(1).map(c => `<td>${renderOwnCell(c)}</td>`).join("");
+    ownTbody.appendChild(tr);
+  });
+
+  // 5. INTERACTIVE VISUAL SEMANTIC WIREFRAME SIMULATOR
+  const WF_DATA = {
+    title_loc: {
+      url: "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html",
+      crumb: "Trang chủ › Việc làm tại Hồ Chí Minh › Kế toán / Kiểm toán",
+      h1: "Tuyển dụng 837 việc làm Kế toán / Kiểm toán tại Hồ Chí Minh",
+      atfStats: ["837 tin sạch · +112 tin 7 ngày", "Lương mở: 14–18tr (+18% vs toàn quốc)", "55% công khai lương"],
+      atfChips: ["MISA (lọc 380 tin)", "Excel (510)", "Tiếng Anh / Chief (85)", "P. Sài Gòn / Q.1 cũ", "Xem thống kê thị trường ↓"],
+      bottomTitle: "Local Salary Delta + Tần suất công cụ từ JD + Cụm địa bàn nghề",
+      barsTitle: "So sánh lương tin đang mở TP.HCM (xanh) vs VietnamSalary toàn quốc (xám)",
+      bars: [
+        { lbl: "Kế toán kho", loc: 52, nat: 44, txt: "10–13tr vs 7,1–9,5tr" },
+        { lbl: "Kế toán tổng hợp", loc: 72, nat: 56, txt: "14–18tr vs 9,5–13tr" },
+        { lbl: "Kế toán trưởng", loc: 88, nat: 74, txt: "25–35tr vs 17,5–24,8tr" },
+        { lbl: "Chief Accountant (EN)", loc: 100, nat: 85, txt: "30–45tr vs 24,7–36,3tr" }
+      ],
+      wards: [
+        { old: "Quận 1, Quận 3", nw: "P. Sài Gòn, Bến Thành, Tân Định, Xuân Hòa", note: "Cụm văn phòng trung tâm — kiểm toán, báo cáo quản trị" },
+        { old: "Quận 7, Phú Mỹ Hưng", nw: "P. Tân Mỹ, Tân Hưng", note: "Cụm doanh nghiệp FDI & đa quốc gia (ưu tiên tiếng Anh/SAP)" },
+        { old: "Bình Tân, Dĩ An, Thuận An", nw: "P. Tân Tạo, Bình Trị Đông, Dĩ An, Lái Thiêu", note: "Vành đai nhà máy — kế toán giá thành, tồn kho, xe đưa đón" }
+      ],
+      hubTabs: [
+        ["Lên 2 cha", ["Tuyển dụng Kế toán (toàn quốc)", "Việc làm TP.HCM (6.487 tin)", "VietnamSalary Kế toán"]],
+        ["Kế toán tỉnh khác", ["Kế toán Hà Nội", "Kế toán Đà Nẵng", "Kế toán Đồng Nai", "Kế toán Cần Thơ"]],
+        ["Nghề liền kề TP.HCM", ["Kế toán tổng hợp TP.HCM", "Kế toán thuế TP.HCM", "Kế toán trưởng TP.HCM", "Kiểm soát nội bộ TP.HCM"]],
+        ["Khu vực & Bộ lọc", ["Kế toán P. Sài Gòn / Q.1 cũ", "Kế toán Tân Mỹ / Q.7 cũ", "Kế toán chưa cần kinh nghiệm", "Kế toán lương >20tr"]]
+      ]
+    },
+    location: {
+      url: "https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html",
+      crumb: "Trang chủ › Việc làm tại Lâm Đồng › Thành phố Đà Lạt",
+      h1: "Tuyển dụng 25 việc làm tại Đà Lạt",
+      atfStats: ["25 tin sống · Tháng 11/2026", "Dẫn đầu: Bán hàng & Khách sạn", "Lương tin mở: 8–25 triệu"],
+      atfChips: ["Bán hàng / Kinh doanh", "Nhà hàng / Khách sạn", "Ngân hàng", "Phường Xuân Hương - Đà Lạt", "Thống kê Đà Lạt ↓"],
+      bottomTitle: "Market Snapshot + Thanh ngành bấm rẽ nhánh + Tra nhanh 5 phường mới Đà Lạt",
+      barsTitle: "Phân bổ nhóm ngành có nhiều tin nhất tại Đà Lạt (HTML/SVG bấm để lọc)",
+      bars: [
+        { lbl: "Bán hàng / Kinh doanh", loc: 95, nat: 0, txt: "Dẫn đầu · B2B, FMCG" },
+        { lbl: "Nhà hàng / Khách sạn", loc: 68, nat: 0, txt: "Hạng 2 · Bếp, Quản lý KS" },
+        { lbl: "Ngân hàng / Tài chính", loc: 46, nat: 0, txt: "Hạng 3 · Tư vấn tài chính" },
+        { lbl: "Bán lẻ · Y tế · Giáo dục", loc: 30, nat: 0, txt: "Nhóm ổn định" }
+      ],
+      wards: [
+        { old: "Phường 1, 2, 3, 4, 10", nw: "Phường Xuân Hương - Đà Lạt", note: "Tập trung nhiều tin nhất: khách sạn, bếp Nhật, ngân hàng, bán lẻ" },
+        { old: "Phường 8, 9, 12", nw: "Phường Lâm Viên - Đà Lạt", note: "Khối trường đại học, kinh doanh logistics" },
+        { old: "Phường 5, 6, xã Tà Nung", nw: "Phường Cam Ly - Đà Lạt", note: "Y tế, chăm sóc da, dược phẩm" },
+        { old: "Phường 11, Xuân Thọ, Xuân Trường", nw: "Phường Xuân Trường - Đà Lạt", note: "Nông nghiệp công nghệ cao, xây dựng cơ điện" }
+      ],
+      hubTabs: [
+        ["Lân cận & Tỉnh", ["Việc làm Lâm Đồng (133 tin)", "Việc làm Đức Trọng", "Việc làm Bảo Lộc", "Việc làm Nha Trang"]],
+        ["Ngành có tin Đà Lạt", ["Bán hàng Đà Lạt", "Khách sạn Đà Lạt", "Ngân hàng Đà Lạt", "Giáo dục Đà Lạt"]],
+        ["Hình thức & Cấp bậc", ["Việc làm bán thời gian Đà Lạt", "Việc làm không cần KN Đà Lạt", "Việc làm quản lý Đà Lạt"]]
+      ]
+    },
+    company: {
+      url: "https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html",
+      crumb: "Trang chủ › Nhà tuyển dụng › Masan Consumer › Việc làm tại Masan Consumer",
+      h1: "Tuyển dụng 27 việc làm tại Masan Consumer",
+      atfStats: ["✓ 5 pháp nhân xác thực", "★ Top EOC 2026 · 23.473 Followers", "+ Theo dõi / Nhận tin mới"],
+      atfChips: ["Kỹ thuật & Bảo trì", "R&D & Chất lượng", "Thương hiệu & Pháp lý", "Bình Dương cũ", "Bảng lương & ca kíp ↓"],
+      bottomTitle: "Employer Role-Matrix + VietnamSalary Benchmark + 3-Step Self-Fit + Peer Employers",
+      barsTitle: "Khung lương tham khảo thị trường cho các vị trí tương đương Masan Consumer đang mở (VietnamSalary)",
+      bars: [
+        { lbl: "Kỹ thuật viên / Bảo trì", loc: 42, nat: 0, txt: "9 – 14 triệu/tháng" },
+        { lbl: "Chuyên viên R&D / QA", loc: 58, nat: 0, txt: "13 – 20 triệu/tháng" },
+        { lbl: "Giám sát sản xuất", loc: 70, nat: 0, txt: "16 – 25 triệu/tháng" },
+        { lbl: "Brand / Supply Manager", loc: 96, nat: 0, txt: "35 – 60 triệu/tháng" }
+      ],
+      wards: [
+        { old: "Bình Dương cũ (VSIP / Mỹ Phước)", nw: "Cụm nhà máy Công Nghiệp Masan & Bột Giặt NET", note: "Tập trung khối kỹ thuật bảo trì, sản xuất xoay ca, xe đưa đón" },
+        { old: "Quận 1 cũ TP.HCM", nw: "Phường Sài Gòn / Văn phòng hội sở", note: "Khối Brand Marketing, R&D, Pháp lý, Supply Planning (giờ hành chính)" }
+      ],
+      hubTabs: [
+        ["Masan theo khu vực", ["Masan Consumer TP.HCM", "Masan Consumer Bình Dương cũ", "Masan Consumer Hải Dương cũ"]],
+        ["DN cùng ngành FMCG đang tuyển", ["Unilever Việt Nam", "Nestlé Việt Nam", "Vinamilk", "Sabeco", "Suntory PepsiCo"]],
+        ["Chức danh tương đương", ["Kỹ sư bảo trì", "Brand Manager", "R&D Thực phẩm", "Supply Planner"]]
+      ]
+    },
+    title: {
+      url: "https://careerviet.vn/viec-lam/sales-admin-k-vi.html",
+      crumb: "Trang chủ › Việc làm › Bán hàng / Kinh doanh › Việc làm Sales Admin",
+      h1: "Tuyển dụng việc làm Sales Admin toàn quốc",
+      atfStats: ["67 tin đúng chức danh / 344 liên quan", "VietnamSalary: 7,9–10,8tr", "Top đầu cầu: TP.HCM · Hà Nội"],
+      atfChips: ["Sales Admin TP.HCM", "Sales Admin Hà Nội", "Sales Admin tiếng Anh/Trung", "Nhận dưới 1 năm KN", "Ma trận lương ↓"],
+      bottomTitle: "Ma trận lương Kinh nghiệm × Vị trí liền kề + Tần suất công cụ JD + Lộ trình 3 nấc",
+      barsTitle: "So sánh mức lương Sales Admin theo kinh nghiệm & vị trí liền kề (cùng nguồn VietnamSalary)",
+      bars: [
+        { lbl: "Sales Admin (<1 năm)", loc: 42, nat: 0, txt: "7,0 – 9,2 triệu" },
+        { lbl: "Sales Admin (1–4 năm)", loc: 60, nat: 0, txt: "8,5 – 12,0 triệu" },
+        { lbl: "Sales Admin (5–9 năm)", loc: 78, nat: 0, txt: "12,0 – 16,5 triệu" },
+        { lbl: "Liền kề: Sales Support", loc: 58, nat: 0, txt: "8,0 – 11,5 triệu" },
+        { lbl: "Liền kề: Sales Coordinator", loc: 70, nat: 0, txt: "10,0 – 14,5 triệu" }
+      ],
+      wards: [
+        { old: "TP.HCM (trung tâm & KCN)", nw: "Đầu cầu #1 toàn quốc", note: "Mạnh về thương mại, FMCG, xuất nhập khẩu, yêu cầu Excel & tiếng Anh" },
+        { old: "Hà Nội & cụm Bắc Ninh/Hải Dương cũ", nw: "Đầu cầu #2 toàn quốc", note: "Mạnh về phân phối B2B, sản xuất FDI (thêm nhu cầu tiếng Trung/Hàn)" }
+      ],
+      hubTabs: [
+        ["Sales Admin theo tỉnh", ["Sales Admin TP.HCM", "Sales Admin Hà Nội", "Sales Admin Bình Dương cũ", "Sales Admin Đồng Nai"]],
+        ["Chức danh đồng nghĩa", ["Sales Support", "Trợ lý kinh doanh", "Sales Coordinator", "Admin bán hàng"]],
+        ["Ngành cha & Cấp bậc", ["Bán hàng / Kinh doanh (-c31)", "Hành chính / Thư ký (-c3)", "Thực tập sinh kinh doanh"]],
+        ["Hệ sinh thái", ["Wiki: Sales Admin là gì?", "Mẫu CV Sales Admin (CVHay)", "Lộ trình CareerMap", "VietnamSalary Sales Admin"]]
+      ]
+    }
+  };
+
+  function renderWireframe(key) {
+    const w = WF_DATA[key];
+    const mount = document.getElementById("wf-mount");
+    mount.innerHTML = `
+      <div class="wf-shell">
+        <div class="wf-bar">
+          <strong>PRE-DEV WIREFRAME · ${esc(key.toUpperCase().replace("_", " × "))}</strong>
+          <span class="wf-url">${esc(w.url)}</span>
+        </div>
+        <div class="wf-body">
+          <div style="font-size:12px;color:#64748B;margin-bottom:10px">&lt;nav aria-label="Breadcrumb"&gt; ${esc(w.crumb)}</div>
+          <div class="wf-zone atf">
+            <span class="wf-tag">Zone 1 · Above-the-Fold Micro-Layer (SSR · ≤100px)</span>
+            <div style="font-size:18px;font-weight:800;color:#0F172A">&lt;h1&gt; ${esc(w.h1)} &lt;/h1&gt;</div>
+            <div class="wf-chips">${w.atfStats.map(s => `<span class="pill pill-inter">${esc(s)}</span>`).join("")}</div>
+            <div class="wf-chips">${w.atfChips.map((c, i) => `<button type="button" class="wf-chip ${i===0?'on':''}">${esc(c)}</button>`).join("")}</div>
+          </div>
+          <div class="wf-zone center">
+            <span class="wf-tag" style="background:#475569">Zone 2 · Centerpiece Listing (SSR 20–50 &lt;article&gt; · &lt;h3&gt; title · &lt;p&gt; company · Pagination &lt;a href&gt;)</span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;font-size:12px;color:#475569">
+              <div style="background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:10px"><strong>&lt;article&gt; Job Card #1</strong><br>&lt;h3&gt;Tiêu đề tin&lt;/h3&gt; · &lt;p&gt;Tên DN&lt;/p&gt; · &lt;time datetime="2026-12-23"&gt;</div>
+              <div style="background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:10px"><strong>&lt;article&gt; Job Card #2</strong><br>Badge "Mới/Gấp" đặt NGOÀI &lt;h3&gt;</div>
+              <div style="background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:10px"><strong>&lt;nav&gt; Pagination</strong><br><code>&lt;a href="?page=2"&gt;2&lt;/a&gt;</code> + self-canonical</div>
+            </div>
+          </div>
+          <div class="wf-zone bottom">
+            <span class="wf-tag">Zone 3 · Bottom Market Intelligence Hub (SSR HTML + Vanilla JS &lt;15KB · Tắt Auto-linker)</span>
+            <div style="font-weight:700;color:#065F46;margin-bottom:6px">${esc(w.bottomTitle)}</div>
+            <div style="font-size:12.5px;color:#334155;font-weight:600">${esc(w.barsTitle)}</div>
+            <div class="wf-bars">
+              ${w.bars.map(b => `
+                <div class="wf-bar-row">
+                  <span style="font-weight:600;color:#0F172A">${esc(b.lbl)}</span>
+                  <div style="display:grid;gap:3px">
+                    <div class="wf-track"><div class="wf-fill" style="width:${b.loc}%"></div></div>
+                    ${b.nat ? `<div class="wf-track" style="height:8px"><div class="wf-fill nat" style="width:${b.nat}%"></div></div>` : ""}
+                  </div>
+                  <span class="mono" style="font-size:11px;color:#0369A1;font-weight:600">${esc(b.txt)}</span>
+                </div>
+              `).join("")}
+            </div>
+            <div class="wf-ward-box">
+              <strong style="font-size:12.5px;color:#0F172A">Thử ô tra nhanh địa bàn / phường mới sau 1/7/2025:</strong>
+              <input type="text" class="search-in" id="wf-ward-in" placeholder="Gõ quận/phường cũ (vd: Quận 7, Phường 8, Bình Dương)..." style="min-width:280px">
+            </div>
+            <div class="wf-ward-res" id="wf-ward-res"></div>
+          </div>
+          <div class="wf-zone hub">
+            <span class="wf-tag">Zone 4 · Tabbed Navigation Hub (&lt;nav&gt;/&lt;aside&gt; SSR ngoài prose — thay 56 CSR skeleton)</span>
+            <div class="wf-tabs" id="wf-hub-tabs"></div>
+            <div class="wf-chips" id="wf-hub-links"></div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Wire up interactive ward lookup
+    const wardIn = mount.querySelector("#wf-ward-in");
+    const wardRes = mount.querySelector("#wf-ward-res");
+    function renderWards(q) {
+      const s = (q || "").trim().toLowerCase();
+      const hits = w.wards.filter(x => !s || (x.old + " " + x.nw + " " + x.note).toLowerCase().includes(s));
+      wardRes.innerHTML = hits.length
+        ? hits.map(x => `<div style="margin:4px 0"><strong>${esc(x.old)}</strong> → <span style="color:#059669;font-weight:700">${esc(x.nw)}</span> · <span style="color:#475569">${esc(x.note)}</span></div>`).join("")
+        : `<span style="color:#64748B">Không tìm thấy cụm mẫu khớp "${esc(q)}" — thử gõ tên khác trong danh sách mẫu.</span>`;
+    }
+    renderWards("");
+    wardIn.addEventListener("input", () => renderWards(wardIn.value));
+
+    // Wire up interactive hub tabs
+    const hTabs = mount.querySelector("#wf-hub-tabs");
+    const hLinks = mount.querySelector("#wf-hub-links");
+    function renderHubTab(idx) {
+      hTabs.innerHTML = w.hubTabs.map((t, i) => `<button type="button" class="btn ${i===idx?'active':''}" data-ht="${i}">${esc(t[0])}</button>`).join("");
+      hLinks.innerHTML = w.hubTabs[idx][1].map(l => `<span class="wf-chip" style="border-color:#C4B5FD;color:#5B21B6">${esc(l)}</span>`).join("");
+      hTabs.querySelectorAll("button").forEach(b => b.addEventListener("click", () => renderHubTab(Number(b.dataset.ht))));
+    }
+    renderHubTab(0);
+  }
+  renderWireframe("title_loc");
+  document.querySelectorAll("#wf-switcher button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#wf-switcher button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderWireframe(btn.dataset.wf);
+    });
+  });
+
+  // 6. RENDER ALL 4 GOOGLE-SHEET STYLE OUTLINE & AM TABS
+  function formatAM(text) {
+    let s = esc(text);
+    const keys = [
+      "Information gain \\(cả bài\\):", "Data point riêng \\(≥3\\):", "Human effort \\(cả bài\\):",
+      "E-E-A-T:", "Experience:", "Expertise:", "Authoritativeness:", "Trust:",
+      "Trình bày:", "Word count estimate:", "Câu mở:", "Câu hỏi cần trả lời \\(theo thứ tự\\):",
+      "Information gain:", "Human effort:", "Contextual phrase:"
+    ];
+    keys.forEach(k => {
+      const re = new RegExp("(^|\n)(" + k + ")", "g");
+      s = s.replace(re, '$1<span class="am-key">$2</span>');
+    });
+    s = s.replace(/\[(L[1-6])\]/g, '<span class="l-tag">$1</span>');
+    return s;
+  }
+
+  function sheetToTSV(sheet) {
+    const header = ["Định dạng", "Heading Name", "AM", "Data source", "Yêu cầu hình (Nếu có)", "Note"];
+    const all = [header, ...sheet.rows];
+    return all.map(row => row.map(cell => {
+      const v = String(cell ?? "");
+      return (v.includes("\t") || v.includes("\n") || v.includes('"'))
+        ? '"' + v.replace(/"/g, '""') + '"'
+        : v;
+    }).join("\t")).join("\n");
+  }
+
+  function sheetToCSV(sheet) {
+    const header = ["Định dạng", "Heading Name", "AM", "Data source", "Yêu cầu hình (Nếu có)", "Note"];
+    const all = [header, ...sheet.rows];
+    return "\uFEFF" + all.map(row => row.map(cell => '"' + String(cell ?? "").replace(/"/g, '""') + '"').join(",")).join("\n");
+  }
+
+  document.querySelectorAll("[data-sheet-key]").forEach(sec => {
+    const key = sec.dataset.sheetKey;
+    const sheet = DATA.sheets[key];
+    sec.innerHTML = `
+      <div class="card" style="padding-bottom:16px">
+        <div class="card-head">
+          <div>
+            <h2>${esc(sheet.title)}</h2>
+            <p class="lede" style="margin:4px 0 0">${esc(sheet.subtitle)}</p>
+          </div>
+          ${sheet.orig_url ? `<a class="btn" href="${esc(sheet.orig_url)}" target="_blank" rel="noopener noreferrer">Mở Google Sheet gốc ↗</a>` : `<span class="pill pill-inter">Template mới (dựng từ First Principles + live c2l8/kl8)</span>`}
+        </div>
+
+        <div class="sheet-meta">
+          ${sheet.tiers.map(t => `<div class="tier-box"><b>${esc(t[0])}</b><span>${esc(t[1])}</span></div>`).join("")}
+        </div>
+
+        <details class="changes-acc" open>
+          <summary>${sheet.changes.length} điểm thay đổi chính trong bản v2 (bấm thu gọn để tập trung xem bảng Sheet)</summary>
+          <ul class="changes-list">
+            ${sheet.changes.map(c => `<li><strong>${esc(c[0])}:</strong> ${esc(c[1])}</li>`).join("")}
+          </ul>
+        </details>
+
+        <div class="sheet-toolbar">
+          <div class="sheet-actions">
+            <input type="text" class="search-in" data-s-search="${key}" placeholder="Tìm nhanh trong bảng (vd: VietnamSalary, H2, Modality, FAQ)...">
+            <button class="btn active" data-s-filter="${key}" data-val="ALL">Tất cả (${sheet.rows.length})</button>
+            <button class="btn" data-s-filter="${key}" data-val="MAIN">H1 / Intro / H2 / H3</button>
+            <button class="btn" data-s-filter="${key}" data-val="SUP">FAQ / Khối / Fallback</button>
+          </div>
+          <div class="sheet-actions">
+            <button class="btn btn-primary" data-copy-tsv="${key}">Chép TSV (Dán thẳng Google Sheets)</button>
+            <button class="btn" data-dl-csv="${key}">Tải CSV</button>
+          </div>
+        </div>
+
+        <div class="sheet-scroll">
+          <table class="gsheet" id="gsheet-${key}">
+            <colgroup>
+              <col class="c-rn"><col class="c-a"><col class="c-b"><col class="c-c"><col class="c-d"><col class="c-e"><col class="c-f">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="col-rn">#</th>
+                <th>A · Định dạng</th>
+                <th>B · Heading Name</th>
+                <th>C · AM (SOP v4.1)</th>
+                <th>D · Data source</th>
+                <th>E · Yêu cầu hình</th>
+                <th>F · Note</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      ${key === "title_loc" ? `
+      <div class="card">
+        <div class="card-head">
+          <h2>Minh họa thực chiến: Co giãn cùng 1 Template giữa Tier 1 và Tier 2/3 (không độn chữ)</h2>
+          <span class="pill pill-inter">Anti-SCA · QDP Adaptive Scaling</span>
+        </div>
+        <p class="lede">So sánh cách khung <code>Title × Location</code> tự co giãn cấu trúc, độ sâu dữ liệu và cách diễn đạt giữa trang quy mô lớn <strong>Marketing TP.HCM</strong> (Tier 1) và trang ngách ở thành phố vừa <strong>Video Editor Đà Nẵng</strong> (Tier 2/3).</p>
+        <div class="tbl-wrap">
+          <table class="data-tbl">
+            <thead>
+              <tr>
+                <th style="width:180px">Thành phần</th>
+                <th>Tier 1 · Broad × Big City: Marketing TP.HCM (-c4l8 · ~420 tin sạch)</th>
+                <th>Tier 2 (15–25 tin) / Tier 3 (12 tin) · Niche × Mid City: Video Editor Đà Nẵng (-kl511)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>URL &amp; Cổng QDP</strong></td>
+                <td><code>tiep-thi-marketing-tai-ho-chi-minh-c4l8-vi.html</code> → <strong>Tier 1 Full</strong> (<code>index, follow</code>, 1.350–1.450 từ).</td>
+                <td><code>video-editor-tai-da-nang-kl511-vi.html</code> → 15–25 tin: <strong>Tier 2 Compact</strong> (~900 từ); tụt xuống 12 tin: <strong>Tier 3 Minimalist</strong> (~380 từ).</td>
+              </tr>
+              <tr>
+                <td><strong>H1 &amp; Micro-Insight</strong></td>
+                <td><code>Tuyển dụng Marketing tại TP.HCM</code> · 420 tin · 12–25tr (+15% vs toàn quốc) · Chips: Digital, Performance, P. Sài Gòn, Thảo Điền.</td>
+                <td><code>Tuyển dụng Video Editor tại Đà Nẵng</code> · 18 tin · 9–15tr · Chips: CapCut, Premiere, Hybrid/Remote, Hải Châu.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-1 · Cơ cấu cầu</strong></td>
+                <td>Bảng 2 cột × 6 hàng theo <strong>biến thể vị trí × ngành hàng</strong> (Digital/E-com, Trade/FMCG, Brand/Agency, Manager/Tech). Không định nghĩa nghề.</td>
+                <td><strong>Tier 2:</strong> 3 bullet theo <strong>loại hình DN Đà Nẵng</strong> (Agency/E-com TikTok, Khách sạn–Du lịch, Studio nhận remote). <strong>Tier 3:</strong> gộp vào 1 đoạn 150 từ cùng yêu cầu.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-2 · Doanh nghiệp</strong></td>
+                <td>Module SSR động + bảng 4 cột × 7–8 DN có tên + lương số + H3 thanh logo cuộn ngang + lọc JS theo khu vực/lương.</td>
+                <td><strong>Tier 2:</strong> Bảng gọn 3–4 hàng (dưới 3 tin rõ lương đổi cột 4 sang chế độ nổi bật); bỏ H3 logo. <strong>Tier 3:</strong> bỏ bảng DN.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-3 · Chênh lệch lương</strong></td>
+                <td>Bảng 3 cột × 6 hàng đối chiếu tin mở TP.HCM vs VietnamSalary + biểu đồ Local Salary Delta + giải thích nguyên nhân lệch (KPI/FDI/tiếng Anh).</td>
+                <td><strong>Tier 2:</strong> Bảng 2–3 cột × 3 cấp (Junior · 1–3 năm · Senior/Motion 3D), bỏ biểu đồ nếu ít tầng. <strong>Tier 3:</strong> 1 đoạn 120 từ nêu dải lương hoặc dẫn chiếu toàn quốc.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-4 · Công cụ &amp; Chế độ</strong></td>
+                <td>Tách 2 H3 (150w + 130w) + thanh tần suất bấm-lọc (Meta/Google Ads, GA4, SEO, CRM — được dùng <code>%</code> kèm cỡ mẫu <code>n_clean</code> &amp; ngày crawl).</td>
+                <td><strong>Tier 2:</strong> Gộp thành 1 H2 (180w), <strong>cấm dùng <code>%</code></strong>; nêu công cụ lặp nhiều (Premiere, CapCut, AE cơ bản), portfolio &gt; bằng cấp, máy cấu hình cao &amp; remote.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-5 · Cụm khu vực</strong></td>
+                <td>4 cụm Marketing TP.HCM + sơ đồ quy đổi phường mới sau 1/7/2025 (P. Sài Gòn/Bến Thành · P. An Khánh · P. Tân Mỹ · Tân Bình/Phú Nhuận).</td>
+                <td><strong>Tier 2:</strong> 1 đoạn 95 từ, bỏ sơ đồ — gom cụm trung tâm (Hải Châu/Thanh Khê) &amp; cụm du lịch–agency (Sơn Trà/Ngũ Hành Sơn) + gợi ý mở rộng sang tin Remote.</td>
+              </tr>
+              <tr>
+                <td><strong>H2-6 · FAQ &amp; Tabbed Hub</strong></td>
+                <td>3 câu giao điểm (cửa Fresher · In-house vs Agency · chức danh ngách) + Tabbed Hub 4 tab đầy đủ 5 tỉnh lớn &amp; chức danh con TP.HCM.</td>
+                <td><strong>Tier 2:</strong> 2 câu sát thực tế (portfolio không bằng cấp · tùy chọn remote/freelance); Tab 2 chỉ gắn TP.HCM &amp; Hà Nội (nơi có <code>n_clean ≥ 5</code>). <strong>Tier 3:</strong> bỏ FAQ.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      ` : ""}
+    `;
+
+    const tbody = sec.querySelector("tbody");
+    let curFilter = "ALL";
+    let curSearch = "";
+
+    function renderRows() {
+      tbody.innerHTML = "";
+      sheet.rows.forEach((r, idx) => {
+        const typ = r[0];
+        const isMain = ["H1", "Intro", "H2", "H3"].includes(typ);
+        const isSup = ["Supplemental", "FAQ", "Khối"].includes(typ);
+        if (curFilter === "MAIN" && !isMain) return;
+        if (curFilter === "SUP" && !isSup) return;
+        if (curSearch && !r.join(" ").toLowerCase().includes(curSearch)) return;
+
+        const tr = document.createElement("tr");
+        if (typ === "Supplemental") tr.className = "row-sup";
+        if (typ === "H1") tr.className = "row-h1";
+        tr.innerHTML = `
+          <td class="col-rn">${idx + 2}</td>
+          <td><span class="type-badge t-${esc(typ)}">${esc(typ)}</span></td>
+          <td class="cell-hd">${esc(r[1])}</td>
+          <td>${formatAM(r[2])}</td>
+          <td>${esc(r[3])}</td>
+          <td>${esc(r[4])}</td>
+          <td>${esc(r[5])}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    renderRows();
+
+    sec.querySelector(`[data-s-search="${key}"]`).addEventListener("input", e => {
+      curSearch = e.target.value.trim().toLowerCase();
+      renderRows();
+    });
+    sec.querySelectorAll(`[data-s-filter="${key}"]`).forEach(btn => {
+      btn.addEventListener("click", () => {
+        sec.querySelectorAll(`[data-s-filter="${key}"]`).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        curFilter = btn.dataset.val;
+        renderRows();
+      });
+    });
+    sec.querySelector(`[data-copy-tsv="${key}"]`).addEventListener("click", () => {
+      navigator.clipboard.writeText(sheetToTSV(sheet))
+        .then(() => showToast("Đã chép bảng TSV — mở Google Sheets và bấm Cmd+V để dán đủ 6 cột A–F!"))
+        .catch(() => showToast("Không chép được tự động — dùng nút Tải CSV bên cạnh."));
+    });
+    sec.querySelector(`[data-dl-csv="${key}"]`).addEventListener("click", () => {
+      const blob = new Blob([sheetToCSV(sheet)], { type: "text/csv;charset=utf-8;" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `careerviet-template-v2-${key}.csv`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showToast("Đã tải file CSV cho Google Sheets!");
+    });
+  });
+})();
+</script>
+</body>
+</html>
