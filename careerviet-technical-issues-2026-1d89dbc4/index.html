@@ -615,6 +615,10 @@ Sitemap: <a class="u" href="https://careerviet.vn/sitemap/searchjob.xml" target=
 <figure><img src="assets/client-v1/trang-2.png" alt="Giao diện trình duyệt của trang Job Listing Kế toán tại Hồ Chí Minh cho thấy thanh lọc quận/huyện và khối Việc làm được tìm kiếm nhiều nhất"><figcaption>Ảnh chụp trình duyệt trang <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html</a>: các nút lọc quận/huyện phía trên và khối "Việc làm được tìm kiếm nhiều nhất" ở cột phải chỉ hiện sau khi JavaScript chạy; nút quận không có <code>href</code> thật để Googlebot đi theo.</figcaption></figure>
 
 <h3>Bằng chứng Search Console trên nhóm trang quận/huyện</h3>
+<ul>
+<li><b>Phạm vi ảnh hưởng lớn:</b> dù chưa đủ dữ liệu để kết luận tình trạng này xảy ra trên 100% trang quận/huyện toàn site, nhưng kết quả kiểm tra cho thấy lỗi đang ảnh hưởng <b>rất nhiều và chiếm đa phần</b> ở nhóm trang này. Cụ thể, khi kiểm tra 5 URL quận/huyện mẫu trên Google Search Console thì cả 5 trên 5 URL đều chưa có trên Google (4 URL bị loại bởi lý do <code>Excluded by 'noindex' tag</code> trong các lần crawl từ 11/10 đến 18/11/2026; 1 URL ở trạng thái <code>Crawled - currently not indexed</code> từ 18/06/2026).</li>
+<li><b>Nguyên nhân chưa lập chỉ mục lại:</b> dù mã nguồn ngày 26/11 của các trang này đã đặt đúng <code>meta robots = index, follow</code>, nhóm quận/huyện vẫn chưa được Google crawl lại để lập chỉ mục. Khả năng cao hệ thống từng gắn nhầm thẻ <code>noindex</code> trước đó; đến nay trang lại thiếu link nội bộ có <code>href</code> từ trang tỉnh và chưa nằm trong sitemap nên Googlebot chậm quay lại crawl, đồng thời thẻ robots còn bị đẩy xuống sau mốc 2 MB (mục 2).</li>
+</ul>
 <div class="tw"><table>
   <tr><th>Trang quận/huyện</th><th>Trạng thái chỉ mục trên Search Console</th><th>Lần crawl cuối</th><th>Sitemap tham chiếu</th></tr>
   <tr><td><a class="u" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener">thanh-pho-da-lat-l63q276</a></td><td><mark>Excluded by 'noindex' tag</mark></td><td>31/10/2026</td><td>Không có (chỉ có 5 bài blog)</td></tr>
@@ -635,10 +639,6 @@ Sitemap: <a class="u" href="https://careerviet.vn/sitemap/searchjob.xml" target=
   <figure><img src="assets/client-v1/gsc-cu-chi.png" alt="Kiểm tra URL trang Huyện Củ Chi trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/huyen-cu-chi-l8q1635-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/huyen-cu-chi-l8q1635-vi.html</a>: "Excluded by 'noindex' tag", lần crawl cuối 18/11/2026 vẫn gặp <code>noindex</code>.</figcaption></figure>
   <figure><img src="assets/client-v1/gsc-quan-11.png" alt="Kiểm tra URL trang Quận 11 Hồ Chí Minh trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/quan-11-l8q1628-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/quan-11-l8q1628-vi.html</a>: "Crawled - currently not indexed", "No referring sitemaps detected", lần crawl cuối từ 18/06/2026.</figcaption></figure>
 </div>
-<ul>
-<li>Kiểm tra 5 trang quận/huyện trên Search Console cho thấy 4 trên 5 URL đang bị Google loại khỏi chỉ mục với lý do <code>Excluded by 'noindex' tag</code> (lần crawl cuối trải từ 11/10 đến 18/11/2026), còn 1 URL ở trạng thái <code>Crawled - currently not indexed</code> từ 18/06/2026.</li>
-<li>Dù mã nguồn ngày 26/11 của các trang này đã đặt đúng <code>meta robots = index, follow</code>, nhóm quận/huyện vẫn chưa được lập chỉ mục lại. Khả năng cao hệ thống từng gắn nhầm <code>noindex</code> trước đó, cộng thêm thiếu link nội bộ có <code>href</code> và thiếu sitemap nên Googlebot chưa quay lại crawl, đồng thời thẻ robots còn bị đẩy sau mốc 2 MB (mục 2).</li>
-</ul>
 <div class="need">Cần lịch sử deploy giai đoạn tháng 10 đến tháng 11/2026 của CareerViet để xác nhận thời điểm gắn và gỡ thẻ <code>noindex</code> trên nhóm trang quận/huyện.</div>
 
 <div class="grid">
