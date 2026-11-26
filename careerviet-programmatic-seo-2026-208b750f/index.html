@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CareerViet v4 — Giải thích Kỹ thuật, Bằng chứng GSC &amp; Final Recommendation</title>
+<title>CareerViet v5 — Tab Breadcrumb, Schema Before/After, UGC 2 Lớp &amp; Final Recommendation</title>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="robots" content="noai, noimageai">
@@ -686,8 +686,64 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
 @media (max-width: 640px) {
   .legend-grid, .ev-gallery { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* v5: Red/Green Before-After Diff & Job Detail Wireframe */
+.diff-box {
+  background: #0F172A;
+  color: #E2E8F0;
+  border-radius: 10px;
+  padding: 13px 15px;
+  overflow-x: auto;
+  font: 400 12px/1.6 var(--mono);
+  margin: 0;
+  white-space: pre;
+}
+.dl-red {
+  display: inline-block;
+  width: 100%;
+  background: rgba(220, 38, 38, .30);
+  color: #FECACA;
+  border-left: 3px solid #EF4444;
+  padding: 1px 6px;
+  margin-left: -6px;
+  border-radius: 3px;
+}
+.dl-green {
+  display: inline-block;
+  width: 100%;
+  background: rgba(5, 150, 105, .28);
+  color: #A7F3D0;
+  border-left: 3px solid #10B981;
+  padding: 1px 6px;
+  margin-left: -6px;
+  border-radius: 3px;
+}
+.dl-note { color: #FDE68A; font-weight: 600; }
+.jd-wf-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+.jd-wf-box {
+  border: 1.5px solid var(--line-2);
+  border-radius: 10px;
+  padding: 11px 13px;
+  background: #fff;
+  margin-bottom: 10px;
+  font-size: 12.6px;
+}
+.jd-wf-box.keep { border-color: #94A3B8; background: #F8FAFC; }
+.jd-wf-box.add-p2 { border: 2px dashed #059669; background: #ECFDF5; }
+.jd-wf-box.fix-ssr { border: 2px dashed #D97706; background: #FFFBEB; }
+.jd-wf-box.fix-bc { border: 2px dashed #DC2626; background: #FEF2F2; }
+.ev-link-a { color: #0369A1; font-weight: 600; word-break: break-all; }
+@media (max-width: 900px) {
+  .jd-wf-grid { grid-template-columns: minmax(0, 1fr); }
+}
 .card, .info-btn, h2, h3 { scroll-margin-top: 100px; }
 </style>
+
 
 </head>
 <body>
@@ -695,15 +751,15 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
 <header class="topbar">
   <div class="topbar-inner">
     <div>
-      <div class="brand-kicker"><span class="brand-dot"></span>GTV SEO × CAREERVIET · BẢN V4 (GIẢI THÍCH TRỰC QUAN + BẰNG CHỨNG GSC)</div>
-      <h1>Final Recommendation Programmatic SEO, Giải trình Kỹ thuật &amp; 4 Bộ Outline AM (v4)</h1>
-      <p class="topbar-sub">Cập nhật theo dữ liệu GSC Crawl Stats thật (966 mẫu JSON) + đo sống OpenResty/Kong vs CMC CDN ngày 26/11/2026 · Có dấu ⓘ giải thích và 7 ảnh bằng chứng bấm phóng to.</p>
+      <div class="brand-kicker"><span class="brand-dot"></span>GTV SEO × CAREERVIET · BẢN V5 (TAB BREADCRUMB + SCHEMA BEFORE/AFTER + UGC 2 LỚP)</div>
+      <h1>Final Recommendation Programmatic SEO, Giải trình Kỹ thuật &amp; 4 Bộ Outline AM (v5)</h1>
+      <p class="topbar-sub">Bổ sung Tab 4b Breadcrumb riêng (5 mẫu Before/After), ảnh chụp sống mã ATS <code>ACC.OFM_HCM|</code> có URL bấm trực tiếp, bảng 8 giá trị <code>employmentType</code> và Wireframe JD Phase 2.</p>
     </div>
     <div class="meta-pills">
-      <span class="meta-pill">v4 · 26/11/2026</span>
-      <span class="meta-pill">7 Ảnh Bằng chứng</span>
-      <span class="meta-pill">17 Mục Giải thích ⓘ</span>
-      <span class="meta-pill">GSC Crawl Stats</span>
+      <span class="meta-pill">v5 · 26/11/2026</span>
+      <span class="meta-pill">9 Ảnh Bằng chứng</span>
+      <span class="meta-pill">Tab 4b · Breadcrumb</span>
+      <span class="meta-pill">20 Mục Giải thích ⓘ</span>
       <span class="meta-pill">Noindex Preview</span>
     </div>
   </div>
@@ -718,6 +774,7 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
       <button class="tab-btn" role="tab" data-tab="tech-explain">2. Giải trình Tech (2 MB · /api · RFC)</button>
       <button class="tab-btn" role="tab" data-tab="feasibility-schema">3. Khả thi · Recall · H2/H3 · JSON-LD</button>
       <button class="tab-btn" role="tab" data-tab="job-detail-ugc">4. Job Detail &amp; UGC <span class="tab-badge">27 Live</span></button>
+      <button class="tab-btn" role="tab" data-tab="breadcrumb-guide">4b. Breadcrumb Chi tiết <span class="tab-badge p0">5 Mẫu</span></button>
     </div>
     <div class="tab-row" role="tablist" aria-label="Nhóm Template và Outline AM">
       <span class="tab-group-lbl">Template &amp; AM v2.1</span>
@@ -1114,7 +1171,7 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
 
     <div class="card">
       <div class="card-head">
-        <h2>1.2b. Bằng chứng GSC Crawl Stats (966 mẫu JSON) &amp; Kho 7 Ảnh Minh họa Đo sống <button type="button" class="info-btn" data-info="gsc-crawl-stats">i</button></h2>
+        <h2>1.2b. Bằng chứng GSC Crawl Stats (966 mẫu JSON) &amp; Kho 9 Ảnh Minh họa Đo sống <button type="button" class="info-btn" data-info="gsc-crawl-stats">i</button></h2>
         <span class="pill pill-p0">HTML 21% vs JSON 28% · Tải tăng 10× đúng ngày 15/11</span>
       </div>
       <p class="lede">Dữ liệu Crawl Stats thật từ Google Search Console xác nhận Googlebot đang lãng phí <strong><code>28%</code> lượt crawl cho file JSON</strong> (nhiều hơn cả <code>21%</code> HTML), tỷ lệ <code>304 Not Modified</code> dưới 1%, và dung lượng tải mỗi ngày vọt gấp 10 lần từ <code>593 MB</code> (14/11) lên <code>5,91 GB/ngày</code> từ mốc <strong><code>15/11/2026</code></strong>. Bấm vào từng ảnh dưới đây để phóng to hoặc chép link gửi trực tiếp cho Dev.</p>
@@ -1146,6 +1203,14 @@ table.gsheet tr:hover td:not(.col-rn) { background: #F0F9FF; }
         <div class="ev-card">
           <img src="./assets/ev-07-viec-lam-tuong-tu-split.png" alt="Phân tầng /viec-lam-tuong-tu/" data-lb="ev-07">
           <div class="ev-card-body"><div><strong>7. /viec-lam-tuong-tu/*</strong><br><span style="color:var(--muted)">Giữ 10,8% traffic · khóa rác</span></div><div style="display:flex;gap:6px"><button type="button" class="ev-link-btn" data-lb="ev-07">Phóng to</button><a class="ev-link-btn" href="./assets/ev-07-viec-lam-tuong-tu-split.png" target="_blank">Link ↗</a></div></div>
+        </div>
+        <div class="ev-card">
+          <img src="./assets/ev-08-ats-ugc-live-proof.png" alt="Ảnh chụp thật ACC.OFM_HCM" data-lb="ev-08">
+          <div class="ev-card-body"><div><strong>8. Chụp sống ACC.OFM_HCM|</strong><br><span style="color:var(--muted)">Mã ATS HR tự điền + 2 lớp UGC</span></div><div style="display:flex;gap:6px"><button type="button" class="ev-link-btn" data-lb="ev-08">Phóng to</button><a class="ev-link-btn" href="./assets/ev-08-ats-ugc-live-proof.png" target="_blank">Link ↗</a></div></div>
+        </div>
+        <div class="ev-card">
+          <img src="./assets/ev-09-breadcrumb-before-after.png" alt="Breadcrumb Before vs After" data-lb="ev-09">
+          <div class="ev-card-body"><div><strong>9. Breadcrumb Before / After</strong><br><span style="color:var(--muted)">Soft-404 308 &amp; Cấp 3 cắt UGC</span></div><div style="display:flex;gap:6px"><button type="button" class="ev-link-btn" data-lb="ev-09">Phóng to</button><a class="ev-link-btn" href="./assets/ev-09-breadcrumb-before-after.png" target="_blank">Link ↗</a></div></div>
         </div>
       </div>
     </div>
@@ -1659,6 +1724,49 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
         <span class="pill pill-p2">Bỏ gói ItemList ở Phase 1 (ROI thấp) · Tham khảo cấu trúc</span>
       </div>
       <p class="lede"><code>JobPosting</code> chỉ đặt ở Job Detail (<a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener noreferrer">Google JobPosting ↗</a>); Google đã dừng FAQ rich result từ <strong>07/05/2026</strong> và xóa doc ngày 15/06/2026 (<a href="https://developers.google.com/search/updates#removing-faq-rich-result" target="_blank" rel="noopener noreferrer">Search Updates ↗</a>). <strong>Khuyến nghị sau Cross-Review:</strong> KHÔNG đầu tư 2,5–3 ngày Dev làm mới <code>CollectionPage + ItemList</code> trên Listing (Google Carousel không hỗ trợ Job; lợi ích AI mới là giả thuyết). Phase 1 chỉ tập trung <strong>(1) sửa lỗi <code>JobPosting</code> trên tin đang mở</strong> và <strong>(2) sửa <code>BreadcrumbList</code> đang trỏ <code>/tim-viec-lam/*</code> (308 → 200 Soft-404)</strong> — lưu ý ticket #24 CRV từng từ chối breadcrumb giao diện nên cần đồng thuận trước. 6 mẫu JSON bên dưới giữ lại làm chuẩn tham khảo lâu dài.</p>
+            <div class="card-head" style="margin:12px 0 8px">
+        <h3>Schema Job Listing thực tế: BEFORE (Đo sống 26/11 trên <code>c2l8</code>) vs AFTER (Sửa gọn Phase 1)</h3>
+        <button type="button" class="btn btn-primary jump-tab-btn" data-jump="breadcrumb-guide">Xem đủ 5 mẫu Before/After ở Tab 4b · Breadcrumb →</button>
+      </div>
+      <div class="grid-2" style="margin-bottom:14px">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#991B1B;margin-bottom:6px">❌ BEFORE — Đang chạy live trên <a class="ev-link-a" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener noreferrer">c2l8 ↗</a> (3 lỗi khoanh đỏ)</div>
+          <pre class="diff-box">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang Chủ", "item": "https://careerviet.vn" },
+    {
+      "@type": "ListItem", "position": 2,
+<span class="dl-red">      "name": "Viêc làm tại Hồ Chí Minh",  // ❌ Sai chính tả "Viêc" thiếu dấu nặng</span>
+<span class="dl-red">      "item": "https://careerviet.vn/tim-viec-lam/ho-chi-minh-l8-vi.html" // ❌ 308 → 200 Soft-404 (cache 30d!)</span>
+    },
+<span class="dl-red">    { "@type": "ListItem", "position": 3, "name": "Việc làm Kế toán / Kiểm toán" } // ❌ Thiếu tỉnh &amp; cấp hub</span>
+  ]
+}</pre>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#065F46;margin-bottom:6px">✅ AFTER — Bản sửa chuẩn Phase 1 (0,5 ngày Dev · 200 OK sạch)</div>
+          <pre class="diff-box">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+<span class="dl-green">    { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },</span>
+    {
+      "@type": "ListItem", "position": 3,
+<span class="dl-green">      "name": "Việc làm tại Hồ Chí Minh",  // ✅ Đúng chính tả</span>
+<span class="dl-green">      "item": "https://careerviet.vn/viec-lam/ho-chi-minh-l8-vi.html" // ✅ Đổi /tim-viec-lam/ → /viec-lam/ (200 OK)</span>
+    },
+<span class="dl-green">    { "@type": "ListItem", "position": 4, "name": "Việc làm Kế toán / Kiểm toán tại Hồ Chí Minh" }</span>
+  ]
+}</pre>
+        </div>
+      </div>
+      <div class="callout info" style="margin-bottom:14px;font-size:12.8px">
+        <strong>2 mẫu Listing khác cũng đang lỗi tương tự:</strong> Trang Đà Lạt (<a class="ev-link-a" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener noreferrer">l63q276 ↗</a>) ghi sai <code>"Viêc làm tại Lâm Đồng"</code> và <strong>mất luôn cấp 4 Đà Lạt</strong>; trang Masan (<a class="ev-link-a" href="https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html" target="_blank" rel="noopener noreferrer">masan-p ↗</a>) ghi <code>"Tuyển dụng 25 việc làm 26/11/2026"</code> và <strong>mất hẳn tên công ty Masan Consumer</strong>. Bấm nút xanh ở trên để xem đủ 5 mẫu Before/After.
+      </div>
+      <h3>6 Mẫu JSON-LD mở rộng (Tài liệu tham khảo cấu trúc cho Phase 2)</h3>
       <div class="filter-bar" id="jsonld-tabs"></div>
       <div id="jsonld-mount"></div>
     </div>
@@ -1707,15 +1815,37 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
     <div class="grid-2">
       <div class="card">
         <div class="card-head">
-          <h2>4.2. Thực trạng UGC do HR viết &amp; Chiến lược 3 Tầng (Không sửa tay)</h2>
-          <span class="pill pill-inter">50% Title phạm luật Google · 99,84% nhân bản đa tỉnh</span>
+          <h2>4.2. Xử lý UGC theo First Principle 2 Lớp (KHÔNG sửa chữ HR thấy) <button type="button" class="info-btn" data-info="ugc-two-layers">i</button></h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+            <button type="button" class="ev-link-btn" data-lb="ev-08">📷 Xem ảnh chụp sống ACC.OFM_HCM|</button>
+            <span class="pill pill-owner">0 khiếu nại HR · Chuẩn Google Jobs &amp; TopCV</span>
+          </div>
         </div>
-        <ul>
-          <li><strong>Bệnh UGC đo sống:</strong> 50% title dính mã ATS (<code>ACC.OFM_HCM|</code>, <code>128535 -</code>), ngoặc <code>[Bình Phước]</code>, ALL CAPS, nhồi tên DN + lương; cặp tin LPBank <code>35C8EEAB</code>/<code>EEAC</code> <strong>trùng 99,84%</strong>; tin OLAS tuyển HCM+HN + sáng T7 nhưng schema chỉ ghi Hà Nội. <em>(Điểm sáng: độ dài trung vị 546 từ, 0/20 tin chỉ ảnh.)</em></li>
-          <li><strong>Tầng 1 — Global Template PR (Low Dev):</strong> Ưu tiên số 1: vá <code>JobPosting</code> tin đang mở (<code>employmentType</code>, <code>baseSalary</code>) + <code>BreadcrumbList</code> (<code>308 → 200 Soft-404</code>) + <code>404/410</code> tin xóa + vòng đời tin hết hạn <strong>2 pha</strong> (Pha 1: <code>200 + noindex + validThrough</code> trong <code>X</code> ngày dài hơn chu kỳ gia hạn ID → Pha 2: <code>410 Gone</code>; ngoại lệ có backlink/click <code>301</code> về <code>-p</code>; đối chiếu spec ticket #8) + gỡ <code>images.qccrv.dev</code>.</li>
-          <li><strong>Tầng 2 — UGC Guardrails tự động:</strong> Regex Auto-Sanitizer gọt mã/ngoặc/ALL CAPS khỏi SEO title &amp; <code>JobPosting.title</code> (vẫn cho HR tick Badge UI); form cấu trúc chọn sẵn dải lương, ca/T7, <code>100% Remote</code>, đa tỉnh 1/7/2025; <strong>UGC Quality Gate</strong> tự gắn <code>noindex, follow</code> tin <code>&lt;100 từ</code> hoặc trùng SimHash <code>≥90%</code> (vẫn giữ hiển thị cho search nội bộ!).</li>
-          <li><strong>Tầng 3 — Wrapper 1st-Party SSR quanh chữ HR:</strong> Gắn thẻ <strong>VietnamSalary</strong> (cứu 60% tin Cạnh tranh mà không phạm luật <code>baseSalary</code>), <strong>Verified Employer Trust Card</strong> (Followers, Top EOC) &amp; <strong>6–8 Việc tương tự SSR</strong> + link lên trang Listing cha.</li>
-        </ul>
+        <p class="lede"><strong>Vì sao không tự ý gọt/xóa chữ trên giao diện?</strong> Các mã như <code>ACC.OFM_HCM|</code>, <code>128535 -</code> hay <code>[Bình Phước]</code> đều do <strong>HR khách hàng B2B tự điền</strong> (hoặc đẩy từ phần mềm ATS nội bộ) để quản lý hồ sơ. Sửa chữ hiển thị sẽ khiến khách khiếu nại. Giải pháp đúng là <strong>tách đôi 2 lớp</strong>:</p>
+        <div class="tbl-wrap" style="margin-bottom:12px">
+          <table class="data-tbl">
+            <thead><tr><th>Lớp hiển thị / Dữ liệu</th><th>Ai đọc?</th><th>Cách xử lý chuẩn</th><th>Ví dụ thật (tin Kế toán ở Bình Phước)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Lớp 1 · <code>&lt;h1&gt;</code> &amp; Thân bài JD</strong></td><td>HR &amp; Ứng viên</td><td class="good"><strong>GIỮ NGUYÊN 100%</strong> chữ HR đăng (không tự cắt/sửa).</td><td><code>[Bình Phước] ACC.OFM_HCM| KẾ TOÁN TỔNG HỢP</code></td></tr>
+              <tr><td><strong>Lớp 2a · HTML <code>&lt;title&gt;</code></strong></td><td>Google Search thường</td><td><strong>CÓ ghi tỉnh &amp; tên công ty</strong> (gọt mã ATS/ALL CAPS bằng Regex) để khớp tìm kiếm &amp; tăng CTR.</td><td><code>Tuyển Kế toán tổng hợp tại Bình Phước - Công ty ABC | CareerViet</code></td></tr>
+              <tr><td><strong>Lớp 2b · Schema <code>JobPosting.title</code></strong></td><td>Hộp Google for Jobs</td><td><strong>CHỈ ghi đúng tên chức danh.</strong> Google cấm nhồi mã ATS, tỉnh, lương, tên công ty vào trường này (đã có <code>jobLocation</code> &amp; <code>hiringOrganization</code> riêng).</td><td><code>"title": "Kế toán tổng hợp"</code></td></tr>
+              <tr><td><strong>Lớp 2c · Tin đa tỉnh (5–10 tỉnh)</strong></td><td>Google for Jobs + Web</td><td><strong>KHÔNG <code>noindex</code> tin khác tỉnh</strong> (sẽ mất luôn Google Jobs tỉnh đó!). Chuẩn Google &amp; TopCV: dùng <strong>1 URL + mảng <code>jobLocation[]</code> nhiều tỉnh</strong> (sửa bug tin OLAS HCM+HN). Chỉ <code>noindex</code> tin spam trùng <strong>cùng 1 tỉnh</strong> hoặc <code>&lt;100 từ</code>.</td><td><code>"jobLocation": [ {Bình Phước}, {Bình Thuận} ]</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>5 URL sống bấm kiểm chứng trực tiếp mã ATS &amp; lỗi UGC (đo 26/11/2026):</h3>
+        <div class="tbl-wrap">
+          <table class="data-tbl">
+            <thead><tr><th>Loại mã HR tự điền</th><th>Tiêu đề live &amp; Link bấm trực tiếp</th><th>Hệ lụy kỹ thuật phát sinh</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mã phòng ban ATS</strong></td><td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/acc-ofm_hcm-truong-bo-phan-ke-toan-mien-nam-south-accounting-manager.35C8DEF2.html" target="_blank" rel="noopener noreferrer">ACC.OFM_HCM| Trưởng Bộ Phận Kế Toán Miền nam (35C8DEF2) ↗</a></td><td>Breadcrumb Cấp 3 tự cắt thành <a class="ev-link-a" href="https://careerviet.vn/viec-lam/acc-k-vi.html" target="_blank" rel="noopener noreferrer">/viec-lam/acc-k-vi.html ↗</a></td></tr>
+              <tr><td><strong>Mã phiếu tuyển ATS</strong></td><td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/128535-sales-manager-steel.35C868C8.html" target="_blank" rel="noopener noreferrer">128535 - Sales Manager - Steel (35C868C8) ↗</a></td><td>Dính mã <code>128535 -</code> vào <code>JobPosting.title</code></td></tr>
+              <tr><td><strong>Đa tỉnh LPBank #1</strong></td><td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/binh-phuoc-cv-cvc-thu-hoi-no-muon.35C8EEAB.html" target="_blank" rel="noopener noreferrer">[Bình Phước] CV/CVC Thu hồi nợ muộn (35C8EEAB) ↗</a></td><td>Breadcrumb Cấp 3 đẻ rác <a class="ev-link-a" href="https://careerviet.vn/viec-lam/cv-k-vi.html" target="_blank" rel="noopener noreferrer">/viec-lam/cv-k-vi.html ↗</a></td></tr>
+              <tr><td><strong>Đa tỉnh LPBank #2</strong></td><td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/binh-thuan-cv-cvc-thu-hoi-no-muon.35C8EEAC.html" target="_blank" rel="noopener noreferrer">[Bình Thuận] CV/CVC Thu hồi nợ muộn (35C8EEAC) ↗</a></td><td>Trùng 99,84% với <code>35C8EEAB</code>; nên tư vấn dùng 1 tin + mảng <code>jobLocation[]</code></td></tr>
+              <tr><td><strong>Gõ sai chính tả</strong></td><td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/intergrated-business-planning-senior-manager.35C8DB28.html" target="_blank" rel="noopener noreferrer">Intergrated Business Planning Senior Manager (35C8DB28) ↗</a></td><td>Đẻ trang search sai chính tả <code>/viec-lam/intergrated-...-k-vi.html</code></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="card">
@@ -1737,6 +1867,201 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
           <li><strong>Bước 3 — Phase 2 xử lý ăn thịt (theo số GSC):</strong> Với từ khóa chủ lực đang bị <code>/viec-lam-tuong-tu/</code> giành hạng của trang <code>/viec-lam/</code> chính (như trang vừa viết bài ở sprint), mới <code>301</code> từng ca cụ thể sang trang <code>/viec-lam/</code> chuẩn.</li>
         </ul>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>4.2b. Chuẩn hóa <code>employmentType</code> (8 giá trị Google Jobs) &amp; Before/After Schema <code>JobPosting</code> <button type="button" class="info-btn" data-info="employment-type">i</button></h2>
+        <span class="pill pill-p0">Ưu tiên #1 của PR #2 · Sửa lỗi 100% tin đang mở</span>
+      </div>
+      <div class="grid-2" style="margin-bottom:14px">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#991B1B;margin-bottom:6px">❌ BEFORE — Trích sống trên <a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener noreferrer">35C8EB2B ↗</a> (4 lỗi đỏ)</div>
+          <pre class="diff-box">{
+  "@type": "JobPosting",
+  "title": "Nhân Viên Sales Admin - Trung tâm Mice miền Bắc",
+<span class="dl-red">  "employmentType": [""FULL_TIME""], // ❌ Lồng dấu " do stringify thừa 1 lần</span>
+<span class="dl-red">  "baseSalary": { "currency": "LCT", "value": { "value": "Cạnh tranh" } }, // ❌ Lộ mã nội bộ LCT &amp; chữ thay số</span>
+<span class="dl-red">  "educationRequirements": { "credentialCategory": "no requirements" }, // ❌ JD ghi Đại học nhưng xuất "no req"</span>
+<span class="dl-red">  "applicantLocationRequirements": { "@type": "Country", "name": "Việt Nam" } // ❌ Cấm đặt cho việc tại văn phòng</span>
+}</pre>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#065F46;margin-bottom:6px">✅ AFTER — Bản chuẩn Rich Results Test PASS 100%</div>
+          <pre class="diff-box">{
+  "@type": "JobPosting",
+<span class="dl-green">  "title": "Nhân viên Sales Admin", // ✅ Chỉ giữ đúng chức danh (lọc mã ATS/địa điểm)</span>
+<span class="dl-green">  "employmentType": ["FULL_TIME"], // ✅ Mảng chuỗi sạch (hoặc "FULL_TIME"), 0 dấu " thừa</span>
+<span class="dl-green">  // ✅ Bỏ hẳn khối baseSalary khi HR chọn "Cạnh tranh" / LCT / LTT (giao diện vẫn hiện bình thường)</span>
+<span class="dl-green">  "jobLocation": [ { "@type": "Place", "address": { "addressRegion": "Hà Nội", "addressCountry": "VN" } } ]</span>
+<span class="dl-green">  // ✅ Nếu tin tuyển nhiều tỉnh: xuất mảng [Place 1, Place 2...]; chỉ thêm applicantLocationRequirements khi 100% Remote</span>
+}</pre>
+        </div>
+      </div>
+      <h3>Bảng 8 giá trị <code>employmentType</code> duy nhất Google Jobs công nhận (bắt buộc IN HOA tiếng Anh):</h3>
+      <div class="tbl-wrap">
+        <table class="data-tbl">
+          <thead><tr><th>Hình thức HR chọn trên form CareerViet</th><th>Giá trị chuẩn <code>employmentType</code></th><th>Giải thích ngắn</th></tr></thead>
+          <tbody>
+            <tr><td>Nhân viên chính thức / Toàn thời gian</td><td><code>"FULL_TIME"</code></td><td>Phổ biến nhất trên CareerViet</td></tr>
+            <tr><td>Bán thời gian</td><td><code>"PART_TIME"</code></td><td>Làm việc bán thời gian / theo ca ngắn</td></tr>
+            <tr><td>Thời vụ / Nghề tự do / Freelance / CTV</td><td><code>"CONTRACTOR"</code></td><td>Hợp đồng dịch vụ / cộng tác viên</td></tr>
+            <tr><td>Tạm thời / Thời vụ ngắn hạn</td><td><code>"TEMPORARY"</code></td><td>Hợp đồng có thời hạn ngắn rõ ràng</td></tr>
+            <tr><td>Thực tập / Thực tập sinh</td><td><code>"INTERN"</code></td><td>Vị trí Intern / Thực tập sinh</td></tr>
+            <tr><td>Tình nguyện viên</td><td><code>"VOLUNTEER"</code></td><td>Hoạt động cộng đồng / không lương</td></tr>
+            <tr><td>Trả lương theo ngày / theo công</td><td><code>"PER_DIEM"</code></td><td>Tính thù lao theo từng ngày công</td></tr>
+            <tr><td>Khác (không khớp 7 loại trên)</td><td><code>"OTHER"</code></td><td>Fallback an toàn (tuyệt đối không xuất tiếng Việt hay chuỗi rỗng)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>4.2c. Wireframe Khung bọc 1st-Party SSR quanh JD (Bám layout thật <code>35C8EB2B</code>)</h2>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          <a class="ev-link-btn" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener noreferrer">Mở trang live 35C8EB2B đối chiếu ↗</a>
+          <span class="pill pill-p2">Ưu tiên Phase 2 · P2 (Làm sau PR #1, B2 và PR #2)</span>
+        </div>
+      </div>
+      <p class="lede">Mô phỏng đúng bố cục 2 cột đang chạy live trên CareerViet: <strong>cột trái giữ nguyên 100% nội dung HR đăng</strong>; cột phải bổ sung dữ liệu độc quyền của CareerViet và chuyển khối việc tương tự từ Skeleton JS sang SSR để Googlebot đọc được.</p>
+      <div class="wf-shell">
+        <div class="wf-bar">
+          <strong>JOB DETAIL WIREFRAME · LAYOUT THẬT CAREERVIET + WRAPPER 1ST-PARTY SSR (PHASE 2)</strong>
+          <span class="wf-url">careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-...35C8EB2B.html</span>
+        </div>
+        <div class="wf-body">
+          <div class="jd-wf-box fix-bc">
+            <span class="pill pill-p0" style="margin-bottom:4px">PR #2 · Sửa JSON-LD (0,5 ngày)</span>
+            <div><strong>Breadcrumb sạch (từ ID DB):</strong> Trang chủ › Việc làm Bán hàng / Kinh doanh (<code>/viec-lam/...-c31-vi.html</code>) › Bán hàng tại Hà Nội (<code>-c31l4</code>) › Nhân Viên Sales Admin...</div>
+          </div>
+          <div class="jd-wf-box keep">
+            <span class="pill pill-none" style="margin-bottom:4px">ĐÃ CÓ · GIỮ NGUYÊN 100% CHỮ HR</span>
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+              <div><strong style="font-size:16px">&lt;h1&gt; Nhân Viên Sales Admin - Trung tâm Mice miền Bắc &lt;/h1&gt;</strong><div style="color:var(--muted)">Công Ty Cổ Phần Du Lịch Vietravel · Hà Nội · Lương: Cạnh tranh</div></div>
+              <span class="btn btn-primary" style="pointer-events:none">NỘP ĐƠN ỨNG TUYỂN</span>
+            </div>
+          </div>
+          <div class="jd-wf-grid">
+            <div>
+              <div class="jd-wf-box keep">
+                <span class="pill pill-none" style="margin-bottom:4px">ĐÃ CÓ · SSR SẴN</span>
+                <strong>Hộp tóm tắt JD:</strong> Địa điểm · Cập nhật · Ngành nghề · Hình thức · Lương (<em>Cạnh tranh</em>) · Kinh nghiệm · Cấp bậc · Hạn nộp.
+              </div>
+              <div class="jd-wf-box keep">
+                <span class="pill pill-none" style="margin-bottom:4px">ĐÃ CÓ · GIỮ NGUYÊN 100% CHỮ HR</span>
+                <strong>&lt;h2&gt; Mô tả Công việc &lt;/h2&gt;</strong><br>
+                <strong>&lt;h2&gt; Yêu Cầu Công Việc &lt;/h2&gt;</strong><br>
+                <strong>&lt;h2&gt; Phúc lợi &lt;/h2&gt;</strong> · <strong>&lt;h3&gt; Thông tin khác &lt;/h3&gt;</strong> · <strong>&lt;h2&gt; Từ khóa / Kỹ năng &lt;/h2&gt;</strong>
+                <div style="color:var(--muted);margin-top:4px">Không tự sửa chữ bên trong JD để tuyệt đối không làm phiền khách B2B.</div>
+              </div>
+            </div>
+            <div>
+              <div class="jd-wf-box keep">
+                <span class="pill pill-none" style="margin-bottom:4px">ĐÃ CÓ · NÂNG CẤP NHẸ P2</span>
+                <strong>Thẻ Công ty xác thực (SSR):</strong> Logo + Followers + Top EOC + link sạch về trang <code>-p&#123;emp_id&#125;</code>.
+              </div>
+              <div class="jd-wf-box add-p2">
+                <span class="pill pill-owner" style="margin-bottom:4px">CHÈN MỚI PHASE 2 · 1ST-PARTY SSR</span>
+                <strong>Khung tham khảo lương VietnamSalary:</strong><br>
+                <em>Sales Admin tại Hà Nội: 10 – 16 triệu/tháng (Trung vị: 12,5tr)</em><br>
+                <span style="color:#065F46">Bù thông tin lương cho 60% tin ghi "Cạnh tranh" mà không sửa chữ HR &amp; không vi phạm luật <code>baseSalary</code>!</span>
+              </div>
+              <div class="jd-wf-box fix-ssr">
+                <span class="pill pill-p1" style="margin-bottom:4px">ĐANG LÀ SKELETON JS → CHUYỂN SSR PHASE 2</span>
+                <strong>&lt;h3&gt; Các công việc tương tự &lt;/h3&gt;:</strong><br>
+                • Hiện live: <code>ListSimilarJobsSkeleton</code> (tải bằng JS <code>internal-api</code>, Googlebot không thấy link).<br>
+                • Phase 2: Render sẵn <strong>6–8 link tin cùng ngành/tỉnh bằng SSR</strong> + 1 link đẩy ngược lên trang Listing cha (<code>-c31l4</code>).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 4B: DEDICATED BREADCRUMB GUIDE ==================== -->
+  <section id="tab-breadcrumb-guide" class="tab-panel">
+    <div class="card">
+      <div class="card-head">
+        <h2>4b.1. Toàn cảnh 4 Lỗi Breadcrumb trên CareerViet (Listing &amp; Job Detail) <button type="button" class="info-btn" data-info="breadcrumb-detail">i</button></h2>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          <button type="button" class="ev-link-btn" data-lb="ev-09">📷 Xem sơ đồ Breadcrumb Before/After</button>
+          <span class="pill pill-p0">PR #2 · ~0,5 ngày Dev (Sửa JSON-LD trước)</span>
+        </div>
+      </div>
+      <p class="lede">Trang Job Detail của CareerViet hiện <strong>không hiện thanh breadcrumb trên giao diện</strong> (ticket #24 CRV từng từ chối UI), nhưng vẫn xuất JSON-LD <code>BreadcrumbList</code> trên toàn bộ Listing lẫn Job Detail — và bộ JSON-LD này đang có <strong>4 lỗi hệ thống</strong> làm rò trang Soft-404 và đẻ hàng ngàn URL search rác:</p>
+      <div class="grid-2" style="margin-bottom:14px">
+        <div class="callout crit">
+          <h3>Lỗi #1 &amp; #2 — Sai prefix <code>/tim-viec-lam/</code> (308 → Soft-404) &amp; Typo <code>"Viêc"</code></h3>
+          <ul>
+            <li>Dev gõ nhầm URL ngành/tỉnh từ <code>/viec-lam/...</code> thành <code>/tim-viec-lam/...</code> trên cả Listing (<code>c2l8</code>) lẫn Job Detail (<code>35C8EB2B</code>, <code>35C8DEF2</code>).</li>
+            <li>Đo <code>curl -IL</code>: link <code>/tim-viec-lam/ban-hang-kinh-doanh-c31-vi.html</code> trả <strong><code>308</code> → <code>/vi/tim-viec-lam/...</code> → <code>200 OK</code> (1,43 MB, cache tới 30 ngày <code>s-maxage=2592000</code>) nhưng body là trang báo lỗi 404 (Soft-404)</strong>!</li>
+            <li>Toàn bộ trang tỉnh bị sai chính tả cứng <code>"Viêc làm tại..."</code> (thiếu dấu nặng).</li>
+          </ul>
+        </div>
+        <div class="callout warn">
+          <h3>Lỗi #3 &amp; #4 — Mất cấp thực thể &amp; Cấp 3 Job Detail cắt chữ UGC đẻ link rác</h3>
+          <ul>
+            <li>Trên Listing: Đà Lạt (<code>l63q276</code>) mất luôn cấp Đà Lạt; Masan (<code>masan-p</code>) mất tên công ty, chỉ hiện <code>"Tuyển dụng 25 việc làm 26/11/2026"</code>.</li>
+            <li>Trên Job Detail: Cấp 3 tự cắt 2–4 từ đầu trong tiêu đề HR gõ để ghép link <code>-k-vi.html</code> → khi HR gõ mã ATS hoặc sai chính tả, Googlebot bị đẩy vào hàng ngàn URL rác như <code>/viec-lam/acc-k-vi.html</code>, <code>/viec-lam/cv-k-vi.html</code>!</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Bằng chứng 4 URL Job Detail sống đang đẻ lỗi Breadcrumb (bấm kiểm chứng trực tiếp):</h3>
+      <div class="tbl-wrap">
+        <table class="data-tbl">
+          <thead><tr><th>Trang Job Detail sống</th><th>Cấp 2 lỗi (308 → Soft-404)</th><th>Cấp 3 lỗi (Cắt chữ UGC)</th><th>Đích đúng cần sửa (từ ID DB)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/acc-ofm_hcm-truong-bo-phan-ke-toan-mien-nam-south-accounting-manager.35C8DEF2.html" target="_blank" rel="noopener noreferrer">35C8DEF2 · ACC.OFM_HCM|... ↗</a></td>
+              <td class="bad"><code>/tim-viec-lam/ke-toan-kiem-toan-c2-vi.html</code></td>
+              <td class="bad"><a class="ev-link-a" href="https://careerviet.vn/viec-lam/acc-k-vi.html" target="_blank" rel="noopener noreferrer">/viec-lam/acc-k-vi.html ↗</a> ("Việc làm acc")</td>
+              <td class="good"><code>/viec-lam/ke-toan-kiem-toan-c2-vi.html</code> → <code>...-c2l8-vi.html</code></td>
+            </tr>
+            <tr>
+              <td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/binh-phuoc-cv-cvc-thu-hoi-no-muon.35C8EEAB.html" target="_blank" rel="noopener noreferrer">35C8EEAB · [Bình Phước] CV/CVC... ↗</a></td>
+              <td class="bad"><code>/tim-viec-lam/ngan-hang-c19-vi.html</code></td>
+              <td class="bad"><a class="ev-link-a" href="https://careerviet.vn/viec-lam/cv-k-vi.html" target="_blank" rel="noopener noreferrer">/viec-lam/cv-k-vi.html ↗</a> ("Việc làm cv")</td>
+              <td class="good"><code>/viec-lam/ngan-hang-c19-vi.html</code> → <code>...-c19l...</code></td>
+            </tr>
+            <tr>
+              <td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/intergrated-business-planning-senior-manager.35C8DB28.html" target="_blank" rel="noopener noreferrer">35C8DB28 · Intergrated Business... ↗</a></td>
+              <td class="bad"><code>/tim-viec-lam/ban-hang-kinh-doanh-c31-vi.html</code></td>
+              <td class="bad"><code>/viec-lam/intergrated-...-k-vi.html</code> (sai chính tả)</td>
+              <td class="good"><code>/viec-lam/ban-hang-kinh-doanh-c31-vi.html</code> → <code>...-c31l8-vi.html</code></td>
+            </tr>
+            <tr>
+              <td><a class="ev-link-a" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener noreferrer">35C8EB2B · Sales Admin Mice... ↗</a></td>
+              <td class="bad"><code>/tim-viec-lam/ban-hang-kinh-doanh-c31-vi.html</code></td>
+              <td class="warn-t"><code>/viec-lam/nhan-vien-sales-admin-k-vi.html</code></td>
+              <td class="good"><code>/viec-lam/ban-hang-kinh-doanh-c31-vi.html</code> → <code>...-c31l4-vi.html</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>4b.2. So sánh Before (Đỏ) vs After (Xanh) cho 5 Nhóm Trang — Bấm chọn từng mẫu</h2>
+        <span class="pill pill-owner">JSON-LD đo sống 26/11 · Chép gửi Dev ngay</span>
+      </div>
+      <div class="filter-bar" id="bc-tabs"></div>
+      <div id="bc-mount"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>4b.3. Lộ trình triển khai thực tế với Dev CareerViet (Xử lý vướng Ticket #24)</h2>
+        <span class="pill pill-inter">0 đụng UI ở Phase 1 · 0,5 ngày Dev</span>
+      </div>
+      <ul>
+        <li><strong>Bước 1 (PR #2 — làm ngay, 0 đụng UI):</strong> Vá toàn bộ JSON-LD <code>BreadcrumbList</code> trên 5 template theo đúng mẫu xanh ở mục 4b.2 (sửa <code>/tim-viec-lam/</code> → <code>/viec-lam/</code>, sửa chính tả <code>"Việc"</code>, bỏ logic cắt chữ UGC Cấp 3 sang dùng ID Ngành + ID Tỉnh DB). Do không đụng giao diện nên không bị vướng từ chối UI của ticket #24.</li>
+        <li><strong>Bước 2 (Đợt UI/UX tiếp theo — đồng thuận lại ticket #24):</strong> Bật thêm thanh <code>&lt;nav aria-label="Breadcrumb"&gt;</code> gọn 1 dòng hiển thị khớp 100% với JSON-LD ở trên đầu trang Listing và Job Detail để truyền link nội bộ thật lên trang cha.</li>
+        <li><strong>Nghiệm thu (DoD):</strong> Chạy Rich Results Test trên 5 mẫu URL thật; kiểm <code>0</code> URL chứa <code>/tim-viec-lam/</code> trong toàn bộ <code>BreadcrumbList</code>; kiểm mọi đường dẫn <code>item</code> trong Breadcrumb đều trả <code>HTTP 200 OK</code> (không qua 308).</li>
+      </ul>
     </div>
   </section>
 
@@ -1821,7 +2146,7 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
 </main>
 
 <footer class="footer-note">
-  Tài liệu kỹ thuật &amp; kiến trúc nội dung CareerViet v4 · Đo kiểm live 26/11/2026 + GSC Crawl Stats + Ahrefs · Chuẩn hóa Cost of Retrieval, Google Docs chính thức &amp; SOP v4.1 + NLP v2.1 · Preview cài <code>noindex, nofollow, noai</code>.
+  Tài liệu kỹ thuật &amp; kiến trúc nội dung CareerViet v5 · Đo kiểm live 26/11/2026 + GSC Crawl Stats + Ảnh sống Job Detail ATS · Chuẩn hóa Cost of Retrieval, Google Docs chính thức &amp; SOP v4.1 + NLP v2.1 · Preview cài <code>noindex, nofollow, noai</code>.
 </footer>
 
 <div class="info-popover" id="info-popover" role="dialog" aria-modal="false" aria-hidden="true"></div>
@@ -1886,7 +2211,7 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
   if (initHash) activateTab(initHash);
 
   // Interactive Team Meeting Board (localStorage + Copy Markdown)
-  const STORE_KEY = "cv_v4_team_meeting_v1";
+  const STORE_KEY = "cv_v5_team_meeting_v1";
   function loadState() {
     try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); } catch (_) { return {}; }
   }
@@ -1911,7 +2236,7 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
     }
   });
   document.getElementById("copy-meeting-md")?.addEventListener("click", () => {
-    const lines = ["# Biên bản Chốt họp Team CareerViet (từ v4 Preview)", ""];
+    const lines = ["# Biên bản Chốt họp Team CareerViet (từ v5 Preview)", ""];
     lines.push("## 6 Quyết định chính");
     document.querySelectorAll("#decisions-tbl tbody tr").forEach((tr, i) => {
       const title = tr.children[1].querySelector("strong")?.textContent?.trim() || ("Mục " + (i + 1));
@@ -2341,7 +2666,9 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
     "ev-04": { src: "./assets/ev-04-openresty-vs-cmccdn-headers.png", title: "Bằng chứng 4 · Header thật: OpenResty/Kong vs CMC Cloud CDN", cap: "Assets CSS/JS trên CMC CDN đã chạy HTTP/2 + Brotli. HTML trên Kong/OpenResty còn HTTP/1.1 + no-cache (X-Bot-Cache: MISS)." },
     "ev-05": { src: "./assets/ev-05-gsc-crawl-stats-nov15-spike.png", title: "Bằng chứng 5 · GSC Crawl Stats: JSON 28% vs HTML 21% & Cú vọt 15/11", cap: "Dung lượng tải tăng 10× đúng ngày 15/11/2026 (593 MB → 5,91 GB/ngày); 60,6% JSON nằm trên careerviet.vn/api/*." },
     "ev-06": { src: "./assets/ev-06-robots-rfc9309-and-4-api.png", title: "Bằng chứng 6 · Lỗi RFC 9309 trong robots.txt & 4 Endpoint /api/* cùng Origin", cap: "10 khối Allow: / vô hiệu hóa Disallow: /api/*; cần tách B2 để test staging 4 endpoint cùng origin trước khi chặn." },
-    "ev-07": { src: "./assets/ev-07-viec-lam-tuong-tu-split.png", title: "Bằng chứng 7 · Phân tầng /viec-lam-tuong-tu/*: Giữ 10,8% Traffic — Khóa Rác", cap: "758 URL đang kéo 35.191 traffic Ahrefs (nhiều từ Top 1–2) cần giữ index; chỉ khóa -sort*, phân trang sâu, 0 tin." }
+    "ev-07": { src: "./assets/ev-07-viec-lam-tuong-tu-split.png", title: "Bằng chứng 7 · Phân tầng /viec-lam-tuong-tu/*: Giữ 10,8% Traffic — Khóa Rác", cap: "758 URL đang kéo 35.191 traffic Ahrefs (nhiều từ Top 1–2) cần giữ index; chỉ khóa -sort*, phân trang sâu, 0 tin." },
+    "ev-08": { src: "./assets/ev-08-ats-ugc-live-proof.png", title: "Bằng chứng 8 · Ảnh chụp thật tin ACC.OFM_HCM| (35C8DEF2) & [Bình Phước] (35C8EEAB)", cap: "Mã ATS do HR tự điền vào tiêu đề; giải pháp 2 lớp giữ nguyên <h1> cho HR, chỉ lọc sạch lớp kỹ thuật gửi Google." },
+    "ev-09": { src: "./assets/ev-09-breadcrumb-before-after.png", title: "Bằng chứng 9 · Sơ đồ Breadcrumb Before (Soft-404 & Cắt UGC) vs After", cap: "Tổng hợp 4 lỗi BreadcrumbList đang live trên Listing và Job Detail cùng bản sửa chuẩn từ ID Database." }
   };
 
   const INFO_CARDS = {
@@ -2463,6 +2790,27 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
       ex: "HTML chỉ chiếm 21% lượt crawl trong khi JSON chiếm tới 28%; tỷ lệ 304 < 1%; dung lượng tải tăng 10× đúng ngày 15/11/2026 (593 MB → 5,91 GB/ngày) kéo response time lên 320–383 ms.",
       impact_txt: "Xác nhận 100% lỗi AI vector bùng phát đúng ngày 15/11 và chỉ ra đúng 2 thủ phạm đốt crawl JSON là /api/get-localized-url (46,3%) và internal-api.../count-by-district (23,4%).",
       pill: "Bằng chứng gốc GSC", pillCls: "pill-p0", ev: "ev-05"
+    },
+    "ugc-two-layers": {
+      title: "Nguyên tắc First Principle 2 Lớp cho UGC (Không đụng chữ HR)",
+      def: "Tách riêng lớp hiển thị cho khách hàng B2B (<h1> và thân bài JD) khỏi lớp dữ liệu máy tìm kiếm đọc (<title>, JobPosting.title, Breadcrumb).",
+      ex: "Tin 35C8DEF2 có HR tự gõ 'ACC.OFM_HCM| Trưởng Bộ Phận Kế Toán...': <h1> trên màn hình giữ nguyên y hệt cho HR; <title> ghi kèm tỉnh TP.HCM; còn JobPosting.title chỉ ghi đúng chức danh 'Trưởng bộ phận Kế toán'.",
+      impact_txt: "Vừa tuân thủ 100% luật Google Jobs (cấm mã ATS/tỉnh/lương trong JobPosting.title) vừa tránh tuyệt đối rủi ro khách hàng HR khiếu nại vì bị sửa bài.",
+      pill: "First Principle · UGC", pillCls: "pill-owner", ev: "ev-08"
+    },
+    "employment-type": {
+      title: "Trường employmentType chuẩn Google Jobs (8 giá trị)",
+      def: "Khai báo hình thức làm việc của tin tuyển dụng bằng 1 trong 8 mã tiếng Anh viết IN HOA (FULL_TIME, PART_TIME, CONTRACTOR, TEMPORARY, INTERN, VOLUNTEER, PER_DIEM, OTHER).",
+      ex: 'Trên 100% tin live CareerViet (vd 35C8EB2B), code đang xuất sai thành ["\\"FULL_TIME\\""] (lồng dấu ngoặc kép thừa do JSON.stringify 2 lần).',
+      impact_txt: 'Sửa lại thành ["FULL_TIME"] (hoặc "FULL_TIME") giúp Google Jobs nhận diện đúng bộ lọc hình thức làm việc ngay lập tức.',
+      pill: "P0 · Ưu tiên #1 PR #2", pillCls: "pill-p0", ev: "ev-08"
+    },
+    "breadcrumb-detail": {
+      title: "4 Lỗi BreadcrumbList đang chạy live trên Listing & Job Detail",
+      def: "BreadcrumbList là dữ liệu cấu trúc khai báo đường dẫn cha-con giúp Google hiểu vị trí của trang trong kiến trúc website.",
+      ex: "Cấp 2 trên c2l8 & 35C8DEF2 trỏ sai sang /tim-viec-lam/... (308 → 200 Soft-404 cache 30 ngày); Cấp 3 Job Detail tự cắt chữ đầu tiêu đề HR tạo link rác /viec-lam/acc-k-vi.html và /viec-lam/cv-k-vi.html.",
+      impact_txt: "Sửa JSON-LD về đúng /viec-lam/... và lấy Cấp 3 từ ID Ngành + Tỉnh trong DB (mất 0,5 ngày Dev, 0 đụng UI) giúp chặn ngay Soft-404 và hàng ngàn trang search rác.",
+      pill: "P0 · Tab 4b chi tiết", pillCls: "pill-p0", ev: "ev-09"
     }
   };
 
@@ -2600,6 +2948,236 @@ Sitemap: https://careerviet.vn/sitemap/sitemap.xml
       closePopover(true);
     }
   });
+
+
+  // 8. v5: TAB 4B INTERACTIVE BREADCRUMB BEFORE / AFTER (5 TEMPLATES)
+  const BC_SAMPLES = [
+    {
+      key: "c2l8",
+      label: "1. Listing Ngành × Tỉnh (c2l8)",
+      liveUrl: "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html",
+      summary: "3 lỗi live: sai chính tả 'Viêc', sai đường dẫn /tim-viec-lam/ (308 → 200 Soft-404 cache 30 ngày), thiếu địa danh ở cấp cuối và thiếu cấp hub Việc làm mới nhất.",
+      beforeHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "inLanguage": "vi",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang Chủ", "item": "https://careerviet.vn" },
+    {
+      "@type": "ListItem", "position": 2,
+<span class="dl-red">      "name": "Viêc làm tại Hồ Chí Minh", // ❌ Thiếu dấu nặng ở chữ "Viêc"</span>
+<span class="dl-red">      "item": "https://careerviet.vn/tim-viec-lam/ho-chi-minh-l8-vi.html" // ❌ 308 → 200 Soft-404</span>
+    },
+<span class="dl-red">    { "@type": "ListItem", "position": 3, "name": "Việc làm Kế toán / Kiểm toán" } // ❌ Thiếu "tại Hồ Chí Minh"</span>
+  ]
+}`,
+      afterHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+<span class="dl-green">    { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },</span>
+    {
+      "@type": "ListItem", "position": 3,
+<span class="dl-green">      "name": "Việc làm tại Hồ Chí Minh", // ✅ Sửa chính tả</span>
+<span class="dl-green">      "item": "https://careerviet.vn/viec-lam/ho-chi-minh-l8-vi.html" // ✅ 200 OK sống</span>
+    },
+<span class="dl-green">    { "@type": "ListItem", "position": 4, "name": "Việc làm Kế toán / Kiểm toán tại Hồ Chí Minh" }</span>
+  ]
+}`,
+      afterRaw: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+          { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+          { "@type": "ListItem", "position": 3, "name": "Việc làm tại Hồ Chí Minh", "item": "https://careerviet.vn/viec-lam/ho-chi-minh-l8-vi.html" },
+          { "@type": "ListItem", "position": 4, "name": "Việc làm Kế toán / Kiểm toán tại Hồ Chí Minh" }
+        ]
+      }, null, 2)
+    },
+    {
+      key: "l63q276",
+      label: "2. Listing Quận/TP (Đà Lạt)",
+      liveUrl: "https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html",
+      summary: "2 lỗi live: sai chính tả 'Viêc làm tại Lâm Đồng' và MẤT HOÀN TOÀN cấp 4 'Thành phố Đà Lạt' (dù URL đang là trang Đà Lạt).",
+      beforeHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang Chủ", "item": "https://careerviet.vn" },
+    { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+<span class="dl-red">    { "@type": "ListItem", "position": 3, "name": "Viêc làm tại Lâm Đồng" } // ❌ Sai "Viêc" &amp; cụt luôn cấp 4 Đà Lạt!</span>
+  ]
+}`,
+      afterHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+    { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+<span class="dl-green">    { "@type": "ListItem", "position": 3, "name": "Việc làm tại Lâm Đồng", "item": "https://careerviet.vn/viec-lam/lam-dong-l63-vi.html" },</span>
+<span class="dl-green">    { "@type": "ListItem", "position": 4, "name": "Việc làm tại Thành phố Đà Lạt" }</span>
+  ]
+}`,
+      afterRaw: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+          { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+          { "@type": "ListItem", "position": 3, "name": "Việc làm tại Lâm Đồng", "item": "https://careerviet.vn/viec-lam/lam-dong-l63-vi.html" },
+          { "@type": "ListItem", "position": 4, "name": "Việc làm tại Thành phố Đà Lạt" }
+        ]
+      }, null, 2)
+    },
+    {
+      key: "masan",
+      label: "3. Listing Công ty (masan-p)",
+      liveUrl: "https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html",
+      summary: "2 lỗi live: mất hoàn toàn tên doanh nghiệp 'Masan Consumer' (in chuỗi chung chung 'Tuyển dụng 25 việc làm 26/11/2026') và thiếu hub /cong-ty + trang Hồ sơ doanh nghiệp.",
+      beforeHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang Chủ", "item": "https://careerviet.vn" },
+<span class="dl-red">    { "@type": "ListItem", "position": 2, "name": "Tuyển dụng 25 việc làm 26/11/2026" } // ❌ Mất tên Masan Consumer &amp; thiếu cấp /cong-ty</span>
+  ]
+}`,
+      afterHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+<span class="dl-green">    { "@type": "ListItem", "position": 2, "name": "Danh sách công ty", "item": "https://careerviet.vn/cong-ty" },</span>
+<span class="dl-green">    { "@type": "ListItem", "position": 3, "name": "Masan Consumer", "item": "https://careerviet.vn/vi/nha-tuyen-dung/masan-consumer.35A4FED8.html" },</span>
+<span class="dl-green">    { "@type": "ListItem", "position": 4, "name": "Việc làm tại Masan Consumer" }</span>
+  ]
+}`,
+      afterRaw: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+          { "@type": "ListItem", "position": 2, "name": "Danh sách công ty", "item": "https://careerviet.vn/cong-ty" },
+          { "@type": "ListItem", "position": 3, "name": "Masan Consumer", "item": "https://careerviet.vn/vi/nha-tuyen-dung/masan-consumer.35A4FED8.html" },
+          { "@type": "ListItem", "position": 4, "name": "Việc làm tại Masan Consumer" }
+        ]
+      }, null, 2)
+    },
+    {
+      key: "c2",
+      label: "4. Listing Ngành (-c2)",
+      liveUrl: "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2-vi.html",
+      summary: "Chuẩn hóa 3 cấp gọn sạch: Trang chủ → Việc làm mới nhất → Việc làm Kế toán / Kiểm toán (đảm bảo mọi URL item đều là /viec-lam/ trả 200 OK).",
+      beforeHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang Chủ", "item": "https://careerviet.vn" },
+<span class="dl-red">    // Rủi ro rò prefix /tim-viec-lam/ hoặc thiếu cấp 2 hub Việc làm mới nhất</span>
+    { "@type": "ListItem", "position": 2, "name": "Việc làm Kế toán / Kiểm toán" }
+  ]
+}`,
+      afterHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+<span class="dl-green">    { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },</span>
+<span class="dl-green">    { "@type": "ListItem", "position": 3, "name": "Việc làm Kế toán / Kiểm toán" }</span>
+  ]
+}`,
+      afterRaw: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+          { "@type": "ListItem", "position": 2, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+          { "@type": "ListItem", "position": 3, "name": "Việc làm Kế toán / Kiểm toán" }
+        ]
+      }, null, 2)
+    },
+    {
+      key: "jd",
+      label: "5. Job Detail (35C8DEF2 · ACC.OFM_HCM)",
+      liveUrl: "https://careerviet.vn/vi/tim-viec-lam/acc-ofm_hcm-truong-bo-phan-ke-toan-mien-nam-south-accounting-manager.35C8DEF2.html",
+      summary: "3 lỗi live nghiêm trọng: thiếu cấp Trang chủ; Cấp 2 trỏ /tim-viec-lam/ke-toan-kiem-toan-c2-vi.html (308 → Soft-404); Cấp 3 tự cắt mã ATS 'ACC' đẻ ra link rác /viec-lam/acc-k-vi.html!",
+      beforeHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Việc làm mới nhất", "item": "https://careerviet.vn/viec-lam/tat-ca-viec-lam-vi.html" },
+    {
+      "@type": "ListItem", "position": 2, "name": "Việc làm - Kế toán / Kiểm toán",
+<span class="dl-red">      "item": "https://careerviet.vn/tim-viec-lam/ke-toan-kiem-toan-c2-vi.html" // ❌ 308 → 200 Soft-404!</span>
+    },
+    {
+      "@type": "ListItem", "position": 3,
+<span class="dl-red">      "name": "Việc làm acc", // ❌ Cắt mã ATS từ tiêu đề HR!</span>
+<span class="dl-red">      "item": "https://careerviet.vn/viec-lam/acc-k-vi.html" // ❌ Đẻ trang search rác!</span>
+    },
+    { "@type": "ListItem", "position": 4, "name": "ACC.OFM_HCM| Trưởng Bộ Phận Kế Toán Miền nam | South Accounting Manager" }
+  ]
+}`,
+      afterHtml: `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+<span class="dl-green">    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },</span>
+    {
+      "@type": "ListItem", "position": 2,
+<span class="dl-green">      "name": "Việc làm Kế toán / Kiểm toán",</span>
+<span class="dl-green">      "item": "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2-vi.html" // ✅ Đổi /tim-viec-lam/ → /viec-lam/ (200 OK)</span>
+    },
+    {
+      "@type": "ListItem", "position": 3,
+<span class="dl-green">      "name": "Việc làm Kế toán / Kiểm toán tại Hồ Chí Minh", // ✅ Lấy từ ID ngành + ID tỉnh trong DB!</span>
+<span class="dl-green">      "item": "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html"</span>
+    },
+    { "@type": "ListItem", "position": 4, "name": "Trưởng Bộ Phận Kế Toán Miền Nam" }
+  ]
+}`,
+      afterRaw: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://careerviet.vn" },
+          { "@type": "ListItem", "position": 2, "name": "Việc làm Kế toán / Kiểm toán", "item": "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2-vi.html" },
+          { "@type": "ListItem", "position": 3, "name": "Việc làm Kế toán / Kiểm toán tại Hồ Chí Minh", "item": "https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" },
+          { "@type": "ListItem", "position": 4, "name": "Trưởng Bộ Phận Kế Toán Miền Nam" }
+        ]
+      }, null, 2)
+    }
+  ];
+
+  const bcTabs = document.getElementById("bc-tabs");
+  const bcMount = document.getElementById("bc-mount");
+  function renderBcSample(key) {
+    const item = BC_SAMPLES.find(x => x.key === key) || BC_SAMPLES[0];
+    bcTabs.innerHTML = BC_SAMPLES.map(x => `<button type="button" class="btn ${x.key===item.key?'active':''}" data-bckey="${esc(x.key)}">${esc(x.label)}</button>`).join("");
+    bcMount.innerHTML = `
+      <div class="callout info" style="margin-bottom:12px">
+        <strong>URL sống đối chiếu:</strong> <a class="ev-link-a" href="${esc(item.liveUrl)}" target="_blank" rel="noopener noreferrer">${esc(item.liveUrl)} ↗</a><br>
+        <strong>Tóm tắt lỗi cần sửa:</strong> ${esc(item.summary)}
+      </div>
+      <div class="grid-2">
+        <div>
+          <div style="font-size:12.6px;font-weight:700;color:#991B1B;margin-bottom:6px">❌ BEFORE (Đang chạy live — lỗi khoanh đỏ)</div>
+          <pre class="diff-box">${item.beforeHtml}</pre>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px">
+            <span style="font-size:12.6px;font-weight:700;color:#065F46">✅ AFTER (Bản sửa chuẩn Phase 1)</span>
+            <button type="button" class="btn btn-primary" id="copy-bc-btn" style="padding:4px 10px;font-size:11.5px">Chép JSON-LD After</button>
+          </div>
+          <pre class="diff-box">${item.afterHtml}</pre>
+        </div>
+      </div>
+    `;
+    bcTabs.querySelectorAll("button").forEach(b => b.addEventListener("click", () => renderBcSample(b.dataset.bckey)));
+    document.getElementById("copy-bc-btn")?.addEventListener("click", () => {
+      navigator.clipboard.writeText(item.afterRaw)
+        .then(() => showToast("Đã chép BreadcrumbList JSON-LD chuẩn!"))
+        .catch(() => showToast("Không chép được tự động."));
+    });
+  }
+  if (bcTabs && bcMount) renderBcSample("jd");
 
 })();
 </script>
