@@ -294,8 +294,8 @@ Hồ Chí Minh mới nhất ngày 26/11/2026&lt;/h1&gt;</code></pre></div>
 <p>Ví dụ: <b>40 việc làm Dược sĩ tại Hồ Chí Minh mới nhất ngày 26/11/2026</b>.</p>
 <ul>
 <li><b>Thành phần:</b> trang không có thành phần nào thì bỏ thành phần đó và từ nối đi kèm. Trang tỉnh: "6.373 việc làm tại Hồ Chí Minh mới nhất ngày 26/11/2026". Trang ngành: "72 việc làm Dầu khí mới nhất ngày 26/11/2026".</li>
-<li><b>Số tin:</b> lấy từ cùng biến với title và meta description, để ba nơi cùng một số (mục 11). Viết dấu chấm ngăn hàng nghìn theo cách viết tiếng Việt: "6.373". Hiện site viết "6,373".</li>
-<li><b>Ngày:</b> ngày dựng danh sách tin theo giờ Việt Nam, dạng dd/mm/yyyy đủ hai chữ số. Title dùng cùng ngày đó. Hiện title chưa thống nhất: trang tỉnh, ngành, từ khoá ghi "MỚI 26/11/2026", trang ngành × tỉnh, quận, từ khoá × tỉnh ghi "MỚI 11/2026".</li>
+<li><b>Số tin:</b> lấy từ cùng biến với title và meta description, để ba nơi cùng một số (mục 11). Viết dấu chấm ngăn hàng nghìn theo cách viết tiếng Việt: "6.373". Hiện site viết "6,373" ở cả H1, title và meta description.</li>
+<li><b>Ngày:</b> ngày dựng danh sách tin theo giờ Việt Nam, dạng dd/mm/yyyy đủ hai chữ số. H1 dùng cùng ngày với title. Title giữ mẫu đã thống nhất "… MỚI dd/mm/yyyy", ví dụ "MỚI 26/11/2026". Hiện chỉ trang tỉnh, ngành, từ khoá đúng mẫu này. Trang ngành × tỉnh, quận, từ khoá × tỉnh, công ty và trang 2 trở đi đang ghi "MỚI 11/2026", thiếu ngày.</li>
 <li><b>Quận/huyện:</b> ghi kèm tỉnh, nối bằng dấu gạch: "tại Củ Chi - Hồ Chí Minh".</li>
 <li><b>Bỏ cụm "theo ngày cập nhật mới nhất".</b> Cụm này là tên kiểu sắp xếp, và H1 mới đã có "mới nhất ngày …".</li>
 <li><b>Trang 2 trở đi:</b> thêm " - Trang N" vào cuối H1 và title (mục 4). <b>Trang sort</b> (<code>-sortdv</code>, <code>-sortlg</code>, <code>-sortscore</code>): dùng cùng H1 với bản gốc.</li>
@@ -329,11 +329,15 @@ Hồ Chí Minh mới nhất ngày 26/11/2026&lt;/h1&gt;</code></pre></div>
 <li>Dựng H1 ở máy chủ theo mẫu trên, cho mọi loại Job Listing, gồm cả trang từ khoá và trang công ty.</li>
 <li>Lấy thực thể (ngành, tỉnh, quận, cấp bậc, từ khoá), số tin và ngày từ cùng nguồn với <code>&lt;title&gt;</code>.</li>
 <li>Client không ghi đè H1 bằng nội dung khác.</li>
+<li>Viết số tin có dấu chấm ngăn hàng nghìn ("6.373", không viết "6,373") ở H1, <code>&lt;title&gt;</code> và meta description.</li>
+<li>Title của mọi loại Job Listing ghi đủ ngày theo mẫu "MỚI dd/mm/yyyy". Sửa các trang đang ghi "MỚI 11/2026": ngành × tỉnh, quận, từ khoá × tỉnh, công ty, trang 2 trở đi.</li>
 </ul></div>
 <div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
 <ul>
 <li>Trên 14 loại trang ở bảng trên, H1 trong HTML <code>curl</code> theo đúng mẫu ở cột "H1 đề xuất" và kết thúc bằng "mới nhất ngày dd/mm/yyyy" (bản tiếng Anh: "updated dd/mm/yyyy").</li>
 <li>Số tin và ngày trong H1 trùng với <code>&lt;title&gt;</code> trên cùng một lần tải.</li>
+<li>H1, title, meta description không còn số viết dấu phẩy ngăn hàng nghìn (ví dụ "6,373").</li>
+<li>Title của 14 loại trang có "MỚI dd/mm/yyyy" đủ ngày, tháng, năm.</li>
 <li>H1 trước và sau khi JavaScript chạy giống nhau.</li>
 <li>Console không báo lỗi hydration ở H1.</li>
 </ul></div></div>
