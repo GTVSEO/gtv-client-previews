@@ -172,20 +172,36 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 <div class="lead"><b>Tóm tắt:</b> Googlebot chỉ đọc 2 MB đầu của mỗi file HTML<span class="i" tabindex="0">i<span class="tip">Tài liệu Googlebot: "Googlebot crawls the first 2MB of a supported file type" và "The file size limit is applied on the uncompressed data". Nén gzip hay Brotli không giúp vượt giới hạn này. <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trên hầu hết Job Listing nhiều tin (2,66–4,22 MB), H1 và danh sách tin bị đẩy xuống byte 2,49–3,84 triệu vì hai khối dữ liệu thừa đứng trước (mẫu <code>c2l8</code> 4,15 MB mất H1 và cả 50 tin; chỉ trang rất ít tin hoặc Hồ sơ công ty <code>/nha-tuyen-dung/</code> 1,33 MB chưa vượt mốc).</div>
 
 <h3>Giải thích nhanh ba khái niệm</h3>
-<div class="g3">
-  <div class="exp b">
-    <h4>1. HTML uncompressed &gt; 2 MB là gì?</h4>
-    <p>Giống <b>thùng hàng ép chân không</b>: truyền qua mạng bằng Gzip chỉ nặng <b>1,32 MB</b>, nhưng Googlebot giải nén ra thành <b>4,15 MB</b>. Giới hạn <b>2 MB</b> tính trên bản đã giải nén nên H1 và 50 tin ở vùng byte 3,74–4,15 MB bị cắt mất.</p>
-  </div>
+<div class="exp b" style="margin:10px 0 12px">
+  <h4>1. HTML uncompressed &gt; 2 MB là gì?</h4>
+  <p>Giống như một <b>thùng hàng ép chân không</b>: khi truyền qua mạng bằng nén Gzip, trang <code>c2l8</code> chỉ nặng <b>1,32 MB</b>. Nhưng Googlebot nhận xong phải giải nén thành văn bản thuần (<i>uncompressed</i>) thì file phình ra <b>4,15 MB</b>. Vì giới hạn <b>2 MB</b> tính trên bản đã giải nén, toàn bộ thẻ H1 và 50 tin việc làm ở vùng byte 3,74–4,15 MB bị cắt mất.</p>
+</div>
+<div class="grid">
   <div class="exp r">
-    <h4>2. Dữ liệu AI Vector là gì? (2,08 MB)</h4>
-    <p>CareerViet dùng AI so độ giống nhau giữa các chức danh (ví dụ <i>Kế toán tổng hợp</i>, <i>Kế toán trưởng</i>, <i>Nhân viên kiểm toán</i>) bằng cách đổi chữ thành 2 dãy số <code>job_title_embed</code> và <code>job_tag_embed</code> (1.024 số mỗi dãy). Dữ liệu này chỉ phục vụ tính toán phía máy chủ, nhưng đang bị in <b>96 mảng (2,08 MB, 50,3% file)</b> xuống HTML của trang <code>c2l8</code>.</p>
+    <h4>Nguyên nhân 1: Dữ liệu AI Vector (2,08 MB)</h4>
+    <p>Hãy hiểu đơn giản: CareerViet dùng AI để phân tích mức độ giống nhau giữa các công việc, kỹ năng và chức danh. Ví dụ:</p>
+    <ul>
+      <li>Kế toán tổng hợp</li>
+      <li>Kế toán trưởng</li>
+      <li>Nhân viên kiểm toán</li>
+    </ul>
+    <p>Hệ thống đổi những nội dung này thành các dãy số để máy tính so sánh (gọi là <i>Vector Embedding</i>), gồm hai trường <code>job_title_embed</code> và <code>job_tag_embed</code> (1.024 số mỗi trường).</p>
+    <p><b>Vấn đề:</b> hai trường này chỉ dùng để tính toán ở máy chủ, nhưng đang bị in <b>96 mảng (2,08 MB, chiếm 50,3% file)</b> thẳng vào HTML gửi xuống trình duyệt trên trang <code>c2l8</code>.</p>
   </div>
   <div class="exp y">
-    <h4>3. Bảng dịch <code>messages</code> là gì? (919 KB)</h4>
-    <p>Website dùng thư viện đa ngôn ngữ <code>next-intl</code> để lưu nhãn nút, bộ lọc và thông báo thành các bảng <code>messages</code>. Layout gốc đang gửi luôn bảng dịch của các công cụ khác (CVHay, tạo danh thiếp, Thuế TNCN, BHXH, Gross-Net) xuống mọi trang. Khối này nặng <b>919 KB</b> (lên tới 1,32 MB gồm chuỗi bài viết đi trước), cộng với vector đã chiếm hơn 3 MB ngay đầu file.</p>
+    <h4>Nguyên nhân 2: Bảng dịch <code>messages</code> (919 KB)</h4>
+    <p>CareerViet dùng thư viện <code>next-intl</code> để quản lý chữ đa ngôn ngữ trên giao diện. Ví dụ, website cần biết:</p>
+    <ul>
+      <li>Nút tìm việc hiện chữ gì</li>
+      <li>Bộ lọc ngành nghề hiện thế nào</li>
+      <li>Thông báo khi người dùng chưa đăng nhập</li>
+      <li>Nội dung của các công cụ khác</li>
+    </ul>
+    <p>Những câu chữ này được gói thành các bảng dữ liệu gọi là <code>messages</code>.</p>
+    <p><b>Vấn đề:</b> trang Job Listing chỉ cần một phần nhỏ trong đó, nhưng lại đang nhận cả bảng dịch của nhiều tính năng khác như CVHay, tạo danh thiếp, Thuế TNCN, BHXH, Gross-Net. Khối này nặng <b>919 KB</b> (lên tới 1,32 MB nếu tính cả chuỗi bài viết đi ngay trước).</p>
   </div>
 </div>
+<p class="meta">Hai khối dữ liệu thừa trên cộng lại đã chiếm hơn 3 MB ngay phần đầu file, đẩy H1 và danh sách 50 việc làm xuống tận cuối HTML.</p>
 
 <details><summary>Nguồn tài liệu chính thức (Google và Next.js)</summary><div class="in"><div class="tw"><table>
   <tr><th>Tài liệu gốc</th><th>Quy định nguyên văn</th><th>Link gốc</th></tr>
