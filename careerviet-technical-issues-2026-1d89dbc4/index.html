@@ -171,36 +171,32 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 <h2 id="v1" data-toc="1. HTML 4,1 MB, mất H1 và 50 tin" data-p="p0"><span class="tag p0">P0</span>1. HTML Job Listing nặng 4,1 MB, Google mất H1 và 50 tin</h2>
 <div class="lead"><b>Tóm tắt:</b> Googlebot chỉ đọc 2 MB đầu của mỗi file HTML<span class="i" tabindex="0">i<span class="tip">Tài liệu Googlebot: "Googlebot crawls the first 2MB of a supported file type" và "The file size limit is applied on the uncompressed data". Nén gzip hay Brotli không giúp vượt giới hạn này. <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trên hầu hết Job Listing nhiều tin (2,66–4,22 MB), H1 và danh sách tin bị đẩy xuống byte 2,49–3,84 triệu vì hai khối dữ liệu thừa đứng trước (mẫu <code>c2l8</code> 4,15 MB mất H1 và cả 50 tin; chỉ trang rất ít tin hoặc Hồ sơ công ty <code>/nha-tuyen-dung/</code> 1,33 MB chưa vượt mốc).</div>
 
-<h3>Giải thích nhanh ba khái niệm kỹ thuật</h3>
+<h3>Giải thích nhanh ba khái niệm</h3>
 <div class="g3">
   <div class="exp b">
     <h4>1. HTML uncompressed &gt; 2 MB là gì?</h4>
-    <p>Cơ chế này giống một <b>thùng hàng ép chân không</b>. Khi truyền qua mạng bằng nén Gzip, trang <code>c2l8</code> chỉ nặng khoảng <b>1,32 MB</b>. Khi nhận xong, Googlebot giải nén ra thành văn bản thuần (<i>uncompressed</i>) thì file phình thành <b>4,15 MB</b>.</p>
-    <p>Tài liệu Googlebot quy định giới hạn <b>2 MB</b> tính trên dữ liệu đã giải nén (mốc an toàn 2.000.000 byte). Vì thế toàn bộ thẻ H1 và 50 tin nằm ở vùng byte 3,74–4,15 MB bị Googlebot cắt bỏ.</p>
+    <p>Giống <b>thùng hàng ép chân không</b>: truyền qua mạng bằng Gzip chỉ nặng <b>1,32 MB</b>, nhưng Googlebot giải nén ra thành <b>4,15 MB</b>. Giới hạn <b>2 MB</b> tính trên bản đã giải nén nên H1 và 50 tin ở vùng byte 3,74–4,15 MB bị cắt mất.</p>
   </div>
   <div class="exp r">
-    <h4>2. Truyền mảng AI vector xuống HTML là gì?</h4>
-    <p>Để tính điểm phù hợp việc làm trên máy chủ, mỗi tin tuyển dụng mang theo 2 dãy toạ độ <code>job_title_embed</code> và <code>job_tag_embed</code>, mỗi dãy chứa <b>1.024 số thập phân</b> (~21,7 KB mỗi mảng).</p>
-    <p>Thay vì giữ hai dãy số này ở tầng máy chủ, hệ thống đang đẩy nguyên cả cục xuống trình duyệt. Next.js phải in <b>96 mảng vector (2,08 MB, chiếm 50,3% file)</b> vào giữa HTML của trang <code>c2l8</code>, đẩy phần danh sách tin xuống cuối trang.</p>
+    <h4>2. Mảng AI vector trong HTML là gì?</h4>
+    <p>Mỗi tin tuyển dụng kèm 2 dãy toạ độ <code>job_title_embed</code> và <code>job_tag_embed</code> (1.024 số thập phân/dãy) dùng để tính điểm trên máy chủ. Hệ thống đang in <b>96 mảng (2,08 MB, 50,3% file)</b> thẳng vào HTML trang <code>c2l8</code> thay vì giữ ở backend.</p>
   </div>
   <div class="exp y">
-    <h4>3. Đẩy cả bảng dịch <code>messages</code> là gì?</h4>
-    <p>Layout gốc đang gom toàn bộ câu chữ tiếng Việt của các công cụ khác trên hệ thống (CVHay, tạo danh thiếp, bài viết Thuế TNCN, BHXH, Gross-Net) rồi gửi cùng lúc xuống mọi trang.</p>
-    <p>Riêng khối <code>messages</code> của <code>next-intl</code> đã nặng <b>919 KB</b> (lên tới 1,32 MB nếu tính cả chuỗi bài viết dài đứng ngay trước), đốt phần lớn hạn mức 2 MB ngay từ nửa đầu trang Listing lẫn Job Detail.</p>
+    <h4>3. Bảng dịch <code>messages</code> là gì?</h4>
+    <p>Layout gốc đang gửi câu chữ của các công cụ khác (CVHay, tạo danh thiếp, bài viết Thuế TNCN, BHXH, Gross-Net) xuống mọi trang. Khối <code>messages</code> nặng <b>919 KB</b> (tối đa 1,32 MB gồm chuỗi bài viết đi trước), chiếm gần hết hạn mức 2 MB.</p>
   </div>
 </div>
 
-<h3>Nguồn tài liệu chính thức (Google và Next.js)</h3>
-<div class="tw"><table>
+<details><summary>Nguồn tài liệu chính thức (Google và Next.js)</summary><div class="in"><div class="tw"><table>
   <tr><th>Tài liệu gốc</th><th>Quy định nguyên văn</th><th>Link gốc</th></tr>
   <tr><td><b>Googlebot Docs</b></td><td><i>"Googlebot crawls the first 2MB of a supported file type... Once the cutoff limit is reached, Googlebot stops the fetch... The file size limit is applied on the uncompressed data."</i></td><td><a class="u" href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">https://developers.google.com/search/docs/crawling-indexing/googlebot</a></td></tr>
   <tr><td><b>Google Crawler Overview</b></td><td>Phân biệt trần chung 15 MB của hạ tầng và trần riêng 2 MB áp dụng cho Googlebot Search.</td><td><a class="u" href="https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers" target="_blank" rel="noopener">https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers</a></td></tr>
   <tr><td><b>Next.js Data Security</b></td><td>Dữ liệu truyền từ Server Component xuống Client Component được tuần tự hoá vào HTML; cần lọc qua DTO tối giản trước khi gửi.</td><td><a class="u" href="https://nextjs.org/docs/app/guides/data-security" target="_blank" rel="noopener">https://nextjs.org/docs/app/guides/data-security</a></td></tr>
   <tr><td><b>next-intl Docs</b></td><td>Không đổ toàn bộ <code>messages</code> vào <code>NextIntlClientProvider</code>; cần dùng <code>pick()</code> theo từng nhóm trang.</td><td><a class="u" href="https://next-intl.dev/docs/environments/server-client-components" target="_blank" rel="noopener">https://next-intl.dev/docs/environments/server-client-components</a></td></tr>
-</table></div>
+</table></div></div></details>
 
 <h3>So sánh 8 loại trang với ngưỡng 2 MB (đo 26/11)</h3>
-<p>Biểu đồ dưới đo dung lượng HTML đã giải nén trên 8 mẫu trang tiêu biểu: mọi nhóm Job Listing nhiều tin đều vượt xa ngưỡng 2 MB nên thẻ H1 và tin đầu bị đẩy sang phần màu đỏ nằm sau điểm cắt; chỉ Hồ sơ công ty (<code>/nha-tuyen-dung/</code>) và các trang rất ít tin dưới ~1,75 MB mới nằm gọn bên trái vạch đỏ.</p>
+<p>Mọi nhóm Job Listing nhiều tin đều vượt mốc 2 MB (phần màu đỏ chứa H1 và tin); chỉ Hồ sơ công ty (<code>/nha-tuyen-dung/</code>) và trang rất ít tin dưới ~1,75 MB nằm bên trái vạch đỏ.</p>
 <div class="svgbox">
   <svg viewBox="0 0 980 392" role="img" aria-label="Biểu đồ so sánh dung lượng HTML uncompressed 8 loại trang CareerViet với ngưỡng 2 MB của Googlebot">
     <rect x="240" y="10" width="12" height="12" rx="2" fill="#182642"/>
@@ -264,17 +260,6 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
   </svg>
 </div>
 
-<div class="cmp">
-  <div class="box bad"><h4>Truyền qua mạng vs Googlebot giải nén (<code>c2l8</code>)</h4>
-    <p><b>Gzip qua mạng:</b> <code>1,32 MB</code> (1.322.713 byte) · Trình duyệt hiển thị nhanh nhưng Googlebot không tính mốc 2 MB trên bản nén.</p>
-    <p><b>Googlebot giải nén:</b> <code>4,15 MB</code> (4.146.104 byte) · Googlebot dừng khoảng byte ~1.994.000, mất sạch H1 và 50 tin.</p>
-  </div>
-  <div class="box good"><h4>Mức giảm sau từng bước xử lý (<code>c2l8</code>)</h4>
-    <p><b>Chỉ bỏ vector (Mẫu 1A):</b> còn <code>2,06 MB</code> (2.062.386 byte) · H1 vào được 1,66 MB nhưng 7 tin cuối (44–50) vẫn vượt trần.</p>
-    <p><b>Bỏ cả vector + bảng dịch (Mẫu 1B):</b> còn <code>0,74–1,14 MB</code> · H1 lên 341 KB, tin thứ 50 ở ~735 KB, đạt chuẩn an toàn.</p>
-  </div>
-</div>
-
 <h3>Hiện trạng lát cắt của trang mẫu <code>c2l8</code></h3>
 <p>Trang mẫu: <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html</a>, nặng <b>4.146.104 byte</b> (đo 11:54 và 12:32).</p>
 <div class="barwrap">
@@ -300,8 +285,6 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 </div>
 <p class="meta">Biểu đồ trên mô tả lát cắt đo lúc 11:54 ngày 26/11 trên trang <code>c2l8</code>. Khối SEO cuối trang không đứng cố định mà dịch chuyển theo thời điểm Next.js đẩy dữ liệu ra: ở bản Googlebot 04:50 khối này nằm ở byte <code>76.891</code>, ở lần đo 11:54 nằm ở <code>1,52 MB</code>, còn trên trang Đà Lạt (<a class="u" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html</a>) nằm ở <code>2,46 MB</code>.</p>
 <ul>
-<li><b>Khối 1, vector:</b> dữ liệu trang chứa 96 mảng số (50 <code>job_title_embed</code> và 46 <code>job_tag_embed</code>), mỗi mảng 1.024 số, tổng 2.083.718 byte (50,3% file). Giao diện không hiện hai trường này.</li>
-<li><b>Khối 2, bảng dịch:</b> layout gốc gửi hết bảng dịch của cả website xuống mọi trang, gồm chữ của các công cụ khác như CVHay, Danh thiếp, tính lương Gross-Net. Khối này nặng 919.024 byte, và tới khoảng 1,32 MB nếu tính cả các chuỗi bài viết dài đứng ngay trước.</li>
 <li><b>Bản Google đang giữ:</b> công cụ Kiểm tra URL cho lần crawl 04:50 ngày 26/11 trả về bản HTML có <mark>0 thẻ H1, 0/50 link tin tuyển dụng, 0 khối phân trang</mark>. Vùng danh sách tin chỉ là khung chờ tải.</li>
 <li><b>API cũng trả vector:</b> <a class="u" href="https://internal-api.careerviet.vn/api/v1/js/jsk/jobs/public?industry=2&amp;location=8&amp;limit=50" target="_blank" rel="noopener">https://internal-api.careerviet.vn/api/v1/js/jsk/jobs/public?industry=2&amp;location=8&amp;limit=50</a> trả 2,17 MB gồm 96 mảng vector. <a class="u" href="https://internal-api.careerviet.vn/api/v1/js/jsk/jobs/similar-jobs?keyword=K%E1%BA%BF%20To%C3%A1n%20T%E1%BB%95ng%20H%E1%BB%A3p&amp;job_ids=35C8BADF&amp;sort=score&amp;limit=10&amp;location=4" target="_blank" rel="noopener">https://internal-api.careerviet.vn/api/v1/js/jsk/jobs/similar-jobs?keyword=K%E1%BA%BF%20To%C3%A1n%20T%E1%BB%95ng%20H%E1%BB%A3p&amp;job_ids=35C8BADF&amp;sort=score&amp;limit=10&amp;location=4</a> trả 452 KB gồm 20 mảng.</li>
 </ul>
@@ -912,12 +895,11 @@ brotli_types text/html application/json text/plain text/css application/javascri
 <tr><td><code>employmentType</code></td><td><code>["\"FULL_TIME\""]</code> (có thêm dấu ngoặc kép bên trong; 1 tin <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html" target="_blank" rel="noopener">35C8D231</a> xuất <code>["\"PART_TIME\""]</code>)</td><td>18 trên 18</td><td><code>["FULL_TIME"]</code>, chọn một trong 8 giá trị Google nhận ở bảng dưới</td></tr>
 <tr><td><code>datePosted</code></td><td>Ngày làm mới tin. Ví dụ tin <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html</a>: đăng 05/11, schema ghi 25/11 (tương tự ở <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/ke-toan-tong-hop-chuyen-thue-thoi-trang-thu-nhap-16-18tr-nhan-viec-ngay.35C8AE26.html" target="_blank" rel="noopener">35C8AE26</a>, <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/bep-pho.35C8E375.html" target="_blank" rel="noopener">35C8E375</a>, <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/general-manager-giam-doc-khach-san-4-sao-theo-phong-cach-nhat.35C8D761.html" target="_blank" rel="noopener">35C8D761</a>)</td><td>4 trên 6 tin so được lệch 6–41 ngày</td><td>Ngày nhà tuyển dụng đăng tin lần đầu</td></tr>
 <tr><td><code>jobLocation.address</code></td><td><code>addressLocality</code> = tên tỉnh, <code>addressRegion</code> = tên quận (ví dụ <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/revenue-inventory-accounting-teamleader.35C8EF1D.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/revenue-inventory-accounting-teamleader.35C8EF1D.html</a>). Tin không có địa chỉ: cả ba trường đều ghi tên tỉnh (ví dụ <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">35C8EB2B</a>, <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/128535-sales-manager-steel.35C868C8.html" target="_blank" rel="noopener">35C868C8</a>, <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/binh-phuoc-cv-cvc-thu-hoi-no-muon.35C8EEAB.html" target="_blank" rel="noopener">35C8EEAB</a>, <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/binh-thuan-cv-cvc-thu-hoi-no-muon.35C8EEAC.html" target="_blank" rel="noopener">35C8EEAC</a>)</td><td>8 trên 12 đảo cấp, 4 trên 12 lặp tên tỉnh</td><td><code>addressRegion</code> = tỉnh, <code>addressLocality</code> = quận. Bỏ <code>streetAddress</code> khi không có địa chỉ</td></tr>
-<tr><td><code>baseSalary</code></td><td><code>value: "Cạnh tranh"</code> (chữ, không phải số). Tin <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html</a> ghi <code>currency: "LCT"</code></td><td>7 trên 12</td><td>Không xuất <code>baseSalary</code> khi không có số lương. Giao diện vẫn hiện "Cạnh tranh"</td></tr>
 <tr><td><code>applicantLocationRequirements</code></td><td><code>Country: Việt Nam</code> trên tin làm tại văn phòng</td><td>12 trên 12</td><td>Chỉ xuất cho việc làm từ xa hoặc kết hợp (hybrid), kèm <code>jobLocationType: "TELECOMMUTE"</code>. Tin làm tại văn phòng không xuất trường này</td></tr>
 <tr><td><code>validThrough</code>, <code>datePosted</code></td><td>Giờ gắn nhãn <code>Z</code> (UTC), lệch ngày so với giao diện (ví dụ <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">35C8EB2B</a> và <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html" target="_blank" rel="noopener">35C8D231</a>)</td><td>10 trên 17 lệch ngày</td><td>Ghi kèm múi giờ <code>+07:00</code></td></tr>
 <tr><td><code>educationRequirements</code></td><td>"no requirements" trên tin <a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">35C8EB2B</a> dù mô tả ghi "Tốt nghiệp Đại học"</td><td>1 trên 12</td><td>Lấy từ trường học vấn của form. Không có dữ liệu thì bỏ trường</td></tr>
 </table></div>
-<p>Google định nghĩa <code>datePosted</code> là ngày nhà tuyển dụng đăng tin lần đầu<span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The original date that employer posted the job". <a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Các trường <code>employmentType</code>, <code>baseSalary</code>, <code>validThrough</code> là trường khuyến nghị. Giá trị sai làm Google đọc sai hoặc bỏ qua thông tin loại hình, lương và địa điểm trong bộ lọc của Google for Jobs. GTV chưa có bằng chứng tin bị loại khỏi Google for Jobs.</p>
+<p>Google định nghĩa <code>datePosted</code> là ngày nhà tuyển dụng đăng tin lần đầu<span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The original date that employer posted the job". <a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Các trường <code>employmentType</code>, <code>validThrough</code> là trường khuyến nghị. Giá trị sai làm Google đọc sai hoặc bỏ qua thông tin loại hình và địa điểm trong bộ lọc của Google for Jobs. GTV chưa có bằng chứng tin bị loại khỏi Google for Jobs.</p>
 
 <h3>8 giá trị <code>employmentType</code> hợp lệ theo chuẩn Google</h3>
 <div class="tw"><table>
@@ -935,7 +917,7 @@ brotli_types text/html application/json text/plain text/css application/javascri
 <details><summary>Danh sách 18 trang tin mẫu đã đo trực tiếp (12 tin tiếng Việt mở, 5 tin hết hạn, 1 bản tiếng Anh)</summary><div class="in"><div class="tw"><table>
 <tr><th>Nhóm</th><th>Mã tin</th><th>Đường dẫn đầy đủ</th><th>Ghi nhận chính</th></tr>
 <tr><td>Tin mở (VI)</td><td><code>35C8D231</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/bac-si-da-lieu-part-time-lam-dong.35C8D231.html</a></td><td><code>PART_TIME</code> ngoặc kép lồng, <code>datePosted</code> lệch <code>job_active_date</code></td></tr>
-<tr><td>Tin mở (VI)</td><td><code>35C8EB2B</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html</a></td><td><code>currency: "LCT"</code>, <code>validThrough</code> lệch ngày, <code>no requirements</code></td></tr>
+<tr><td>Tin mở (VI)</td><td><code>35C8EB2B</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html</a></td><td><code>validThrough</code> lệch ngày, <code>no requirements</code></td></tr>
 <tr><td>Tin mở (VI)</td><td><code>35C8EF1D</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/revenue-inventory-accounting-teamleader.35C8EF1D.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/revenue-inventory-accounting-teamleader.35C8EF1D.html</a></td><td>Đảo <code>addressLocality</code> và <code>addressRegion</code></td></tr>
 <tr><td>Tin mở (VI)</td><td><code>35C8DEF2</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/acc-ofm_hcm-truong-bo-phan-ke-toan-mien-nam-south-accounting-manager.35C8DEF2.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/acc-ofm_hcm-truong-bo-phan-ke-toan-mien-nam-south-accounting-manager.35C8DEF2.html</a></td><td>Mã <code>ACC.OFM_HCM|</code> trong tiêu đề, breadcrumb tạo <code>acc-k</code></td></tr>
 <tr><td>Tin mở (VI)</td><td><code>35C868C8</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/128535-sales-manager-steel.35C868C8.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/128535-sales-manager-steel.35C868C8.html</a></td><td>Mã <code>128535 -</code> trong tiêu đề, <code>sameAs: ""</code></td></tr>
@@ -951,24 +933,24 @@ brotli_types text/html application/json text/plain text/css application/javascri
 <tr><td>Hết hạn (VI)</td><td><code>35C50002</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/ky-su-co-khi.35C50002.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/ky-su-co-khi.35C50002.html</a></td><td><code>validThrough: 2025-10-20</code>, <code>["\"FULL_TIME\""]</code></td></tr>
 <tr><td>Hết hạn (VI)</td><td><code>35C70001</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/nhan-vien-tap-vu-hai-phong-di-lam-ngay.35C70001.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/nhan-vien-tap-vu-hai-phong-di-lam-ngay.35C70001.html</a></td><td><code>validThrough: 2026-04-30</code>, <code>["\"FULL_TIME\""]</code></td></tr>
 <tr><td>Hết hạn (VI)</td><td><code>35C80000</code></td><td><a class="u" href="https://careerviet.vn/vi/tim-viec-lam/chuyen-vien-ha-tang-va-he-thong.35C80000.html" target="_blank" rel="noopener">https://careerviet.vn/vi/tim-viec-lam/chuyen-vien-ha-tang-va-he-thong.35C80000.html</a></td><td><code>validThrough: 2026-08-07</code>, <code>["\"FULL_TIME\""]</code></td></tr>
-<tr><td>Bản tiếng Anh</td><td><code>35C8EB2B</code></td><td><a class="u" href="https://careerviet.vn/en/search-job/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">https://careerviet.vn/en/search-job/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html</a></td><td><code>["\"FULL_TIME\""]</code>, <code>currency: "LCT"</code>, <code>canonical</code> về VI</td></tr>
+<tr><td>Bản tiếng Anh</td><td><code>35C8EB2B</code></td><td><a class="u" href="https://careerviet.vn/en/search-job/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html" target="_blank" rel="noopener">https://careerviet.vn/en/search-job/nhan-vien-sales-admin-trung-tam-mice-mien-bac.35C8EB2B.html</a></td><td><code>["\"FULL_TIME\""]</code>, <code>canonical</code> về VI</td></tr>
 </table></div></div></details>
 
 <div class="sol">
 <div class="sol-t">Cách sửa 9A: Chuẩn hoá JSON-LD JobPosting (ví dụ trên tin 35C8EB2B và 35C8EF1D)</div>
-<p>Sửa trực tiếp hàm sinh JSON-LD ở máy chủ: bỏ dấu ngoặc kép thừa quanh giá trị <code>employmentType</code>, lấy <code>datePosted</code> từ ngày đăng gốc kèm múi giờ <code>+07:00</code>, bỏ khối <code>baseSalary</code> khi lương là "Cạnh tranh" hoặc mã nội bộ, đặt <code>addressRegion</code> là tỉnh và <code>addressLocality</code> là quận, và chỉ xuất <code>applicantLocationRequirements</code> cho tin từ xa hoặc kết hợp có <code>jobLocationType: "TELECOMMUTE"</code>.</p>
+<p>Sửa trực tiếp hàm sinh JSON-LD ở máy chủ: bỏ dấu ngoặc kép thừa quanh giá trị <code>employmentType</code>, lấy <code>datePosted</code> từ ngày đăng gốc kèm múi giờ <code>+07:00</code>, đặt <code>addressRegion</code> là tỉnh và <code>addressLocality</code> là quận, và chỉ xuất <code>applicantLocationRequirements</code> cho tin từ xa hoặc kết hợp có <code>jobLocationType: "TELECOMMUTE"</code>.</p>
 <div class="ba">
 <div><div class="code-hd bad"><span>Đang chạy (đo trên 35C8EB2B và 35C8EF1D)</span></div><pre><code>{
   "@context": "https://schema.org",
   "@type": "JobPosting",
   "title": "Nhân Viên Sales Admin - Trung tâm Mice miền Bắc",
-<span class="dl-r">  "employmentType": ["\"FULL_TIME\""],</span><span class="dl-r">  "datePosted": "2026-11-25T20:03:36Z",</span><span class="dl-r">  "validThrough": "2027-01-06T23:59:00Z",</span><span class="dl-r">  "baseSalary": { "currency": "LCT", "value": { "value": "Cạnh tranh" } },</span><span class="dl-r">  "jobLocation": [{ "address": { "streetAddress": "Hà Nội", "addressLocality": "Hồ Chí Minh", "addressRegion": "Quận 3", "addressCountry": "VN" } }],</span><span class="dl-r">  "applicantLocationRequirements": { "@type": "Country", "name": "Việt Nam" },</span><span class="dl-r">  "educationRequirements": { "credentialCategory": "no requirements" }</span>
+<span class="dl-r">  "employmentType": ["\"FULL_TIME\""],</span><span class="dl-r">  "datePosted": "2026-11-25T20:03:36Z",</span><span class="dl-r">  "validThrough": "2027-01-06T23:59:00Z",</span><span class="dl-r">  "jobLocation": [{ "address": { "streetAddress": "Hà Nội", "addressLocality": "Hồ Chí Minh", "addressRegion": "Quận 3", "addressCountry": "VN" } }],</span><span class="dl-r">  "applicantLocationRequirements": { "@type": "Country", "name": "Việt Nam" },</span><span class="dl-r">  "educationRequirements": { "credentialCategory": "no requirements" }</span>
 }</code></pre></div>
 <div><div class="code-hd good"><span>Sau sửa (chuẩn Google for Jobs)</span><button class="cp" type="button">Chép mẫu</button></div><pre><code>{
   "@context": "https://schema.org",
   "@type": "JobPosting",
   "title": "Nhân Viên Sales Admin - Trung tâm Mice miền Bắc",
-<span class="dl-g">  "employmentType": ["FULL_TIME"],</span><span class="dl-g">  "datePosted": "2026-11-05T09:59:30+07:00",</span><span class="dl-g">  "validThrough": "2027-01-05T23:59:00+07:00",</span><span class="dl-g">  // Không xuất baseSalary khi lương là "Cạnh tranh" (chỉ xuất khi có minValue/maxValue số)</span><span class="dl-g">  "jobLocation": [{ "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Quận 3", "addressRegion": "Hồ Chí Minh", "addressCountry": "VN" } }],</span><span class="dl-g">  // Chỉ thêm jobLocationType: "TELECOMMUTE" + applicantLocationRequirements cho tin Remote/Hybrid</span><span class="dl-g">  "educationRequirements": { "@type": "EducationalOccupationalCredential", "credentialCategory": "bachelor degree" }</span>
+<span class="dl-g">  "employmentType": ["FULL_TIME"],</span><span class="dl-g">  "datePosted": "2026-11-05T09:59:30+07:00",</span><span class="dl-g">  "validThrough": "2027-01-05T23:59:00+07:00",</span><span class="dl-g">  "jobLocation": [{ "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Quận 3", "addressRegion": "Hồ Chí Minh", "addressCountry": "VN" } }],</span><span class="dl-g">  // Chỉ thêm jobLocationType: "TELECOMMUTE" + applicantLocationRequirements cho tin Remote/Hybrid</span><span class="dl-g">  "educationRequirements": { "@type": "EducationalOccupationalCredential", "credentialCategory": "bachelor degree" }</span>
 }</code></pre></div>
 </div>
 </div>
