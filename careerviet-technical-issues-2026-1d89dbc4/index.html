@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CareerViet: các lỗi kỹ thuật cần sửa trên trang Job Listing và toàn site (26/11/2026)</title>
+<style>
+:root{--blue:#276AE6;--ink:#1b2333;--mut:#5b6577;--line:#e3e7ee;--bg:#f6f8fb;--p0:#c8102e;--p1:#b45f06;--p2:#55607a;--hl:#fff4c2;--ok:#0b7a4b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;font:16px/1.65 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff}
+a{color:var(--blue)}
+code,pre{font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:#eef2f8;padding:1px 5px;border-radius:4px;word-break:break-word}
+pre{background:#101827;color:#e6edf7;padding:14px 16px;border-radius:8px;overflow:auto;margin:10px 0}
+pre code{background:none;padding:0;color:inherit}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav#toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:22px 16px 40px 22px;border-right:1px solid var(--line);background:var(--bg);font-size:14px;line-height:1.4}
+nav#toc img{width:92px;display:block;margin-bottom:14px}
+nav#toc .tt{font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:14px 0 6px}
+nav#toc a{display:block;padding:5px 8px;border-radius:6px;color:var(--ink);text-decoration:none;border-left:3px solid transparent}
+nav#toc a:hover{background:#e9eef7}
+nav#toc a.on{background:#e3ecfd;border-left-color:var(--blue);font-weight:600}
+nav#toc a .tag{font-size:10px;padding:1px 5px;margin-right:6px;vertical-align:1px}
+nav#toc .ctl{display:flex;gap:6px;margin-top:14px}
+button.b{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px 9px;cursor:pointer}
+button.b:hover{border-color:var(--blue);color:var(--blue)}
+main{padding:34px 44px 90px;max-width:940px}
+h1{font-size:30px;line-height:1.25;margin:0 0 8px}
+h2{font-size:23px;line-height:1.3;margin:54px 0 10px;padding-top:18px;border-top:2px solid var(--line)}
+h3{font-size:17px;margin:22px 0 6px}
+p{margin:8px 0}
+ul,ol{margin:6px 0 10px;padding-left:22px}
+li{margin:4px 0}
+.meta{color:var(--mut);font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:#fff;border-radius:4px;padding:2px 7px;vertical-align:3px;margin-right:8px}
+.p0{background:var(--p0)}.p1{background:var(--p1)}.p2{background:var(--p2)}
+mark{background:var(--hl);padding:0 3px;border-radius:3px}
+.lead{background:#eef4ff;border-left:4px solid var(--blue);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0}
+.lead b{color:#123a8c}
+.need{background:#fff7e6;border:1px dashed #d9a300;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:15px}
+.need::before{content:"Cần bổ sung dữ liệu";display:block;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#8a6200;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.box{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#fff}
+.box h4{margin:0 0 4px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.box.fix{border-color:#b9d0fb;background:#f7faff}
+.box.dod{border-color:#bfe3d2;background:#f5fbf8}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--bg);font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap}
+.tw{overflow-x:auto}
+details{border:1px solid var(--line);border-radius:8px;margin:10px 0;background:#fff}
+details>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;position:relative;padding-left:36px}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"+";position:absolute;left:12px;top:8px;width:18px;height:18px;line-height:17px;text-align:center;border:1px solid var(--blue);color:var(--blue);border-radius:4px;font-weight:700}
+details[open]>summary::before{content:"–"}
+details[open]>summary{border-bottom:1px solid var(--line)}
+details>.in{padding:10px 16px 14px}
+figure{margin:14px 0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+figure img{display:block;width:100%;height:auto;cursor:zoom-in}
+figcaption{font-size:13.5px;color:var(--mut);padding:8px 12px;border-top:1px solid var(--line);background:var(--bg)}
+.i{display:inline-block;position:relative;width:17px;height:17px;line-height:16px;text-align:center;border-radius:50%;background:var(--blue);color:#fff;font:italic 700 12px/16px Georgia,serif;cursor:help;margin:0 2px;vertical-align:1px}
+.i .tip{display:none;position:absolute;z-index:20;left:50%;transform:translateX(-50%);top:24px;width:330px;max-width:80vw;background:#101827;color:#f2f5fa;font:400 13.5px/1.5 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:left;padding:10px 12px;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.i .tip a{color:#9cc2ff}
+.i:hover .tip,.i:focus .tip,.i.open .tip{display:block}
+.bar{display:flex;height:46px;border-radius:6px;overflow:hidden;font-size:11px;color:#fff}
+.bar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.barwrap{position:relative;margin:8px 0 4px;padding-top:26px}
+.cut{position:absolute;z-index:2;left:48.2%;top:0;bottom:-6px;border-left:3px dashed #111}
+.cut span{position:absolute;top:0;left:6px;font-size:12px;font-weight:700;color:var(--p0);white-space:nowrap;background:#fff;padding:0 4px}
+.lg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;margin:10px 0}
+.lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.s1{background:#8a94a8}.s2{background:#a3792b}.s3{background:#c9651b}.s4{background:#6b7a99}.s5{background:#c8102e}.s6{background:#0b7a4b}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba>div{min-width:0}
+.ba .l{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:-4px}
+.ba .bad{color:var(--p0)}.ba .good{color:var(--ok)}
+#lb{position:fixed;inset:0;background:rgba(10,14,22,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:6px}
+.foot{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mut)}
+@media(max-width:920px){.wrap{display:block}nav#toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:22px 18px 70px}.grid,.ba{grid-template-columns:1fr}}
+@media print{nav#toc,#lb,.ctl{display:none}.wrap{display:block}main{max-width:none;padding:0}details{border:0}details>.in{display:block}h2{break-after:avoid}figure{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav id="toc" aria-label="Mục lục">
+  <img src="assets/client-v1/gtv-logo.png" alt="GTV SEO">
+  <div class="tt">Mục lục</div>
+  <div id="tocl"></div>
+  <div class="ctl"><button class="b" id="oa">Mở tất cả</button><button class="b" id="ca">Thu gọn</button></div>
+</nav>
+
+<main>
+<p class="meta">GTV SEO · Tài liệu kỹ thuật gửi Product Owner, Tech Lead và DevOps của CareerViet · 26/11/2026</p>
+<h1>CareerViet: các lỗi kỹ thuật cần sửa trên trang Job Listing và toàn site</h1>
+<p>Tài liệu xếp các lỗi theo mức ảnh hưởng tới việc Google đọc và lập chỉ mục trang, lỗi nặng nhất ở trên. Mỗi lỗi có bốn phần: hiện trạng đo được, tác động, việc cần sửa và tiêu chí nghiệm thu mà đội Dev tự đo được bằng <code>curl</code>.</p>
+
+<div class="lead"><b>Ba ý chính.</b>
+<ol>
+<li>Trang Job Listing nặng khoảng 4,1 MB. Googlebot chỉ xử lý 2 MB đầu, nên bản Google đang giữ của trang Kế toán tại Hồ Chí Minh <mark>không có thẻ H1 và không có tin tuyển dụng nào</mark>.</li>
+<li>Giảm dung lượng là chưa đủ. Sau khi trang nhẹ lại, Google sẽ đọc được phần thân trang và gặp các lỗi nằm sẵn ở đó: <mark>title, robots, canonical nằm ngoài <code>&lt;head&gt;</code></mark>, H1 thiếu tên ngành và tỉnh, phân trang không có link.</li>
+<li>Các lỗi này cần đi chung một đợt sửa. Phần còn lại (robots.txt, không gian URL, schema, cache) xếp ở đợt 2 và đợt 3.</li>
+</ol></div>
+
+<details><summary>Cách đọc tài liệu và phạm vi đo</summary><div class="in">
+<ul>
+<li><span class="tag p0">P0</span> đang làm Google không đọc được nội dung chính. <span class="tag p1">P1</span> làm Google đọc sai, tốn lượt crawl hoặc không tìm ra trang. <span class="tag p2">P2</span> là lỗi nhỏ, sửa kèm khi chạm tới.</li>
+<li>Biểu tượng <span class="i" tabindex="0">i<span class="tip">Ví dụ: di chuột hoặc bấm vào biểu tượng này để đọc phần giải thích thuật ngữ hoặc nguồn tài liệu.</span></span> mở phần giải thích. Khung viền vàng "Cần bổ sung dữ liệu" đánh dấu chỗ GTV chưa đủ số liệu để kết luận, kèm việc cần làm để có số liệu đó.</li>
+<li>Khung có dấu <b>+</b> chứa số đo chi tiết và lệnh kiểm. Bấm để mở.</li>
+<li><b>Phép đo trực tiếp:</b> ngày 26/11/2026, từ 11:54 đến 12:33 (giờ Việt Nam), tải HTML bằng <code>curl</code> với User-Agent của Googlebot Smartphone, từ một máy tại Việt Nam. Vị trí byte tính trên HTML đã giải nén, chỉ đếm thẻ nằm ngoài <code>&lt;script&gt;</code>.</li>
+<li><b>Số liệu Google Search Console:</b> báo cáo Crawl Stats khoảng 90 ngày tính đến 24/11/2026 và công cụ Kiểm tra URL ngày 26/11/2026 của property <code>careerviet.vn</code>.</li>
+<li><b>Giới hạn:</b> GTV không có log máy chủ. Các phép đo dùng User-Agent giả lập, nên phản hồi mà Googlebot thật nhận có thể khác ở lớp cache. Mục 13 liệt kê từng điểm cần CareerViet xác nhận bằng log.</li>
+</ul></div></details>
+
+<h2 id="tong-quan" data-toc="Bảng tổng hợp">Bảng tổng hợp theo thứ tự ưu tiên</h2>
+<div class="tw"><table>
+<tr><th>#</th><th>Lỗi</th><th>Mức</th><th>Phạm vi</th><th>Đội xử lý</th><th>Đợt</th><th>Mục trong checklist kỹ thuật đã gửi</th></tr>
+<tr><td>1</td><td><a href="#v1">HTML Job Listing nặng 4,1 MB, Google mất H1 và 50 tin</a></td><td><span class="tag p0">P0</span></td><td>Mọi trang Job Listing</td><td>Backend + Frontend</td><td>1</td><td>Mới</td></tr>
+<tr><td>2</td><td><a href="#v2">Title, robots, canonical, hreflang nằm ngoài <code>&lt;head&gt;</code></a></td><td><span class="tag p0">P0</span></td><td>Listing ngành × tỉnh, quận, từ khoá × tỉnh, trang N, sort</td><td>Frontend</td><td>1</td><td>Mới</td></tr>
+<tr><td>3</td><td><a href="#v3">H1 trong HTML máy chủ thiếu ngành, tỉnh, quận</a></td><td><span class="tag p1">P1</span></td><td>Mọi Listing trừ từ khoá và công ty</td><td>Frontend</td><td>1</td><td>17, 19</td></tr>
+<tr><td>4</td><td><a href="#v4">Phân trang không có link, trang N khai là bản trùng trang 1</a></td><td><span class="tag p1">P1</span></td><td>Mọi Listing trên 50 tin</td><td>Frontend</td><td>1</td><td>2, 14</td></tr>
+<tr><td>5</td><td><a href="#v5">Trang quận/huyện và ngành × tỉnh thiếu đường vào</a></td><td><span class="tag p1">P1</span></td><td>Nhóm <code>-lq</code>, <code>-cNlN</code></td><td>Frontend + Backend</td><td>2</td><td>3, 21</td></tr>
+<tr><td>6</td><td><a href="#v6">URL không có nội dung vẫn trả 200 và cho index</a></td><td><span class="tag p1">P1</span></td><td>Trang từ khoá, ID sai, trang lỗi</td><td>Backend</td><td>2</td><td>5, 6, 7, 10, 15</td></tr>
+<tr><td>7</td><td><a href="#v7">robots.txt không có hiệu lực với Googlebot</a></td><td><span class="tag p1">P1</span></td><td>Toàn site</td><td>DevOps + Frontend</td><td>2</td><td>1, 4</td></tr>
+<tr><td>8</td><td><a href="#v8">Thời gian phản hồi HTML 1.090 ms, cache cho bot hết hạn nhanh</a></td><td><span class="tag p1">P1</span></td><td>Toàn bộ HTML</td><td>DevOps</td><td>2</td><td>Mới</td></tr>
+<tr><td>9</td><td><a href="#v9">Schema JobPosting và bản tiếng Anh của trang tin</a></td><td><span class="tag p1">P1</span></td><td>Mọi trang Job Detail</td><td>Backend</td><td>3</td><td>9, 23</td></tr>
+<tr><td>10</td><td><a href="#v10">Breadcrumb trong JSON-LD trỏ tới trang lỗi, sai tên</a></td><td><span class="tag p2">P2</span></td><td>Listing và Job Detail</td><td>Backend</td><td>3</td><td>24</td></tr>
+<tr><td>11</td><td><a href="#v11">Các lỗi nhỏ sửa kèm</a></td><td><span class="tag p2">P2</span></td><td>Nhiều nơi</td><td>Tuỳ mục</td><td>3</td><td>22 và các mục khác</td></tr>
+</table></div>
+
+<!-- ============ 1 ============ -->
+<h2 id="v1" data-toc="1. HTML 4,1 MB, mất H1 và 50 tin" data-p="p0"><span class="tag p0">P0</span>1. HTML Job Listing nặng 4,1 MB, Google mất H1 và 50 tin</h2>
+<div class="lead"><b>Tóm tắt:</b> Googlebot chỉ xử lý 2 MB đầu của mỗi file HTML<span class="i" tabindex="0">i<span class="tip">Tài liệu Googlebot: "Googlebot crawls the first 2MB of a supported file type" và "The file size limit is applied on the uncompressed data". Nén gzip hay Brotli không giúp vượt giới hạn này. <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trên Job Listing, H1 và 50 tin nằm sau byte 3,7 triệu vì hai khối dữ liệu thừa đứng trước.</div>
+
+<h3>Hiện trạng</h3>
+<p>Trang mẫu: <code>https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html</code>, nặng <b>4.146.104 byte</b> (đo 11:54 và 12:32).</p>
+<div class="barwrap">
+  <div class="cut"><span>Mốc 2 MB: Googlebot dừng ở đây</span></div>
+  <div class="bar">
+    <div class="s1" style="width:2.6%"></div>
+    <div class="s2" style="width:9.7%">bài viết</div>
+    <div class="s3" style="width:22.2%">bảng dịch 919 KB</div>
+    <div class="s4" style="width:3.1%"></div>
+    <div class="s5" style="width:52.7%">96 mảng vector · 2,08 MB</div>
+    <div class="s6" style="width:9.7%">H1 + 50 tin</div>
+  </div>
+</div>
+<div class="lg">
+<span><i class="s1"></i>Khung trang, JSON-LD (0 → 110 KB)</span>
+<span><i class="s2"></i>Chuỗi bài viết dài: Thuế TNCN, BHXH, Gross-Net (401 KB)</span>
+<span><i class="s3"></i>Bảng dịch <code>messages</code> của next-intl (919 KB)</span>
+<span><i class="s4"></i>Khối SEO cuối trang, thẻ title</span>
+<span><i class="s5"></i><code>job_title_embed</code> + <code>job_tag_embed</code> (2,08 MB, 50,3% file)</span>
+<span><i class="s6"></i>H1 ở byte 3.744.837, tin đầu ở 3.746.438</span>
+</div>
+<ul>
+<li><b>Khối 1, vector:</b> dữ liệu trang chứa 96 mảng số (50 <code>job_title_embed</code> và 46 <code>job_tag_embed</code>), mỗi mảng 1.024 số, tổng 2.083.718 byte. Giao diện không hiển thị hai trường này.</li>
+<li><b>Khối 2, bảng dịch:</b> layout gốc gửi toàn bộ bảng dịch của cả website xuống mọi trang, gồm chữ của các công cụ khác như CVHay, Danh thiếp, tính lương Gross-Net. Khối này nặng 919.024 byte, và tới khoảng 1,32 MB nếu tính cả các chuỗi bài viết dài đứng ngay trước.</li>
+<li><b>Bản Google đang giữ:</b> công cụ Kiểm tra URL cho lần crawl 04:50 ngày 26/11 trả về bản HTML có <mark>0 thẻ H1, 0/50 link tin tuyển dụng, 0 khối phân trang</mark>. Vùng danh sách tin chỉ là khung chờ tải.</li>
+<li><b>API cũng trả vector:</b> <code>internal-api…/jobs/public?…limit=50</code> trả 2,17 MB có 96 mảng vector. <code>similar-jobs</code> trả 452 KB có 20 mảng.</li>
+</ul>
+<figure><img src="assets/client-v1/gsc-c2l8-lan-crawl.jpg" alt="Kiểm tra URL của trang Kế toán tại Hồ Chí Minh trong Google Search Console"><figcaption>Google Search Console, Kiểm tra URL trang c2l8: lần crawl gần nhất 04:50:49 ngày 26/11/2026 bằng Googlebot smartphone. Bản HTML của lần crawl này là bản thiếu H1 và danh sách tin. Dòng "Temporary processing error" là lỗi tạm của báo cáo Google, xem cuối mục 13.</figcaption></figure>
+
+<details><summary>Dung lượng và vị trí H1 trên 12 mẫu trang</summary><div class="in"><div class="tw"><table>
+<tr><th>Loại trang</th><th>URL (rút gọn)</th><th class="n">Dung lượng (byte)</th><th class="n">H1 ở byte</th><th class="n">Tin đầu ở byte</th></tr>
+<tr><td>Ngành × tỉnh</td><td>…tai-ho-chi-minh-c2l8-vi.html</td><td class="n">4.146.104</td><td class="n">3.744.837</td><td class="n">3.746.438</td></tr>
+<tr><td>Tỉnh</td><td>ho-chi-minh-l8-vi.html</td><td class="n">4.160.432</td><td class="n">3.773.661</td><td class="n">3.775.382</td></tr>
+<tr><td>Ngành</td><td>ke-toan-kiem-toan-c2-vi.html</td><td class="n">4.186.747</td><td class="n">3.798.241</td><td class="n">3.799.844</td></tr>
+<tr><td>Ngành</td><td>dau-khi-c26-vi.html</td><td class="n">4.028.602</td><td class="n">3.658.800</td><td class="n">3.660.341</td></tr>
+<tr><td>Quận/huyện</td><td>huyen-cu-chi-l8q1635-vi.html</td><td class="n">4.181.158</td><td class="n">3.800.370</td><td class="n">3.801.977</td></tr>
+<tr><td>Quận/huyện (23 tin)</td><td>thanh-pho-da-lat-l63q276-vi.html</td><td class="n">2.659.299</td><td class="n">2.485.818</td><td class="n">2.487.265</td></tr>
+<tr><td>Từ khoá</td><td>ke-toan-truong-k-vi.html</td><td class="n">4.151.029</td><td class="n">3.777.155</td><td class="n">3.779.100</td></tr>
+<tr><td>Từ khoá × tỉnh (40 tin)</td><td>duoc-si-tai-ho-chi-minh-kl8-vi.html</td><td class="n">3.591.257</td><td class="n">3.288.943</td><td class="n">3.290.491</td></tr>
+<tr><td>Công ty (25 tin)</td><td>masan-consumer-p35A4FED8-vi.html</td><td class="n">2.726.079</td><td class="n">2.496.231</td><td class="n">2.497.753</td></tr>
+<tr><td>Trang 2</td><td>…c2l8-trang-2-vi.html</td><td class="n">3.962.854</td><td class="n">3.576.427</td><td class="n">3.577.881</td></tr>
+<tr><td>Tất cả việc làm</td><td>tat-ca-viec-lam-vi.html</td><td class="n">4.180.815</td><td class="n">3.786.737</td><td class="n">3.788.418</td></tr>
+<tr><td>Job Detail (để so)</td><td>…mice-mien-bac.35C8EB2B.html</td><td class="n">1.562.725</td><td class="n">41.744</td><td class="n">không áp dụng</td></tr>
+</table></div>
+<p>Trang Job Detail không vượt 2 MB và không có vector, nhưng vẫn mang khối bảng dịch 919 KB, tức 59% dung lượng trang (xem mục 8).</p></div></details>
+
+<h3>Tác động</h3>
+<ul>
+<li>Google không thấy tiêu đề trang và danh sách tin của Job Listing, nên trang chỉ còn phần chữ SEO cuối trang để xếp hạng.</li>
+<li>Job Listing không còn chuyển link nội bộ tới trang Job Detail.</li>
+<li>Trong Crawl Stats, HTML chiếm 21% số lượt crawl nhưng 68% dung lượng tải (10,7 TB trên 15,7 TB). Người dùng và các bot khác vẫn tải đủ 4,1 MB cho mỗi trang.</li>
+</ul>
+
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li><b>Bỏ hai trường vector</b> khỏi phản hồi của API (<code>jobs/public</code>, <code>similar-jobs</code>) và lọc thêm ở tầng lấy dữ liệu của Next.js trước khi truyền xuống Client Component. Trước khi bỏ, tìm trong mã nguồn xem có thành phần nào đọc hai trường này.</li>
+<li><b>Không gửi cả bảng dịch xuống mọi trang.</b> Ở layout gốc đặt <code>messages={null}</code> rồi dùng <code>pick()</code> cho từng nhóm Client Component<span class="i" tabindex="0">i<span class="tip">Đây là cách tài liệu next-intl mô tả. Mặc định <code>NextIntlClientProvider</code> gửi mọi messages xuống client. Nếu chỉ loại vài namespace nặng, namespace thêm sau này sẽ lại làm trang phình ra. <a href="https://next-intl.dev/docs/environments/server-client-components" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Áp cho cả trang Job Detail.</li>
+<li><b>Thêm bước kiểm dung lượng HTML vào CI</b> để lỗi không quay lại.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>0 chuỗi <code>job_title_embed</code>, <code>job_tag_embed</code> trong HTML của 8 loại trang.</li>
+<li>H1 và link tin đầu tiên nằm trước byte 800.000. Nếu tách cả các chuỗi bài viết dài (401 KB) thì trước byte 400.000.</li>
+<li>Link tin thứ 50 nằm trước byte 1.500.000.</li>
+<li>Job Detail dưới 700.000 byte.</li>
+<li>Kiểm tra URL (Test Live URL) của trang c2l8 có H1 và đủ 50 link tin trong HTML.</li>
+</ul></div></div>
+<p><mark>Chỉ làm việc 1 là chưa đủ.</mark> Bỏ vector đưa trang c2l8 về 2.062.386 byte, H1 về byte 1.661.119, nhưng 7 tin cuối (44 đến 50) vẫn nằm sau mốc 2 MB. Sau khi làm thêm việc 2, trang còn khoảng 0,74 đến 1,14 MB.</p>
+
+<details><summary>Lệnh tự kiểm cho đội Dev</summary><div class="in">
+<pre><code>UA='Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+URL='https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html'
+curl -s --compressed -A "$UA" "$URL" -o page.html
+wc -c page.html                                    # dung lượng đã giải nén
+LC_ALL=C grep -c  'job_title_embed' page.html      # phải bằng 0
+LC_ALL=C grep -ob '&lt;/head&gt;' page.html | head -1    # vị trí đóng head
+LC_ALL=C grep -ob '&lt;title'  page.html | head -1    # phải nhỏ hơn vị trí &lt;/head&gt;
+LC_ALL=C grep -ob '&lt;h1'     page.html | head -1    # phải nhỏ hơn 800000</code></pre>
+<p>Lưu ý: <code>grep -ob</code> đếm cả chuỗi nằm trong <code>&lt;script&gt;</code>. Với H1 và title, kết quả đầu tiên hiện là thẻ thật vì dữ liệu trong script đã được mã hoá ký tự.</p>
+</div></details>
+
+<details><summary>Ghi chú về con số "2 MB"</summary><div class="in">
+<p>Tài liệu Google ghi "2MB" và không nêu số byte chính xác. Bản HTML mà Search Console lưu cho lần crawl 04:50 dài 2.023.050 byte: đó là HTML sau khi Google phân tích, có thêm khoảng 10,6 KB thẻ ở <code>&lt;head&gt;</code> và 18,5 KB script do Tag Manager chèn ở cuối. Dữ liệu gốc dừng giữa mảng vector của tin thứ 11. Quy về file gốc, điểm dừng nằm quanh byte 1.994.000. Tài liệu này dùng mốc 2.000.000 byte và đặt tiêu chí nghiệm thu thấp hơn hẳn mốc đó.</p>
+</div></details>
+
+<div class="need">Ngày hai trường vector bắt đầu xuất hiện trong HTML. Crawl Stats cho thấy dung lượng mỗi lượt tải HTML tăng 30–50% từ 15/11/2026, nhưng số liệu này chưa đủ để chốt ngày. Cần lịch sử deploy từ 01/11 đến 25/11 của CareerViet.</div>
+
+<!-- ============ 2 ============ -->
+<h2 id="v2" data-toc="2. Title, robots, canonical ngoài head" data-p="p0"><span class="tag p0">P0</span>2. Title, robots, canonical, hreflang nằm ngoài &lt;head&gt;</h2>
+<div class="lead"><b>Tóm tắt:</b> Trên nhiều loại Job Listing, bốn nhóm thẻ này không nằm trong <code>&lt;head&gt;</code>. Máy chủ gửi chúng vào giữa hoặc cuối <code>&lt;body&gt;</code>, vị trí đổi theo từng lần tạo trang, có lần nằm sau mốc 2 MB. Lỗi này tách khỏi lỗi dung lượng ở mục 1 và không tự hết khi trang nhẹ lại.</div>
+
+<h3>Hiện trạng</h3>
+<p>Thẻ <code>&lt;/head&gt;</code> đóng ở byte 10.415. Vị trí thẻ <code>&lt;title&gt;</code> đo được:</p>
+<div class="tw"><table>
+<tr><th>Trang</th><th>Giờ đo 26/11</th><th class="n">Dung lượng</th><th class="n">&lt;title&gt; ở byte</th><th>Nhận xét</th></tr>
+<tr><td>Tỉnh <code>l8</code>, ngành <code>c2</code>, từ khoá <code>-k</code></td><td>11:54</td><td class="n">4,0–4,2 MB</td><td class="n">khoảng 10.290</td><td>Trong <code>&lt;head&gt;</code> ở các lần đo này</td></tr>
+<tr><td>Công ty <code>-p</code> (Masan)</td><td>11:54 · 12:03</td><td class="n">2,6–2,7 MB</td><td class="n">10.289 · 1.479.006</td><td>Lần đầu trong <code>&lt;head&gt;</code>, lần sau trong <code>&lt;body&gt;</code></td></tr>
+<tr><td>Ngành × tỉnh <code>c2l8</code></td><td>11:54, 12:32</td><td class="n">4.146.104</td><td class="n">1.553.283</td><td>Trong <code>&lt;body&gt;</code></td></tr>
+<tr><td>Ngành × tỉnh <code>c2l8</code></td><td>12:12</td><td class="n">4.146.059</td><td class="n"><mark>4.141.894</mark></td><td>Cuối file, sau mốc 2 MB</td></tr>
+<tr><td>Quận <code>l63q276</code> (Đà Lạt)</td><td>11:54</td><td class="n">2.659.299</td><td class="n"><mark>2.479.818</mark></td><td>Sau mốc 2 MB</td></tr>
+<tr><td>Quận <code>l63q276</code> (Đà Lạt)</td><td>12:32</td><td class="n">2.659.198</td><td class="n"><mark>2.655.238</mark></td><td>Cuối file, sau mốc 2 MB</td></tr>
+<tr><td>Quận <code>l8q1635</code> (Củ Chi)</td><td>11:54</td><td class="n">4.181.158</td><td class="n">1.522.602</td><td>Trong <code>&lt;body&gt;</code></td></tr>
+<tr><td>Từ khoá × tỉnh <code>kl8</code></td><td>11:55</td><td class="n">3.591.257</td><td class="n">1.556.638</td><td>Trong <code>&lt;body&gt;</code></td></tr>
+<tr><td>Trang 2 của <code>c2l8</code></td><td>12:32</td><td class="n">3.962.615</td><td class="n">1.479.830</td><td>Trong <code>&lt;body&gt;</code></td></tr>
+<tr><td>Trang 17 của <code>c2l8</code></td><td>12:05</td><td class="n">2.755.314</td><td class="n"><mark>2.751.113</mark></td><td>Sau mốc 2 MB</td></tr>
+</table></div>
+<ul>
+<li>Thẻ <code>meta robots</code>, <code>link canonical</code> và 3 thẻ <code>hreflang</code> luôn đi liền sau <code>&lt;title&gt;</code>, nên cùng chung vị trí.</li>
+<li>Trong bản HTML mà Search Console lưu cho trang c2l8 (lần crawl 04:50), title nằm ở byte 1.563.423 và canonical ở 1.564.330, đều sau <code>&lt;/head&gt;</code>.</li>
+<li>Sau khi chạy JavaScript trên Chrome, thẻ title của c2l8 vẫn nằm trong <code>&lt;body&gt;</code> (byte 2.007.790 của DOM).</li>
+<li>Cùng một URL có thể cho kết quả khác nhau giữa hai lần đo. Vì vậy loại trang nào dùng chung route Job Listing cũng cần kiểm.</li>
+</ul>
+
+<details><summary>Vì sao có hiện tượng này</summary><div class="in">
+<p>Next.js từ bản 15.2 có tính năng "streaming metadata": khi <code>generateMetadata</code> chưa xong lúc bắt đầu gửi trang, các thẻ metadata được gửi sau và gắn vào <code>&lt;body&gt;</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Next.js: "When generateMetadata resolves, the resulting metadata tags are appended to the &lt;body&gt; tag." Next.js chỉ đưa metadata về &lt;head&gt; cho các bot trong danh sách <code>htmlLimitedBots</code>. <a href="https://nextjs.org/docs/app/api-reference/functions/generate-metadata" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Googlebot không nằm trong danh sách bot mặc định được nhận metadata trong <code>&lt;head&gt;</code>.</p>
+<p>Phép thử đối chứng: cùng URL quận, gọi bằng User-Agent <code>facebookexternalhit</code> (có trong danh sách mặc định) thì title nằm trong <code>&lt;head&gt;</code> ở byte 10.290, 2 trên 2 lần.</p>
+<p>Tài liệu Next.js ghi rằng Googlebot chạy JavaScript và đọc được metadata gắn vào <code>&lt;body&gt;</code>. Điều đó chỉ đúng khi cả file tới được bước render. Ở đây các thẻ nằm sau mốc 2 MB trong nhiều lần đo, tức phần Google không xử lý. Với canonical và hreflang, tài liệu của Google yêu cầu thẻ nằm trong <code>&lt;head&gt;</code>.</p>
+<p>Lớp cache dành cho bot (header <code>X-Bot-Cache</code>) lưu nguyên bản của lần tạo trang đầu và phát lại cho mọi bot tới khi hết hạn. Một lần tạo trang có metadata nằm cuối file vì vậy được phát lại nhiều lần.</p>
+</div></details>
+
+<h3>Tác động</h3>
+<ul>
+<li>Google chỉ nhận thẻ canonical khi thẻ nằm trong <code>&lt;head&gt;</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The rel="canonical" link element is only accepted if it appears in the &lt;head&gt; section of the HTML." Thẻ hreflang cũng được yêu cầu nằm trong &lt;head&gt;. <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Theo tài liệu này, canonical của trang 2, trang sort, URL trùng có thể không được tính, và các bản trùng không gộp tín hiệu về trang gốc. Cần xác nhận bằng dòng "User-declared canonical" trên Search Console (khung vàng bên dưới).</li>
+<li>Lần nào các thẻ rơi sau mốc 2 MB, Google không thấy title, robots, canonical và hreflang của trang đó.</li>
+<li>Trang quận Đà Lạt đang bị Search Console báo "Excluded by 'noindex' tag" dù trang hiện khai <code>index, follow</code> (mục 5). GTV chưa chứng minh được hai việc này liên quan, nhưng đây là giả thuyết cần loại trừ đầu tiên.</li>
+</ul>
+
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Trong <code>next.config</code>, thêm Googlebot và các bot tìm kiếm vào <code>htmlLimitedBots</code><span class="i" tabindex="0">i<span class="tip">Cấu hình này nhận một biểu thức chính quy khớp User-Agent. Đặt <code>/.*/</code> để tắt streaming metadata cho mọi trình duyệt; cách này có thể làm chậm byte đầu tiên, nên đo TTFB trước và sau. <a href="https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots" target="_blank" rel="noopener">Xem tài liệu</a></span></span>, hoặc bỏ lệnh chờ chậm trong <code>generateMetadata</code> của route Job Listing.</li>
+<li>Lớp cache cho bot chỉ lưu bản có <code>&lt;title&gt;</code> đứng trước <code>&lt;/head&gt;</code>.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>Với User-Agent Googlebot Smartphone, trên 8 loại trang, mỗi trang gọi 5 lần (cả lúc <code>X-Bot-Cache</code> là MISS và HIT): vị trí của <code>&lt;title&gt;</code>, <code>meta robots</code>, <code>link canonical</code> và 3 <code>hreflang</code> đều nhỏ hơn vị trí <code>&lt;/head&gt;</code> và nhỏ hơn 20.000.</li>
+<li>Kiểm tra URL của trang c2l8 hiện đúng URL ở dòng "User-declared canonical".</li>
+</ul></div></div>
+<div class="need">Dòng "User-declared canonical" trong Kiểm tra URL của trang c2l8 và trang trang-2 hiện ghi gì. Nếu ghi "None", đó là bằng chứng trực tiếp rằng Google không nhận canonical trong <code>&lt;body&gt;</code>. Việc này mất khoảng 2 phút trên Search Console.</div>
+
+<!-- ============ 3 ============ -->
+<h2 id="v3" data-toc="3. H1 thiếu ngành, tỉnh, quận" data-p="p1"><span class="tag p1">P1</span>3. H1 trong HTML máy chủ thiếu ngành, tỉnh, quận</h2>
+<div class="lead"><b>Tóm tắt:</b> HTML do máy chủ trả về có H1 chung chung, ví dụ "828 việc làm theo ngày cập nhật mới nhất". Tên ngành và tỉnh chỉ xuất hiện sau khi JavaScript chạy. Sau khi sửa mục 1, đây là H1 mà Google sẽ đọc trên hàng nghìn trang, nên cần sửa cùng đợt.</div>
+
+<div class="ba">
+<div><div class="l bad">HTML máy chủ trả về</div><pre><code>&lt;div class="job-found-amout"&gt;
+  &lt;h1&gt;828 việc làm theo ngày cập nhật mới nhất&lt;/h1&gt;
+&lt;/div&gt;</code></pre></div>
+<div><div class="l good">Sau khi JavaScript chạy</div><pre><code>&lt;h1&gt;828 việc làm Kế toán / Kiểm toán tại
+Hồ Chí Minh theo ngày cập nhật mới nhất&lt;/h1&gt;</code></pre></div>
+</div>
+<figure><img src="assets/client-v1/h1-sau-khi-chay-js.png" alt="Trang Kế toán tại Hồ Chí Minh sau khi JavaScript chạy"><figcaption>Trang c2l8 trên trình duyệt (12:07 ngày 26/11): người dùng thấy H1 đủ ngành và tỉnh. Bản HTML máy chủ gửi cho Googlebot thì thiếu hai thông tin này.</figcaption></figure>
+
+<details open><summary>H1 đo được trên 13 loại trang</summary><div class="in"><div class="tw"><table>
+<tr><th>Loại trang</th><th>H1 trong HTML máy chủ</th><th>Thông tin còn thiếu</th></tr>
+<tr><td>Ngành × tỉnh <code>c2l8</code></td><td>828 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán, Hồ Chí Minh</td></tr>
+<tr><td>Tỉnh <code>l8</code></td><td>6,373 việc làm theo ngày cập nhật mới nhất</td><td>Hồ Chí Minh</td></tr>
+<tr><td>Tỉnh <code>l4</code></td><td>4,432 việc làm theo ngày cập nhật mới nhất</td><td>Hà Nội</td></tr>
+<tr><td>Quận <code>l8q1635</code></td><td>153 việc làm theo ngày cập nhật mới nhất</td><td>Huyện Củ Chi, Hồ Chí Minh</td></tr>
+<tr><td>Quận <code>l63q276</code></td><td>23 việc làm theo ngày cập nhật mới nhất</td><td>Thành phố Đà Lạt</td></tr>
+<tr><td>Ngành <code>c2</code></td><td>1,777 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán</td></tr>
+<tr><td>Ngành <code>c26</code></td><td>72 việc làm theo ngày cập nhật mới nhất</td><td>Dầu khí</td></tr>
+<tr><td>Ngành × cấp bậc <code>c2e3</code></td><td>1,368 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán, Nhân viên</td></tr>
+<tr><td>Hai ngành <code>c2,19</code></td><td>4,721 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán, Ngân hàng</td></tr>
+<tr><td>Từ khoá × tỉnh <code>kl8</code></td><td>40 việc làm Dược sĩ</td><td>tại Hồ Chí Minh</td></tr>
+<tr><td>Từ khoá × ngành <code>kc19</code></td><td>63 việc làm Kế toán trưởng</td><td>ngành Ngân hàng</td></tr>
+<tr><td>Tiếng Anh <code>c2l8</code></td><td>828 jobs base on the update date</td><td>Accounting / Auditing, Ho Chi Minh City. Câu sai ngữ pháp</td></tr>
+<tr><td>Từ khoá <code>-k</code>, công ty <code>-p</code></td><td>755 việc làm Kế toán trưởng · Tuyển dụng 25 việc làm tại Masan Consumer MỚI 11/2026</td><td>Đủ. Số tin ở <code>-k</code> lệch với title (mục 11)</td></tr>
+</table></div></div></details>
+
+<h3>Tác động</h3>
+<p>H1 là một trong các nguồn Google dùng để tạo tiêu đề hiển thị trên kết quả tìm kiếm và để hiểu chủ đề trang<span class="i" tabindex="0">i<span class="tip">Tài liệu Google về title link: Google dùng nhiều nguồn, trong đó có "the main visual title, heading elements", và khuyên đặt tên trang trong thẻ H1 đầu tiên nhìn thấy được. <a href="https://developers.google.com/search/docs/appearance/title-link" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. H1 giống nhau giữa mọi trang ngành, tỉnh, quận làm các trang này khó phân biệt với nhau.</p>
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ul>
+<li>Dựng H1 ở máy chủ từ cùng dữ liệu với <code>&lt;title&gt;</code>: ngành, tỉnh, quận, cấp bậc, từ khoá.</li>
+<li>Client không ghi đè H1 bằng nội dung khác.</li>
+<li>Bỏ cụm "theo ngày cập nhật mới nhất" khỏi H1. Cụm này là tên kiểu sắp xếp.</li>
+</ul></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>Trên 13 loại trang ở bảng trên, H1 trong HTML <code>curl</code> chứa đủ tên ngành, tỉnh, quận có trong <code>&lt;title&gt;</code>.</li>
+<li>H1 trước và sau khi JavaScript chạy giống nhau.</li>
+<li>Console không báo lỗi hydration ở H1.</li>
+</ul></div></div>
+
+<!-- ============ 4 ============ -->
+<h2 id="v4" data-toc="4. Phân trang không có link" data-p="p1"><span class="tag p1">P1</span>4. Phân trang không có link, trang N khai là bản trùng trang 1</h2>
+<div class="lead"><b>Tóm tắt:</b> Các nút trang 2, 3, 4 là thẻ <code>&lt;a&gt;</code> không có <code>href</code>, cả trong HTML máy chủ và sau khi JavaScript chạy. Google chỉ đi theo thẻ <code>&lt;a&gt;</code> có <code>href</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "Generally, Google can only crawl your link if it's an &lt;a&gt; HTML element with an href attribute." và "Google's crawlers don't click buttons". <a href="https://developers.google.com/search/docs/crawling-indexing/links-crawlable" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trang c2l8 có 828 tin nhưng Job Listing chỉ dẫn link tới 50 tin.</div>
+
+<div class="ba">
+<div><div class="l bad">Đang có</div><pre><code>&lt;div class="pagination"&gt;&lt;ul&gt;
+ &lt;li class="active"&gt;
+   &lt;a tabindex="0" role="button"&gt;1&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a role="button" tabindex="0"&gt;2&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a role="button" tabindex="0"&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</code></pre></div>
+<div><div class="l good">Cần có</div><pre><code>&lt;nav class="pagination"&gt;&lt;ul&gt;
+ &lt;li class="active"&gt;&lt;a aria-current="page"
+   href="/viec-lam/…-c2l8-vi.html"&gt;1&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="/viec-lam/…-c2l8-trang-2-vi.html"&gt;2&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="/viec-lam/…-c2l8-trang-3-vi.html"&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/nav&gt;</code></pre></div>
+</div>
+<figure><img src="assets/client-v1/phan-trang.png" alt="Khối phân trang ở cuối danh sách tin"><figcaption>Khối phân trang ở trang 17 của c2l8. Trên giao diện các nút bấm được, nhưng trong mã HTML không nút nào có địa chỉ để Googlebot đi theo.</figcaption></figure>
+
+<h3>Hiện trạng trên ba URL mẫu của c2l8</h3>
+<div class="tw"><table>
+<tr><th>URL</th><th>Mã trả về</th><th>Số tin</th><th>Canonical</th><th>Robots</th><th>Title và H1</th></tr>
+<tr><td><code>…-c2l8-trang-2-vi.html</code></td><td>200</td><td>50, không trùng tin nào với trang 1</td><td><mark>Trỏ về trang 1</mark></td><td>index, follow</td><td>Giống hệt trang 1</td></tr>
+<tr><td><code>…-c2l8-trang-17-vi.html</code> (trang cuối)</td><td>200</td><td>28</td><td>Trỏ về trang 1</td><td>index, follow</td><td>Giống hệt trang 1</td></tr>
+<tr><td><code>…-c2l8-trang-999-vi.html</code> (không tồn tại)</td><td><mark>200</mark></td><td>0</td><td>Trỏ về trang 1</td><td>index, follow</td><td>H1 vẫn ghi "828 việc làm…"</td></tr>
+</table></div>
+<p>Không trang nào có <code>rel="next"</code> hay <code>rel="prev"</code>. Google không còn dùng hai thẻ này, nên không cần thêm.</p>
+
+<h3>Tác động</h3>
+<ul>
+<li>Googlebot không có đường HTML nào từ trang 1 sang trang 2. Với c2l8, 778 trên 828 tin (94%) không nhận link nội bộ từ Job Listing. Google hiện tìm các tin này qua sitemap tin tuyển dụng: 128 trên 128 mã tin GTV lấy mẫu có trong sitemap.</li>
+<li>Trang 2 trở đi tự khai là bản trùng của trang 1 dù nội dung khác. Google khuyên mỗi trang trong chuỗi phân trang có canonical riêng<span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "Don't use the first page of a paginated sequence as the canonical page. Instead, give each page its own canonical URL." Các trang trong chuỗi được phép dùng chung title và description. <a href="https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading" target="_blank" rel="noopener">Xem tài liệu</a></span></span>.</li>
+<li>Số trang vượt giới hạn trả 200 và cho index, tạo trang rỗng nặng 1,49 MB.</li>
+<li>Trong mẫu URL của Crawl Stats, khoảng 5,7% URL HTML là trang phân trang, sâu nhất tới trang 22. Googlebot vẫn tải các URL này dù chúng tự khai là bản trùng.</li>
+</ul>
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Render <code>&lt;a href&gt;</code> thật cho từng số trang và nút trước, sau, ngay trong HTML máy chủ.</li>
+<li>Trang N có canonical trỏ về chính nó. Title và H1 thêm "Trang N".</li>
+<li>N lớn hơn tổng số trang: trả 404.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li><code>curl</code> trang c2l8 có ít nhất 5 thẻ <code>&lt;a href&gt;</code> khớp <code>-trang-\d+-vi.html</code>.</li>
+<li>Trang <code>-trang-2</code> có canonical bằng chính URL của nó.</li>
+<li>Trang <code>-trang-999</code> trả 404.</li>
+</ul></div></div>
+<p><b>So với khuyến nghị GTV gửi ngày 12/06/2026</b> (mục 18 của bảng audit, "Googlebot crawl và indexing chuỗi phân trang"): khuyến nghị khi đó là canonical tự trỏ cho chuỗi phân trang và <code>noindex</code> từ trang 5. Phần canonical tự trỏ giữ nguyên. Hiện trạng đo ngày 26/11 là canonical về trang 1, cần sửa lại. Phần <code>noindex</code> từ trang 5 có thể giữ, miễn là các trang đó vẫn có <code>&lt;a href&gt;</code> và tin vẫn có trong sitemap.</p>
+<p><b>Về lượt crawl:</b> thêm <code>href</code> cho phân trang làm Google crawl trang 2 trở đi nhiều hơn. Với trang ngành, tỉnh, quận, công ty thì đây là điều cần có. Với trang từ khoá <code>-k</code>, nên xử lý mục 6 trước (trả 404 cho trang rỗng, chuẩn hoá URL) rồi mới mở link phân trang.</p>
+<p>Lưu ý khi viết rule: dùng biểu thức <code>-(trang|page)-\d+-(vi|en)\.html$</code>. Chuỗi <code>-trang-</code> đơn thuần khớp nhầm các URL như <code>thoi-trang</code>, <code>soc-trang</code>, <code>trang-bom</code>. Bản tiếng Anh dùng <code>-page-N</code>.</p>
+
+<!-- ============ 5 ============ -->
+<h2 id="v5" data-toc="5. Trang quận và ngành × tỉnh thiếu đường vào" data-p="p1"><span class="tag p1">P1</span>5. Trang quận/huyện và ngành × tỉnh thiếu đường vào</h2>
+<div class="lead"><b>Tóm tắt:</b> Trang quận/huyện không có link từ trang tỉnh và không có trong sitemap. Trang ngành × tỉnh, loại trang có nhu cầu tìm kiếm cao nhất, cũng không có trong sitemap. Google chỉ còn tìm các trang này qua khối chữ SEO và link từ bài blog.</div>
+
+<h3>Hiện trạng</h3>
+<ul>
+<li><b>Chip quận/huyện không có <code>href</code>.</b> HTML máy chủ của trang tỉnh (<code>l8</code>, <code>l4</code>) có 0 link tới trang quận. Sau khi JavaScript chạy, trang <code>l8</code> có 23 chip dạng <code>&lt;a&gt;Huyện Củ Chi (153)&lt;/a&gt;</code>, không chip nào có <code>href</code>. Chuyển khối này sang render ở máy chủ là chưa đủ, cần thêm <code>href</code>.</li>
+<li><b>Sitemap Job Listing chỉ có 314 URL.</b> File <code>/sitemap/searchjob.xml</code> gồm 121 tỉnh, 25 ngành, 7 cấp bậc, 4 mốc ngày đăng, mỗi loại hai ngôn ngữ. File có 0 URL quận/huyện và 0 URL ngành × tỉnh. Trang c2l8 và trang Đà Lạt đều không có trong 10 trên 13 file sitemap GTV đã tải.</li>
+<li><b>File <code>searchjob_custom.xml</code> lại nộp 510 URL từ khoá</b> (<code>-k</code>, <code>-kl</code>) và 92 trang công ty.</li>
+<li><b>Khối "Việc làm được tìm kiếm nhiều nhất" rỗng</b> trong HTML máy chủ (<code>&lt;ul&gt;&lt;/ul&gt;</code>), 10 link chỉ có sau khi JavaScript chạy.</li>
+</ul>
+
+<h3>Ca trang Đà Lạt</h3>
+<figure><img src="assets/client-v1/gsc-da-lat-1.jpg" alt="Kiểm tra URL trang việc làm Đà Lạt"><figcaption>Kiểm tra URL của <code>thanh-pho-da-lat-l63q276-vi.html</code>: "URL is not on Google", "Excluded by 'noindex' tag", "No referring sitemaps detected". Các trang dẫn tới chỉ là bài blog.</figcaption></figure>
+<ul>
+<li>Lần crawl cuối: 31/10/2026 lúc 14:08. Ở lần đó Google ghi nhận <code>noindex</code> trong thẻ meta robots.</li>
+<li>Ngày 26/11, trang trả <code>index, follow</code>, có 23 tin và canonical tự trỏ. Nhưng title, robots, canonical nằm ở byte 2,48 đến 2,66 triệu, sau mốc 2 MB (mục 2).</li>
+<li>Ngày 31/10 là ngày Google thấy <code>noindex</code> lần cuối. Ảnh không cho biết <code>noindex</code> bắt đầu từ ngày nào.</li>
+</ul>
+<div class="need">Hiện mới có một URL quận được kiểm trên Search Console, nên chưa kết luận được cho cả nhóm quận/huyện. Cần chạy Kiểm tra URL (kèm Test Live URL) cho 8–10 URL quận ở Hồ Chí Minh, Hà Nội, Đà Nẵng, ghi lại "Indexing allowed" và "Last crawl". Cần thêm lịch sử deploy quanh ngày 31/10 để biết có rule nào gắn <code>noindex</code> theo số tin hay không.</div>
+
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Render khối quận/huyện ở máy chủ với <code>&lt;a href&gt;</code> thật tới URL quận, không kèm tham số sort.</li>
+<li>Thêm sitemap cho trang quận/huyện và ngành × tỉnh có số tin từ ngưỡng hai bên thống nhất.</li>
+<li>Bỏ các URL lọc theo ngày đăng khỏi sitemap. Rà lại danh sách URL từ khoá trong <code>searchjob_custom.xml</code>.</li>
+<li>Render 10 link của khối "tìm kiếm nhiều nhất" ở máy chủ.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li><code>curl</code> trang <code>l8</code> có ít nhất 22 thẻ <code>&lt;a href&gt;</code> khớp <code>-l8q\d+-vi.html</code>.</li>
+<li>Sitemap chứa URL c2l8 và URL Đà Lạt.</li>
+<li>Kiểm tra URL của hai trang này hiện tên sitemap ở dòng "Sitemaps" sau lần crawl kế tiếp.</li>
+</ul></div></div>
+
+<!-- ============ 6 ============ -->
+<h2 id="v6" data-toc="6. URL rỗng vẫn trả 200 và cho index" data-p="p1"><span class="tag p1">P1</span>6. URL không có nội dung vẫn trả 200 và cho index</h2>
+<div class="lead"><b>Tóm tắt:</b> Gõ bất kỳ chuỗi nào vào URL từ khoá, hoặc một mã ngành không tồn tại, máy chủ vẫn trả mã 200 kèm <code>index, follow</code> và canonical tự trỏ. Số URL có thể được index vì vậy không có giới hạn, mỗi URL nặng 1,2 đến 1,5 MB.</div>
+<div class="tw"><table>
+<tr><th>Trường hợp</th><th>URL mẫu</th><th>Kết quả đo 26/11</th><th>Cần trả về</th></tr>
+<tr><td>Từ khoá không có tin</td><td><code>/viec-lam/zzqqxxyy-khong-ton-tai-k-vi.html</code></td><td>200, index, follow, title "Tuyển dụng 0 việc làm…", không có H1, 1.484.811 byte</td><td>404, hoặc <code>noindex</code> kèm trang nhẹ</td></tr>
+<tr><td>Mã ngành không tồn tại</td><td><code>/viec-lam/khong-ton-tai-zzqx-c99999-vi.html</code></td><td>200, index, follow, title "CareerViet - Jobseeker", 1.482.180 byte</td><td>404</td></tr>
+<tr><td>Từ khoá × địa điểm nước ngoài</td><td><code>/viec-lam/…-tai-tokyo-kl1001-vi.html</code></td><td>7 trên 7 URL mẫu: "0 việc làm", index, follow, 1,23–1,54 MB</td><td>404, hoặc <code>noindex</code></td></tr>
+<tr><td>URL có dấu, chữ hoa</td><td><code>/viec-lam/Kế-toán-trưởng-k-vi.html</code></td><td>200, canonical tự trỏ về bản có dấu, 756 tin (bản chuẩn ghi 760)</td><td>301 về <code>ke-toan-truong-k-vi.html</code></td></tr>
+<tr><td>Tên công ty tuỳ ý trước mã</td><td><code>/viec-lam/abc-xyz-p35A4FED8-vi.html</code></td><td>200, index, follow, canonical nhại lại <code>abc-xyz</code></td><td>301 về tên chuẩn theo mã công ty</td></tr>
+<tr><td>Đường dẫn không tồn tại</td><td><code>/khong-ton-tai-zzqx-12345</code></td><td>200, <code>noindex, nofollow</code>, thân trang báo "không tìm thấy trang", 1.433.818 byte</td><td>404, trang dưới 100 KB</td></tr>
+<tr><td>Đuôi <code>.HTML</code> viết hoa</td><td><code>…-c2l8-vi.HTML</code></td><td>200, <code>noindex, nofollow</code>, canonical về trang chủ</td><td>301 hoặc 404</td></tr>
+</table></div>
+
+<details><summary>Các nơi trên site đang tạo ra link tới URL lỗi</summary><div class="in">
+<ul>
+<li>Footer của mọi Job Listing có 5 link tới URL có dấu và chữ hoa, ví dụ <code>/viec-lam/Thi%E1%BA%BFt-k%E1%BA%BF-n%E1%BB%99i-th%E1%BA%A5t-k-vi.html</code>.</li>
+<li>Công cụ tự gắn link trong khối chữ SEO tạo link dạng <code>/viec-lam/Củ-Chi-k-vi.html</code>. Trang c2 có 17 link loại này, trang c2l8 có 10.</li>
+<li>Mỗi trang Job Detail có link thẻ tag dùng nguyên tiêu đề tin, ví dụ <code>/viec-lam/nhan-vien-sales-admin-trung-tam-mice-mien-bac-k-vi.html</code>.</li>
+<li>Breadcrumb trong JSON-LD của Job Detail cắt tiêu đề tin để tạo URL từ khoá (mục 10).</li>
+<li>Trang công ty Masan link tới 5 tên khác nhau của cùng một mã nhà tuyển dụng, 16 trên 50 link đi qua chuyển hướng 307.</li>
+</ul></div></details>
+
+<h3>Tác động</h3>
+<ul>
+<li>Trong mẫu 997 URL HTML của Crawl Stats, 492 URL (49,3%) là trang từ khoá tiếng Việt và tiếng Anh, 91 URL (9,1%) là trang từ khoá gắn mã địa điểm nước ngoài. Trang ngành, tỉnh, quận sạch chỉ chiếm 0,5–1,6%<span class="i" tabindex="0">i<span class="tip">Danh sách URL trong Crawl Stats là ví dụ, tối đa khoảng 1.000 dòng cho mỗi loại file và không có trọng số theo số lượt crawl. Các tỷ lệ này mô tả mẫu, không quy được ra số lượt crawl thật. <a href="https://support.google.com/webmasters/answer/9679690" target="_blank" rel="noopener">Xem tài liệu</a></span></span>.</li>
+<li>Trang 200 có thân báo lỗi là soft 404. Google tiếp tục crawl các trang này<span class="i" tabindex="0">i<span class="tip">Tài liệu Google về crawl budget: "soft 404 pages will continue to be crawled, and waste your budget." <a href="https://developers.google.com/crawling/docs/crawl-budget" target="_blank" rel="noopener">Xem tài liệu</a></span></span>.</li>
+<li>Bản có dấu và bản không dấu của cùng một từ khoá cạnh tranh nhau.</li>
+</ul>
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Trang từ khoá có 0 tin, mã ngành/tỉnh/quận không có trong cơ sở dữ liệu: trả 404.</li>
+<li>Chuẩn hoá tên trong URL: chữ thường, không dấu, chỉ <code>a-z 0-9 -</code>. Biến thể khác chuyển hướng 301 về bản chuẩn.</li>
+<li>Trang công ty: chốt một tên chuẩn theo mã, tên khác 301 về tên chuẩn.</li>
+<li>Route "không tìm thấy" trả mã 404 và trang nhẹ, không kèm bảng dịch.</li>
+<li>Sửa 5 link footer và công cụ tự gắn link để chỉ trỏ tới URL chuẩn.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>7 URL mẫu ở bảng trên trả đúng mã ở cột "Cần trả về".</li>
+<li><code>curl</code> trang c2 và c2l8 có 0 <code>href</code> chứa ký tự có dấu, <code>%XX</code> hoặc chữ hoa trong phần tên URL từ khoá.</li>
+</ul></div></div>
+
+<!-- ============ 7 ============ -->
+<h2 id="v7" data-toc="7. robots.txt không có hiệu lực với Googlebot" data-p="p1"><span class="tag p1">P1</span>7. robots.txt không có hiệu lực với Googlebot</h2>
+<div class="lead"><b>Tóm tắt:</b> File <code>robots.txt</code> có 21 dòng <code>Disallow</code> trong nhóm <code>User-agent: *</code>, nhưng Googlebot có nhóm riêng chỉ ghi <code>Allow: /</code>. Google chỉ áp một nhóm khớp nhất và không gộp với nhóm <code>*</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "Only one group is valid for a particular crawler… User agent specific groups and global groups (*) are not combined." RFC 9309 mục 2.2.1 quy định tương tự. <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Kết quả: Googlebot được crawl mọi đường dẫn.</div>
+
+<h3>Hiện trạng</h3>
+<pre><code>User-agent: Googlebot      # dòng 1–2, tương tự cho Bingbot, GPTBot, ClaudeBot… (10 nhóm)
+Allow: /
+
+User-agent: *              # dòng 33
+Disallow: /vi/tim-ung-vien # 21 dòng Disallow, Googlebot không đọc nhóm này
+Disallow: /api/*
+…</code></pre>
+<ul>
+<li>File dài 56 dòng, sửa lần cuối 20/11/2026. GTV chạy 47 URL mẫu qua bộ kiểm theo luật của Google: 47 trên 47 URL được phép với Googlebot.</li>
+<li><code>internal-api.careerviet.vn</code>, <code>images.careerviet.vn</code>, <code>static.careerviet.vn</code> không có <code>robots.txt</code> (trả 404), nên Google được crawl hết. Mỗi tên miền con cần file riêng.</li>
+<li>Bằng chứng trên Search Console: khi render trang c2l8, Googlebot tải <code>/api/get-localized-url</code>. Trong mẫu Crawl Stats có 2,3% URL HTML thuộc <code>/vi/tim-ung-vien/</code>, đường dẫn đã ghi <code>Disallow</code>.</li>
+</ul>
+<figure><img src="assets/client-v1/gsc-loai-file.jpg" alt="Crawl Stats theo mã trả về và loại file"><figcaption>Crawl Stats khoảng 90 ngày đến 24/11/2026: nhóm "Other file type" chiếm 38% số lượt crawl, JSON 28%, HTML 21%.</figcaption></figure>
+
+<h3>Googlebot đang tải những gì ngoài trang nội dung</h3>
+<div class="tw"><table>
+<tr><th>Nhóm URL</th><th>Tỷ lệ trong mẫu Crawl Stats</th><th>Đo trực tiếp 26/11</th></tr>
+<tr><td><code>?_rsc=…</code> (dữ liệu chuyển trang của Next.js)</td><td>703 trên 994 URL mẫu nhóm Other (70,7%)</td><td>Với User-Agent Googlebot, URL có <code>_rsc</code> trả về <mark>nội dung trang chủ</mark>: 200, 1,6 MB, canonical về <code>/</code>. Trình duyệt thường nhận đúng trang.</td></tr>
+<tr><td><code>/api/get-localized-url</code>, <code>/api/title-keywords</code></td><td>46,3% và 13,8% mẫu JSON</td><td>200, không có <code>X-Robots-Tag</code></td></tr>
+<tr><td><code>internal-api…/count-by-district</code>, <code>similar-jobs</code>, <code>count-views</code></td><td>39,4% mẫu JSON</td><td>200, JSON</td></tr>
+<tr><td><code>/vi/employers/login?referrer=…</code>, <code>/vi/jobseekers/login?referrer=…</code></td><td>163 trên 997 URL mẫu HTML (16,3%)</td><td>200, 967 KB, <mark>index, follow</mark></td></tr>
+<tr><td><code>/vi/jobseekers/jobs/apply?job_id=…</code></td><td>0,9% mẫu HTML</td><td>200, 1,46 MB, <mark>index, follow</mark>, canonical tự trỏ. Mỗi Job Listing có 50 link tới URL loại này.</td></tr>
+</table></div>
+<div class="need">Các tỷ lệ trên tính trên danh sách URL ví dụ của Crawl Stats, không phải trên số lượt crawl. Để biết <code>_rsc</code>, login, API chiếm bao nhiêu lượt crawl thật, cần log máy chủ 30 ngày lọc theo Googlebot (xác minh IP), đếm theo nhóm URL. Cũng cần log để xác nhận Googlebot thật có nhận nội dung trang chủ ở URL <code>_rsc</code> hay không.</div>
+
+<h3>Việc cần sửa, theo thứ tự</h3>
+<ol>
+<li><b>Trước khi đổi robots.txt:</b> thêm <code>noindex</code> cho trang login có <code>?referrer=</code> và trang apply, rồi chờ Google crawl lại và ghi nhận <code>noindex</code> (xem báo cáo Pages trên Search Console). Nếu chặn bằng robots ngay khi trang còn khai <code>index, follow</code>, các URL đã index sẽ không được gỡ.</li>
+<li><b>Quyết định về 192 URL tìm hồ sơ ứng viên</b> (<code>/vi/tim-ung-vien/</code>, <code>/en/resume-search/</code>). Các URL này đang nằm trong sitemap <code>searchresume.xml</code>, khai <code>index, follow</code>, và cũng nằm trong <code>Disallow</code>. Nếu không cần index: gỡ file sitemap này. Nếu cần: bỏ 2 dòng <code>Disallow</code>.</li>
+<li><b>Gỡ nhóm <code>User-agent: Googlebot</code> và các nhóm chỉ có <code>Allow: /</code></b> để bot dùng nhóm <code>*</code>. Giữ 6 nhóm đang chặn hẳn (CCBot, Bytespider…). Các bot AI như GPTBot, ClaudeBot vẫn được crawl nội dung vì nhóm <code>*</code> không chặn trang nội dung.</li>
+<li><b>Thêm vào nhóm <code>*</code>:</b>
+<pre><code>Disallow: /*_rsc=
+Disallow: /vi/employers/login
+Disallow: /en/employers/login
+Disallow: /vi/jobseekers/login
+Disallow: /en/jobseekers/login
+Disallow: /vi/jobseekers/jobs/apply
+Disallow: /en/jobseekers/jobs/apply
+Allow: /api/keyword-display
+Allow: /api/title-keywords</code></pre>
+<code>/*_rsc=</code> khớp cả <code>?_rsc=</code> và <code>&amp;_rsc=</code>. Hai dòng <code>Allow</code> đã khớp cả URL có tham số, không cần thêm dấu <code>*</code>.</li>
+<li><b>Thử trên staging trước khi áp:</b> với <code>/api/*</code> bị chặn, trang còn render đủ cho Googlebot hay không. Trên Search Console, Googlebot hiện tải <code>/api/get-localized-url</code> khi render.</li>
+<li><b>Không chặn <code>/jobs/</code>.</b> Đây là đường dẫn Job Listing tiếng Anh.</li>
+<li><b>Tạo <code>robots.txt</code> cho <code>internal-api.careerviet.vn</code>:</b> chặn <code>count-views</code>, <code>hr-centrals</code>, <code>captcha</code>. Giữ mở <code>count-by-district</code> và <code>similar-jobs</code> tới khi hai khối này được render ở máy chủ.</li>
+<li><b>Sửa ở gốc:</b> nút "Ứng tuyển ngay" trên Job Listing dùng <code>&lt;button&gt;</code> hoặc thêm <code>rel="nofollow"</code>. Xem lại việc lớp bot trả trang chủ cho URL có <code>_rsc</code>.</li>
+</ol>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>Báo cáo robots.txt trên Search Console (Settings) hiện bản mới, không lỗi. Kiểm tra URL (Test Live URL) ghi "Crawl allowed? No" cho URL mẫu của <code>_rsc</code>, login, apply, và "Yes" cho Job Listing tiếng Việt, tiếng Anh, Job Detail.</li>
+<li>Test Live URL của trang c2l8 không có tài nguyên <code>/_next/static/</code> hay <code>/_next/image</code> nào bị robots chặn.</li>
+<li>0 URL trong sitemap bị robots chặn.</li>
+<li>Sau 14 ngày, số lượt crawl nhóm "Other file type" và JSON trong Crawl Stats giảm so với mốc 24/11.</li>
+</ul></div>
+<p>Lưu ý: chặn robots giảm lượt crawl vào URL thừa. Google không cam kết chuyển số lượt đó sang trang khác<span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "Google won't shift this newly available crawl budget to other pages unless Google is already hitting your site's crawl capacity limit." <a href="https://developers.google.com/crawling/docs/crawl-budget" target="_blank" rel="noopener">Xem tài liệu</a></span></span>, nên tiêu chí nghiệm thu đo trên lượt crawl URL thừa.</p>
+
+<!-- ============ 8 ============ -->
+<h2 id="v8" data-toc="8. Phản hồi HTML 1.090 ms, cache cho bot" data-p="p1"><span class="tag p1">P1</span>8. Thời gian phản hồi HTML 1.090 ms, cache cho bot hết hạn nhanh</h2>
+<div class="lead"><b>Tóm tắt:</b> Crawl Stats ghi thời gian phản hồi trung bình của HTML là 1.090 ms, so với 501 ms của toàn site. Lớp cache cho bot đã có sẵn và chạy tốt khi trúng cache, nhưng thời hạn chỉ khoảng 6 đến 13 phút, nên phần lớn URL ít được gọi vẫn phải tạo trang mới.</div>
+<figure><img src="assets/client-v1/gsc-html.jpg" alt="Crawl Stats của loại file HTML"><figcaption>Crawl Stats, loại file HTML: 33,2 triệu lượt, 10,7 TB, trung bình 1.090 ms. Ngày 15/11: 393.941 lượt, 147 GB, 1.299 ms.</figcaption></figure>
+<h3>Hiện trạng</h3>
+<div class="tw"><table>
+<tr><th>Hạng mục</th><th>Đo được 26/11</th></tr>
+<tr><td>Cache cho bot (<code>X-Bot-Cache</code>)</td><td>Trúng cache: byte đầu sau 15–26 ms. Không trúng: 190 ms đến 2,3 giây, cả trang c2l8 mất 1,35–2,44 giây.</td></tr>
+<tr><td>Thời hạn cache</td><td>Bản lưu của c2l8 tạo lúc 11:54 còn dùng lúc 12:01, hết lúc 12:07. Không có header <code>Age</code>.</td></tr>
+<tr><td>Cache nhận cả URL rỗng</td><td>Trang <code>-trang-999</code>, trang sort, trang 0 kết quả đều được đưa vào cache.</td></tr>
+<tr><td>Kiểm tra thay đổi (304)</td><td>Job Listing và Job Detail không có <code>ETag</code> hay <code>Last-Modified</code>, nên không thể trả 304. Trang chủ có và trả 304.</td></tr>
+<tr><td>Giao thức và nén</td><td><code>careerviet.vn</code> chạy HTTP/1.1 với gzip. <code>assets.careerviet.vn</code> đã chạy HTTP/2 với Brotli và cache 30 ngày.</td></tr>
+<tr><td>Bảng dịch trên Job Detail</td><td>919.024 byte trên trang 1,56 MB (59%), có trên cả tin đã hết hạn.</td></tr>
+<tr><td>Header <code>Link</code></td><td>4–6 KB preload font và CSS trên mỗi phản hồi HTML (34–52 mục).</td></tr>
+</table></div>
+<h3>Tác động</h3>
+<p>Google tăng hoặc giảm tốc độ crawl theo độ ổn định và thời gian phản hồi của máy chủ. Google không công bố ngưỡng cụ thể, nên tài liệu này lấy mốc hiện tại 1.090 ms làm điểm so sánh.</p>
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Giảm dung lượng HTML theo mục 1. Đây là phần lớn thời gian tải khi không trúng cache.</li>
+<li>Kéo dài thời hạn cache cho Job Listing và Job Detail, làm mới khi có tin mới. Thêm header <code>Age</code>.</li>
+<li>Không lưu cache cho trang rỗng, trang vượt số trang, trang sort.</li>
+<li>Thêm <code>ETag</code> hoặc <code>Last-Modified</code> cho Job Listing và Job Detail.</li>
+<li>Bật HTTP/2 và Brotli trên Kong/OpenResty. Nén thử cho thấy Brotli giảm 23–25% dung lượng truyền của Job Listing so với gzip.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>Gọi 20 URL Job Listing hai lần cách nhau 10 phút: lần 2 có <code>X-Bot-Cache: HIT</code> ở ít nhất 19 URL.</li>
+<li><code>If-None-Match</code> trên Job Listing trả 304.</li>
+<li>Thời gian phản hồi trung bình của HTML trong Crawl Stats giảm so với 1.090 ms sau 28 ngày.</li>
+</ul></div></div>
+<div class="need">Cấu hình lớp cache trên Kong/OpenResty: thời hạn, khoá cache, điều kiện bỏ qua cache khi có cookie đăng nhập. GTV đo thấy khoá cache không tính header <code>RSC</code>, cần DevOps xác nhận trước khi kéo dài thời hạn.</div>
+
+<!-- ============ 9 ============ -->
+<h2 id="v9" data-toc="9. Schema JobPosting, bản tiếng Anh" data-p="p1"><span class="tag p1">P1</span>9. Schema JobPosting và bản tiếng Anh của trang tin</h2>
+<div class="lead"><b>Tóm tắt:</b> Trang Job Detail có đủ 5 trường bắt buộc của JobPosting. Lỗi nằm ở giá trị: loại hình công việc sai định dạng trên mọi tin, ngày đăng lấy theo ngày làm mới tin, địa chỉ đảo cấp. Mẫu đo: 12 tin đang mở và 5 tin hết hạn.</div>
+<div class="tw"><table>
+<tr><th>Trường</th><th>Đang xuất</th><th>Tỷ lệ trong mẫu</th><th>Cần xuất</th></tr>
+<tr><td><code>employmentType</code></td><td><code>["\"FULL_TIME\""]</code> (có thêm dấu ngoặc kép bên trong)</td><td>18 trên 18</td><td><code>["FULL_TIME"]</code>, một trong 8 giá trị Google nhận</td></tr>
+<tr><td><code>datePosted</code></td><td>Ngày làm mới tin. Ví dụ tin <code>35C8D231</code>: đăng 05/11, schema ghi 25/11</td><td>4 trên 6 tin so được lệch 6–41 ngày</td><td>Ngày nhà tuyển dụng đăng tin lần đầu</td></tr>
+<tr><td><code>jobLocation.address</code></td><td><code>addressLocality</code> = tên tỉnh, <code>addressRegion</code> = tên quận. Tin không có địa chỉ: cả ba trường đều ghi tên tỉnh</td><td>8 trên 12 đảo cấp, 4 trên 12 lặp tên tỉnh</td><td><code>addressRegion</code> = tỉnh, <code>addressLocality</code> = quận. Bỏ <code>streetAddress</code> khi không có địa chỉ</td></tr>
+<tr><td><code>baseSalary</code></td><td><code>value: "Cạnh tranh"</code> (chữ, không phải số). 1 tin ghi <code>currency: "LCT"</code></td><td>7 trên 12</td><td>Không xuất <code>baseSalary</code> khi không có số lương. Giao diện vẫn hiện "Cạnh tranh"</td></tr>
+<tr><td><code>applicantLocationRequirements</code></td><td><code>Country: Việt Nam</code> trên tin làm tại văn phòng</td><td>12 trên 12</td><td>Chỉ xuất cho việc làm từ xa, kèm <code>jobLocationType: TELECOMMUTE</code></td></tr>
+<tr><td><code>validThrough</code>, <code>datePosted</code></td><td>Giờ gắn nhãn <code>Z</code> (UTC), lệch ngày so với giao diện</td><td>10 trên 17 lệch ngày</td><td>Ghi kèm múi giờ <code>+07:00</code></td></tr>
+<tr><td><code>educationRequirements</code></td><td>"no requirements" dù mô tả ghi "Tốt nghiệp Đại học"</td><td>1 trên 12</td><td>Lấy từ trường học vấn của form. Không có dữ liệu thì bỏ trường</td></tr>
+</table></div>
+<p>Google định nghĩa <code>datePosted</code> là ngày nhà tuyển dụng đăng tin lần đầu<span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The original date that employer posted the job". <a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. <code>employmentType</code>, <code>baseSalary</code>, <code>validThrough</code> là trường khuyến nghị. Giá trị sai làm Google đọc sai hoặc bỏ qua thông tin loại hình, lương, địa điểm trong bộ lọc của Google for Jobs. GTV chưa có bằng chứng tin bị loại khỏi Google for Jobs.</p>
+
+<h3>Bản tiếng Anh của Job Detail</h3>
+<ul>
+<li>URL <code>/en/search-job/….35C8EB2B.html</code> trả 200, <code>index, follow</code>, nhưng canonical trỏ về bản tiếng Việt. Tiêu đề tin vẫn bằng tiếng Việt.</li>
+<li>Bản tiếng Việt lại khai <code>hreflang="en-vn"</code> tới URL tiếng Anh này. Bản tiếng Anh không có <code>hreflang</code> tự trỏ. Hai tín hiệu ngược nhau, nên Google bỏ qua cặp hreflang.</li>
+<li>Sitemap <code>job_en_0.xml</code> nộp 5.507 URL loại này. Trong mẫu Crawl Stats, 3,6% URL HTML là Job Detail tiếng Anh.</li>
+</ul>
+<div class="grid">
+<div class="box fix"><h4>Việc cần sửa</h4>
+<ol>
+<li>Sửa hàm dựng JSON-LD JobPosting theo cột "Cần xuất".</li>
+<li>Bản tiếng Anh, chọn một hướng: (a) có nội dung dịch thì canonical tự trỏ và hreflang đủ hai chiều; (b) không dịch thì 301 về bản tiếng Việt, bỏ <code>hreflang en-vn</code> và bỏ <code>job_en_*</code> khỏi sitemap.</li>
+<li>Giữ nguyên tiêu đề tin do nhà tuyển dụng nhập trong <code>JobPosting.title</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "If you're a third party job site, don't attempt to modify the job title to follow the guidelines… provide the title as you received it from the employer." Việc làm sạch mã nội bộ chỉ nên áp cho thẻ &lt;title&gt; của trang. <a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener">Xem tài liệu</a></span></span>.</li>
+</ol></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul>
+<li>Rich Results Test không báo lỗi hay cảnh báo trên 10 tin mẫu.</li>
+<li>Trên 20 tin đã được làm mới, <code>datePosted</code> bằng ngày đăng gốc.</li>
+<li>10 trên 10 tin có <code>addressRegion</code> là tên tỉnh.</li>
+<li>10 cặp URL tiếng Việt, tiếng Anh: canonical không ngược với hreflang.</li>
+</ul></div></div>
+<div class="need">Hai điểm cần CareerViet xác nhận: (1) trường <code>date_view</code> là ngày làm mới tin hay ngày nhà tuyển dụng đăng lại; (2) giờ lưu trong cơ sở dữ liệu là UTC thật hay giờ Việt Nam.</div>
+
+<!-- ============ 10 ============ -->
+<h2 id="v10" data-toc="10. Breadcrumb trong JSON-LD" data-p="p2"><span class="tag p2">P2</span>10. Breadcrumb trong JSON-LD trỏ tới trang lỗi, sai tên</h2>
+<div class="lead"><b>Tóm tắt:</b> Dữ liệu breadcrumb gửi cho Google có 4 lỗi. Sửa ở tầng dựng JSON-LD, không cần đổi giao diện.</div>
+<div class="tw"><table>
+<tr><th>Lỗi</th><th>Ví dụ đo được</th><th>Cần sửa</th></tr>
+<tr><td>URL cấp 2 trỏ tới trang lỗi</td><td>Trang c2l8 và 17 trên 17 Job Detail dùng <code>https://careerviet.vn/tim-viec-lam/ho-chi-minh-l8-vi.html</code>. URL này chuyển hướng 308 sang <code>/vi/tim-viec-lam/…</code>, trả 200 với thân "không tìm thấy trang". Bản tiếng Anh dùng <code>/search-job/…</code>, lỗi tương tự.</td><td>Dùng URL <code>/viec-lam/…</code> và <code>/jobs/…</code> đang chạy</td></tr>
+<tr><td>Sai chính tả</td><td>"Vi<b>ê</b>c làm tại Hồ Chí Minh" (thiếu dấu nặng) ở mọi breadcrumb có cấp tỉnh</td><td>"Việc làm tại…"</td></tr>
+<tr><td>Thiếu tên thực thể</td><td>Trang Đà Lạt: cấp cuối là "Viêc làm tại Lâm Đồng", không có Đà Lạt. Trang Masan: "Tuyển dụng 25 việc làm 26/11/2026", không có tên công ty. Trang từ khoá: "ke toan truong" (mất dấu).</td><td>Tỉnh → Quận. Tên công ty. Từ khoá có dấu</td></tr>
+<tr><td>Cấp 3 của Job Detail tạo URL từ khoá vô nghĩa</td><td>Tiêu đề bị cắt tại dấu phân cách đầu tiên: tin <code>35C8DEF2</code> tạo <code>/viec-lam/acc-k-vi.html</code> (16 tin), tin <code>35C8EEAB</code> tạo <code>/viec-lam/cv-k-vi.html</code> (2.111 tin). Cả hai trả 200, index, follow.</td><td>Dựng cấp 2 và 3 từ mã ngành và mã tỉnh trong cơ sở dữ liệu</td></tr>
+</table></div>
+<div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
+<ul><li>0 URL chứa <code>/tim-viec-lam/</code> hoặc <code>/search-job/</code> dạng trang danh sách trong JSON-LD. 0 chuỗi "Viêc". Cấp cuối của trang Đà Lạt chứa "Đà Lạt". Rich Results Test không báo lỗi trên 8 loại trang.</li></ul></div>
+
+<!-- ============ 11 ============ -->
+<h2 id="v11" data-toc="11. Lỗi nhỏ sửa kèm" data-p="p2"><span class="tag p2">P2</span>11. Các lỗi nhỏ sửa kèm</h2>
+<details><summary>Số tin và câu chữ không khớp nhau</summary><div class="in"><ul>
+<li>Trang từ khoá <code>ke-toan-truong-k</code>: title ghi 760 tin, H1 ghi 755. Trang <code>kc19</code>: title 66, H1 63.</li>
+<li>"tháng tháng 11/2026" trong khối chữ SEO: 3 chỗ trên c2l8, 1 chỗ trên <code>l8</code>, 1 chỗ trên trang Masan.</li>
+<li>"cập nhập" (đúng là "cập nhật") trong meta description của mọi Job Listing tiếng Việt.</li>
+<li>Bản tiếng Anh: title "…Jobs NEWS in in Ho Chi Minh City", H1 "jobs base on the update date".</li>
+<li>Tooltip của link tự gắn dùng số cũ: "Tuyển dụng 4,897 việc làm Kiểm toán MỚI 01/11/2026".</li>
+<li>Link tự gắn bắt sai cụm: "việc làm quận 1" được gắn link, chữ "0" của "quận 10" nằm ngoài link.</li>
+</ul><p>Cần sửa: dùng một biến tổng số tin cho title, description, H1. Sửa mẫu câu. Công cụ gắn link khớp theo ranh giới từ và ưu tiên cụm dài.</p></div></details>
+<details><summary>Sitemap: giờ sai và URL không nên nộp</summary><div class="in"><ul>
+<li><code>lastmod</code> ghi giờ Việt Nam nhưng gắn nhãn <code>Z</code>: lúc 05:32 UTC, file ghi <code>2026-11-26T12:00:15Z</code>, tức 7 giờ sau thời điểm tải. Mọi URL Job Listing có cùng một <code>lastmod</code>.</li>
+<li><code>changefreq=hourly</code> và <code>priority=1</code> cho mọi URL. Google bỏ qua hai trường này.</li>
+<li>Tên file sai chính tả: <code>taletcommunity.xml</code>. <code>/sitemap.xml</code> trả 404, sitemap thật ở <code>/sitemap/sitemap.xml</code> (đã khai trong robots.txt).</li>
+</ul><p>Cần sửa: <code>lastmod</code> là thời điểm nội dung đổi thật, ghi kèm <code>+07:00</code>.</p></div></details>
+<details><summary>Chuyển hướng 307 và mã tin không còn tồn tại</summary><div class="in"><ul>
+<li>Job Detail và trang nhà tuyển dụng với tên sai trong URL trả 307 (tạm thời) về tên đúng, kèm thân trang 1,2–1,4 MB.</li>
+<li>Mã tin không còn trong hệ thống (ví dụ <code>/vi/tim-viec-lam/x.35C86000.html</code>) trả 307 về trang tất cả việc làm.</li>
+<li><code>https://www.careerviet.vn/</code> chuyển hướng về <code>https://careerviet.vn/?</code>, thừa dấu <code>?</code>.</li>
+</ul><p>Cần sửa: dùng 301 hoặc 308 với thân rỗng cho tên sai. Tin đã gỡ trả 410, mã chưa từng có trả 404.</p></div></details>
+<details><summary>Thẻ tin trên Job Listing</summary><div class="in"><ul>
+<li>Mỗi tin có 2 link cùng địa chỉ (100 link cho 50 tin). Link thứ hai bọc cả khối lương, địa điểm, ngày.</li>
+<li><code>id="apply-btn"</code> lặp 50 lần trên một trang.</li>
+<li>98 thẻ <code>&lt;time&gt;</code> không có thuộc tính <code>datetime</code>.</li>
+<li>151 biểu tượng SVG chèn thẳng vào HTML, tổng 238 KB. 60 khung chờ tải (skeleton) nằm sẵn trong HTML máy chủ.</li>
+</ul></div></details>
+<details><summary>Trang sort và trang việc làm tương tự</summary><div class="in"><ul>
+<li>Ba biến thể sort của c2l8 (<code>-sortdv</code>, <code>-sortlg</code>, <code>-sortscore</code>) trả 200, index, follow, canonical về bản gốc nhưng nằm trong <code>&lt;body&gt;</code>, title khác bản gốc. Sau khi sửa mục 2: thêm <code>noindex, follow</code> và dùng chung title với bản gốc. URL sort còn nằm trong <code>hreflang</code>.</li>
+<li>Trang <code>/viec-lam-tuong-tu/</code> có kết quả: index, follow, 3,15 MB, H1 ở byte 2,9 triệu. Trang 0 tin đã có <code>noindex</code>.</li>
+<li>Một mẫu trang tin dành cho nhà tuyển dụng cao cấp (tin <code>35C8ED4B</code>) không có thẻ H1, tiêu đề nằm trong H2.</li>
+</ul></div></details>
+
+<!-- ============ 12 ============ -->
+<h2 id="v12" data-toc="12. Lộ trình và việc để sau">12. Lộ trình đề xuất và các việc để sau</h2>
+<div class="tw"><table>
+<tr><th>Đợt</th><th>Nội dung</th><th>Mục</th><th>Vì sao đi cùng nhau</th></tr>
+<tr><td><b>Đợt 1</b><br>Khẩn cấp</td><td>Bỏ vector, tách bảng dịch, đưa metadata về <code>&lt;head&gt;</code>, H1 đủ thông tin ở máy chủ, phân trang có <code>href</code> và canonical riêng</td><td>1, 2, 3, 4</td><td>Cùng một route Job Listing. Sửa riêng mục 1 thì Google đọc được trang nhưng gặp ngay ba lỗi còn lại.</td></tr>
+<tr><td><b>Đợt 2</b></td><td>Link quận/huyện và sitemap, mã 404 cho URL rỗng, robots.txt, cache cho bot</td><td>5, 6, 7, 8</td><td>Cắt lượt crawl vào URL thừa và mở đường vào cho trang quận, ngành × tỉnh. Robots.txt cần thử trên staging nên tách khỏi đợt 1.</td></tr>
+<tr><td><b>Đợt 3</b></td><td>JobPosting, bản tiếng Anh, breadcrumb JSON-LD, lỗi nhỏ</td><td>9, 10, 11</td><td>Cùng hàm dựng dữ liệu có cấu trúc của Job Detail.</td></tr>
+</table></div>
+
+<h3>Các việc để sau, chưa đưa vào ba đợt trên</h3>
+<details><summary>Danh sách và lý do xếp sau</summary><div class="in"><div class="tw"><table>
+<tr><th>Việc</th><th>Lý do xếp sau</th></tr>
+<tr><td>Vòng đời tin hết hạn: giữ 200 trong một thời gian rồi trả 410</td><td>Trạng thái hiện tại (200, <code>noindex</code>, <code>validThrough</code> trong quá khứ) là một trong các cách Google chấp nhận. Lợi ích là giảm lượt crawl. Cần CareerViet xác nhận chu kỳ gia hạn tin giữ nguyên mã trước khi chốt số ngày.</td></tr>
+<tr><td>Indexing API cho tin tuyển dụng</td><td>Google khuyên dùng Indexing API thay sitemap cho URL có JobPosting, cả khi đăng tin lẫn khi tin hết hạn. Nên làm sau đợt 3 khi schema đã đúng.</td></tr>
+<tr><td>Làm sạch thẻ <code>&lt;title&gt;</code> của tin có mã nội bộ (ví dụ <code>ACC.OFM_HCM|</code>)</td><td>Chỉ đổi thẻ title của trang, giữ nguyên H1 và nội dung của nhà tuyển dụng. Mức ảnh hưởng thấp hơn các mục trên.</td></tr>
+<tr><td>Tin cùng vị trí đăng riêng cho từng tỉnh (trùng khoảng 99,8% nội dung)</td><td>Hệ thống đã hỗ trợ một tin nhiều tỉnh với mảng <code>jobLocation</code>. Hướng xử lý liên quan tới quy trình đăng tin của nhà tuyển dụng, cần bàn với Product.</td></tr>
+<tr><td>Thanh breadcrumb trên giao diện, khung tham khảo lương, chuyển khối "việc làm tương tự" sang render ở máy chủ</td><td>Thuộc phần giao diện và trải nghiệm, lên lịch theo sprint của Product.</td></tr>
+<tr><td>Phân loại trang công ty và trang từ khoá trùng tên công ty</td><td>Cần dữ liệu click của từng URL để quyết định URL nào là bản chính.</td></tr>
+<tr><td>Đổi thứ bậc heading của thẻ tin (H2 sang H3)</td><td>Google không yêu cầu thứ bậc heading. Chỉ có lợi cho trình đọc màn hình.</td></tr>
+</table></div></div></details>
+
+<!-- ============ 13 ============ -->
+<h2 id="v13" data-toc="13. Dữ liệu cần CareerViet cung cấp">13. Dữ liệu cần CareerViet cung cấp</h2>
+<div class="tw"><table>
+<tr><th>#</th><th>Dữ liệu</th><th>Dùng để</th><th>Mục</th></tr>
+<tr><td>1</td><td>Log máy chủ 30 ngày lọc theo Googlebot (xác minh IP): số lượt theo nhóm URL, dung lượng phản hồi, giá trị <code>X-Bot-Cache</code></td><td>Biết số lượt crawl thật vào <code>_rsc</code>, login, API. Xác nhận Googlebot thật nhận gì ở URL <code>_rsc</code> và ở lớp cache</td><td>2, 7, 8</td></tr>
+<tr><td>2</td><td>Lịch sử deploy 15/09 đến 25/11/2026</td><td>Tìm thay đổi quanh 31/10 (noindex trang quận) và ngày vector vào HTML</td><td>1, 5</td></tr>
+<tr><td>3</td><td>Kiểm tra URL trên Search Console cho 8–10 trang quận, trang c2l8, trang <code>-trang-2</code></td><td>Xác nhận phạm vi lỗi noindex và dòng "User-declared canonical"</td><td>2, 5</td></tr>
+<tr><td>4</td><td>Cấu hình lớp cache trên Kong/OpenResty</td><td>Chốt thời hạn và khoá cache</td><td>8</td></tr>
+<tr><td>5</td><td>Phiên bản Next.js và next-intl đang chạy</td><td>Chọn đúng cách cấu hình <code>htmlLimitedBots</code> và cách tách bảng dịch</td><td>1, 2</td></tr>
+<tr><td>6</td><td>Ý nghĩa của <code>date_view</code>, <code>job_active_date</code> và múi giờ lưu trong cơ sở dữ liệu</td><td>Sửa <code>datePosted</code>, <code>validThrough</code></td><td>9</td></tr>
+<tr><td>7</td><td>Báo cáo Sitemaps trên Search Console: trạng thái từng file</td><td>Kiểm sitemap có được Google đọc đủ không</td><td>5</td></tr>
+<tr><td>8</td><td>Ảnh đủ các bảng của Crawl Stats: Hosts, By response (13 dòng), By Googlebot type (7 dòng)</td><td>Xem lỗi 5xx và phân bổ crawl theo tên miền con. Nhóm 302 chiếm 3% chưa rõ nguồn</td><td>7, 8</td></tr>
+</table></div>
+
+<details><summary>Các điểm đã kiểm và không phải lỗi của site</summary><div class="in"><ul>
+<li><b>"Sitemaps: Temporary processing error"</b> trong Kiểm tra URL của trang c2l8 là lỗi tạm của hệ thống báo cáo Google khi lấy dữ liệu sitemap. Chạy lại Kiểm tra URL là hết. Lỗi thật của sitemap xem ở báo cáo Sitemaps.</li>
+<li><b>"52/154 tài nguyên không tải được"</b> khi Google render trang c2l8: ảnh chụp chỉ cho thấy một dòng, là logo qua <code>/_next/image</code>. GTV tải trực tiếp ảnh này và nhận mã 200. Google thường bỏ qua một phần tài nguyên khi render, nên con số này chưa phải bằng chứng site lỗi.</li>
+<li><b>Tin hết hạn</b> trả 200, <code>noindex</code>, <code>validThrough</code> trong quá khứ: hợp lệ theo tài liệu JobPosting.</li>
+<li><b>Trang Job Detail</b> không vượt mốc 2 MB: title, robots, canonical ở byte 13–15 nghìn, H1 ở byte 40 nghìn.</li>
+<li><b>Tỷ lệ Refresh 93%, Discovery 7%</b> trong Crawl Stats: Discovery chỉ tính URL Google chưa từng crawl. Với site đã index nhiều năm, Refresh chiếm phần lớn là bình thường. Google không công bố ngưỡng cho tỷ lệ này.</li>
+<li><b>Lượng crawl tăng từ 14/11 sang 15/11</b> (số lượt tăng 39%, dung lượng tăng 68%): đỉnh tháng 9 từng cao hơn. Số liệu này chưa đủ để gắn với một thay đổi cụ thể trên site.</li>
+</ul></div></details>
+
+<figure><img src="assets/client-v1/gsc-tong-quan.jpg" alt="Tổng quan Crawl Stats"><figcaption>Crawl Stats toàn property khoảng 90 ngày đến 24/11/2026: 161 triệu lượt crawl, 15,7 TB, thời gian phản hồi trung bình 501 ms.</figcaption></figure>
+
+<div class="foot">GTV SEO - SEO &amp; GEO Agency · Số đo trực tiếp lấy ngày 26/11/2026 từ 11:54 đến 12:33 (giờ Việt Nam). Số tin, dung lượng và vị trí byte thay đổi theo dữ liệu tin tuyển dụng tại thời điểm đo. Tài liệu lưu hành giữa GTV SEO và CareerViet.</div>
+</main>
+</div>
+<div id="lb"><img alt=""></div>
+<script>
+(function(){
+  var tocl=document.getElementById('tocl'),hs=[].slice.call(document.querySelectorAll('main h2[data-toc]')),links={};
+  hs.forEach(function(h){var a=document.createElement('a');a.href='#'+h.id;var p=h.getAttribute('data-p');
+    if(p){var s=document.createElement('span');s.className='tag '+p;s.textContent=p.toUpperCase();a.appendChild(s)}
+    a.appendChild(document.createTextNode(h.getAttribute('data-toc')));tocl.appendChild(a);links[h.id]=a});
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.remove('on');links[e.target.id].classList.add('on')}})},{rootMargin:'0px 0px -75% 0px'});hs.forEach(function(h){io.observe(h)})}
+  function all(o){[].forEach.call(document.querySelectorAll('details'),function(d){d.open=o})}
+  document.getElementById('oa').onclick=function(){all(true)};document.getElementById('ca').onclick=function(){all(false)};
+  window.addEventListener('beforeprint',function(){all(true)});
+  var lb=document.getElementById('lb'),li=lb.querySelector('img');
+  [].forEach.call(document.querySelectorAll('figure img'),function(im){im.onclick=function(){li.src=im.src;lb.style.display='flex'}});
+  lb.onclick=function(){lb.style.display='none'};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.style.display='none';[].forEach.call(document.querySelectorAll('.i.open'),function(x){x.classList.remove('open')})}});
+  [].forEach.call(document.querySelectorAll('.i'),function(x){x.onclick=function(e){if(e.target.tagName==='A')return;e.stopPropagation();var o=x.classList.contains('open');[].forEach.call(document.querySelectorAll('.i.open'),function(y){y.classList.remove('open')});if(!o)x.classList.add('open')}});
+  document.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.i.open'),function(y){y.classList.remove('open')})});
+  if(location.hash){var t=document.querySelector(location.hash);if(t){var d=t.closest('details');if(d)d.open=true}}
+})();
+</script>
+</body>
+</html>
