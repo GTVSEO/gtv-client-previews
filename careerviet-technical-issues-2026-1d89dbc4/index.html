@@ -115,7 +115,7 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 
 <div class="lead"><b>Ba ý chính.</b>
 <ol>
-<li>Trang Job Listing nặng khoảng 4,1 MB. Googlebot chỉ đọc 2 MB đầu, nên bản Google đang giữ của trang Kế toán tại Hồ Chí Minh <mark>không có thẻ H1 và không có tin tuyển dụng nào</mark>.</li>
+<li>Hầu hết trang Job Listing có nhiều tin đều nặng 2,66–4,22 MB (kể cả trang việc làm theo công ty có nhiều tin như Masan Consumer 2,73 MB; chỉ trang Hồ sơ công ty <code>/nha-tuyen-dung/</code> 1,33 MB và trang rất ít tin dưới ~1,75 MB mới nằm dưới trần). Googlebot chỉ đọc 2 MB đầu, nên ở mẫu kiểm tra trên Search Console trang Kế toán tại Hồ Chí Minh <mark>không có thẻ H1 và không có tin tuyển dụng nào</mark>, và tình trạng cắt ngưỡng này xảy ra trên phần lớn các nhóm Job Listing (ngành, tỉnh, quận, từ khoá).</li>
 <li>Giảm dung lượng là chưa đủ. Sau khi trang nhẹ lại, Google sẽ đọc được phần thân trang và gặp các lỗi nằm sẵn ở đó: <mark>title, robots, canonical nằm ngoài <code>&lt;head&gt;</code></mark>, H1 thiếu tên ngành và tỉnh, phân trang không có link.</li>
 <li>Các lỗi này cần đi chung một đợt sửa. Phần còn lại (robots.txt, không gian URL, schema, cache) xếp ở đợt 2 và đợt 3.</li>
 </ol></div>
@@ -133,7 +133,7 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 <h2 id="tong-quan" data-toc="Bảng tổng hợp">Bảng tổng hợp theo thứ tự ưu tiên</h2>
 <div class="tw"><table>
 <tr><th>#</th><th>Lỗi</th><th>Mức</th><th>Phạm vi</th><th>Đội phụ trách</th><th>Đợt</th><th>Mục trong checklist kỹ thuật đã gửi</th></tr>
-<tr><td>1</td><td><a href="#v1">HTML Job Listing nặng 4,1 MB, Google mất H1 và 50 tin</a></td><td><span class="tag p0">P0</span></td><td>Mọi trang Job Listing</td><td>Backend + Frontend</td><td>1</td><td>Mới</td></tr>
+<tr><td>1</td><td><a href="#v1">HTML Job Listing nặng 2,7–4,2 MB, Google mất H1 và danh sách tin</a></td><td><span class="tag p0">P0</span></td><td>Hầu hết Job Listing (trừ trang rất ít tin &amp; Hồ sơ công ty <code>/nha-tuyen-dung/</code>)</td><td>Backend + Frontend</td><td>1</td><td>Mới</td></tr>
 <tr><td>2</td><td><a href="#v2">Title, robots, canonical, hreflang nằm ngoài <code>&lt;head&gt;</code></a></td><td><span class="tag p0">P0</span></td><td>Listing ngành × tỉnh, quận, từ khoá × tỉnh, trang N, sort</td><td>Frontend</td><td>1</td><td>Mới</td></tr>
 <tr><td>3</td><td><a href="#v3">H1 trong HTML máy chủ thiếu ngành, tỉnh, quận</a></td><td><span class="tag p1">P1</span></td><td>Mọi Listing trừ từ khoá và công ty</td><td>Frontend</td><td>1</td><td>17, 19</td></tr>
 <tr><td>4</td><td><a href="#v4">Phân trang không có link, trang N khai là bản trùng trang 1</a></td><td><span class="tag p1">P1</span></td><td>Mọi Listing trên 50 tin</td><td>Frontend</td><td>1</td><td>2, 14</td></tr>
@@ -148,7 +148,7 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 
 <!-- ============ 1 ============ -->
 <h2 id="v1" data-toc="1. HTML 4,1 MB, mất H1 và 50 tin" data-p="p0"><span class="tag p0">P0</span>1. HTML Job Listing nặng 4,1 MB, Google mất H1 và 50 tin</h2>
-<div class="lead"><b>Tóm tắt:</b> Googlebot chỉ đọc 2 MB đầu của mỗi file HTML<span class="i" tabindex="0">i<span class="tip">Tài liệu Googlebot: "Googlebot crawls the first 2MB of a supported file type" và "The file size limit is applied on the uncompressed data". Nén gzip hay Brotli không giúp vượt giới hạn này. <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trên Job Listing, H1 và 50 tin nằm sau byte 3,7 triệu vì hai khối dữ liệu thừa đứng trước.</div>
+<div class="lead"><b>Tóm tắt:</b> Googlebot chỉ đọc 2 MB đầu của mỗi file HTML<span class="i" tabindex="0">i<span class="tip">Tài liệu Googlebot: "Googlebot crawls the first 2MB of a supported file type" và "The file size limit is applied on the uncompressed data". Nén gzip hay Brotli không giúp vượt giới hạn này. <a href="https://developers.google.com/search/docs/crawling-indexing/googlebot" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Trên hầu hết Job Listing nhiều tin (2,66–4,22 MB), H1 và danh sách tin bị đẩy xuống byte 2,49–3,84 triệu vì hai khối dữ liệu thừa đứng trước (mẫu <code>c2l8</code> 4,15 MB mất H1 và cả 50 tin; chỉ trang rất ít tin hoặc Hồ sơ công ty <code>/nha-tuyen-dung/</code> 1,33 MB chưa vượt mốc).</div>
 
 <h3>Hiện trạng</h3>
 <p>Trang mẫu: <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html</a>, nặng <b>4.146.104 byte</b> (đo 11:54 và 12:32).</p>
