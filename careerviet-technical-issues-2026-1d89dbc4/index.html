@@ -178,12 +178,12 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
     <p>Giống <b>thùng hàng ép chân không</b>: truyền qua mạng bằng Gzip chỉ nặng <b>1,32 MB</b>, nhưng Googlebot giải nén ra thành <b>4,15 MB</b>. Giới hạn <b>2 MB</b> tính trên bản đã giải nén nên H1 và 50 tin ở vùng byte 3,74–4,15 MB bị cắt mất.</p>
   </div>
   <div class="exp r">
-    <h4>2. Mảng AI vector trong HTML là gì?</h4>
-    <p>Mỗi tin tuyển dụng kèm 2 dãy toạ độ <code>job_title_embed</code> và <code>job_tag_embed</code> (1.024 số thập phân/dãy) dùng để tính điểm trên máy chủ. Hệ thống đang in <b>96 mảng (2,08 MB, 50,3% file)</b> thẳng vào HTML trang <code>c2l8</code> thay vì giữ ở backend.</p>
+    <h4>2. Dữ liệu AI Vector là gì? (2,08 MB)</h4>
+    <p>CareerViet dùng AI so độ giống nhau giữa các chức danh (ví dụ <i>Kế toán tổng hợp</i>, <i>Kế toán trưởng</i>, <i>Nhân viên kiểm toán</i>) bằng cách đổi chữ thành 2 dãy số <code>job_title_embed</code> và <code>job_tag_embed</code> (1.024 số mỗi dãy). Dữ liệu này chỉ phục vụ tính toán phía máy chủ, nhưng đang bị in <b>96 mảng (2,08 MB, 50,3% file)</b> xuống HTML của trang <code>c2l8</code>.</p>
   </div>
   <div class="exp y">
-    <h4>3. Bảng dịch <code>messages</code> là gì?</h4>
-    <p>Layout gốc đang gửi câu chữ của các công cụ khác (CVHay, tạo danh thiếp, bài viết Thuế TNCN, BHXH, Gross-Net) xuống mọi trang. Khối <code>messages</code> nặng <b>919 KB</b> (tối đa 1,32 MB gồm chuỗi bài viết đi trước), chiếm gần hết hạn mức 2 MB.</p>
+    <h4>3. Bảng dịch <code>messages</code> là gì? (919 KB)</h4>
+    <p>Website dùng thư viện đa ngôn ngữ <code>next-intl</code> để lưu nhãn nút, bộ lọc và thông báo thành các bảng <code>messages</code>. Layout gốc đang gửi luôn bảng dịch của các công cụ khác (CVHay, tạo danh thiếp, Thuế TNCN, BHXH, Gross-Net) xuống mọi trang. Khối này nặng <b>919 KB</b> (lên tới 1,32 MB gồm chuỗi bài viết đi trước), cộng với vector đã chiếm hơn 3 MB ngay đầu file.</p>
   </div>
 </div>
 
@@ -317,17 +317,16 @@ button.cp:hover{background:#fff;border-color:var(--blue);color:var(--blue)}
 <div class="grid">
 <div class="box fix"><h4>Việc cần sửa</h4>
 <ol>
-<li><b>Bỏ hai trường vector</b> khỏi phản hồi của API (<code>jobs/public</code>, <code>similar-jobs</code>) và lọc thêm ở tầng lấy dữ liệu của Next.js trước khi truyền xuống Client Component. Trước khi bỏ, tìm trong mã nguồn xem có thành phần nào đọc hai trường này.</li>
-<li><b>Không gửi cả bảng dịch xuống mọi trang.</b> Ở layout gốc đặt <code>messages={null}</code> rồi dùng <code>pick()</code> cho từng nhóm Client Component<span class="i" tabindex="0">i<span class="tip">Đây là cách tài liệu next-intl mô tả. Mặc định <code>NextIntlClientProvider</code> gửi mọi messages xuống client. Nếu chỉ loại vài namespace nặng, namespace thêm sau này sẽ lại làm trang phình ra. <a href="https://next-intl.dev/docs/environments/server-client-components" target="_blank" rel="noopener">Xem tài liệu</a></span></span>, hoặc dùng <code>omit()</code> bỏ các nhóm nặng của công cụ khác. Áp cho cả trang Job Detail.</li>
-<li><b>Thêm bước kiểm dung lượng HTML vào CI</b> để lỗi không quay lại.</li>
+<li><b>Bỏ hai trường vector</b> (<code>job_title_embed</code>, <code>job_tag_embed</code>) khỏi phản hồi của API (<code>jobs/public</code>, <code>similar-jobs</code>) và lọc bỏ ở tầng lấy dữ liệu Next.js trước khi gửi xuống trình duyệt. Trước khi xoá, rà lại mã nguồn xem có thành phần giao diện nào đang đọc hai trường này không.</li>
+<li><b>Chỉ nạp bảng dịch đúng theo từng nhóm trang.</b> Ở layout gốc đặt <code>messages={null}</code> rồi dùng <code>pick()</code> nạp riêng nhóm chữ cần thiết cho từng route<span class="i" tabindex="0">i<span class="tip">Đây là cách tài liệu next-intl mô tả. Mặc định <code>NextIntlClientProvider</code> gửi mọi messages xuống client. Nếu chỉ loại vài namespace nặng, namespace thêm sau này sẽ lại làm trang phình ra. <a href="https://next-intl.dev/docs/environments/server-client-components" target="_blank" rel="noopener">Xem tài liệu</a></span></span>, hoặc dùng <code>omit()</code> bỏ trước các nhóm nặng của công cụ khác. Áp cách này cho cả trang Job Detail.</li>
+<li><b>Thêm bước kiểm dung lượng HTML vào CI</b> để phát hiện sớm nếu file vượt trần sau các đợt cập nhật mới.</li>
 </ol></div>
 <div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
 <ul>
-<li>0 chuỗi <code>job_title_embed</code>, <code>job_tag_embed</code> trong HTML của 8 loại trang.</li>
-<li>H1 và link tin đầu tiên nằm trước byte 800.000. Nếu tách cả các chuỗi bài viết dài (401 KB) thì trước byte 400.000.</li>
+<li>HTML sau giải nén nằm dưới 2 MB, mục tiêu khoảng 0,74–1,14 MB theo từng loại trang (0 chuỗi <code>job_title_embed</code>, <code>job_tag_embed</code>).</li>
+<li>H1 và link tin đầu tiên nằm trước byte 800.000.</li>
 <li>Link tin thứ 50 nằm trước byte 1.500.000.</li>
-<li>Job Detail dưới 700.000 byte.</li>
-<li>Kiểm tra URL (Test Live URL) của trang c2l8 có H1 và đủ 50 link tin trong HTML.</li>
+<li>Test Live URL trên Google Search Console nhận đủ H1 và 50 link tin tuyển dụng.</li>
 </ul></div></div>
 <p><mark>Chỉ bỏ vector là chưa đủ.</mark> Bỏ hai mảng vector đưa trang c2l8 về 2.062.386 byte, H1 về byte 1.661.119, nhưng 7 tin cuối (44 đến 50) vẫn nằm sau mốc 2 MB. Sau khi tách tiếp bảng dịch ở bước 2, trang còn khoảng 0,74 đến 1,14 MB.</p>
 
@@ -427,7 +426,7 @@ python3 -c "import re;b=re.sub(rb'&lt;(script|svg)\b.*?&lt;/\1&gt;',lambda m:b' 
 
 <h3>Tác động</h3>
 <ul>
-<li>Google chỉ nhận thẻ canonical khi thẻ nằm trong <code>&lt;head&gt;</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The rel="canonical" link element is only accepted if it appears in the &lt;head&gt; section of the HTML." Thẻ hreflang cũng được yêu cầu nằm trong &lt;head&gt;. <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Theo tài liệu này, canonical của trang 2, trang sort, URL trùng có thể không được tính, và các bản trùng không gộp tín hiệu về trang gốc. Cần kiểm chứng bằng dòng "User-declared canonical" trên Search Console (khung vàng bên dưới).</li>
+<li>Google chỉ nhận thẻ canonical khi thẻ nằm trong <code>&lt;head&gt;</code><span class="i" tabindex="0">i<span class="tip">Tài liệu Google: "The rel="canonical" link element is only accepted if it appears in the &lt;head&gt; section of the HTML." Thẻ hreflang cũng được yêu cầu nằm trong &lt;head&gt;. <a href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" target="_blank" rel="noopener">Xem tài liệu</a></span></span>. Theo tài liệu này, canonical của trang 2, trang sort, URL trùng có thể không được tính, và các bản trùng không gộp tín hiệu về trang gốc.</li>
 <li>Lần nào các thẻ rơi sau mốc 2 MB, Google không thấy title, robots, canonical và hreflang của trang đó.</li>
 <li>Trang quận Đà Lạt đang bị Search Console báo "Excluded by 'noindex' tag" dù trang hiện khai <code>index, follow</code> (mục 5). GTV chưa chứng minh được hai lỗi này liên quan, nhưng đây là giả thuyết cần loại trừ đầu tiên.</li>
 </ul>
@@ -464,7 +463,6 @@ module.exports = {
 </div>
 </div>
 
-<div class="need">Dòng "User-declared canonical" trong Kiểm tra URL của trang c2l8 và trang trang-2 hiện ghi gì. Nếu ghi "None", đó là bằng chứng trực tiếp rằng Google không nhận canonical trong <code>&lt;body&gt;</code>. Việc này mất khoảng 2 phút trên Search Console.</div>
 
 <!-- ============ 3 ============ -->
 <h2 id="v3" data-toc="3. H1 thiếu ngành, tỉnh, quận" data-p="p1"><span class="tag p1">P1</span>3. H1 trong HTML máy chủ thiếu ngành, tỉnh, quận</h2>
@@ -488,10 +486,10 @@ module.exports = {
 <tr><td>Ngành <code>c26</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/dau-khi-c26-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/dau-khi-c26-vi.html</a></td><td>72 việc làm theo ngày cập nhật mới nhất</td><td>Dầu khí</td></tr>
 <tr><td>Ngành × cấp bậc <code>c2e3</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2e3-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2e3-vi.html</a></td><td>1,368 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán, Nhân viên</td></tr>
 <tr><td>Hai ngành <code>c2,19</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2,19-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-c2,19-vi.html</a></td><td>4,721 việc làm theo ngày cập nhật mới nhất</td><td>Kế toán / Kiểm toán, Ngân hàng</td></tr>
-<tr><td>Từ khoá × tỉnh <code>kl8</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/duoc-si-tai-ho-chi-minh-kl8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/duoc-si-tai-ho-chi-minh-kl8-vi.html</a></td><td>40 việc làm Dược sĩ</td><td>tại Hồ Chí Minh</td></tr>
-<tr><td>Từ khoá × ngành <code>kc19</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-truong-kc19-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-truong-kc19-vi.html</a></td><td>63 việc làm Kế toán trưởng</td><td>ngành Ngân hàng</td></tr>
+<tr><td>Từ khoá × tỉnh <code>kl8</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/duoc-si-tai-ho-chi-minh-kl8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/duoc-si-tai-ho-chi-minh-kl8-vi.html</a></td><td>40 việc làm Dược sĩ</td><td>tại Hồ Chí Minh và cụm ngày cập nhật mới nhất</td></tr>
+<tr><td>Từ khoá × ngành <code>kc19</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-truong-kc19-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-truong-kc19-vi.html</a></td><td>63 việc làm Kế toán trưởng</td><td>ngành Ngân hàng và cụm ngày cập nhật mới nhất</td></tr>
 <tr><td>Tiếng Anh <code>c2l8</code></td><td><a class="u" href="https://careerviet.vn/jobs/accounting-auditing-in-ho-chi-minh-c2l8-en.html" target="_blank" rel="noopener">https://careerviet.vn/jobs/accounting-auditing-in-ho-chi-minh-c2l8-en.html</a><br><a class="u" href="https://careerviet.vn/jobs/accounting-auditing-tax-in-ho-chi-minh-c2l8-en.html" target="_blank" rel="noopener">https://careerviet.vn/jobs/accounting-auditing-tax-in-ho-chi-minh-c2l8-en.html</a></td><td>828 jobs base on the update date</td><td>Accounting / Auditing, Ho Chi Minh City. Câu sai ngữ pháp</td></tr>
-<tr><td>Từ khoá <code>-k</code>, công ty <code>-p</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-truong-k-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-truong-k-vi.html</a><br><a class="u" href="https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html</a></td><td>755 việc làm Kế toán trưởng · Tuyển dụng 25 việc làm tại Masan Consumer MỚI 11/2026</td><td>Đủ tên. Số tin ở <code>-k</code> lệch với title (mục 11)</td></tr>
+<tr><td>Từ khoá <code>-k</code>, công ty <code>-p</code></td><td><a class="u" href="https://careerviet.vn/viec-lam/ke-toan-truong-k-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-truong-k-vi.html</a><br><a class="u" href="https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/masan-consumer-p35A4FED8-vi.html</a></td><td>755 việc làm Kế toán trưởng · Tuyển dụng 25 việc làm tại Masan Consumer MỚI 11/2026</td><td>Nhóm <code>-k</code> thiếu cụm ngày cập nhật mới nhất và lệch số tin với title (mục 11); nhóm <code>-p</code> đã đủ tên và mốc tháng</td></tr>
 </table></div></div></details>
 
 <h3>Tác động</h3>
@@ -501,26 +499,26 @@ module.exports = {
 <ul>
 <li>Dựng H1 ở máy chủ từ cùng dữ liệu với <code>&lt;title&gt;</code>: ngành, tỉnh, quận, cấp bậc, từ khoá.</li>
 <li>Client không ghi đè H1 bằng nội dung khác.</li>
-<li>Bỏ cụm "theo ngày cập nhật mới nhất" khỏi H1. Cụm này là tên kiểu sắp xếp.</li>
+<li>Chuyển cụm "theo ngày cập nhật mới nhất" thành dạng <code>mới nhất DD/MM/YYYY</code> (ví dụ "mới nhất 26/11/2026") và cập nhật đồng nhất ở mọi nhóm trang, gồm cả nhóm từ khoá <code>-k</code>, <code>-kl</code>, <code>-kc</code> đang thiếu cụm này.</li>
 </ul></div>
 <div class="box dod"><h4>Tiêu chí nghiệm thu</h4>
 <ul>
-<li>Trên 13 loại trang ở bảng trên, H1 trong HTML <code>curl</code> chứa đủ tên ngành, tỉnh, quận có trong <code>&lt;title&gt;</code>.</li>
+<li>Trên 13 loại trang ở bảng trên, H1 trong HTML <code>curl</code> chứa đủ tên ngành, tỉnh, quận có trong <code>&lt;title&gt;</code> và có cụm <code>mới nhất DD/MM/YYYY</code> đồng nhất (cả ở nhóm <code>-k</code>, <code>-kl</code>, <code>-kc</code>).</li>
 <li>H1 trước và sau khi JavaScript chạy giống nhau.</li>
 <li>Console không báo lỗi hydration ở H1.</li>
 </ul></div></div>
 
 <div class="sol">
-<div class="sol-t">Mẫu sửa 3: Dựng H1 trên máy chủ từ cùng biến ngành, tỉnh, quận với title</div>
-<p>Tạo một hàm dùng chung trên Server Component để dựng tiêu đề từ biến ngành, tỉnh, quận, cấp bậc và từ khoá. Cả <code>generateMetadata</code> lẫn thẻ <code>&lt;h1&gt;</code> đều gọi hàm này, bỏ cụm sắp xếp khỏi H1 và không để Client Component ghi đè.</p>
+<div class="sol-t">Mẫu sửa 3: Dựng H1 trên máy chủ từ cùng biến ngành, tỉnh, quận và ngày cập nhật với title</div>
+<p>Tạo một hàm dùng chung trên Server Component để dựng tiêu đề từ biến ngành, tỉnh, quận, cấp bậc, từ khoá và ngày cập nhật. Cả <code>generateMetadata</code> lẫn thẻ <code>&lt;h1&gt;</code> đều gọi hàm này, chuẩn hoá cụm cuối thành "mới nhất DD/MM/YYYY" đồng nhất cho mọi nhóm trang và không để Client Component ghi đè.</p>
 <div class="ba">
-<div><div class="code-hd bad"><span>Hiện tại (H1 SSR chung chung)</span><button class="cp" type="button">Chép mẫu</button></div><pre><code>export default function ListingHeader({ total }) {
+<div><div class="code-hd bad"><span>Hiện tại (H1 SSR chung chung hoặc thiếu ngày cập nhật ở -k)</span><button class="cp" type="button">Chép mẫu</button></div><pre><code>export default function ListingHeader({ total }) {
   return (
     &lt;div className="job-found-amout"&gt;
 <span class="dl-r">      &lt;h1&gt;{total} việc làm theo ngày cập nhật mới nhất&lt;/h1&gt;</span>    &lt;/div&gt;
   );
 }</code></pre></div>
-<div><div class="code-hd good"><span>Cách sửa (dùng biến ngành, tỉnh, quận ở SSR)</span><button class="cp" type="button">Chép mẫu</button></div><pre><code><span class="dl-g">export function buildListingH1({ total, industry, location, district, page }) {</span><span class="dl-g">  const parts = [`${total.toLocaleString('en-US')} việc làm`];</span><span class="dl-g">  if (industry) parts.push(industry.name);</span><span class="dl-g">  if (district) parts.push(`tại ${district.name}, ${location.name}`);</span><span class="dl-g">  else if (location) parts.push(`tại ${location.name}`);</span><span class="dl-g">  if (page &gt; 1) parts.push(`- Trang ${page}`);</span><span class="dl-g">  return parts.join(' ');</span><span class="dl-g">}</span></code></pre></div>
+<div><div class="code-hd good"><span>Cách sửa (SSR đủ thực thể + "mới nhất DD/MM/YYYY" đồng nhất)</span><button class="cp" type="button">Chép mẫu</button></div><pre><code><span class="dl-g">export function buildListingH1({ total, industry, location, district, keyword, updatedDate, page }) {</span><span class="dl-g">  const parts = [`${total.toLocaleString('en-US')} việc làm`];</span><span class="dl-g">  if (keyword) parts.push(keyword);</span><span class="dl-g">  if (industry) parts.push(industry.name);</span><span class="dl-g">  if (district) parts.push(`tại ${district.name}, ${location.name}`);</span><span class="dl-g">  else if (location) parts.push(`tại ${location.name}`);</span><span class="dl-g">  if (updatedDate) parts.push(`mới nhất ${updatedDate}`);</span><span class="dl-g">  if (page &gt; 1) parts.push(`- Trang ${page}`);</span><span class="dl-g">  return parts.join(' ');</span><span class="dl-g">}</span></code></pre></div>
 </div>
 </div>
 
@@ -600,17 +598,32 @@ Sitemap: <a class="u" href="https://careerviet.vn/sitemap/searchjob.xml" target=
 </ul>
 <figure><img src="assets/client-v1/trang-2.png" alt="Giao diện trình duyệt của trang Job Listing Kế toán tại Hồ Chí Minh cho thấy thanh lọc quận/huyện và khối Việc làm được tìm kiếm nhiều nhất"><figcaption>Ảnh chụp trình duyệt trang <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html</a>: các nút lọc quận/huyện phía trên và khối "Việc làm được tìm kiếm nhiều nhất" ở cột phải chỉ hiện sau khi JavaScript chạy; nút quận không có <code>href</code> thật để Googlebot đi theo.</figcaption></figure>
 
-<h3>Ca trang Đà Lạt</h3>
+<h3>Bằng chứng Search Console trên nhóm trang quận/huyện</h3>
+<div class="tw"><table>
+  <tr><th>Trang quận/huyện</th><th>Trạng thái chỉ mục trên Search Console</th><th>Lần crawl cuối</th><th>Sitemap tham chiếu</th></tr>
+  <tr><td><a class="u" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener">thanh-pho-da-lat-l63q276</a></td><td><mark>Excluded by 'noindex' tag</mark></td><td>31/10/2026</td><td>Không có (chỉ có 5 bài blog)</td></tr>
+  <tr><td><a class="u" href="https://careerviet.vn/viec-lam/quan-1-l8q1616-vi.html" target="_blank" rel="noopener">quan-1-l8q1616</a></td><td><mark>Excluded by 'noindex' tag</mark></td><td>11/10/2026</td><td>Không có (blog và site vệ tinh)</td></tr>
+  <tr><td><a class="u" href="https://careerviet.vn/viec-lam/quan-12-l8q1617-vi.html" target="_blank" rel="noopener">quan-12-l8q1617</a></td><td><mark>Excluded by 'noindex' tag</mark></td><td>28/10/2026</td><td>Temporary processing error</td></tr>
+  <tr><td><a class="u" href="https://careerviet.vn/viec-lam/huyen-cu-chi-l8q1635-vi.html" target="_blank" rel="noopener">huyen-cu-chi-l8q1635</a></td><td><mark>Excluded by 'noindex' tag</mark></td><td>18/11/2026</td><td>Temporary processing error</td></tr>
+  <tr><td><a class="u" href="https://careerviet.vn/viec-lam/quan-11-l8q1628-vi.html" target="_blank" rel="noopener">quan-11-l8q1628</a></td><td>Crawled - currently not indexed</td><td>18/06/2026</td><td>Không có (chỉ có l8 và blog)</td></tr>
+</table></div>
 <div class="fig2">
-  <figure><img src="assets/client-v1/gsc-da-lat-1.jpg" alt="Kiểm tra URL trang việc làm Đà Lạt phần trạng thái chỉ mục"><figcaption>Kiểm tra URL của <a class="u" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html</a> (phần trên): "URL is not on Google" và "Excluded by 'noindex' tag".</figcaption></figure>
-  <figure><img src="assets/client-v1/gsc-da-lat-2.jpg" alt="Kiểm tra URL trang việc làm Đà Lạt phần Sitemaps và Referring page"><figcaption>Kiểm tra URL của trang Đà Lạt (phần dưới): "Sitemaps: No referring sitemaps detected", 5 trang dẫn về đều là bài blog, lần crawl cuối 31/10/2026 gặp <code>noindex</code>.</figcaption></figure>
+  <figure><img src="assets/client-v1/gsc-da-lat-1.jpg" alt="Kiểm tra URL trang việc làm Đà Lạt phần trạng thái chỉ mục"><figcaption>Kiểm tra URL của <a class="u" href="https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/thanh-pho-da-lat-l63q276-vi.html</a>: "URL is not on Google" và "Excluded by 'noindex' tag".</figcaption></figure>
+  <figure><img src="assets/client-v1/gsc-da-lat-2.jpg" alt="Kiểm tra URL trang việc làm Đà Lạt phần Sitemaps và Referring page"><figcaption>Kiểm tra URL của trang Đà Lạt (phần dưới): "No referring sitemaps detected", 5 trang dẫn về đều là bài blog, crawl 31/10/2026 gặp <code>noindex</code>.</figcaption></figure>
+</div>
+<div class="fig2">
+  <figure><img src="assets/client-v1/gsc-quan-1.png" alt="Kiểm tra URL trang Quận 1 Hồ Chí Minh trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/quan-1-l8q1616-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/quan-1-l8q1616-vi.html</a>: "Excluded by 'noindex' tag", "No referring sitemaps detected", lần crawl cuối 11/10/2026.</figcaption></figure>
+  <figure><img src="assets/client-v1/gsc-quan-12.png" alt="Kiểm tra URL trang Quận 12 Hồ Chí Minh trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/quan-12-l8q1617-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/quan-12-l8q1617-vi.html</a>: "Excluded by 'noindex' tag", lần crawl cuối 28/10/2026 gặp <code>noindex</code>.</figcaption></figure>
+</div>
+<div class="fig2">
+  <figure><img src="assets/client-v1/gsc-cu-chi.png" alt="Kiểm tra URL trang Huyện Củ Chi trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/huyen-cu-chi-l8q1635-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/huyen-cu-chi-l8q1635-vi.html</a>: "Excluded by 'noindex' tag", lần crawl cuối 18/11/2026 vẫn gặp <code>noindex</code>.</figcaption></figure>
+  <figure><img src="assets/client-v1/gsc-quan-11.png" alt="Kiểm tra URL trang Quận 11 Hồ Chí Minh trên Search Console"><figcaption><a class="u" href="https://careerviet.vn/viec-lam/quan-11-l8q1628-vi.html" target="_blank" rel="noopener">https://careerviet.vn/viec-lam/quan-11-l8q1628-vi.html</a>: "Crawled - currently not indexed", "No referring sitemaps detected", lần crawl cuối từ 18/06/2026.</figcaption></figure>
 </div>
 <ul>
-<li>Lần crawl cuối: 31/10/2026 lúc 14:08. Ở lần đó Google thấy <code>noindex</code> trong thẻ meta robots.</li>
-<li>Ngày 26/11, trang trả <code>index, follow</code>, có 23 tin và canonical tự trỏ. Nhưng title, robots, canonical nằm ở byte 2,48 đến 2,66 triệu, sau mốc 2 MB (mục 2).</li>
-<li>Ngày 31/10 là ngày Google thấy <code>noindex</code> lần cuối. Ảnh không cho biết <code>noindex</code> bắt đầu từ ngày nào.</li>
+<li>Kiểm tra 5 trang quận/huyện trên Search Console cho thấy 4 trên 5 URL đang bị Google loại khỏi chỉ mục với lý do <code>Excluded by 'noindex' tag</code> (lần crawl cuối trải từ 11/10 đến 18/11/2026), còn 1 URL ở trạng thái <code>Crawled - currently not indexed</code> từ 18/06/2026.</li>
+<li>Dù mã nguồn ngày 26/11 của các trang này đã đặt đúng <code>meta robots = index, follow</code>, nhóm quận/huyện vẫn chưa được lập chỉ mục lại. Khả năng cao hệ thống từng gắn nhầm <code>noindex</code> trước đó, cộng thêm thiếu link nội bộ có <code>href</code> và thiếu sitemap nên Googlebot chưa quay lại crawl, đồng thời thẻ robots còn bị đẩy sau mốc 2 MB (mục 2).</li>
 </ul>
-<div class="need">Hiện mới có một URL quận được kiểm trên Search Console, nên chưa kết luận được cho cả nhóm quận/huyện. Cần chạy Kiểm tra URL (kèm Test Live URL) cho 8–10 URL quận ở Hồ Chí Minh, Hà Nội, Đà Nẵng, ghi lại "Indexing allowed" và "Last crawl". Cần thêm lịch sử deploy quanh ngày 31/10 để biết có rule nào gắn <code>noindex</code> theo số tin hay không.</div>
+<div class="need">Cần lịch sử deploy giai đoạn tháng 10 đến tháng 11/2026 của CareerViet để xác nhận thời điểm gắn và gỡ thẻ <code>noindex</code> trên nhóm trang quận/huyện.</div>
 
 <div class="grid">
 <div class="box fix"><h4>Việc cần sửa</h4>
@@ -1100,12 +1113,9 @@ brotli_types text/html application/json text/plain text/css application/javascri
 <tr><th>#</th><th>Dữ liệu</th><th>Dùng để</th><th>Mục</th></tr>
 <tr><td>1</td><td>Log máy chủ 30 ngày lọc theo Googlebot (kiểm IP thật): số lượt theo nhóm URL, dung lượng phản hồi, giá trị <code>X-Bot-Cache</code></td><td>Biết số lượt crawl thật vào <code>_rsc</code>, login, API và kiểm lại xem Googlebot thật nhận gì ở URL <code>_rsc</code> và ở lớp cache</td><td>2, 7, 8</td></tr>
 <tr><td>2</td><td>Lịch sử deploy 15/09 đến 25/11/2026</td><td>Tìm thay đổi quanh 31/10 (noindex trang quận) và ngày vector vào HTML</td><td>1, 5</td></tr>
-<tr><td>3</td><td>Kiểm tra URL trên Search Console cho 8–10 trang quận, trang <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-vi.html" target="_blank" rel="noopener">c2l8</a>, trang <a class="u" href="https://careerviet.vn/viec-lam/ke-toan-kiem-toan-tai-ho-chi-minh-c2l8-trang-2-vi.html" target="_blank" rel="noopener">-trang-2</a></td><td>Xác nhận phạm vi lỗi noindex và dòng "User-declared canonical"</td><td>2, 5</td></tr>
-<tr><td>4</td><td>Cấu hình lớp cache trên Kong/OpenResty</td><td>Chốt thời hạn và khoá cache</td><td>8</td></tr>
-<tr><td>5</td><td>Phiên bản Next.js và next-intl đang chạy</td><td>Chọn đúng cách cấu hình <code>htmlLimitedBots</code> và cách tách bảng dịch</td><td>1, 2</td></tr>
-<tr><td>6</td><td>Ý nghĩa của <code>date_view</code>, <code>job_active_date</code> và múi giờ lưu trong cơ sở dữ liệu</td><td>Sửa <code>datePosted</code>, <code>validThrough</code></td><td>9</td></tr>
-<tr><td>7</td><td>Báo cáo Sitemaps trên Search Console: trạng thái từng file</td><td>Kiểm sitemap có được Google đọc đủ không</td><td>5</td></tr>
-<tr><td>8</td><td>Ảnh đủ các bảng của Crawl Stats: Hosts, By response (13 dòng), By Googlebot type (7 dòng)</td><td>Xem lỗi 5xx và phân bổ crawl theo tên miền con. Nhóm 302 chiếm 3% chưa rõ nguồn</td><td>7, 8</td></tr>
+<tr><td>3</td><td>Cấu hình lớp cache trên Kong/OpenResty</td><td>Chốt thời hạn và khoá cache</td><td>8</td></tr>
+<tr><td>4</td><td>Phiên bản Next.js và next-intl đang chạy</td><td>Chọn đúng cách cấu hình <code>htmlLimitedBots</code> và cách tách bảng dịch</td><td>1, 2</td></tr>
+<tr><td>5</td><td>Ý nghĩa của <code>date_view</code>, <code>job_active_date</code> và múi giờ lưu trong cơ sở dữ liệu</td><td>Sửa <code>datePosted</code>, <code>validThrough</code></td><td>9</td></tr>
 </table></div>
 
 <details><summary>Các điểm đã kiểm và không phải lỗi của site</summary><div class="in"><ul>
